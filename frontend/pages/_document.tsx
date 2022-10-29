@@ -3,9 +3,8 @@ import { Html, Head, Main, NextScript } from 'next/document'
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
-      {/* TODO: Add Navbar here */}
-      <body>
+      <body className="dark:bg-[#2d373c]">
+        <Head />
         <Main />
         <NextScript />
       </body>

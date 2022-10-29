@@ -1,14 +1,13 @@
-import theme from '../shared/theme'
+import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
-// extending theme: https://chakra-ui.com/getting-started/nextjs-guide#customizing-theme
+import NavBar from '../components/NavBar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    // TODO: Fix theme to be user default
-    <ChakraProvider theme={theme}>
+    <>
+      <NavBar />
       <Component {...pageProps} />
-    </ChakraProvider>
+    </>
   )
 }
 
