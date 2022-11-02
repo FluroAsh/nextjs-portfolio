@@ -5,7 +5,9 @@ export default function Document() {
     <Html lang="en">
       {/* TODO: Add color below as a custom color to TW CSS config */}
       <body className="dark:bg-[#2d373c] ">
-        <Head />
+        <Head>
+          <title>Ashley Thompson</title>
+        </Head>
         <Main />
         <NextScript />
       </body>

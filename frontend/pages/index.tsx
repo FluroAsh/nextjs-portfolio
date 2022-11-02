@@ -1,14 +1,15 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+// import Head from 'next/head'
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
     <>
-      <Head>
-        <title>Ashley's site</title>
-      </Head>
+      {/* TODO: Next doesn't like this in the index file */}
+      {/* Create a layout to wrap components? */}
+      {/* <Head>
+        <title key="home">Ashleys site</title>
+      </Head> */}
 
-      <div className="px-3">
+      <section className="mx-6">
         <h1 className="text-2xl dark:text-white">Test</h1>
         <div className="mt-3">
           <p className="dark:text-white">
@@ -76,11 +77,7 @@ const Home: NextPage = () => {
             leo duis ut diam. Aliquam vestibulum morbi blandit cursus risus at.
           </p>
         </div>
-      </div>
+      </section>
     </>
   )
 }
-
-const getInitialProps = () => {}
-
-export default Home

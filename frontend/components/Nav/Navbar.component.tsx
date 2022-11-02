@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const MIN_SCROLL_HEIGHT = 15
 
-export const NavBar = () => {
+export const Navbar = () => {
   // TODO: Move to state? :)
   // Zustand/Context API
   const [isScrolling, setIsScrolling] = useState(false)
@@ -21,7 +21,7 @@ export const NavBar = () => {
     // WHEN position is not at the top of the document
     // change opacity to 80% and include backdrop filter effects for blur
     <div
-      className={`sticky top-0 z-99 w-full mb-3 transition-all backdrop-blur border-b border-b-slate-500/50 ${
+      className={`sticky top-0 z-99 w-full mb-6 transition-all backdrop-blur border-b border-b-slate-500/50 ${
         isScrolling
           ? 'dark:bg-zinc-900/50'
           : 'bg:transparent border-transparent'
@@ -63,4 +63,4 @@ export const NavBar = () => {
   )
 }
 
-export default NavBar
+export default Navbar
