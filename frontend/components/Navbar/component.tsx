@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
-const MIN_SCROLL_HEIGHT = 15
+const MIN_SCROLL_HEIGHT = 40
 
 export const Navbar = () => {
   // TODO: Move to state? :)
@@ -21,7 +22,7 @@ export const Navbar = () => {
     // WHEN position is not at the top of the document
     // change opacity to 80% and include backdrop filter effects for blur
     <div
-      className={`sticky top-0 z-99 w-full mb-6 transition-all backdrop-blur border-b border-b-slate-500/50 ${
+      className={`sticky top-0 z-99 w-full mb-8 transition-all backdrop-blur border-b border-b-slate-500/50 ${
         isScrolling
           ? 'dark:bg-zinc-900/50'
           : 'bg:transparent border-transparent'
@@ -40,22 +41,22 @@ export const Navbar = () => {
           id="navbar-links"
           className="flex items-center justify-center w-1/3 gap-5 dark:text-white"
         >
-          <a title="Go to Homepage" href="/" className="uppercase ">
+          <Link title="Go to Homepage" href="/" className="lowercase ">
             Home
-          </a>
-          <a title="Go to Ash's Blog" href="/" className="uppercase ">
+          </Link>
+          <Link title="Go to Ash's Blog" href="/" className="lowercase ">
             Blog
-          </a>
-          <a title="Contact Ash" href="/" className="uppercase ">
+          </Link>
+          <Link title="Contact Ash" href="/" className="lowercase ">
             Contact
-          </a>
+          </Link>
         </div>
 
-        <div className="flex w-1/3 mx-1 dark:text-white">
+        <div className="flex flex-1 w-1/3 mx-1">
           <input
             type="text"
             placeholder="Search"
-            className="px-3 py-1 ml-auto rounded outline-none focus:outline-sky-500/80 "
+            className="px-3 py-1 ml-auto rounded outline-none focus:outline-sky-500/80 bg:transparent"
           ></input>
         </div>
       </nav>
