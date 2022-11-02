@@ -29,7 +29,7 @@ export const Navbar = () => {
       }  
        drop-shadow-md`}
     >
-      <nav className="flex p-3">
+      <nav className="flex max-w-screen-lg p-3 mx-auto">
         <span
           id="logo-container"
           className="flex items-center w-1/3 text-sky-500"

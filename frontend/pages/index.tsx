@@ -9,7 +9,7 @@ export default function Home() {
         <title key="home">Ashleys site</title>
       </Head> */}
 
-      <section className="mx-10">
+      <section id="about-info" className="max-w-screen-lg p-3 mx-auto">
         <h1 className="text-2xl dark:text-white">Test</h1>
         <div className="mt-3">
           <p className="dark:text-white">
