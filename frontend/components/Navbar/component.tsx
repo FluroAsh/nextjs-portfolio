@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-const MIN_SCROLL_HEIGHT = 40
+const MIN_SCROLL_HEIGHT = 20
 
 export const Navbar = () => {
   // TODO: Move to state? :)
@@ -22,7 +22,7 @@ export const Navbar = () => {
     // WHEN position is not at the top of the document
     // change opacity to 80% and include backdrop filter effects for blur
     <div
-      className={`sticky top-0 z-99 w-full mb-8 transition-all backdrop-blur border-b border-b-slate-500/50 ${
+      className={`sticky top-0 z-99 w-full transition-all backdrop-blur border-b border-b-slate-500/50 ${
         isScrolling
           ? 'dark:bg-zinc-900/50'
           : 'bg:transparent border-transparent'
@@ -32,9 +32,9 @@ export const Navbar = () => {
       <nav className="flex max-w-screen-lg p-3 mx-auto">
         <span
           id="logo-container"
-          className="flex items-center w-1/3 text-sky-500"
+          className="flex items-center w-1/3 text-2xl text-sky-500 text-bold"
         >
-          LOGO
+          AT
         </span>
 
         <div
@@ -56,7 +56,7 @@ export const Navbar = () => {
           <input
             type="text"
             placeholder="Search"
-            className="px-3 py-1 ml-auto rounded outline-none focus:outline-sky-500/80 bg:transparent"
+            className="max-w-[150px] px-3 py-1 ml-auto rounded outline-none focus:outline-sky-500/80 bg:transparent"
           ></input>
         </div>
       </nav>

@@ -1,4 +1,5 @@
 // import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -11,6 +12,20 @@ export default function Home() {
 
       <section id="about-info" className="max-w-screen-lg p-3 mx-auto">
         <h1 className="text-2xl dark:text-white">Test</h1>
+
+        {/* NOTE: Temp to navigate between blog posts */}
+        <ul className="dark:text-white">
+          <li>
+            <Link href="/blog/1">Blog 1</Link>
+          </li>
+          <li>
+            <Link href="/blog/2">Blog 2</Link>
+          </li>
+          <li>
+            <Link href="/blog/3">Blog 3</Link>
+          </li>
+        </ul>
+
         <div className="mt-3">
           <p className="dark:text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
