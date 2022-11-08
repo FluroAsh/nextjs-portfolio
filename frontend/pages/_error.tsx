@@ -10,7 +10,7 @@ export const ERROR_MAP: IErrorMap = {
   500: 'Please try again later'
 }
 
-function Error({ statusCode }) {
+function Error({ statusCode }: { statusCode: number }) {
   return (
     <div className="flex items-center justify-center dark:text-white h-[calc(100vh-57px)] ">
       <div className="flex flex-col items-center justify-center w-100 ">
@@ -32,6 +32,7 @@ function Error({ statusCode }) {
   )
 }
 
+// TODO: Search for types, to silence below warning
 Error.getInitialProps = ({ res, err }) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
   return { statusCode }
