@@ -4,15 +4,13 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 
 import Error from 'pages/_error'
 import { GET_POST_SLUGS, GET_POST } from 'pages/api'
-import { IPostData, IPost } from 'interfaces'
+import { IPostData } from 'interfaces'
 
 export default function Post({ post }: IPostData) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <Error statusCode={404} />
   }
-
-  // const { title, description, slug }: IPost = post
 
   return (
     <>

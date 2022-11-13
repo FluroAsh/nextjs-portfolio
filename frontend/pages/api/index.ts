@@ -1,7 +1,6 @@
 // Used for server-side requests --> (CANNOT use useQuery outside clientside)
 // TODO: Add typing for query & variables
 const fetchAPI = async (query: string) => {
-  // TODO: Replace with env Strapi BE endpoint
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
     method: 'POST',
     headers: {
