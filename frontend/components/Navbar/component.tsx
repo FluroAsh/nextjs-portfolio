@@ -41,13 +41,17 @@ export const Navbar = () => {
           id="navbar-links"
           className="flex items-center justify-center w-1/3 gap-5 dark:text-white"
         >
-          <Link title="Go to Homepage" href="/" className="lowercase ">
+          <Link title="Go to Homepage" href="/" className="text-sm uppercase">
             Home
           </Link>
-          <Link title="Go to Ash's Blog" href="/" className="lowercase ">
+          <Link
+            title="Go to Ash's Blog"
+            href="/"
+            className="text-sm uppercase "
+          >
             Blog
           </Link>
-          <Link title="Contact Ash" href="/" className="lowercase ">
+          <Link title="Contact Ash" href="/" className="text-sm uppercase ">
             Contact
           </Link>
         </div>

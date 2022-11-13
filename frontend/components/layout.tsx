@@ -1,7 +1,11 @@
 import React, { ReactNode } from 'react'
 import Navbar from './Navbar'
 
-export default function Layout({ children }: { children: ReactNode }) {
+export interface ILayout {
+  children: ReactNode
+}
+
+export default function Layout({ children }: ILayout) {
   return (
     <>
       <Navbar />

@@ -10,10 +10,14 @@ export const ERROR_MAP: IErrorMap = {
   500: 'Please try again later'
 }
 
-function Error({ statusCode }: { statusCode: number }) {
+interface IError {
+  statusCode: number
+}
+
+export function Error({ statusCode }: IError) {
   return (
     <div className="flex items-center justify-center dark:text-white h-[calc(100vh-57px)] ">
-      <div className="flex flex-col items-center justify-center w-100 ">
+      <div className="flex flex-col items-center justify-center w-100 b-circle">
         {/* TODO: Replace with an SVG/Img */}
         <span className="mb-4 text-5xl">⚠️</span>
         <div className="flex items-center content-center text-lg">
@@ -32,8 +36,8 @@ function Error({ statusCode }: { statusCode: number }) {
   )
 }
 
-// TODO: Search for types, to silence below warning
-Error.getInitialProps = ({ res, err }) => {
+// TODO: Add types for res/err
+Error.getInitialProps = ({ res, err }: any) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
   return { statusCode }
 }
