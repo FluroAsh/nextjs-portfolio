@@ -34,7 +34,6 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = null
 }: any) => {
-  // const data = await getPosts(params.slug, preview)
   // const content = await markdownToHtml(data?.posts[0[]?.content || ''])
 
   const { posts } = await GET_POST(params.slug)
@@ -53,7 +52,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths:
-      posts?.data.map(({ attributes: { slug } }: any) => `/blog/${slug}`) || [],
+      posts?.data?.map(({ attributes: { slug } }: any) => `/blog/${slug}`) ||
+      [],
     fallback: true
   }
 }
