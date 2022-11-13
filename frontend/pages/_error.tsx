@@ -17,7 +17,7 @@ interface IError {
 export function Error({ statusCode }: IError) {
   return (
     <div className="flex items-center justify-center dark:text-white h-[calc(100vh-57px)] ">
-      <div className="flex flex-col items-center justify-center w-100 b-circle">
+      <div className="flex flex-col items-center justify-center p-6 border rounded-lg w-100 dark:bg-slate-500/50 backdrop-blur border-slate-500/50">
         {/* TODO: Replace with an SVG/Img */}
         <span className="mb-4 text-5xl">⚠️</span>
         <div className="flex items-center content-center text-lg">
@@ -25,7 +25,7 @@ export function Error({ statusCode }: IError) {
             Error {statusCode} &mdash; {ERROR_MAP[statusCode]}
           </span>
           <Link
-            className="transition-colors duration-300 dark:text-slate-400 hover:text-sky-500"
+            className="transition-colors duration-300 dark:text-slate-300 hover:text-sky-500"
             href="/"
           >
             Go Home
