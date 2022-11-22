@@ -10,11 +10,7 @@ export const ERROR_MAP: IErrorMap = {
   500: 'Please try again later'
 }
 
-interface IError {
-  statusCode: number
-}
-
-export function Error({ statusCode }: IError) {
+export function Error({ statusCode }: { statusCode: number }) {
   return (
     <div className="flex items-center justify-center dark:text-white h-[calc(100vh-57px)] ">
       <div className="flex flex-col items-center justify-center p-6 border rounded-lg w-100 dark:bg-slate-500/50 backdrop-blur border-slate-500/50">
