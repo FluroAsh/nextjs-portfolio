@@ -20,7 +20,7 @@ const fetchAPI = async (query: string) => {
 }
 
 export const GET_POSTS = async () => {
-  const data = await fetchAPI(`
+  return await fetchAPI(`
   query getPosts {
     posts {
       data {
@@ -33,11 +33,10 @@ export const GET_POSTS = async () => {
       }
     }
   `)
-  return data
 }
 
 export const GET_POST_SLUGS = async () => {
-  const data = await fetchAPI(`
+  return await fetchAPI(`
     query {
       posts {
         data {
@@ -48,7 +47,6 @@ export const GET_POST_SLUGS = async () => {
       }
     }
   `)
-  return data
 }
 
 export const GET_POST = async (slug: string, preview?: boolean) => {

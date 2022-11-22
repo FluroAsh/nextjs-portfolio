@@ -4,8 +4,6 @@ import Link from 'next/link'
 const MIN_SCROLL_HEIGHT = 20
 
 export const Navbar = () => {
-  // TODO: Move to state? :)
-  // Zustand/Context API
   const [isScrolling, setIsScrolling] = useState(false)
 
   const checkScrolling = () =>
@@ -13,7 +11,7 @@ export const Navbar = () => {
 
   const styleScrolling = isScrolling
     ? 'dark:bg-zinc-900/50'
-    : 'bg:transparent border-transparnet'
+    : 'bg:transparent border-transparent'
 
   useEffect(() => {
     window.addEventListener('scroll', checkScrolling)
