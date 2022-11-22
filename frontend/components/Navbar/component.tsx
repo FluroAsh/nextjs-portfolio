@@ -11,6 +11,10 @@ export const Navbar = () => {
   const checkScrolling = () =>
     setIsScrolling(window.scrollY > MIN_SCROLL_HEIGHT)
 
+  const styleScrolling = isScrolling
+    ? 'dark:bg-zinc-900/50'
+    : 'bg:transparent border-transparnet'
+
   useEffect(() => {
     window.addEventListener('scroll', checkScrolling)
     return () => {
@@ -22,12 +26,7 @@ export const Navbar = () => {
     // WHEN position is not at the top of the document
     // change opacity to 80% and include backdrop filter effects for blur
     <div
-      className={`sticky top-0 z-99 w-full transition-all backdrop-blur border-b border-b-slate-500/50 ${
-        isScrolling
-          ? 'dark:bg-zinc-900/50'
-          : 'bg:transparent border-transparent'
-      }  
-       drop-shadow-md`}
+      className={`sticky top-0 z-99 w-full transition-all backdrop-blur border-b border-b-slate-500/50 ${styleScrolling} drop-shadow-md`}
     >
       <nav className="flex max-w-screen-lg p-3 mx-auto">
         <span
