@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
-
-const MIN_SCROLL_HEIGHT = 20
+import useScrolling from 'hooks/useScrolling'
 
 export const Navbar = () => {
-  const [isScrolling, setIsScrolling] = useState(false)
-
-  const checkScrolling = () =>
-    setIsScrolling(window.scrollY > MIN_SCROLL_HEIGHT)
+  const [isScrolling] = useScrolling()
 
   const styleScrolling = isScrolling
     ? 'dark:bg-zinc-900/50'
     : 'bg:transparent border-transparent'
-
-  useEffect(() => {
-    window.addEventListener('scroll', checkScrolling)
-    return () => {
-      window.removeEventListener('scroll', checkScrolling)
-    }
-  }, [])
 
   return (
     // WHEN position is not at the top of the document
@@ -26,7 +15,7 @@ export const Navbar = () => {
     <div
       className={`sticky top-0 z-99 w-full transition-all backdrop-blur border-b border-b-slate-500/50 ${styleScrolling} drop-shadow-md`}
     >
-      <nav className="flex max-w-screen-lg p-3 mx-auto">
+      <nav className="flex max-w-screen-lg p-3 mx-auto" data-testid="navbar">
         <span
           id="logo-container"
           className="flex items-center w-1/3 text-2xl text-sky-500 text-bold"
@@ -48,7 +37,7 @@ export const Navbar = () => {
           >
             Blog
           </Link>
-          <Link title="Contact Ash" href="/" className="text-sm uppercase ">
+          <Link title="Contact Ash" href="/" className="text-sm uppercase">
             Contact
           </Link>
         </div>
