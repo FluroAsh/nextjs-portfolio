@@ -1,1 +1,1 @@
-export { default as Layout } from './layout'
+export { Layout } from './layout'
