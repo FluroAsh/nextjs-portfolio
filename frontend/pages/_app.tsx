@@ -1,5 +1,5 @@
 import '../main.css'
-import { Layout } from 'layouts'
+import Layout from 'layouts'
 
 import type { AppProps } from 'next/app'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
