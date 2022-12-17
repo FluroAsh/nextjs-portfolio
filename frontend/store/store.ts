@@ -6,6 +6,6 @@ interface BlogState {
 }
 
 export const useStore = create<BlogState>((set) => ({
-  pageTitle: `Ash&quot;s Blog`,
+  pageTitle: 'AT',
   setPageTitle: (payload) => set((state) => ({ pageTitle: payload }))
 }))

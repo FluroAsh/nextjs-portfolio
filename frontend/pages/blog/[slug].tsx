@@ -6,6 +6,7 @@ import Error from 'pages/_error'
 import { GET_POST_SLUGS, GET_POST } from 'pages/api'
 import { IPostData } from 'interfaces'
 import { markdownToHtml } from 'lib/markdownToHtml'
+import Head from 'next/head'
 
 export default function Post({ post }: IPostData) {
   const router = useRouter()
@@ -15,6 +16,9 @@ export default function Post({ post }: IPostData) {
 
   return (
     <>
+      <Head>
+        <title>AT | {post.title}</title>
+      </Head>
       {router.isFallback ? (
         <p>Loading...</p>
       ) : (

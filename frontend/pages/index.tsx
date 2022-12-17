@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { GET_POST } from './api'
+import Head from 'next/head'
 
 export default function Home(/*{ posts }: IPostProps*/) {
   // TEMP: DEBUGGING BELOW
@@ -19,13 +20,15 @@ export default function Home(/*{ posts }: IPostProps*/) {
   // }, [])
   return (
     <>
+      <Head>
+        <title>Ashley&apos;s Blog</title>
+      </Head>
       {/* TODO: Next doesn't like this in the index file */}
       {/* Create a layout to wrap components? */}
-
       <section id="about-info" className="max-w-screen-lg p-3 mx-auto">
         <h1 className="text-2xl">Test</h1>
 
-        {/* <ul className="dark:text-white">
+        {/* <ul>
           {posts.map(({ slug, title }) => {
             return (
               <li>
