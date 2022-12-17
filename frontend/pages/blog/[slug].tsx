@@ -18,13 +18,15 @@ export default function Post({ post }: IPostData) {
       {router.isFallback ? (
         <p>Loading...</p>
       ) : (
+        // Blog Header component
+        // Article body component
         <div className="p-10 text-white">
           <li>title: {post.title}</li>
           <li>description: {post.description}</li>
           <li>slug: {post.slug}</li>
           <article dangerouslySetInnerHTML={{ __html: post.content }}></article>
         </div>
-      )}
+      )}s
     </>
   )
 }
