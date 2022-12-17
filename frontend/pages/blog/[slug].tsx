@@ -20,13 +20,13 @@ export default function Post({ post }: IPostData) {
       ) : (
         // Blog Header component
         // Article body component
-        <div className="p-10 text-white">
+        <div className="p-10">
           <li>title: {post.title}</li>
           <li>description: {post.description}</li>
           <li>slug: {post.slug}</li>
           <article dangerouslySetInnerHTML={{ __html: post.content }}></article>
         </div>
-      )}s
+      )}
     </>
   )
 }
@@ -36,8 +36,6 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = null
 }: any) => {
-  // const content = await markdownToHtml(data?.posts[0[]?.content || ''])
-
   const { posts } = await GET_POST(params.slug)
   const content =
     (await markdownToHtml(posts.data[0]?.attributes?.content)) || ''
