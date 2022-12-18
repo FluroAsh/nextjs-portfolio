@@ -5,12 +5,11 @@ interface ISeo {
   metaTitle: string
 }
 
-const Seo: React.FC<ISeo> = ({ metaTitle }) => {
+export const Seo: React.FC<ISeo> = ({ metaTitle }) => {
   return (
     <Head>
       <title>{metaTitle}</title>
     </Head>
+    // TODO: Add/investigate more/better SEO
   )
 }
-
-export default Seo
