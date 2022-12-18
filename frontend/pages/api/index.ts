@@ -4,6 +4,7 @@ const fetchAPI = async (query: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
     method: 'POST',
     headers: {
+      Authorization: `bearer ${process.env.NEXT_STRAPI_API_TOKEN}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
