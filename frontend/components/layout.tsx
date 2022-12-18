@@ -1,20 +1,32 @@
 import React, { ReactNode } from 'react'
 import Navbar from 'components/Navbar'
-import Seo from './seo'
+import { Seo } from './seo'
 
 interface ILayout {
-  children: ReactNode
+  pageType: pageTypes
   metaTitle: string
+  children: ReactNode
 }
-const Layout: React.FC<ILayout> = ({ children, metaTitle }) => {
+
+type pageTypes = 'home' | 'blog' | 'contact'
+
+export const Layout: React.FC<ILayout> = ({
+  pageType,
+  metaTitle,
+  children
+}) => {
   return (
     <>
       <Seo metaTitle={metaTitle} />
       <Navbar />
-      <main>{children}</main>
+      {pageType === 'home' ? (
+        <main>{children}</main>
+      ) : pageType === 'blog' ? (
+        <main>{children}</main>
+      ) : pageType === 'contact' ? (
+        <main>{children}</main>
+      ) : null}
       {/* TODO: <Footer/> */}
     </>
   )
 }
-
-export default Layout
