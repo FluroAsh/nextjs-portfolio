@@ -4,7 +4,6 @@ const fetchAPI = async (query: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
     method: 'POST',
     headers: {
-      Authorization: `bearer ${process.env.NEXT_STRAPI_API_TOKEN}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -13,6 +12,7 @@ const fetchAPI = async (query: string) => {
   })
 
   const json = await res.json()
+  console.log(json.data)
   if (json.errors) {
     console.error(json.errors)
     throw new Error('Failed to fetch API')
@@ -51,8 +51,7 @@ export const GET_POST_SLUGS = async () => {
 }
 
 export const GET_POST = async (slug: string, preview?: boolean) => {
-  const data = await fetchAPI(
-    `
+  return await fetchAPI(`
     query getPostsBySlug {
       posts(filters: { slug: { eq: "${slug}" } }) {
         data {
@@ -65,7 +64,5 @@ export const GET_POST = async (slug: string, preview?: boolean) => {
         }
       }
     }
-  `
-  )
-  return data
+  `)
 }

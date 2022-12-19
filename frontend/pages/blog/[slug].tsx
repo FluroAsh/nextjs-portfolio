@@ -16,9 +16,9 @@ export default function Post({ post }: IPostData) {
 
   return (
     <>
-      <Head>
-        <title>AT | {post.title}</title>
-      </Head>
+      {/* <Head>
+        <title>{`AT | ${post.title}`}</title>
+      </Head> */}
       {router.isFallback ? (
         <p>Loading...</p>
       ) : (
@@ -35,7 +35,6 @@ export default function Post({ post }: IPostData) {
   )
 }
 
-// TODO: Add types for params, preview
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = null
@@ -59,8 +58,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths:
-      posts?.data?.map(({ attributes: { slug } }: any) => `/blog/${slug}`) ||
-      [],
+      posts?.data?.attributes?.map(
+        ({ slug }: { slug: string }) => `/blog/${slug}`
+      ) || [],
     fallback: true
   }
 }
