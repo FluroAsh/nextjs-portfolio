@@ -4,7 +4,7 @@ import { Seo } from './seo'
 
 interface ILayout {
   pageType: pageTypes
-  metaTitle: string
+  // metaTitle: string
   children: ReactNode
 }
 
@@ -12,12 +12,13 @@ type pageTypes = 'home' | 'blog' | 'contact'
 
 export const Layout: React.FC<ILayout> = ({
   pageType,
-  metaTitle,
+  // metaTitle,
   children
 }) => {
   return (
     <>
-      <Seo metaTitle={metaTitle} />
+      {/* TODO: Update SEO Component */}
+      {/* <Seo metaTitle={metaTitle} /> */}
       <Navbar />
       {pageType === 'home' ? (
         <main>{children}</main>

@@ -12,7 +12,6 @@ const fetchAPI = async (query: string) => {
   })
 
   const json = await res.json()
-  console.log(json.data)
   if (json.errors) {
     console.error(json.errors)
     throw new Error('Failed to fetch API')
