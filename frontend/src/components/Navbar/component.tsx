@@ -5,24 +5,22 @@ import useScrolling from 'hooks/useScrolling'
 export const Navbar = () => {
   const [isScrolling] = useScrolling()
 
-  const styleScrolling = isScrolling
-
   const styles = {
     container: isScrolling
-      ? 'dark:bg-zinc-900/50'
-      : 'bg:transparent border-transparent'
+      ? 'dark:bg-slate-500/10 bg-sky-900/20 border-transparent backdrop-blur'
+      : 'dark:bg-slate-500/50 bg-sky-900/50'
   }
 
   return (
     <div
-      className={`sticky top-0 z-99 w-full transition-all backdrop-blur border-b border-b-slate-500/50 ${styles.container} drop-shadow-md`}
+      className={`sticky top-0 z-99 w-full transition-all duration-200 border-b border-b-slate-500/50 ${styles.container} drop-shadow-md`}
     >
       <nav
         className="flex justify-between max-w-screen-lg p-3 mx-auto"
         data-testid="navbar"
       >
-        <span className="flex items-center text-2xl text-sky-500 text-bold">
-          AT
+        <span className="flex items-center text-2xl font-thin dark:text-sky-500 text-bold">
+          Ashley Thompson
         </span>
 
         <div className="flex items-center justify-center gap-5">
@@ -38,7 +36,7 @@ export const Navbar = () => {
             Contact
           </Link>
           {/* TODO: Create a dark/light mode toggle */}
-          <div className="w-[35px] h-[35px] bg-slate-300"></div>
+          <div className="w-[35px] h-[35px] bg-orange-300 rounded"></div>
         </div>
       </nav>
     </div>

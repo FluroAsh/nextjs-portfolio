@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       {/* TODO: Add color below as a custom color to TW CSS config */}
       <Head></Head>
-      <body className="dark:bg-[#2d373c] min-h-screen dark:text-white">
+      <body className="bg-slate-50 dark:bg-[#2d373c] min-h-screen dark:text-white">
         <Main />
         <NextScript />
       </body>
