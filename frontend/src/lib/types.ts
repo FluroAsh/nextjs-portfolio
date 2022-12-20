@@ -4,11 +4,3 @@ export interface IPost {
   description: string
   content: string
 }
-
-export interface IPostData {
-  post: IPost
-}
-
-export interface IPostsData {
-  posts: IPost[]
-}

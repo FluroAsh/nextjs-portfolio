@@ -4,22 +4,22 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import Error from 'pages/_error'
 import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
-import { IPostData } from 'lib/types'
+import { IPost } from 'lib/types'
 
 import { markdownToHtml } from 'lib/markdownToHtml'
 import { Layout } from 'components/layout'
 import Head from 'next/head'
 
-export default function Post({ post }: IPostData) {
+const Post: React.FC<IPost> = ({ title, slug, description, content }) => {
   const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !slug) {
     return <Error statusCode={404} />
   }
 
   return (
     <Layout pageType="blog">
       <Head>
-        <title>{post?.title}</title>
+        <title>{title}</title>
       </Head>
       {router.isFallback ? (
         <p>Loading...</p>
@@ -27,10 +27,10 @@ export default function Post({ post }: IPostData) {
         // Blog Header component
         // Article body component
         <div className="p-10">
-          <li>title: {post.title}</li>
-          <li>description: {post.description}</li>
-          <li>slug: {post.slug}</li>
-          <article dangerouslySetInnerHTML={{ __html: post.content }}></article>
+          <li>title: {title}</li>
+          <li>description: {description}</li>
+          <li>slug: {slug}</li>
+          <article dangerouslySetInnerHTML={{ __html: content }}></article>
         </div>
       )}
     </Layout>
@@ -49,10 +49,8 @@ export const getStaticProps: GetStaticProps = async (ctx, preview = false) => {
 
   return {
     props: {
-      post: {
-        ...posts.data[0].attributes,
-        content
-      }
+      ...posts.data[0].attributes,
+      content
     }
   }
 }
@@ -68,3 +66,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: true
   }
 }
+
+export default Post
