@@ -1,5 +1,5 @@
 // Used for server-side requests --> (CANNOT use useQuery outside clientside)
-// TODO: Add typing for query & variables
+// TODO: Add Schema Link for server-side requests: https://www.apollographql.com/docs/react/api/link/apollo-link/schema
 const fetchAPI = async (query: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
     method: 'POST',
