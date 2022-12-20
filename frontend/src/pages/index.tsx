@@ -5,7 +5,7 @@ import { Layout } from 'components/layout'
 
 export default function Home() {
   return (
-    <Layout pageType="home">
+    <Layout pageType="simple">
       <section id="about-info" className="max-w-screen-lg p-3 mx-auto">
         <h1 className="text-2xl">Test</h1>
 
