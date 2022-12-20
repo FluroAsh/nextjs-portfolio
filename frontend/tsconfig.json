@@ -14,10 +14,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
-      "store/*": ["store/*"],
+      "store/*": ["src/store/*"],
       "hooks/*": ["hooks/*"],
       "layouts/*": ["layouts/*"],
       "lib/*": ["lib/*"]

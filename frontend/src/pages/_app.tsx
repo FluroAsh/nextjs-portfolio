@@ -1,4 +1,4 @@
-import '../main.css'
+import '../../globals.css'
 
 import ApolloProvider from 'lib/ApolloProvider'
 import type { AppProps } from 'next/app'
