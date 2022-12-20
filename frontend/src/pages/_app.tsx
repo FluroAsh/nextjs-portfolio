@@ -1,7 +1,7 @@
-import '../../globals.css'
+import type { AppProps } from 'next/app'
 
 import ApolloProvider from 'lib/ApolloProvider'
-import type { AppProps } from 'next/app'
+import '../../globals.css'
 
 function BlogApp({ Component, pageProps }: AppProps) {
   return (
