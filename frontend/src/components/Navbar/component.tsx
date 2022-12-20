@@ -31,17 +31,13 @@ export const Navbar = () => {
         >
           {/* TODO: Map over items to render these links */}
           {/* Title, to, target (eg _blank) */}
-          <Link title="Go to Homepage" href="/" className="text-sm uppercase">
+          <Link title="Go to Homepage" href="/" className="text-md">
             Home
           </Link>
-          <Link
-            title="Go to Ash's Blog"
-            href="/"
-            className="text-sm uppercase "
-          >
+          <Link title="Go to Ash's Blog" href="/blog" className="text-md">
             Blog
           </Link>
-          <Link title="Contact Ash" href="/" className="text-sm uppercase">
+          <Link title="Contact Ash" href="/" className="text-md">
             Contact
           </Link>
         </div>
