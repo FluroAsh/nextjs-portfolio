@@ -7,13 +7,13 @@ export const Navbar = () => {
 
   const styles = {
     container: isScrolling
-      ? 'dark:bg-slate-500/10 bg-sky-900/20 border-transparent backdrop-blur'
-      : 'dark:bg-slate-500/50 bg-sky-900/50'
+      ? 'dark:bg-slate-500/10 dark:border-transparent bg-orange-200/20 backdrop-blur border-b-slate-200'
+      : 'dark:bg-slate-500/50 bg-orange-100/90'
   }
 
   return (
     <div
-      className={`sticky top-0 z-99 w-full transition-all duration-200 border-b border-b-slate-500/50 ${styles.container} drop-shadow-md`}
+      className={`sticky top-0 z-99 w-full transition-all border-b dark:border-b-slate-500/50 ${styles.container} dark:drop-shadow-md `}
     >
       <nav
         className="flex justify-between max-w-screen-lg p-3 mx-auto"
