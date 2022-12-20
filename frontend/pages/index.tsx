@@ -1,25 +1,11 @@
 // import Head from 'next/head'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
-// import { GET_POST } from './api'
 import { Layout } from 'components/layout'
 
-export default function Home(/*{ posts }: IPostProps*/) {
-  // TEMP: DEBUGGING BELOW
-  // async function getData() {
-  //   const { posts } = await GET_POST('another-test')
-  //   // console.log(data.posts[0].attributes.slug)
-  //   posts.data.map(({ attributes: { title, slug } }: any) =>
-  //     console.log({ title, slug })
-  //   )
-  //   return { ...posts.data[0].attributes }
-  // }
-
-  // useEffect(() => {
-  //   ;(async () => console.log(await getData()))()
-  // }, [])
+export default function Home() {
   return (
-    <Layout metaTitle="Home" pageType="home">
+    <Layout pageType="home">
       <section id="about-info" className="max-w-screen-lg p-3 mx-auto">
         <h1 className="text-2xl">Test</h1>
 
@@ -28,7 +14,7 @@ export default function Home(/*{ posts }: IPostProps*/) {
           {posts.map(({ slug, title }) => {
             return (
               <li>
-                <Link href={`/posts/${slug}`}>{title}</Link>
+                <Link href={`/posts/${slug}` }>{title}</Link>
               </li>
             )
           })}
@@ -87,16 +73,3 @@ export default function Home(/*{ posts }: IPostProps*/) {
     </Layout>
   )
 }
-
-// // Get slugs for links
-// export async function getStaticProps({ preview = null }) {
-//   const {
-//     data: { posts }
-//   } = useQuery(POST_SLUGS)
-
-//   console.log(posts)
-
-//   return {
-//     props: { posts }
-//   }
-// }
