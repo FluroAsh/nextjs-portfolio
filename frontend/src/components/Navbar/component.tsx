@@ -2,13 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import useScrolling from 'hooks/useScrolling'
 
-export const Navbar = () => {
+const Navbar = () => {
   const [isScrolling] = useScrolling()
 
   const styles = {
     container: isScrolling
-      ? 'dark:bg-slate-500/10 dark:border-transparent bg-orange-200/20 backdrop-blur border-b-slate-200'
-      : 'dark:bg-slate-500/50 bg-orange-100/90'
+      ? 'dark:bg-slate-500/10 bg-orange-300/30 dark:border-transparent backdrop-blur border-b-slate-200'
+      : 'dark:bg-slate-500/50 bg-orange-300/40'
   }
 
   return (
@@ -19,20 +19,20 @@ export const Navbar = () => {
         className="flex justify-between max-w-screen-lg p-3 mx-auto"
         data-testid="navbar"
       >
-        <span className="flex items-center text-2xl font-thin dark:text-sky-500 text-bold">
-          Ashley Thompson
+        <span className="flex items-center text-2xl font-thin text-orange-500 dark:text-sky-500 text-bold">
+          <span className="text-black dark:text-white">a</span>|thompson
         </span>
 
         <div className="flex items-center justify-center gap-5">
           {/* TODO: Map over items to render these links */}
           {/* Title, to, target (eg _blank) */}
-          <Link title="Go to Homepage" href="/" className="text-md">
+          <Link title="Go to Homepage" href="/" className="text-sm">
             Home
           </Link>
-          <Link title="Go to Ash's Blog" href="/blog" className="text-md">
+          <Link title="Go to Ash's Blog" href="/blog" className="text-sm">
             Blog
           </Link>
-          <Link title="Contact Ash" href="/" className="text-md">
+          <Link title="Contact Ash" href="/" className="text-sm">
             Contact
           </Link>
           {/* TODO: Create a dark/light mode toggle */}
