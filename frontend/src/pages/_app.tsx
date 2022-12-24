@@ -6,6 +6,7 @@ import '../../globals.css'
 function BlogApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      {/* TODO: Add an error boundary */}
       <ApolloProvider>
         <Component {...pageProps} />
       </ApolloProvider>
