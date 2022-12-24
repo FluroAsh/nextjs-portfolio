@@ -1,11 +1,18 @@
 import create from 'zustand'
 
-interface BlogState {
+interface State {
   pageTitle: string
-  setPageTitle: (payload: string) => void
+  theme: 'dark' | 'light'
 }
 
-export const useStore = create<BlogState>((set) => ({
-  pageTitle: '',
-  setPageTitle: (payload) => set((state) => ({ pageTitle: payload }))
+interface Action {
+  setPageTitle: (payload: string) => void
+  setTheme: (payload: string) => void
+}
+
+export const useStore = create<State & Action>((set) => ({
+  pageTitle: 'Ashley Thompson',
+  theme: 'dark',
+  setPageTitle: (payload) => set((state) => ({ pageTitle: payload })),
+  setTheme: (payload) => set((state) => (state.theme = payload))
 }))
