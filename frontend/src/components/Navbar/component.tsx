@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
+
 import useScrolling from 'hooks/useScrolling'
+import { HeaderLogo } from 'components/HeaderLogo'
 
 const Navbar = () => {
   const [isScrolling] = useScrolling()
@@ -19,21 +21,19 @@ const Navbar = () => {
         className="flex justify-between max-w-screen-lg p-3 mx-auto"
         data-testid="navbar"
       >
-        <span className="flex items-center text-2xl font-thin text-orange-500 dark:text-sky-500 text-bold">
-          <span className="text-black dark:text-white">a</span>|thompson
-        </span>
+        <HeaderLogo />
 
         <div className="flex items-center justify-center gap-5">
           {/* TODO: Map over items to render these links */}
           {/* Title, to, target (eg _blank) */}
           <Link title="Go to Homepage" href="/" className="text-sm">
-            Home
+            home
           </Link>
           <Link title="Go to Ash's Blog" href="/blog" className="text-sm">
-            Blog
+            blog
           </Link>
           <Link title="Contact Ash" href="/" className="text-sm">
-            Contact
+            contact
           </Link>
           {/* TODO: Create a dark/light mode toggle */}
           <div className="w-[35px] h-[35px] bg-orange-300 rounded"></div>
