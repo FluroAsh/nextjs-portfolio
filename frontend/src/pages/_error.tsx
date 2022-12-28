@@ -1,5 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
+
+import { NextApiResponse } from 'next'
+
 import { Layout } from 'components/layout'
 
 export interface IErrorMap {
@@ -35,8 +38,13 @@ export function Error({ statusCode }: { statusCode: number }) {
   )
 }
 
-// TODO: Add types for res/err
-Error.getInitialProps = ({ res, err }: any) => {
+Error.getInitialProps = ({
+  res,
+  err
+}: {
+  res: NextApiResponse
+  err: NextApiResponse
+}) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
   return { statusCode }
 }
