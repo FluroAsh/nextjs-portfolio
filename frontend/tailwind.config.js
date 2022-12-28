@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors')
 
 module.exports = {
   darkMode: 'class',
@@ -17,11 +16,6 @@ module.exports = {
         desktop: { min: '1280px' }
       },
       colors: {
-        light: {
-          background: {
-            primary: colors.orange
-          }
-        },
         dark: {
           background: {
             primary: '#2d373c'
