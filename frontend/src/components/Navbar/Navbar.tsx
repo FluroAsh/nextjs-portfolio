@@ -18,7 +18,7 @@ const Navbar = () => {
     <div
       className={`sticky top-0 z-99 w-full transition-all border-b dark:border-b-slate-500/50 ${styles.container} dark:drop-shadow-md `}
     >
-      <nav className="flex justify-between max-w-screen-lg p-3 mx-auto">
+      <nav className="flex justify-between max-w-screen-xl p-3 mx-auto">
         <HeaderLogo />
 
         <div className="flex items-center justify-center gap-3">
