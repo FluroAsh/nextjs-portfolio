@@ -1,12 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { ERROR_MAP } from 'constants/errors'
 import { Layout } from 'components/layout'
+import { ERROR_MAP } from 'constants/errors'
 
-import { NextApiResponse } from 'next'
-
-export function Error({ statusCode }: { statusCode: string }) {
+function FourZeroFour() {
   return (
     <Layout pageType="simple">
       <div className="flex items-center justify-center dark:text-white h-[calc(100vh-57px)] ">
@@ -15,7 +13,7 @@ export function Error({ statusCode }: { statusCode: string }) {
           <span className="mb-4 text-5xl">⚠️</span>
           <div className="flex items-center content-center text-lg">
             <span className="flex items-center mr-2 after:border-r-2 after:ml-2 after:border-slate-400 after:h-8 after:inline-block">
-              Error {statusCode} &mdash; {ERROR_MAP[statusCode]}
+              Error 404 &mdash; {ERROR_MAP[400]}
             </span>
             <Link
               className="transition-colors duration-300 dark:text-slate-300 hover:text-sky-500"
@@ -30,15 +28,4 @@ export function Error({ statusCode }: { statusCode: string }) {
   )
 }
 
-Error.getInitialProps = ({
-  res,
-  err
-}: {
-  res: NextApiResponse
-  err: NextApiResponse
-}) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-  return { statusCode }
-}
-
-export default Error
+export default FourZeroFour
