@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { applyThemePreference } from './helpers'
-import { useThemeStore } from 'lib/stores/themeStore'
+import { THEME_DARK, THEME_LIGHT } from 'constants/theme'
+import { useTheme } from 'next-themes'
 
 const ThemeToggle = () => {
-  const toggleTheme = useThemeStore((state) => state.toggleTheme)
-  const theme = useThemeStore((state) => state.theme)
+  const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    applyThemePreference(theme)
-  }, [theme])
+  const handleTheme = () =>
+    setTheme(theme === THEME_DARK ? THEME_LIGHT : THEME_DARK)
 
-  return <button onClick={toggleTheme}>Switch</button>
+  return <button onClick={handleTheme}>Switch</button>
 }
 
 export default ThemeToggle

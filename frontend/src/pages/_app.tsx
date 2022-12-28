@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app'
 
 import ApolloProvider from 'lib/ApolloProvider'
+import { ThemeProvider } from 'next-themes'
+
 import '../../globals.css'
 
 function BlogApp({ Component, pageProps }: AppProps) {
@@ -8,7 +10,9 @@ function BlogApp({ Component, pageProps }: AppProps) {
     <>
       {/* TODO: Add an error boundary */}
       <ApolloProvider>
-        <Component {...pageProps} />
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <Component {...pageProps} />
+        </ThemeProvider>
       </ApolloProvider>
     </>
   )
