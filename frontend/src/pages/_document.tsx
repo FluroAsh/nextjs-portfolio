@@ -4,10 +4,10 @@ export default function Document() {
   return (
     <Html lang="en">
       {/* TODO: Add color below as a custom color to TW CSS config */}
-      <body className="min-h-screen bg-orange-50 dark:bg-dark-background-primary dark:text-white">
-        <Head>
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
-        </Head>
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
+      <body className="min-h-screen text-black transition-all duration-300 bg-orange-50 dark:bg-dark-background-primary dark:text-white">
         <Main />
         <NextScript />
       </body>
