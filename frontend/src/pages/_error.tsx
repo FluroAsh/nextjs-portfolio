@@ -6,7 +6,7 @@ import { Layout } from 'components/layout'
 
 import { NextApiResponse } from 'next'
 
-export function Error({ statusCode }: { statusCode: string }) {
+export function Error({ statusCode }: { statusCode: number }) {
   return (
     <Layout pageType="simple">
       <div className="flex items-center justify-center dark:text-white h-[calc(100vh-57px)] ">
