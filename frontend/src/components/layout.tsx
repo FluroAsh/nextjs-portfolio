@@ -8,10 +8,10 @@ interface ILayout {
   children: ReactNode
 }
 
-type pageTypes = 'simple' | 'blog'
+type pageTypes = 'basic' | 'blog'
 
 export const Layout: React.FC<ILayout> = ({
-  pageType,
+  pageType = 'basic',
   // metaTitle,
   children
 }) => {
@@ -20,7 +20,7 @@ export const Layout: React.FC<ILayout> = ({
       {/* TODO: Update SEO Component */}
       {/* <Seo metaTitle={metaTitle} /> */}
       <Navbar />
-      {pageType === 'simple' ? (
+      {pageType === 'basic' ? (
         <main>{children}</main>
       ) : pageType === 'blog' ? (
         <main className="flex flex-col items-center justify-center">
