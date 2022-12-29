@@ -49,7 +49,7 @@ export const GET_POST_SLUGS = async () => {
   `)
 }
 
-export const GET_POST = async (slug: string, preview?: boolean) => {
+export const GET_POST = async (slug: string) => {
   return await fetchAPI(`
     query getPostsBySlug {
       posts(filters: { slug: { eq: "${slug}" } }) {
