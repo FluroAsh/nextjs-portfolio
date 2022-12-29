@@ -59,6 +59,15 @@ export const GET_POST = async (slug: string) => {
             title
             description
             content
+            cover {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            published
+            isFeatured
           }
         }
       }
