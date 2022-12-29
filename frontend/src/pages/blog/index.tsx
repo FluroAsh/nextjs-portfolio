@@ -5,11 +5,11 @@ import { Layout } from 'components/layout'
 
 const Blog = () => {
   return (
-    <Layout pageType="simple">
+    <Layout pageType="basic">
       <div>Blog</div>
       <Link href="/blog/placeholder-post">Placeholder Post</Link>
     </Layout>
   )
 }
-
+// TODO: Static render slugs
 export default Blog
