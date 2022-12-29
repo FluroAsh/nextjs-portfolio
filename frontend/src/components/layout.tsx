@@ -23,7 +23,9 @@ export const Layout: React.FC<ILayout> = ({
       {pageType === 'simple' ? (
         <main>{children}</main>
       ) : pageType === 'blog' ? (
-        <main>{children}</main>
+        <main className="flex flex-col items-center justify-center">
+          {children}
+        </main>
       ) : null}
       {/* TODO: <Footer/> */}
     </>
