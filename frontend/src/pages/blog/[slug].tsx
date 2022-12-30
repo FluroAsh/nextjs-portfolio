@@ -45,19 +45,21 @@ const Post: React.FC<IPost> = ({
       <header className="w-full mt-5">
         <Link
           href="/blog/"
-          className="no-underline transition duration-150 text-black/60 dark:text-neutral-400 hover:dark:text-white hover:text-black"
+          className="no-underline transition duration-150 text-neutral-500 dark:text-neutral-400 hover:dark:text-white hover:text-black"
         >
           &larr; Back to Blog
         </Link>
-        <h2 className="text-3xl">{title}</h2>
+        <h1 className="text-3xl sm:text-4xl">{title}</h1>
         {/* TODO: Implement X minute read feature using moment-js */}
-        <span className="mt-4">X minute read</span>
+        <div className="py-2 text-neutral-500 dark:text-neutral-400">
+          10 minute read
+        </div>
 
         <BlogImage
           url={process.env.NEXT_PUBLIC_STRAPI_API_URL + imageUrl}
-          alt="placeholder"
+          alt={altText}
           fill
-          className="object-cover object-center rounded-md shadow-md"
+          className="object-cover object-center rounded-md shadow-lg"
         />
       </header>
 
