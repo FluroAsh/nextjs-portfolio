@@ -20,7 +20,7 @@ export const GET_POSTS = async () => {
                   }
                 }
               }
-              published
+              createdAt
               isFeatured
             }
           }
@@ -67,7 +67,7 @@ export const GET_POST = async (slug: string) => {
                 }
               }
             }
-            published
+            createdAt
           }
         }
       }

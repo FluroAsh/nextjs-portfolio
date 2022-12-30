@@ -8,7 +8,7 @@ export interface IPostData {
   description: string
   content: string
   imageUrl: string
-  published: string
+  createdAt: string
   altText: string
 }
 

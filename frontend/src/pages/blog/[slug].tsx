@@ -15,15 +15,15 @@ const Post: React.FC<IPost> = ({
   title,
   content,
   imageUrl,
-  published,
+  createdAt,
   altText
 }) => {
   const router = useRouter()
 
   const styles = {
     article: {
-      a: `prose-a:transition prose-a:duration-150 prose-a:no-underline 
-          dark:prose-a:text-sky-700 dark:hover:prose-a:text-sky-500 hover:prose-a:text-orange-500`
+      a: `prose-a:transition prose-a:duration-150 prose-a:no-underline   
+          dark:prose-a:text-sky-700 dark:hover:prose-a:text-sky-500 prose-a:text-amber-500 hover:prose-a:text-orange-500`
     }
   }
 
@@ -63,7 +63,7 @@ const Post: React.FC<IPost> = ({
         />
       </header>
 
-      {/* TODO: Add time to read & published date */}
+      {/* TODO: Add time to read & createdAt date */}
       <article
         className={`max-w-full mt-5 prose prose-lg md:w-4/5 sm:px-2 dark:prose-invert ${styles.article.a}`}
         dangerouslySetInnerHTML={{ __html: content }}
@@ -89,7 +89,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         attributes: { url: imageUrl, alternativeText: altText }
       }
     },
-    published
+    createdAt
   } = posts.data[0].attributes
   const content = (await markdownToHtml(contentMarkdown)) || ''
 
@@ -98,7 +98,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       title,
       content,
       imageUrl,
-      published,
+      createdAt,
       altText
     }
   }
