@@ -3,11 +3,12 @@ export interface IPost extends IPostData {
 }
 export interface IPostData {
   title: string
-  slug?: string
+  slug: string
   description: string
-  content: string
+  content?: string
   imageUrl: string
   published: string
+  altText: string
 }
 
 export interface IBlogImage {

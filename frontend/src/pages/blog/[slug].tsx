@@ -4,20 +4,26 @@ import Link from 'next/link'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 
-import { Layout } from 'components/layout'
-
 import { IPost } from 'lib/types'
 import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
+
+import { Layout } from 'components/layout'
 import BlogImage from 'components/Blog'
 
-const Post: React.FC<IPost> = ({ title, content, imageUrl, published }) => {
+const Post: React.FC<IPost> = ({
+  title,
+  content,
+  imageUrl,
+  published,
+  altText
+}) => {
   const router = useRouter()
 
   const styles = {
     article: {
       a: `prose-a:transition prose-a:duration-150 prose-a:no-underline 
-          dark:prose-a:text-sky-500 hover:prose-a:text-sky-700 dark:hover:prose-a:text-sky-700`
+          dark:prose-a:text-sky-700 dark:hover:prose-a:text-sky-500 hover:prose-a:text-orange-500`
     }
   }
 
@@ -78,21 +84,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     content: contentMarkdown,
     cover: {
       data: {
-        attributes: { url: imageUrl }
+        attributes: { url: imageUrl, alternativeText: altText }
       }
     },
     published
   } = posts.data[0].attributes
   const content = (await markdownToHtml(contentMarkdown)) || ''
 
-  console.log({ imageUrl, published })
-
   return {
     props: {
       title,
       content,
       imageUrl,
-      published
+      published,
+      altText
     }
   }
 }

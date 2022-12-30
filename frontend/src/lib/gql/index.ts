@@ -1,56 +1,53 @@
-// Used for server-side requests --> (CANNOT use useQuery outside clientside)
-// TODO: Add Schema Link for server-side requests: https://www.apollographql.com/docs/react/api/link/apollo-link/schema
-const fetchAPI = async (query: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      query
-    })
-  })
-
-  const json = await res.json()
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error('Failed to fetch API')
-  }
-  return json.data
-}
+import client from 'lib/apollo-client'
+import { gql } from '@apollo/client'
 
 export const GET_POSTS = async () => {
-  return await fetchAPI(`
-  query getPosts {
-    posts {
-      data {
-        id
-        attributes {
-          title
-          description
-          content
-        }
-      }
-    }
-  `)
-}
-
-export const GET_POST_SLUGS = async () => {
-  return await fetchAPI(`
-    query {
-      posts {
-        data {
-          attributes {
-            slug
+  const { data } = await client.query({
+    query: gql`
+      query getPosts {
+        posts {
+          data {
+            id
+            attributes {
+              slug
+              title
+              description
+              cover {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
           }
         }
       }
-    }
-  `)
+    `
+  })
+  return data
+}
+
+export const GET_POST_SLUGS = async () => {
+  const { data } = await client.query({
+    query: gql`
+      {
+        posts {
+          data {
+            attributes {
+              slug
+            }
+          }
+        }
+      }
+    `
+  })
+  return data
 }
 
 export const GET_POST = async (slug: string) => {
-  return await fetchAPI(`
+  const { data } = await client.query({
+    query: gql`
     query getPostsBySlug {
       posts(filters: { slug: { eq: "${slug}" } }) {
         data {
@@ -63,14 +60,16 @@ export const GET_POST = async (slug: string) => {
               data {
                 attributes {
                   url
+                  alternativeText
                 }
               }
             }
             published
-            isFeatured
           }
         }
       }
     }
-  `)
+  `
+  })
+  return data
 }
