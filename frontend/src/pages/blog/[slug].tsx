@@ -11,8 +11,16 @@ import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
 import BlogImage from 'components/Blog'
 
-const Post: React.FC<IPost> = ({ title, content }) => {
+const Post: React.FC<IPost> = ({ title, content, imageUrl, published }) => {
   const router = useRouter()
+
+  const styles = {
+    article: {
+      a: `prose-a:transition prose-a:duration-150 prose-a:no-underline 
+          dark:prose-a:text-sky-500 hover:prose-a:text-sky-700 dark:hover:prose-a:text-sky-700`
+    }
+  }
+
   if (router.isFallback) {
     return (
       <Layout pageType="basic">
@@ -28,28 +36,28 @@ const Post: React.FC<IPost> = ({ title, content }) => {
         <title>{title}</title>
       </Head>
 
-      <header className="w-full max-w-screen-lg mx-auto mt-5 max-sm:mx-2">
+      <header className="w-full mt-5">
         <Link
           href="/blog/"
-          className="no-underline transition duration-150 dark:text-neutral-500 hover:dark:text-white"
+          className="no-underline transition duration-150 text-black/60 dark:text-neutral-400 hover:dark:text-white hover:text-black"
         >
           &larr; Back to Blog
         </Link>
-        <h2 className="text-xl md:text-3xl">{title}</h2>
+        <h2 className="text-3xl">{title}</h2>
+        {/* TODO: Implement X minute read feature using moment-js */}
+        <span className="mt-4">X minute read</span>
 
-        {/* TODO: Set up in Strapi to dynamically get Cover image */}
-        {/* PLACEHOLDER! */}
         <BlogImage
-          url="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          url={process.env.NEXT_PUBLIC_STRAPI_API_URL + imageUrl}
           alt="placeholder"
           fill
-          className="object-cover bg-center"
+          className="object-cover object-center rounded-md shadow-md"
         />
       </header>
 
       {/* TODO: Add time to read & published date */}
       <article
-        className="max-w-screen-lg px-5 mt-5 prose w-50 dark:prose-invert"
+        className={`max-w-full mt-5 prose prose-lg md:w-4/5 sm:px-2 dark:prose-invert ${styles.article.a}`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>
@@ -70,19 +78,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     content: contentMarkdown,
     cover: {
       data: {
-        attributes: { url }
+        attributes: { url: imageUrl }
       }
     },
     published
   } = posts.data[0].attributes
   const content = (await markdownToHtml(contentMarkdown)) || ''
 
-  console.log({ url, published })
+  console.log({ imageUrl, published })
 
   return {
     props: {
       title,
-      content
+      content,
+      imageUrl,
+      published
     }
   }
 }
