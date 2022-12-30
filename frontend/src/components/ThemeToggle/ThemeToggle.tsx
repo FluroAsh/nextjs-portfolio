@@ -10,11 +10,8 @@ const ThemeToggle = () => {
 
   const isDark = theme === 'dark'
 
-  useEffect(() => {
-    // Needed to prevent the hydration mismatch error
-    // https://www.npmjs.com/package/next-themes?activeTab=readme#avoid-hydration-mismatch
-    setMounted(true)
-  }, [])
+  // After mount we have access to theme
+  useEffect(() => setMounted(true), [])
 
   if (!mounted) {
     return null
