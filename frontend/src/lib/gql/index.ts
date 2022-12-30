@@ -16,9 +16,12 @@ export const GET_POSTS = async () => {
                 data {
                   attributes {
                     url
+                    alternativeText
                   }
                 }
               }
+              published
+              isFeatured
             }
           }
         }
