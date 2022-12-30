@@ -10,8 +10,8 @@ const Navbar = () => {
 
   const styles = {
     container: isScrolling
-      ? 'dark:bg-slate-500/50 bg-orange-300/30 dark:border-transparent backdrop-blur border-b-slate-200'
-      : 'dark:bg-slate-500/50 bg-orange-300/40'
+      ? 'dark:bg-slate-500/50 bg-orange-300/60 dark:border-transparent backdrop-blur border-b-slate-200'
+      : 'dark:bg-slate-500/50 bg-orange-300/70'
   }
 
   return (
