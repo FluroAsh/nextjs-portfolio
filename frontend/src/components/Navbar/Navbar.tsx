@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`sticky z-50 top-0 w-full transition-all border-b dark:border-b-slate-500/50 ${styles.container} drop-shadow-sm`}
+      className={`sticky z-50 top-0 w-full transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50 ${styles.container} drop-shadow-sm`}
     >
       <nav className="flex justify-between max-w-screen-xl p-3 mx-auto">
         <HeaderLogo />

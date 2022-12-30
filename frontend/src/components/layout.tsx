@@ -21,9 +21,9 @@ export const Layout: React.FC<ILayout> = ({
       {/* <Seo metaTitle={metaTitle} /> */}
       <Navbar />
       {pageType === 'basic' ? (
-        <main>{children}</main>
+        <main className="max-w-screen-lg px-5 mx-auto mt-5">{children}</main>
       ) : pageType === 'blog' ? (
-        <main className="flex flex-col items-center justify-center">
+        <main className="flex flex-col items-center justify-center w-full max-w-screen-lg px-5 mx-auto">
           {children}
         </main>
       ) : null}
