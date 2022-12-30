@@ -9,7 +9,7 @@ const BlogImage: React.FC<IBlogImage> = ({
   className = ''
 }) => {
   return (
-    <div className="relative max-w-full mt-5 h-96">
+    <div className="relative max-w-full mt-2 h-60 sm:h-[20rem] md:h-96">
       <Image src={url} fill={fill} alt={alt} className={className} />
     </div>
   )
