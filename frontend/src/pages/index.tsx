@@ -6,7 +6,7 @@ import { Layout } from 'components/layout'
 export default function Home() {
   return (
     <Layout pageType="basic">
-      <section id="about-info" className="max-w-screen-lg p-3 mx-auto">
+      <section id="about-info">
         <h1 className="text-2xl">Test</h1>
 
         {/* TODO: List thumbnails/Basic info of Blog Posts here */}
