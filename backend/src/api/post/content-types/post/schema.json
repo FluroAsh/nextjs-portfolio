@@ -23,6 +23,22 @@
     },
     "description": {
       "type": "text"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "published": {
+      "type": "date"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }
