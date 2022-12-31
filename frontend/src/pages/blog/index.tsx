@@ -10,12 +10,17 @@ import { Layout } from 'components/layout'
 import { BlogFeature } from 'components/Blog'
 
 const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
-  console.log(featuredPost)
+  /** TODO:
+   * 1. Create separate component for 'remaining posts'
+   * 2. Add pagination and limit page to 5 posts per page (1st page is latest)
+   * - When user navigates to next page the title & description should change to 'All Posts'
+   */
   return (
     <Layout pageType="basic">
       <Head>
         <title>Latest Posts</title>
       </Head>
+
       <div>
         <header className="pb-4 border-b dark:border-slate-500 border-orange-300/50">
           <div className="text-4xl">Latest</div>
@@ -34,11 +39,25 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
             <PostPreview key={post.id} attributes={post.attributes} />
           )
         }) */}
-        <Link href="/blog/placeholder-post">
-          <h2 className="text-3xl">Placeholder Post</h2>
-        </Link>
+
         {/* Published 'x days/years/months ago */}
-        {/* Description */}
+
+        {posts.map((post: any) => {
+          return (
+            <div key={post.id}>
+              <Link href={`/blog/${post.attributes.slug}`}>
+                <h2 className="my-2 text-3xl">{post.attributes.title}</h2>
+              </Link>
+
+              <h3>{post.attributes.createdAt}</h3>
+              <p className="mt-2">{post.attributes.description}</p>
+
+              <Link href={`blog/${post.attributes.slug}`}>
+                <p className="mt-2">Read more &rarr;</p>
+              </Link>
+            </div>
+          )
+        })}
       </div>
     </Layout>
   )
@@ -47,8 +66,6 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
 export const getStaticProps: GetStaticProps = async () => {
   // TODO: Add pagination...
   const { posts } = await GET_POSTS()
-
-  console.log({ posts })
 
   const featuredPost: IBlogFeature = posts.data.filter(
     (post: any) => post.attributes.isFeatured === true
@@ -60,7 +77,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      posts: { ...restPosts },
+      posts: restPosts,
       featuredPost: { ...featuredPost }
     }
   }

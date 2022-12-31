@@ -14,9 +14,9 @@ import { BlogImage } from 'components/Blog'
 const BlogPost: React.FC<IPost> = ({
   title,
   content,
-  imageUrl,
+  url,
   createdAt,
-  altText
+  alternativeText
 }) => {
   const router = useRouter()
 
@@ -43,24 +43,28 @@ const BlogPost: React.FC<IPost> = ({
       </Head>
 
       <header className="w-full mt-5">
-        <Link
-          href="/blog/"
-          className="no-underline transition duration-150 text-neutral-500 dark:text-neutral-400 hover:dark:text-white hover:text-black"
-        >
-          &larr; Back to Blog
-        </Link>
-        <h1 className="text-3xl sm:text-4xl">{title}</h1>
-        {/* TODO: Implement X minute read feature using moment-js */}
-        <div className="py-2 text-neutral-500 dark:text-neutral-400">
-          10 minute read
+        <div className="pb-4 border-b border-orange-300 dark:border-slate-500">
+          <Link
+            href="/blog/"
+            className="no-underline transition duration-150 text-neutral-600 dark:text-neutral-300 hover:dark:text-white hover:text-black"
+          >
+            &larr; Back to Blog
+          </Link>
+          <h1 className="text-3xl sm:text-4xl">{title}</h1>
+          {/* TODO: Implement X minute read feature using moment-js */}
+          <div className=" text-neutral-500 dark:text-neutral-300">
+            10 minute read
+          </div>
         </div>
 
-        <BlogImage
-          url={process.env.NEXT_PUBLIC_STRAPI_API_URL + imageUrl}
-          alt={altText}
-          fill
-          className="object-cover object-center rounded-lg shadow-lg dark:border dark:border-slate-500"
-        />
+        <div className="pt-4">
+          <BlogImage
+            url={process.env.NEXT_PUBLIC_STRAPI_API_URL + url}
+            alt={alternativeText}
+            fill
+            className="object-cover object-center rounded-lg shadow-lg dark:border dark:border-slate-500"
+          />
+        </div>
       </header>
 
       {/* TODO: Add time to read & createdAt date */}
@@ -86,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     content: contentMarkdown,
     cover: {
       data: {
-        attributes: { url: imageUrl, alternativeText: altText }
+        attributes: { url, alternativeText }
       }
     },
     createdAt
@@ -97,9 +101,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       title,
       content,
-      imageUrl,
+      url,
       createdAt,
-      altText
+      alternativeText
     }
   }
 }
