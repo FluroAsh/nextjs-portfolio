@@ -20,6 +20,7 @@ const BlogFeature: React.FC<IBlogFeature> = ({
       <Link href={`blog/${slug}`}>
         <h2 className="my-2 text-3xl">{title}</h2>
       </Link>
+      {/* TODO: Add tags */}
       <h3>{createdAt}</h3>
       <p className="mt-2">{description}</p>
 
