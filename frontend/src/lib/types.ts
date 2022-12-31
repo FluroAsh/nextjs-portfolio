@@ -1,42 +1,40 @@
 export interface IBlog {
   posts: IPostsData[]
-  featuredPost: IPostsData
+  featuredPost: IBlogFeature
+}
+export interface IBlogFeature {
+  id?: string
+  attributes: IAttributes
 }
 
-export interface IPost extends IPostData {
-  className: string | undefined
-}
-
-export interface IPostData {
+export interface IPost {
   title: string
   slug: string
   description: string
   content: string
-  imageUrl: string
+  url: string
   createdAt: string
-  altText: string
+  alternativeText: string
 }
 
-export interface IPostsData extends Attributes {
+export interface IPostsData extends IAttributes {
   id: string
 }
 
-interface Attributes {
-  attributes: {
-    slug: string
-    title: string
-    description: string
-    cover: {
-      data: {
-        attributes: {
-          url: string
-          alternativeText: string
-        }
+interface IAttributes {
+  slug: string
+  title: string
+  description: string
+  cover: {
+    data: {
+      attributes: {
+        url: string
+        alternativeText: string
       }
     }
-    createdAt: string
-    isFeatured: boolean
   }
+  createdAt: string
+  isFeatured?: boolean
 }
 
 export interface IBlogImage {
