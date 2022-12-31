@@ -11,7 +11,7 @@ import { markdownToHtml } from 'lib/markdownToHtml'
 import { Layout } from 'components/layout'
 import BlogImage from 'components/Blog'
 
-const Post: React.FC<IPost> = ({
+const BlogPost: React.FC<IPost> = ({
   title,
   content,
   imageUrl,
@@ -116,4 +116,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export default Post
+export default BlogPost
