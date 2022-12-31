@@ -9,7 +9,7 @@ import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
 
 import { Layout } from 'components/layout'
-import BlogImage from 'components/Blog'
+import { BlogImage } from 'components/Blog'
 
 const BlogPost: React.FC<IPost> = ({
   title,
@@ -59,7 +59,7 @@ const BlogPost: React.FC<IPost> = ({
           url={process.env.NEXT_PUBLIC_STRAPI_API_URL + imageUrl}
           alt={altText}
           fill
-          className="object-cover object-center rounded-md shadow-lg"
+          className="object-cover object-center border rounded-md shadow-lg border-slate-500"
         />
       </header>
 

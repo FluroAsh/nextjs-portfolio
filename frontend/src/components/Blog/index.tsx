@@ -1,3 +1,5 @@
 import BlogImage from './BlogImage'
+import BlogFeature from './BlogFeature'
+import BlogPreview from './BlogPreview'
 
-export default BlogImage
+export { BlogImage, BlogFeature, BlogPreview }
