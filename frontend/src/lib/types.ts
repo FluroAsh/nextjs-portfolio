@@ -44,4 +44,5 @@ export interface IBlogImage {
   fill?: boolean
   alt?: string
   className?: string
+  linkTo?: string
 }
