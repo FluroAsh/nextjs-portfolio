@@ -14,6 +14,7 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
    * 1. Create separate component for 'remaining posts'
    * 2. Add pagination and limit page to 5 posts per page (1st page is latest)
    * - When user navigates to next page the title & description should change to 'All Posts'
+   * 3. Update Styles for hover & ring effect etc.
    */
   return (
     <Layout pageType="basic">
@@ -42,7 +43,7 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
 
         {/* Published 'x days/years/months ago */}
 
-        {posts.map((post: any) => {
+        {posts.map((post: IPostsData) => {
           return (
             <div key={post.id}>
               <Link href={`/blog/${post.attributes.slug}`}>
@@ -68,11 +69,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const { posts } = await GET_POSTS()
 
   const featuredPost: IBlogFeature = posts.data.filter(
-    (post: any) => post.attributes.isFeatured === true
+    (post: IBlogFeature) => post.attributes.isFeatured === true
   )[0]
 
   const restPosts: IPostsData[] = posts.data.filter(
-    (post: any) => post.attributes.isFeatured !== true
+    (post: IPostsData) => post.attributes.isFeatured !== true
   )
 
   return {

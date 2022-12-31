@@ -17,8 +17,9 @@ export interface IPost {
   alternativeText: string
 }
 
-export interface IPostsData extends IAttributes {
+export interface IPostsData {
   id: string
+  attributes: IAttributes
 }
 
 interface IAttributes {

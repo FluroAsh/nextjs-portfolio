@@ -62,7 +62,7 @@ const BlogPost: React.FC<IPost> = ({
             url={process.env.NEXT_PUBLIC_STRAPI_API_URL + url}
             alt={alternativeText}
             fill
-            className="object-cover object-center rounded-lg shadow-lg dark:border dark:border-slate-500"
+            className="object-cover object-center bg-center rounded-lg shadow-lg dark:border dark:border-slate-500"
           />
         </div>
       </header>
