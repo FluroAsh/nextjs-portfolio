@@ -31,7 +31,8 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
           </span>
         </header>
 
-        <BlogFeature attributes={featuredPost.attributes} />
+        {/* NOTE: Might not ALWAYS have a featured post... */}
+        {featuredPost && <BlogFeature attributes={featuredPost.attributes} />}
 
         {/* Remaining Posts */}
         {/* TODO: Create separate component */}
@@ -79,7 +80,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: restPosts,
-      featuredPost: { ...featuredPost }
+      featuredPost: featuredPost ? { ...featuredPost } : null
     }
   }
 }
