@@ -50,15 +50,29 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
               key={post.id}
               className="py-4 border-b dark:border-slate-500 border-orange-300/50"
             >
-              <Link href={`/blog/${post.attributes.slug}`}>
-                <h2 className="mb-2 text-3xl">{post.attributes.title}</h2>
+              <Link
+                href={`/blog/${post.attributes.slug}`}
+                className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-300"
+              >
+                <h2 className="text-3xl">{post.attributes.title}</h2>
               </Link>
+              {/* TODO: Add tags */}
+              <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
+                <div>JAVASCRIPT</div>
+                <div>CSS</div>
+                <div>NEXT-JS</div>
+              </div>
 
-              <h3>{post.attributes.createdAt}</h3>
-              <p className="mt-2">{post.attributes.description}</p>
+              <h3 className="dark:text-slate-300 text-neutral-700">
+                {post.attributes.createdAt}
+              </h3>
+              <p className="mt-2 dark:text-neutral-300 text-neutral-600">
+                {post.attributes.description}
+              </p>
 
+              {/* TODO: Turn into a button with an outline by default, then filled when hovered/active */}
               <Link href={`blog/${post.attributes.slug}`}>
-                <p className="mt-2">Read more &rarr;</p>
+                <div className="mt-2">Read more &rarr;</div>
               </Link>
             </div>
           )

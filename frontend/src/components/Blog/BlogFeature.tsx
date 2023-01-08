@@ -17,15 +17,26 @@ const BlogFeature: React.FC<IBlogFeature> = ({
         className="object-cover object-center rounded-lg shadow-lg dark:border dark:border-slate-500"
       />
 
-      <Link href={`blog/${slug}`}>
-        <h2 className="my-2 text-3xl">{title}</h2>
+      <Link
+        href={`blog/${slug}`}
+        className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-300"
+      >
+        <h2 className="mt-2 text-3xl">{title}</h2>
       </Link>
       {/* TODO: Add tags */}
-      <h3>{createdAt}</h3>
-      <p className="mt-2">{description}</p>
+      <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
+        <div>JAVASCRIPT</div>
+        <div>CSS</div>
+        <div>NEXT-JS</div>
+      </div>
+
+      <h3 className="text-neutral-700 dark:text-slate-300">{createdAt}</h3>
+      <p className="mt-2 dark:text-neutral-300 text-neutral-600">
+        {description}
+      </p>
 
       <Link href={`blog/${slug}`}>
-        <p className="mt-2">Read more &rarr;</p>
+        <div className="mt-2">Read more &rarr;</div>
       </Link>
     </div>
   )

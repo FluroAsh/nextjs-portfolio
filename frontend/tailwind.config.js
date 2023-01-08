@@ -21,8 +21,42 @@ module.exports = {
             primary: '#2d373c'
           }
         }
-      }
+      },
+      typography: ({ theme }) => ({
+        // NOTE: Used mainly for the blog/[slug] page
+        DEFAULT: {
+          css: {
+            a: {
+              transition: '150ms',
+              textDecoration: 'none',
+              color: theme('colors.orange.300'),
+              '&:hover': {
+                color: theme('colors.orange.500')
+              }
+            },
+            h1: {
+              marginBottom: theme('spacing.4')
+            },
+            pre: {
+              marginTop: theme('spacing.2')
+            }
+          }
+        },
+        dark: {
+          css: {
+            a: {
+              color: theme('colors.sky.600'),
+              '&:hover': {
+                color: theme('colors.sky.300')
+              }
+            }
+          }
+        }
+      })
     }
+  },
+  variants: {
+    extend: { typography: ['dark'] }
   },
   plugins: [require('@tailwindcss/typography')]
 }

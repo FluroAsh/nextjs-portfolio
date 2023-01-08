@@ -20,13 +20,6 @@ const BlogPost: React.FC<IPost> = ({
 }) => {
   const router = useRouter()
 
-  const styles = {
-    article: {
-      a: `prose-a:transition prose-a:duration-150 prose-a:no-underline   
-          dark:prose-a:text-sky-700 dark:hover:prose-a:text-sky-500 prose-a:text-amber-500 hover:prose-a:text-orange-500`
-    }
-  }
-
   if (router.isFallback) {
     return (
       <Layout pageType="basic">
@@ -44,15 +37,9 @@ const BlogPost: React.FC<IPost> = ({
 
       <header className="w-full mt-5">
         <div className="pb-4 border-b border-orange-300 dark:border-slate-500">
-          <Link
-            href="/blog/"
-            className="no-underline transition duration-150 text-neutral-600 dark:text-neutral-300 hover:dark:text-white hover:text-black"
-          >
-            &larr; Back to Blog
-          </Link>
           <h1 className="text-3xl sm:text-4xl">{title}</h1>
           {/* TODO: Implement X minute read feature using moment-js */}
-          <div className=" text-neutral-500 dark:text-neutral-300">
+          <div className="text-netural-600 dark:text-slate-300">
             10 minute read
           </div>
         </div>
@@ -69,7 +56,7 @@ const BlogPost: React.FC<IPost> = ({
 
       {/* TODO: Add time to read & createdAt date */}
       <article
-        className={`max-w-full w-full mt-5 prose prose-lg md:w-11/12 dark:prose-invert ${styles.article.a}`}
+        className={`max-w-full w-full mt-5 prose md:w-11/12 dark:prose-invert dark:prose-dark`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>
