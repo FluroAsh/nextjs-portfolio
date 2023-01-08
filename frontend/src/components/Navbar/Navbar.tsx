@@ -30,8 +30,8 @@ const Navbar = () => {
             <Link title="Go to Ash's Blog" href="/blog" className="text-sm">
               blog
             </Link>
-            <Link title="Contact Ash" href="/contact" className="text-sm">
-              contact
+            <Link title="About Ash" href="/about" className="text-sm">
+              about
             </Link>
           </div>
 
