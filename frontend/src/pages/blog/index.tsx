@@ -7,7 +7,7 @@ import { GET_POSTS } from 'lib/gql'
 import { IBlog, IBlogFeature, IPostsData } from 'lib/types'
 
 import { Layout } from 'components/layout'
-import { BlogFeature } from 'components/Blog'
+import { BlogFeature, BlogPreview } from 'components/Blog'
 
 const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
   /** TODO:
@@ -31,51 +31,13 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
           </span>
         </header>
 
+        {/* Published 'x days/years/months ago */}
+
         {/* NOTE: Might not ALWAYS have a featured post... */}
         {featuredPost && <BlogFeature attributes={featuredPost.attributes} />}
 
-        {/* Remaining Posts */}
-        {/* TODO: Create separate component */}
-        {/* posts.map((post) => {
-          return (
-            <PostPreview key={post.id} attributes={post.attributes} />
-          )
-        }) */}
-
-        {/* Published 'x days/years/months ago */}
-
         {posts.map((post: IPostsData) => {
-          return (
-            <div
-              key={post.id}
-              className="py-4 border-b dark:border-slate-500 border-orange-300/50"
-            >
-              <Link
-                href={`/blog/${post.attributes.slug}`}
-                className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-300"
-              >
-                <h2 className="text-3xl">{post.attributes.title}</h2>
-              </Link>
-              {/* TODO: Add tags */}
-              <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
-                <div>JAVASCRIPT</div>
-                <div>CSS</div>
-                <div>NEXT-JS</div>
-              </div>
-
-              <h3 className="dark:text-slate-300 text-neutral-700">
-                {post.attributes.createdAt}
-              </h3>
-              <p className="mt-2 dark:text-neutral-300 text-neutral-600">
-                {post.attributes.description}
-              </p>
-
-              {/* TODO: Turn into a button with an outline by default, then filled when hovered/active */}
-              <Link href={`blog/${post.attributes.slug}`}>
-                <div className="mt-2">Read more &rarr;</div>
-              </Link>
-            </div>
-          )
+          return <BlogPreview key={post.id} attributes={post.attributes} />
         })}
       </div>
     </Layout>

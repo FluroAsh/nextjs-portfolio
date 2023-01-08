@@ -22,7 +22,7 @@ export interface IPostsData {
   attributes: IAttributes
 }
 
-interface IAttributes {
+export interface IAttributes {
   slug: string
   title: string
   description: string
