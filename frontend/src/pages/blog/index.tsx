@@ -46,9 +46,12 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
 
         {posts.map((post: IPostsData) => {
           return (
-            <div key={post.id}>
+            <div
+              key={post.id}
+              className="py-4 border-b dark:border-slate-500 border-orange-300/50"
+            >
               <Link href={`/blog/${post.attributes.slug}`}>
-                <h2 className="my-2 text-3xl">{post.attributes.title}</h2>
+                <h2 className="mb-2 text-3xl">{post.attributes.title}</h2>
               </Link>
 
               <h3>{post.attributes.createdAt}</h3>

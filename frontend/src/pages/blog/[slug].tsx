@@ -69,7 +69,7 @@ const BlogPost: React.FC<IPost> = ({
 
       {/* TODO: Add time to read & createdAt date */}
       <article
-        className={`max-w-full mt-5 prose prose-lg md:w-4/5 sm:px-2 dark:prose-invert ${styles.article.a}`}
+        className={`max-w-full w-full mt-5 prose prose-lg md:w-11/12 dark:prose-invert ${styles.article.a}`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>
