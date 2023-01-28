@@ -32,9 +32,6 @@
                 "images"
             ]
         },
-        "published": {
-            "type": "date"
-        },
         "isFeatured": {
             "type": "boolean",
             "default": false,
