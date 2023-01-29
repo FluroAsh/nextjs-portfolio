@@ -31,6 +31,7 @@ export interface IAttributes {
       attributes: {
         url: string
         alternativeText: string
+        formats: Formats
       }
     }
   }
@@ -44,4 +45,28 @@ export interface IBlogImage {
   alt?: string
   className?: string
   linkTo?: string
+}
+
+type ImageExtensions = 'jpg' | 'png' | 'webp' | 'gif' | 'avif'
+type ImageMimes =
+  | 'image/jpeg'
+  | 'image/png'
+  | 'image/webp'
+  | 'image/gif'
+  | 'image/avif'
+
+type formatName = 'thumbnail' | 'small' | 'medium' | 'large'
+
+// Mapped type, as we can't achieve this with an interface
+export type Formats = {
+  [property in formatName]: {
+    name: string
+    hash: string
+    ext: ImageExtensions
+    mime: ImageMimes
+    width: number
+    height: number
+    size: number
+    url: string
+  }
 }
