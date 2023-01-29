@@ -17,6 +17,7 @@ export const GET_POSTS = async () => {
                   attributes {
                     url
                     alternativeText
+                    formats
                   }
                 }
               }
@@ -64,6 +65,7 @@ export const GET_POST = async (slug: string) => {
                 attributes {
                   url
                   alternativeText
+                  formats
                 }
               }
             }

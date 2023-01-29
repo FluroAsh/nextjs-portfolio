@@ -7,22 +7,22 @@ import { IBlogFeature } from 'lib/types'
 const BlogFeature: React.FC<IBlogFeature> = ({
   attributes: { slug, title, description, cover, createdAt }
 }) => {
-  console.log(cover.data.attributes.url)
   return (
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <BlogImage
         url={cover.data.attributes.url}
         alt={cover.data.attributes.alternativeText}
+        // TODO: Remove fill and add responsive image sizes with formats prop
         fill
         linkTo={`blog/${slug}`}
-        className="object-cover object-center rounded-lg shadow-lg dark:border dark:border-slate-500"
+        className="object-cover object-center"
       />
 
       <Link
         href={`blog/${slug}`}
-        className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-300"
+        className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-600"
       >
-        <h2 className="mt-2 text-3xl">{title}</h2>
+        <h2 className="mt-4 text-3xl">{title}</h2>
       </Link>
       {/* TODO: Add tags */}
       <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">

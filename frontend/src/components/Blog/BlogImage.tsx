@@ -13,7 +13,12 @@ const BlogImage: React.FC<IBlogImage> = ({
 }) => {
   const imageComponent = (
     <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96">
-      <Image src={url} fill={fill} alt={alt} className={className} />
+      <Image
+        src={url}
+        fill={fill}
+        alt={alt}
+        className={`${className} rounded-lg shadow-lg`}
+      />
     </div>
   )
 

@@ -19,12 +19,11 @@ const BlogPost: React.FC<IPost> = ({
   alternativeText
 }) => {
   const router = useRouter()
-  console.log('index', url)
 
   if (router.isFallback) {
     return (
       <Layout pageType="basic">
-        {/* TODO: Add a loading spinner/bar */}
+        {/* TODO: Add a loading spinner/bar for SSR */}
         <div>Loading...</div>
       </Layout>
     )
@@ -50,7 +49,7 @@ const BlogPost: React.FC<IPost> = ({
             url={url}
             alt={alternativeText}
             fill
-            className="object-cover object-center bg-center rounded-lg shadow-lg dark:border dark:border-slate-500"
+            className="object-cover object-center"
           />
         </div>
       </header>
