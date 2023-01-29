@@ -7,10 +7,11 @@ import { IBlogFeature } from 'lib/types'
 const BlogFeature: React.FC<IBlogFeature> = ({
   attributes: { slug, title, description, cover, createdAt }
 }) => {
+  console.log(cover.data.attributes.url)
   return (
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <BlogImage
-        url={process.env.NEXT_PUBLIC_STRAPI_API_URL + cover.data.attributes.url}
+        url={cover.data.attributes.url}
         alt={cover.data.attributes.alternativeText}
         fill
         linkTo={`blog/${slug}`}

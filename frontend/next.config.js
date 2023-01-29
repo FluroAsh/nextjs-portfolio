@@ -10,6 +10,10 @@ const nextConfig = {
         hostname: '**.unsplash.com'
       },
       {
+        protocol: 'https',
+        hostname: 'at-strapi-blog.s3.ap-southeast-2.amazonaws.com'
+      },
+      {
         protocol: 'http',
         hostname: 'localhost'
       }

@@ -19,6 +19,7 @@ const BlogPost: React.FC<IPost> = ({
   alternativeText
 }) => {
   const router = useRouter()
+  console.log('index', url)
 
   if (router.isFallback) {
     return (
@@ -46,7 +47,7 @@ const BlogPost: React.FC<IPost> = ({
 
         <div className="pt-4">
           <BlogImage
-            url={process.env.NEXT_PUBLIC_STRAPI_API_URL + url}
+            url={url}
             alt={alternativeText}
             fill
             className="object-cover object-center bg-center rounded-lg shadow-lg dark:border dark:border-slate-500"
