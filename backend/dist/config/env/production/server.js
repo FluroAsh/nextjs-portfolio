@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ({ env }) => ({
-    url: env("HEROKU_URL"),
+    url: env("MY_HEROKU_URL"),
 });
