@@ -1,11 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { IAttributes } from 'lib/types'
+import { IBlogPreview } from 'lib/types'
 
-const BlogPreview: React.FC<Record<'attributes', IAttributes>> = ({
-  attributes: { slug, title, description, createdAt }
-}) => {
+const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
+  const { slug, title, description, createdAt } = attributes
   return (
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <Link

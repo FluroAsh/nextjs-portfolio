@@ -4,9 +4,8 @@ import Link from 'next/link'
 import { BlogImage } from 'components/Blog'
 import { IBlogFeature } from 'lib/types'
 
-const BlogFeature: React.FC<IBlogFeature> = ({
-  attributes: { slug, title, description, cover, createdAt }
-}) => {
+const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
+  const { slug, title, description, cover, createdAt } = attributes
   return (
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <BlogImage

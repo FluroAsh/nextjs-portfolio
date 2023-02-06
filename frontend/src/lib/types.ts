@@ -7,6 +7,10 @@ export interface IBlogFeature {
   attributes: IAttributes
 }
 
+export interface IBlogPreview {
+  attributes: IAttributes
+}
+
 export interface IPost {
   title: string
   slug: string
