@@ -17,7 +17,6 @@
     "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
-      "store/*": ["src/store/*"],
       "hooks/*": ["hooks/*"],
       "layouts/*": ["layouts/*"],
       "lib/*": ["lib/*"]
