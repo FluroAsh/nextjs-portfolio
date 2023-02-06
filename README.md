@@ -12,15 +12,14 @@ Otherwise, you'll need to install this version of Node manualy from the [Node we
 
 Once you're done with that, navigate to Respective Directory (FE/BE) for a detailed overview of setting up your **local dev environment**.
 
-
 ## Tech Stack
 | Technology | Use | Description |
 |----|----|----|
-| [Strapi](https://strapi.io) | Headless CMS | Integrates with **GraphQL** Plugin
+| [Strapi](https://strapi.io) | Headless CMS | Integrates with **GraphQL** & **AWS S3** Plugin
 | [NextJS](https://nextjs.org) | React Framework | A flexible React framework that gives you building blocks to create fast web applications. |
-| [NodeJS](https://nodejs.org/en) | Backend JavaScript Runtime Environment | As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications |
+| [NodeJS](https://nodejs.org/en) | JavaScript Runtime | As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications |
 | [Apollo](https://www.apollographql.com) | Open Source ORM | A comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL |
-| [GraphQL](https://graphql.org) | API Query Language| Utilised to create clean queries from the frontend interface to backend API |
+| [GraphQL](https://graphql.org) | API Query Language | Utilised to create concise queries from the frontend interface to backend API |
 | [TailwindCSS](https://tailwindcss.com) | CSS Utility Framework | A utility-first CSS framework designed to enable users to create applications faster and easier |
 | [TypeScript](https://www.typescriptlang.org) | Superset of JavaScript | Used for type safety and various other in-editor debugging features |
 
