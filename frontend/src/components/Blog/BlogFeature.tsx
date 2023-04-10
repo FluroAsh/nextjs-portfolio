@@ -40,10 +40,6 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
         {description}
       </p>
 
-      {/* <Link href={`blog/${slug}`}>
-        <div className="mt-2">Read more &rarr;</div>
-      </Link> */}
-
       <LinkButton link={`blog/${slug}`} className="mt-4 mb-2">
         Read more &rarr;
       </LinkButton>
