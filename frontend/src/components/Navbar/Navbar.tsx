@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import clsx from 'clsx'
 
 import useScrolling from 'hooks/useScrolling'
 import { HeaderLogo } from 'components/HeaderLogo'
@@ -17,7 +18,10 @@ const Navbar = () => {
   return (
     // Drop Shadows not rendering correctly when not scrolling for some reason...
     <div
-      className={`sticky z-50 top-0 w-full transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50 ${styles.container}`}
+      className={clsx(
+        styles.container,
+        'sticky z-50 top-0 w-full transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50'
+      )}
     >
       <nav className="flex justify-between max-w-screen-xl p-3 mx-auto">
         <HeaderLogo />
