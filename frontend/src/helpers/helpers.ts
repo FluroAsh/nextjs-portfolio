@@ -3,7 +3,7 @@ export function truncateTitle(title: string) {
 }
 
 export const readingMinutes = (minutes: number) => {
-  const roundedMinutes = Math.floor(minutes)
+  const roundedMinutes = Math.round(minutes)
   return minutes > 1
     ? `${roundedMinutes} minutes reading`
     : `${roundedMinutes} minute read`
