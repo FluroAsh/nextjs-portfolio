@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { BlogImage } from 'components/Blog'
 import { IBlogFeature } from 'lib/types'
+import dayjs from 'dayjs'
 
 const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
   const { slug, title, description, cover, createdAt } = attributes
@@ -30,7 +31,9 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
         <div>NEXT-JS</div>
       </div>
 
-      <h3 className="text-neutral-700 dark:text-slate-300">{createdAt}</h3>
+      <h3 className="text-neutral-700 dark:text-slate-300">
+        {dayjs(createdAt).format('MMM, YYYY — dddd [@] h:mm A')}
+      </h3>
       <p className="mt-2 dark:text-neutral-300 text-neutral-600">
         {description}
       </p>

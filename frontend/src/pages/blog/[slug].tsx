@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { IPost } from 'lib/types'
 import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
-import { dateTimeFormat } from 'lib/intl'
+import dayjs from 'dayjs'
 
 import { Layout } from 'components/layout'
 import { BlogImage } from 'components/Blog'
@@ -39,9 +39,8 @@ const BlogPost: React.FC<IPost> = ({
       <header className="w-full mt-5">
         <div className="pb-4 border-b border-orange-300 dark:border-slate-500">
           <h1 className="text-3xl sm:text-4xl">{title}</h1>
-          {/* TODO: Implement X minute read feature using moment-js */}
           <div className="text-netural-600 dark:text-slate-300">
-            {dateTimeFormat.format(new Date(createdAt))} — 10 minute read
+            {dayjs(createdAt).format('dddd @ h:mm A')} — 10 minute read
           </div>
         </div>
 

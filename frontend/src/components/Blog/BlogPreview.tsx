@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import { IBlogPreview } from 'lib/types'
+import dayjs from 'dayjs'
 
 const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
   const { slug, title, description, createdAt } = attributes
@@ -20,7 +21,9 @@ const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
         <div>NEXT-JS</div>
       </div>
 
-      <h3 className="dark:text-slate-300 text-neutral-700">{createdAt}</h3>
+      <h3 className="dark:text-slate-300 text-neutral-700">
+        {dayjs(createdAt).format('MMM, YYYY — dddd [@] h:mm A')}
+      </h3>
       <p className="mt-2 dark:text-neutral-300 text-neutral-600">
         {description}
       </p>
