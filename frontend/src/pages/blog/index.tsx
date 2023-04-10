@@ -31,8 +31,6 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
           </span>
         </header>
 
-        {/* Published 'x days/years/months ago */}
-
         {/* NOTE: Might not ALWAYS have a featured post... */}
         {featuredPost && <BlogFeature attributes={featuredPost.attributes} />}
 
