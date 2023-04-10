@@ -1,16 +1,18 @@
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import dayjs from 'dayjs'
+import readingTime from 'reading-time'
+
+import type { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 
-import { IPost } from 'lib/types'
+import type { IPost } from 'lib/types'
 import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
-import dayjs from 'dayjs'
 
 import { Layout } from 'components/layout'
 import { BlogImage } from 'components/Blog'
+import { readingMinutes } from 'helpers/helpers'
 
 const BlogPost: React.FC<IPost> = ({
   title,
@@ -30,6 +32,8 @@ const BlogPost: React.FC<IPost> = ({
     )
   }
 
+  const stats = readingTime(content)
+
   return (
     <Layout pageType="blog">
       <Head>
@@ -40,7 +44,8 @@ const BlogPost: React.FC<IPost> = ({
         <div className="pb-4 border-b border-orange-300 dark:border-slate-500">
           <h1 className="text-3xl sm:text-4xl">{title}</h1>
           <div className="text-netural-600 dark:text-slate-300">
-            {dayjs(createdAt).format('dddd @ h:mm A')} — 10 minute read
+            {dayjs(createdAt).format('dddd @ h:mm A')} —{' '}
+            {readingMinutes(stats.minutes)}
           </div>
         </div>
 
