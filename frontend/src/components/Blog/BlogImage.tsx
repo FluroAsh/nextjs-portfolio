@@ -22,15 +22,7 @@ const BlogImage: React.FC<IBlogImage> = ({
     </div>
   )
 
-  return (
-    <>
-      {linkTo ? (
-        <Link href={linkTo}>{imageComponent}</Link>
-      ) : (
-        <>{imageComponent}</>
-      )}
-    </>
-  )
+  return linkTo ? <Link href={linkTo}>{imageComponent}</Link> : imageComponent
 }
 
 export default BlogImage
