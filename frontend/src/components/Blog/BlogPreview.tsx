@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
+import { LinkButton } from 'components/Buttons'
 import { IBlogPreview } from 'lib/types'
 import dayjs from 'dayjs'
 
@@ -28,10 +29,9 @@ const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
         {description}
       </p>
 
-      {/* TODO: Turn into a button with an outline by default, then filled when hovered/active */}
-      <Link href={`blog/${slug}`}>
-        <div className="mt-2">Read more &rarr;</div>
-      </Link>
+      <LinkButton link={`blog/${slug}`} className="mt-4 mb-2">
+        Read more &rarr;
+      </LinkButton>
     </div>
   )
 }

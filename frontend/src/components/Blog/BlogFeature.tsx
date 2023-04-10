@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import { BlogImage } from 'components/Blog'
+import { LinkButton } from 'components/Buttons'
 import { IBlogFeature } from 'lib/types'
 import dayjs from 'dayjs'
 
@@ -24,6 +25,7 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
       >
         <h2 className="mt-4 text-3xl">{title}</h2>
       </Link>
+
       {/* TODO: Add tags */}
       <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
         <div>JAVASCRIPT</div>
@@ -38,9 +40,13 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
         {description}
       </p>
 
-      <Link href={`blog/${slug}`}>
+      {/* <Link href={`blog/${slug}`}>
         <div className="mt-2">Read more &rarr;</div>
-      </Link>
+      </Link> */}
+
+      <LinkButton link={`blog/${slug}`} className="mt-4 mb-2">
+        Read more &rarr;
+      </LinkButton>
     </div>
   )
 }
