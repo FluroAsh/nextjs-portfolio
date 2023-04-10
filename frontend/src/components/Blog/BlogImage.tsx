@@ -3,6 +3,7 @@ import React from 'react'
 
 import { IBlogImage } from 'lib/types'
 import Link from 'next/link'
+import clsx from 'clsx'
 
 const BlogImage: React.FC<IBlogImage> = ({
   url,
@@ -17,7 +18,7 @@ const BlogImage: React.FC<IBlogImage> = ({
         src={url}
         fill={fill}
         alt={alt}
-        className={`${className} rounded-lg shadow-lg`}
+        className={clsx(className, 'rounded-lg shadow-lg')}
       />
     </div>
   )
