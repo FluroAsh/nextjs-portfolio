@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react'
 
-export default function useScrolling() {
+export default function useScrolling(minScrollHeight: number = 20) {
   const [isScrolling, setScrolling] = useState<boolean>(false)
-  const MIN_SCROLL_HEIGHT = 20
-
-  const checkScrolling = () => setScrolling(window.scrollY > MIN_SCROLL_HEIGHT)
 
   useEffect(() => {
+    const checkScrolling = () => setScrolling(window.scrollY > minScrollHeight)
     window.addEventListener('scroll', checkScrolling)
     return () => {
       window.removeEventListener('scroll', checkScrolling)
     }
-  }, [])
+  }, [minScrollHeight])
 
   return [isScrolling]
 }
