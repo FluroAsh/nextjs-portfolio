@@ -6,19 +6,19 @@ import { Layout } from 'components/layout'
 export default function Home() {
   return (
     <Layout pageType="basic">
-      <section id="about-info">
-        <h1 className="text-2xl">Test</h1>
+      <section className="pt-4" id="about-info">
+        <h1 className="text-2xl ">Test</h1>
 
         {/* TODO: List thumbnails/Basic info of Blog Posts here */}
         {/* <ul>
           {posts.map(({ slug, title }) => {
             return (
               <li>
-                <Link href={`/posts/${slug}` }>{title}</Link>
+              <Link href={`/posts/${slug}` }>{title}</Link>
               </li>
-            )
-          })}
-        </ul> */}
+              )
+            })}
+          </ul> */}
 
         <div className="mt-3">
           <p>
@@ -70,6 +70,20 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <div className="mt-3 text-white h-28 bg-slate-500 w-100">
+        Want to learn something new about the latest tech? Check out my blog!
+      </div>
+
+      <div className="mt-3 text-white h-28 bg-slate-500 w-100">
+        Skills Section
+      </div>
+
+      <div className="mt-3 text-white h-28 bg-slate-500 w-100">
+        Past Projects
+      </div>
+
+      <div className="mt-3 text-white h-28 bg-slate-500 w-100">Contact Me</div>
     </Layout>
   )
 }
