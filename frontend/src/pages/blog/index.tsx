@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
@@ -16,6 +16,11 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
    * - When user navigates to next page the title & description should change to 'All Posts'
    * 3. Update Styles for hover & ring effect etc.
    */
+
+  // TODO: Finish pagination implementation
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const PAGE_SIZE = 5
+
   return (
     <Layout pageType="basic">
       <Head>

@@ -48,7 +48,7 @@ export const Layout: React.FC<ILayout> = ({
       ) : null}
       {/* TODO: Move to custom component */}
       <div className="h-20" />
-      <footer className="flex justify-center bg-cyan-700">
+      <footer className="flex justify-center border-t-2 border-orange-300 bg-orange-300/50 dark:bg-sky-700 dark:border-sky-900">
         <div className="w-full max-w-screen-xl p-3 text-center ">
           Footer Placeholder &gt; Lorem ipsum dolor sit amet, consectetur
           adipisicing elit. Quas quae eaque laboriosam quam veritatis similique
