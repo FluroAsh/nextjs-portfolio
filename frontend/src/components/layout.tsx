@@ -40,15 +40,16 @@ export const Layout: React.FC<ILayout> = ({
         </main>
       ) : pageType === 'blog' ? (
         <main
-          className="flex flex-col items-center justify-center w-full max-w-screen-lg px-5 mx-auto"
+          className="flex flex-col items-center justify-center w-full max-w-screen-lg px-5 py-3 mx-auto"
           style={{ minHeight: contentMinHeight }}
         >
           {children}
         </main>
       ) : null}
       {/* TODO: Move to custom component */}
-      <footer className="pt-5">
-        <div className="p-3 text-center bg-cyan-700">
+      <div className="h-20" />
+      <footer className="flex justify-center bg-cyan-700">
+        <div className="w-full max-w-screen-xl p-3 text-center ">
           Footer Placeholder &gt; Lorem ipsum dolor sit amet, consectetur
           adipisicing elit. Quas quae eaque laboriosam quam veritatis similique
           optio? Magnam omnis asperiores, velit excepturi incidunt cum fugiat

@@ -16,7 +16,7 @@ const LinkButton: React.FC<ILinkButton> = ({ link, children, className }) => {
           className={clsx(
             className,
             `p-2 px-4 border border-black hover:text-white rounded-md hover:border-orange-300 bg-gradient-to-r hover:to-orange-500 hover:from-orange-600 
-            dark:border-white dark:hover:to-sky-600 dark:hover:from-sky-700  dark:hover:border-sky-300`
+            dark:border-white dark:hover:to-sky-600 dark:hover:from-sky-700  dark:hover:border-sky-300 hover:shadow-lg`
           )}
         >
           {children}
