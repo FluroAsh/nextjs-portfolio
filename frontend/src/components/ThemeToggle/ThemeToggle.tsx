@@ -22,18 +22,26 @@ const ThemeToggle = () => {
     setTheme(theme === THEME_DARK ? THEME_LIGHT : THEME_DARK)
 
   return (
-    <div
-      className={`transition-colors duration-300 flex justify-center w-[32px] h-[32px] rounded-full 
-      bg-orange-100 dark:bg-dark-background-primary border dark:border-slate-300 border-neutral-600`}
-    >
-      <button onClick={handleTheme}>
+    <button className="relative" onClick={handleTheme}>
+      <div
+        className={`transition-colors duration-300 flex justify-center w-[32px] h-[32px] rounded-full 
+      bg-orange-100 dark:bg-dark-background-primary border dark:border-slate-300 border-neutral-600 `}
+      >
         {isDark ? (
-          <FontAwesomeIcon icon={faSun} color="hsl(40, 100%, 50%)" />
+          <FontAwesomeIcon
+            icon={faSun}
+            className="absolute top-[7.5px]"
+            color="hsl(40, 100%, 50%)"
+          />
         ) : (
-          <FontAwesomeIcon icon={faMoon} color="hsl(0, 0%, 40%)" />
+          <FontAwesomeIcon
+            icon={faMoon}
+            className="absolute top-[7.5px]"
+            color="hsl(0, 0%, 40%)"
+          />
         )}
-      </button>
-    </div>
+      </div>
+    </button>
   )
 }
 
