@@ -9,7 +9,7 @@ const BlogImage: React.FC<IBlogImage> = ({
   url,
   fill = true,
   alt = 'placeholder',
-  className = '',
+  className: extraStyles,
   linkTo
 }) => {
   const imageComponent = (
@@ -18,7 +18,7 @@ const BlogImage: React.FC<IBlogImage> = ({
         src={url}
         fill={fill}
         alt={alt}
-        className={clsx(className, 'rounded-lg shadow-lg')}
+        className={clsx(extraStyles, 'rounded-lg shadow-lg')}
       />
     </div>
   )

@@ -4,7 +4,7 @@ import {
   ApolloProvider as Apollo
 } from '@apollo/client'
 
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 function ApolloProvider({ children }: { children: ReactNode }) {
   const client = new ApolloClient({

@@ -11,5 +11,5 @@ export default function useScrolling(minScrollHeight: number = 20) {
     }
   }, [minScrollHeight])
 
-  return [isScrolling]
+  return isScrolling
 }
