@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect } from 'react'
-import Navbar from 'components/Navbar'
+import { Navbar } from 'components/Navbar'
 
 import { Seo } from './seo'
 
@@ -19,6 +19,7 @@ export const Layout: React.FC<ILayout> = ({
   const [footerHeight, setFooterHeight] = React.useState<number>(0)
 
   useEffect(() => {
+    // needed to get reponsive min content height
     const footerHeight = document.querySelector('footer')?.clientHeight ?? 0
     setFooterHeight(footerHeight)
   }, [])
@@ -26,7 +27,7 @@ export const Layout: React.FC<ILayout> = ({
   const contentMinHeight = `calc(100vh - ${56 + footerHeight}px`
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       {/* TODO: Update SEO Component */}
       {/* <Seo metaTitle={metaTitle} /> */}
       <Navbar />
@@ -56,6 +57,6 @@ export const Layout: React.FC<ILayout> = ({
           adipisci nam recusandae ea accusamus corrupti!
         </div>
       </footer>
-    </>
+    </div>
   )
 }

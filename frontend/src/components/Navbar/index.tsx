@@ -1,3 +1,4 @@
 import Navbar from './Navbar'
+import HamburgerMenu from './HamburgerMenu'
 
-export default Navbar
+export { Navbar, HamburgerMenu }
