@@ -19,12 +19,12 @@ export const Layout: React.FC<ILayout> = ({
   const [footerHeight, setFooterHeight] = React.useState<number>(0)
 
   useEffect(() => {
-    // needed to get reponsive min content height
     const footerHeight = document.querySelector('footer')?.clientHeight ?? 0
     setFooterHeight(footerHeight)
   }, [])
 
-  const contentMinHeight = `calc(100vh - ${56 + footerHeight}px`
+  // navbar + divider + footer
+  const contentMinHeight = `calc(100vh - ${56 + 80 + footerHeight}px`
 
   return (
     <div className="overflow-x-hidden">
@@ -47,8 +47,8 @@ export const Layout: React.FC<ILayout> = ({
           {children}
         </main>
       ) : null}
-      {/* TODO: Move to custom component */}
       <div className="h-20" />
+      {/* TODO: Move to custom component */}
       <footer className="flex justify-center border-t border-orange-300 bg-orange-300/50 dark:bg-sky-700 dark:border-sky-900">
         <div className="w-full max-w-screen-xl p-3 text-center ">
           Footer Placeholder &gt; Lorem ipsum dolor sit amet, consectetur
