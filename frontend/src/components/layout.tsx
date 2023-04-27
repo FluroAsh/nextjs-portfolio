@@ -41,7 +41,7 @@ export const Layout: React.FC<ILayout> = ({
         </main>
       ) : pageType === 'blog' ? (
         <main
-          className="flex flex-col items-center justify-center w-full max-w-screen-lg px-5 py-3 mx-auto"
+          className="flex flex-col items-center w-full max-w-screen-lg px-5 py-3 mx-auto"
           style={{ minHeight: contentMinHeight }}
         >
           {children}
