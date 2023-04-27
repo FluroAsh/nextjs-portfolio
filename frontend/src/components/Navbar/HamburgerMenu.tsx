@@ -19,6 +19,9 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
 }) => {
   const [open, setOpen] = useState<boolean>(false)
 
+  // TODO: 1. Add functionality when clicking outside drawer to setOpen to false
+  // TODO: 2. Add framer for animation or figure out how to do it with JS & React...
+
   const handleClick = () => {
     setOpen(!open)
     // disable scrolling
@@ -91,7 +94,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
       <div
         id="drawer-bg"
         className={clsx(
-          open ? 'opacity-100' : 'opacity-0 ',
+          open ? 'block' : 'hidden',
           'xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-57px)] dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30'
         )}
       ></div>
