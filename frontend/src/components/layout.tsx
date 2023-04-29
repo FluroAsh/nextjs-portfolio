@@ -11,6 +11,9 @@ interface ILayout {
 
 type pageTypes = 'basic' | 'blog'
 
+export const NAVBAR_HEIGHT = 57
+export const DIVIDER_HEIGHT = 80
+
 export const Layout: React.FC<ILayout> = ({
   pageType = 'basic',
   // metaTitle,
@@ -23,8 +26,9 @@ export const Layout: React.FC<ILayout> = ({
     setFooterHeight(footerHeight)
   }, [])
 
-  // navbar + divider + footer
-  const contentMinHeight = `calc(100vh - ${56 + 80 + footerHeight}px`
+  const contentMinHeight = `calc(100vh - ${
+    NAVBAR_HEIGHT + DIVIDER_HEIGHT + footerHeight
+  }px`
 
   return (
     <div className="overflow-x-hidden">
