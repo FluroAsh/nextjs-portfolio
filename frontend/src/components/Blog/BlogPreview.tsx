@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { LinkButton } from 'components/Buttons'
+import Button from 'components/Button'
 import { IBlogPreview } from 'lib/types'
 import dayjs from 'dayjs'
 
@@ -29,9 +29,9 @@ const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
         {description}
       </p>
 
-      <LinkButton href={`blog/${slug}`} className="mt-4 mb-2">
+      <Button href={`blog/${slug}`} className="mt-4 mb-2" type="link">
         Read more &rarr;
-      </LinkButton>
+      </Button>
     </div>
   )
 }
