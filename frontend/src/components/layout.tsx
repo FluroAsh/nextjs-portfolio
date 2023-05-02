@@ -11,7 +11,7 @@ interface ILayout {
 
 type pageTypes = 'basic' | 'blog'
 
-export const NAVBAR_HEIGHT = 57
+export const NAVBAR_HEIGHT = 56
 export const DIVIDER_HEIGHT = 80
 
 export const Layout: React.FC<ILayout> = ({
