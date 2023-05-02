@@ -20,7 +20,7 @@ const Navbar = () => {
     <div
       className={clsx(
         styles.container,
-        'fixed z-50 top-0 w-full transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50'
+        'fixed z-50 top-0 w-screen transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50'
       )}
     >
       <nav className="z-50 flex justify-between max-w-screen-xl p-3 mx-auto">
