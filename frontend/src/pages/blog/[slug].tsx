@@ -12,6 +12,7 @@ import { markdownToHtml } from 'lib/markdownToHtml'
 
 import { Layout } from 'components/layout'
 import { BlogImage } from 'components/Blog'
+import { LinkButton } from 'components/Buttons'
 import { readingMinutes } from 'helpers/helpers'
 
 const BlogPost: React.FC<IPost> = ({
@@ -40,8 +41,8 @@ const BlogPost: React.FC<IPost> = ({
         <title>{title}</title>
       </Head>
 
-      <header className="w-full mt-5">
-        <div className="pb-4 border-b border-orange-300 dark:border-slate-500">
+      <header className="w-full">
+        <div className="py-5 border-b border-orange-300 dark:border-slate-500">
           <h1 className="text-3xl sm:text-4xl">{title}</h1>
           <div className="text-netural-600 dark:text-slate-300">
             {dayjs(createdAt).format('dddd @ h:mm A')} —{' '}

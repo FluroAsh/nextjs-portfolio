@@ -29,7 +29,7 @@ const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
         {description}
       </p>
 
-      <LinkButton link={`blog/${slug}`} className="mt-4 mb-2">
+      <LinkButton href={`blog/${slug}`} className="mt-4 mb-2">
         Read more &rarr;
       </LinkButton>
     </div>

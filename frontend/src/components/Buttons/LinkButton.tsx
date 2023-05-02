@@ -3,15 +3,15 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 interface ILinkButton {
-  link: string
+  href: string
   children: JSX.Element | string
   className?: string
 }
 
-const LinkButton: React.FC<ILinkButton> = ({ link, children, className }) => {
+const LinkButton: React.FC<ILinkButton> = ({ href, children, className }) => {
   return (
     <button type="button">
-      <Link href={link}>
+      <Link href={href}>
         <div
           className={clsx(
             className,

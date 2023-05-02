@@ -9,14 +9,14 @@ import dayjs from 'dayjs'
 const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
   const { slug, title, description, cover, createdAt } = attributes
   return (
-    <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
+    <div className="relative py-4 border-b dark:border-slate-500 border-orange-300/50">
       <BlogImage
         url={cover.data.attributes.url}
         alt={cover.data.attributes.alternativeText}
         // TODO: Remove fill and add responsive image sizes with formats prop
         fill
         linkTo={`blog/${slug}`}
-        className="object-cover object-center"
+        className="object-cover"
       />
 
       <Link
@@ -40,7 +40,7 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
         {description}
       </p>
 
-      <LinkButton link={`blog/${slug}`} className="mt-4 mb-2">
+      <LinkButton href={`blog/${slug}`} className="mt-4 mb-2">
         Read more &rarr;
       </LinkButton>
     </div>
