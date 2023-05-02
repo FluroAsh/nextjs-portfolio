@@ -19,12 +19,13 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
         className="object-cover"
       />
 
-      <Link
+      <Button
         href={`blog/${slug}`}
         className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-600"
+        type="link"
       >
         <h2 className="mt-4 text-3xl">{title}</h2>
-      </Link>
+      </Button>
 
       {/* TODO: Add tags */}
       <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
