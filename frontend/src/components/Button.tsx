@@ -6,7 +6,7 @@ interface IButton {
   href: string
   children: JSX.Element | string
   className?: string
-  type?: 'link' | 'back'
+  type?: 'link' | 'back' | 'text'
 }
 
 const Button: React.FC<IButton> = ({
@@ -22,6 +22,10 @@ const Button: React.FC<IButton> = ({
     }
 
     if (type === 'back') {
+      return ``
+    }
+
+    if (type === 'text') {
       return ``
     }
   }
