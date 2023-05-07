@@ -31,7 +31,7 @@ const Navbar = () => {
 
         <div className="flex items-center justify-center gap-2">
           {/* Desktop Navigation */}
-          <div className="hidden gap-3 sm:flex">
+          <div className="hidden sm:flex gap-3 mr-2">
             {NAV_LINKS.map((link, idx) => (
               <Link
                 key={`${link.title}-${idx}`}
