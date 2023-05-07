@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 interface IButton {
   href: string
-  children: JSX.Element | string
+  children: JSX.Element[] | JSX.Element | string
   className?: string
   type?: 'link' | 'back' | 'text'
 }
@@ -21,6 +21,7 @@ const Button: React.FC<IButton> = ({
       dark:border-white dark:hover:to-sky-600 dark:hover:from-sky-700  dark:hover:border-sky-300 hover:shadow-lg`
     }
 
+    // TODO: Add more button types/styles
     if (type === 'back') {
       return ``
     }
@@ -32,8 +33,11 @@ const Button: React.FC<IButton> = ({
 
   return (
     <button type="button">
-      <Link href={href}>
-        <div className={clsx(buttonStyles(type), className)}>{children}</div>
+      <Link
+        href={href}
+        className={clsx('block', buttonStyles(type), className)}
+      >
+        {children}
       </Link>
     </button>
   )

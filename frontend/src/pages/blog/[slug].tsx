@@ -1,19 +1,21 @@
 import React from 'react'
 import Head from 'next/head'
-import dayjs from 'dayjs'
-import readingTime from 'reading-time'
-
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
+import dayjs from 'dayjs'
+import readingTime from 'reading-time'
 
 import type { IPost } from 'lib/types'
 import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
+import { readingMinutes } from 'helpers/helpers'
 
 import { Layout } from 'components/layout'
 import { BlogImage } from 'components/Blog'
 import Button from 'components/Button'
-import { readingMinutes } from 'helpers/helpers'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeftLong } from '@fortawesome/pro-solid-svg-icons'
 
 const BlogPost: React.FC<IPost> = ({
   title,
@@ -43,8 +45,13 @@ const BlogPost: React.FC<IPost> = ({
 
       <header className="w-full">
         <div className="py-5 border-b border-orange-300 dark:border-slate-500">
-          <Button href="/blog" type="back">
-            Back
+          <Button
+            href="/blog"
+            type="back"
+            className="text-slate-400 hover:text-white transition-colors duration-150"
+          >
+            <FontAwesomeIcon icon={faArrowLeftLong} size="sm" />
+            <span className="ml-2">Blog</span>
           </Button>
           <h1 className="text-3xl sm:text-4xl">{title}</h1>
           <div className="text-netural-600 dark:text-slate-300">
@@ -63,6 +70,7 @@ const BlogPost: React.FC<IPost> = ({
         </div>
       </header>
 
+      {/* TODO: Refactor to use MDX over dangerouslySetInnerHTML */}
       <article
         className={`max-w-full w-full mt-5 prose md:w-11/12 dark:prose-invert dark:prose-dark`}
         dangerouslySetInnerHTML={{ __html: content }}

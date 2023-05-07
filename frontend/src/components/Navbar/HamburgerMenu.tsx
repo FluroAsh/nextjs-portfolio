@@ -79,7 +79,8 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
               title={link.title}
               href={link.href}
               onClick={handleClick} // close drawer when navigating
-              className="my-2 bg-orange-600/50 dark:bg-slate-500/50 p-5 rounded hover:bg-amber-300/50 dark:hover:bg-slate-300/50 dark:hover:shadow-lg shadow-sm transition-colors duration-150"
+              className={`my-2 bg-orange-600/50 dark:bg-slate-500/50 p-5 rounded hover:bg-amber-300/50 dark:hover:bg-slate-300/50 
+              dark:hover:shadow-lg shadow-sm transition-colors duration-150`}
             >
               {link.text}
             </Link>
@@ -91,7 +92,8 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="drawer-bg"
         className={clsx(
           open ? 'block' : 'hidden',
-          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30`
+          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 
+          transition-opacity duration-300 ease-in-out z-30`
         )}
       ></div>
     </div>
