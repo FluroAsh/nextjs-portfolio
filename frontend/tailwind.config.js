@@ -49,7 +49,16 @@ module.exports = {
             }
           }
         }
-      })
+      }),
+      keyframes: {
+        'back-and-forth': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-8px)' }
+        }
+      },
+      animation: {
+        'back-and-forth': 'back-and-forth 1s ease-in-out infinite alternate'
+      }
     }
   },
   variants: {

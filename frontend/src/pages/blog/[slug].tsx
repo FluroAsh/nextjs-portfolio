@@ -48,9 +48,13 @@ const BlogPost: React.FC<IPost> = ({
           <Button
             href="/blog"
             type="back"
-            className="text-slate-400 hover:text-white transition-colors duration-150"
+            className="group text-slate-500 hover:text-white transition-colors duration-150"
           >
-            <FontAwesomeIcon icon={faArrowLeftLong} size="sm" />
+            <FontAwesomeIcon
+              icon={faArrowLeftLong}
+              size="sm"
+              className="hover:animate-back-and-forth group-hover:animate-back-and-forth"
+            />
             <span className="ml-2">Blog</span>
           </Button>
           <h1 className="text-3xl sm:text-4xl">{title}</h1>
