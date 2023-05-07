@@ -28,7 +28,7 @@ module.exports = {
               textDecoration: 'none',
               color: theme('colors.orange.300'),
               '&:hover': {
-                color: theme('colors.orange.500')
+                color: theme('colors.amber.500')
               }
             },
             h1: {
