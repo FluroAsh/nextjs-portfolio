@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { RefObject, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -7,6 +7,7 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps
 } from '@fortawesome/react-fontawesome'
+import { NAV_LINKS, NAVBAR_HEIGHT } from 'lib/constants'
 
 interface IHamburgerMenu {
   className?: string
@@ -18,17 +19,31 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
   iconSize
 }) => {
   const [open, setOpen] = useState<boolean>(false)
+  const drawerRef = useRef<HTMLDivElement>(null)
 
-  // TODO: 1. Add functionality when clicking outside drawer to setOpen to false
-  // TODO: 2. Add framer for animation or figure out how to do it with JS & React...
-
-  const handleClick = (isIcon: boolean = false) => {
+  const handleClick = (
+    event: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    isIcon: boolean = false
+  ) => {
+    event?.stopPropagation() // prevent propagation to the document (firing handleOutsideClick callback)
     isIcon ? setOpen(!open) : setOpen(false)
 
     // disable scrolling
     const body = document.querySelector('body')
     body && body.classList.toggle('overflow-hidden')
   }
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      const clickedOutside =
+        drawerRef.current && !drawerRef.current.contains(event.target as Node)
+      clickedOutside && setOpen(false)
+    }
+
+    document.addEventListener('click', handleOutsideClick)
+
+    return () => document.removeEventListener('click', handleOutsideClick)
+  }, [drawerRef])
 
   return (
     <div className={clsx(extraStyles, 'min-w-[24px]')}>
@@ -37,14 +52,14 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
           icon={faClose}
           size={iconSize}
           className="cursor-pointer"
-          onClick={() => handleClick(true)}
+          onClick={(event) => handleClick(event, true)}
         />
       ) : (
         <FontAwesomeIcon
           icon={faBars}
           size={iconSize}
           className="cursor-pointer"
-          onClick={() => handleClick(true)}
+          onClick={(event) => handleClick(event, true)}
         />
       )}
 
@@ -55,33 +70,19 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
           `absolute w-80 xs:w-screen p-5 dark:bg-slate-700 bg-orange-400 top-[57px] xs:-right-full -right-80 h-[calc(100vh-57px)] transition-transform duration-300 
           z-40 shadow-lg`
         )}
+        ref={drawerRef}
       >
         <div className="flex flex-col items-end w-full h-full">
-          {/* TODO: Map these Link components? w/ Titles + Hrefs */}
-          <Link
-            title="Go to Homepage"
-            href="/"
-            className="text-lg"
-            onClick={handleClick}
-          >
-            home
-          </Link>
-          <Link
-            title="Go to Ash's Blog"
-            href="/blog"
-            className="text-lg"
-            onClick={handleClick}
-          >
-            blog
-          </Link>
-          <Link
-            title="About Ash"
-            href="/about"
-            className="text-lg"
-            onClick={handleClick}
-          >
-            about
-          </Link>
+          {NAV_LINKS.map((link, idx) => (
+            <Link
+              key={`${link.title}-${idx}`}
+              title={link.title}
+              href={link.href}
+              onClick={handleClick}
+            >
+              {link.text}
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -89,7 +90,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="drawer-bg"
         className={clsx(
           open ? 'block' : 'hidden',
-          'xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-57px)] dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30'
+          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30`
         )}
       ></div>
     </div>

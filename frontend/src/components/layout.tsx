@@ -1,4 +1,7 @@
-import React, { ReactNode, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
+import { DIVIDER_HEIGHT, NAVBAR_HEIGHT } from 'lib/constants'
+
 import { Navbar } from 'components/Navbar'
 
 import { Seo } from './seo'
@@ -11,15 +14,12 @@ interface ILayout {
 
 type pageTypes = 'basic' | 'blog'
 
-export const NAVBAR_HEIGHT = 57
-export const DIVIDER_HEIGHT = 80
-
 export const Layout: React.FC<ILayout> = ({
   pageType = 'basic',
   // metaTitle,
   children
 }) => {
-  const [footerHeight, setFooterHeight] = React.useState<number>(0)
+  const [footerHeight, setFooterHeight] = useState<number>(0)
 
   useEffect(() => {
     const footerHeight = document.querySelector('footer')?.clientHeight ?? 0
