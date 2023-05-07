@@ -24,11 +24,13 @@ const Navbar = () => {
         'fixed z-50 top-0 w-screen transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50'
       )}
     >
-      <nav className="z-50 flex flex-row-reverse justify-start max-w-screen-xl p-3 mx-auto sm:flex-row sm:justify-between">
-        <HeaderLogo className="flex items-center flex-grow justify-center sm:flex-grow-0" />
+      <nav className="z-50 flex flex-row-reverse max-w-screen-xl p-3 mx-auto sm:flex-row justify-between">
+        {/* Fix width on sm devices */}
+        {/* Should be 50% of the nav container - half it's own width */}
+        <HeaderLogo className="" />
 
         <div className="flex items-center justify-center gap-2">
-          {/* Hidden on small screens */}
+          {/* Desktop Navigation */}
           <div className="hidden gap-3 sm:flex">
             {NAV_LINKS.map((link, idx) => (
               <Link
@@ -41,6 +43,7 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* Mobile Navigation */}
           <HamburgerMenu className="sm:hidden" iconSize="xl" />
           <ThemeToggle />
         </div>

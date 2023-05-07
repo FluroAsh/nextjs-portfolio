@@ -79,7 +79,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
               title={link.title}
               href={link.href}
               onClick={handleClick} // close drawer when navigating
-              className="my-2 bg-slate-500/50 p-5 rounded hover:bg-slate-300/50 transition duration-200"
+              className="my-2 bg-orange-700/50 dark:bg-slate-500/50 p-5 rounded hover:bg-orange-600/50 dark:hover:bg-slate-300/50 dark:hover:shadow-lg transition duration-200"
             >
               {link.text}
             </Link>
