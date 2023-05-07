@@ -29,12 +29,14 @@ const ThemeToggle = () => {
       >
         {isDark ? (
           <FontAwesomeIcon
+            title="Change to Light Mode"
             icon={faSun}
             className="absolute top-[7.5px]"
             color="hsl(40, 100%, 50%)"
           />
         ) : (
           <FontAwesomeIcon
+            title="Change to Dark Mode"
             icon={faMoon}
             className="absolute top-[7.5px]"
             color="hsl(0, 0%, 40%)"
