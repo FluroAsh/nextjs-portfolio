@@ -3,6 +3,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 interface IButton {
+  title?: string
   href: string
   children: JSX.Element[] | JSX.Element | string
   className?: string
@@ -10,6 +11,7 @@ interface IButton {
 }
 
 const Button: React.FC<IButton> = ({
+  title,
   href,
   children,
   className,
@@ -34,6 +36,7 @@ const Button: React.FC<IButton> = ({
   return (
     <button type="button">
       <Link
+        title={title}
         href={href}
         className={clsx('block', buttonStyles(type), className)}
       >

@@ -46,9 +46,10 @@ const BlogPost: React.FC<IPost> = ({
       <header className="w-full">
         <div className="py-5 border-b border-orange-300 dark:border-slate-500">
           <Button
+            title="Back to Blog"
             href="/blog"
             type="back"
-            className="group/button text-slate-500 hover:text-white transition-colors duration-150"
+            className="group/button hover:text-orange-500 dark:text-slate-500 dark:hover:text-white transition-colors duration-150"
           >
             <FontAwesomeIcon
               icon={faArrowLeftLong}
