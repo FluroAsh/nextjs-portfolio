@@ -67,7 +67,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="menu-drawer"
         className={clsx(
           open && 'translate-x-full',
-          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-400 top-[57px] -left-80 h-[calc(100vh-57px)] transition-transform duration-300 
+          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-[${NAVBAR_HEIGHT}px] -left-80 h-[calc(100vh-57px)] transition-transform duration-300 
           z-40 shadow-lg xs:-left-full xs:w-screen`
         )}
         ref={drawerRef}
@@ -79,7 +79,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
               title={link.title}
               href={link.href}
               onClick={handleClick} // close drawer when navigating
-              className={`my-2 bg-orange-600/50 dark:bg-slate-500/50 p-5 rounded hover:bg-amber-300/50 dark:hover:bg-slate-300/50 
+              className={`my-2 bg-orange-600/50 dark:bg-slate-500/50 p-5 rounded hover:bg-orange-400/50 dark:hover:bg-slate-300/50 
               dark:hover:shadow-lg shadow-sm transition-colors duration-150`}
             >
               {link.text}
