@@ -16,7 +16,7 @@ interface IHamburgerMenu {
 
 const HamburgerMenu: React.FC<IHamburgerMenu> = ({
   className: extraStyles,
-  iconSize
+  iconSize = 'xl'
 }) => {
   const [open, setOpen] = useState<boolean>(false)
   const drawerRef = useRef<HTMLDivElement>(null)
@@ -66,19 +66,20 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
       <div
         id="menu-drawer"
         className={clsx(
-          open && '-translate-x-full',
-          `absolute w-80 xs:w-screen p-5 dark:bg-slate-700 bg-orange-400 top-[57px] xs:-right-full -right-80 h-[calc(100vh-57px)] transition-transform duration-300 
-          z-40 shadow-lg`
+          open && 'translate-x-full',
+          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-400 top-[57px] -left-80 h-[calc(100vh-57px)] transition-transform duration-300 
+          z-40 shadow-lg xs:-left-full xs:w-screen`
         )}
         ref={drawerRef}
       >
-        <div className="flex flex-col items-end w-full h-full">
+        <div className="flex flex-col w-full h-full">
           {NAV_LINKS.map((link, idx) => (
             <Link
               key={`${link.title}-${idx}`}
               title={link.title}
               href={link.href}
-              onClick={handleClick}
+              onClick={handleClick} // close drawer when navigating
+              className="my-2 bg-slate-500/50 p-5 rounded hover:bg-slate-300/50 transition duration-200"
             >
               {link.text}
             </Link>

@@ -1,6 +1,6 @@
 export const NAV_LINKS = [
   {
-    title: 'Go to HomePage',
+    title: 'Go to Homepage',
     text: 'home',
     href: '/'
   },
