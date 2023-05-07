@@ -53,7 +53,7 @@ const BlogPost: React.FC<IPost> = ({
             <FontAwesomeIcon
               icon={faArrowLeftLong}
               size="sm"
-              className="hover:animate-back-and-forth group-hover:animate-back-and-forth"
+              className="group-hover:animate-back-and-forth"
             />
             <span className="ml-2">Blog</span>
           </Button>
