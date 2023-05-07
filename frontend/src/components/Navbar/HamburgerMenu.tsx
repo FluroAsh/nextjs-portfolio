@@ -22,18 +22,12 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
   // TODO: 1. Add functionality when clicking outside drawer to setOpen to false
   // TODO: 2. Add framer for animation or figure out how to do it with JS & React...
 
-  const handleClick = () => {
-    setOpen(!open)
+  const handleClick = (isIcon: boolean = false) => {
+    isIcon ? setOpen(!open) : setOpen(false)
+
     // disable scrolling
     const body = document.querySelector('body')
     body && body.classList.toggle('overflow-hidden')
-  }
-
-  const handleLinkClick = () => {
-    // need to remove overflow-hidden from body before navigating to a new page
-    setOpen(false)
-    const body = document.querySelector('body')
-    body && body.classList.remove('overflow-hidden')
   }
 
   return (
@@ -43,14 +37,14 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
           icon={faClose}
           size={iconSize}
           className="cursor-pointer"
-          onClick={handleClick}
+          onClick={() => handleClick(true)}
         />
       ) : (
         <FontAwesomeIcon
           icon={faBars}
           size={iconSize}
           className="cursor-pointer"
-          onClick={handleClick}
+          onClick={() => handleClick(true)}
         />
       )}
 
@@ -62,13 +56,13 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
           z-40 shadow-lg`
         )}
       >
-        <div className="flex flex-col w-full h-full">
+        <div className="flex flex-col items-end w-full h-full">
           {/* TODO: Map these Link components? w/ Titles + Hrefs */}
           <Link
             title="Go to Homepage"
             href="/"
             className="text-lg"
-            onClick={handleLinkClick}
+            onClick={handleClick}
           >
             home
           </Link>
@@ -76,7 +70,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
             title="Go to Ash's Blog"
             href="/blog"
             className="text-lg"
-            onClick={handleLinkClick}
+            onClick={handleClick}
           >
             blog
           </Link>
@@ -84,7 +78,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
             title="About Ash"
             href="/about"
             className="text-lg"
-            onClick={handleLinkClick}
+            onClick={handleClick}
           >
             about
           </Link>
