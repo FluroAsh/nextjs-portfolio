@@ -1,6 +1,27 @@
 import client from 'lib/apollo-client'
 import { gql } from '@apollo/client'
 
+export const GET_PROFILE_IMAGE = gql`
+  query {
+    uploadFiles(filters: { name: { contains: "hero-banner-avatar" } }) {
+      data {
+        id
+        attributes {
+          name
+          alternativeText
+          caption
+          formats
+          url
+          width
+          height
+          size
+          mime
+        }
+      }
+    }
+  }
+`
+
 export const GET_POSTS = async () => {
   const { data } = await client.query({
     query: gql`
