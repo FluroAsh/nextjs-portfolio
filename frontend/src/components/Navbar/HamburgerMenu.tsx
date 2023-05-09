@@ -91,7 +91,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="drawer-bg"
         className={clsx(
           open ? 'block' : 'hidden',
-          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100%-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 
+          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 
           transition-opacity duration-300 ease-in-out z-30`
         )}
       ></div>
