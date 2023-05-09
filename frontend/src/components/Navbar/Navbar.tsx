@@ -25,8 +25,6 @@ const Navbar = () => {
       )}
     >
       <nav className="z-50 flex flex-row-reverse max-w-screen-xl p-3 mx-auto sm:flex-row justify-between">
-        {/* Fix width on sm devices */}
-        {/* Should be 50% of the nav container - half it's own width */}
         <div id="header-wrapper" className="relative">
           <HeaderLogo className="absolute right-[calc(50vw-80px)] xs:relative xs:right-0 sm:relative sm:left-0" />
         </div>
