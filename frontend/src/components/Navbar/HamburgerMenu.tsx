@@ -41,7 +41,6 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
     }
 
     document.addEventListener('click', handleOutsideClick)
-
     return () => document.removeEventListener('click', handleOutsideClick)
   }, [drawerRef])
 
@@ -67,7 +66,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="menu-drawer"
         className={clsx(
           open && 'translate-x-full',
-          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-[${NAVBAR_HEIGHT}px] -left-80 h-[calc(100vh-57px)] transition-transform duration-300 
+          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-[${NAVBAR_HEIGHT}px] -left-80 h-[calc(100vh-${NAVBAR_HEIGHT}px)] transition-transform duration-300 
           z-40 shadow-lg xs:-left-full xs:w-screen`
         )}
         ref={drawerRef}
