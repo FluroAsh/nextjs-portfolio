@@ -66,7 +66,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="menu-drawer"
         className={clsx(
           open && 'translate-x-full',
-          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-[${NAVBAR_HEIGHT}px] -left-80 h-[calc(100vh-${NAVBAR_HEIGHT}px)] transition-transform duration-300 
+          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-[57px] -left-80 h-[calc(100vh-${NAVBAR_HEIGHT}px)] transition-transform duration-300 
           z-40 shadow-lg xs:-left-full xs:w-screen`
         )}
         ref={drawerRef}
@@ -91,7 +91,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="drawer-bg"
         className={clsx(
           open ? 'block' : 'hidden',
-          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 
+          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100%-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 
           transition-opacity duration-300 ease-in-out z-30`
         )}
       ></div>
