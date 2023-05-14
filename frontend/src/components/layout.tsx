@@ -31,7 +31,7 @@ export const Layout: React.FC<ILayout> = ({
   }px`
 
   return (
-    <div className="overflow-x-hidden">
+    <div>
       {/* TODO: Update SEO Component */}
       {/* <Seo metaTitle={metaTitle} /> */}
       <Navbar />

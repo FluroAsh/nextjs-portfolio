@@ -24,14 +24,14 @@ const Navbar = () => {
         'fixed z-50 top-0 w-screen transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50'
       )}
     >
-      <nav className="z-50 flex flex-row-reverse max-w-screen-xl p-3 mx-auto sm:flex-row justify-between">
+      <nav className="z-50 flex flex-row-reverse justify-between max-w-screen-xl p-3 mx-auto sm:flex-row">
         <div id="header-wrapper" className="relative">
           <HeaderLogo className="absolute right-[calc(50vw-80px)] xs:relative xs:right-0 sm:relative sm:left-0" />
         </div>
 
         <div className="flex items-center justify-center gap-2">
           {/* Desktop Navigation */}
-          <div className="hidden sm:flex gap-3 mr-2">
+          <div className="hidden gap-3 mr-2 sm:flex">
             {NAV_LINKS.map((link, idx) => (
               <Link
                 key={`${link.title}-${idx}`}
