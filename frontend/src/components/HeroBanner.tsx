@@ -39,7 +39,7 @@ export const HeroBanner = () => {
               Front-End <span className="align-center text-sky-500">/</span>{' '}
               Full-Stack Developer
             </h4>
-            <p className="mt-2 break-all drop-shadow-sm text-slate-300">
+            <p className="mt-2 drop-shadow-sm text-slate-300">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
               iste ipsam deserunt dolor, porro hic itaque accusantium aut
               laborum alias tempora vero vitae. Suscipit similique, asperiores
