@@ -11,7 +11,7 @@ export const HeroBanner = () => {
     data?.uploadFiles?.data[0]?.attributes ?? {}
 
   return (
-    <div className="relative px-6 pt-6 mb-6 bg-gradient-to-tr to-slate-500 via-slate-600 from-slate-700">
+    <div className="relative px-6 pt-6 mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
       <div className="flex flex-col items-center justify-center w-full md:flex-row md:items-end">
         <div className="mx-auto mb-4 text-3xl md:hidden">Hey I&apos;m Ash!</div>
         <Image
@@ -28,36 +28,45 @@ export const HeroBanner = () => {
           className="relative hidden w-1/2 max-w-2xl pb-12 my-auto ml-6 md:block"
         >
           {/* TODO: Add proper FA caret icon & format text */}
-          <h1 className="absolute top-0 text-3xl -left-24 text-slate-300 drop-shadow-lg">
+          <h1 className="absolute top-0 text-3xl text-slate-900/50 -left-24 dark:text-slate-300/40 drop-shadow-sm">
             {'< ABOUT-ME />'}
           </h1>
           <div id="inner-content">
-            <h3 className="mt-10 text-3xl">
-              ASHLEY <span className="text-sky-500">THOMPSON</span>
+            <h3 className="mt-10 text-3xl text-slate-900 dark:text-white drop-shadow-sm">
+              ASHLEY{' '}
+              <span className="text-orange-500 dark:text-sky-500">
+                THOMPSON
+              </span>
             </h3>
-            <h4 className="text-2xl">
-              Front-End <span className="align-center text-sky-500">/</span>{' '}
+            <h4 className="text-2xl text-slate-900 dark:text-white drop-shadow-sm">
+              Front-End{' '}
+              <span className="text-orange-500 align-center dark:text-sky-500">
+                /
+              </span>{' '}
               Full-Stack Developer
             </h4>
-            <p className="mt-2 drop-shadow-sm text-slate-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-              iste ipsam deserunt dolor, porro hic itaque accusantium aut
-              laborum alias tempora vero vitae. Suscipit similique, asperiores
-              quibusdam vitae porro aspernatur! Eum dicta hic blanditiis aperiam
-              est ab soluta accusantium repellendus. Sed tempora nihil modi
-              voluptatibus quas incidunt. Ratione, nihil! Tempore iure aliquid
-              perferendis soluta non dicta, rerum facere consequatur eius?
+            <p className="mt-2 leading-6 text-neutral-600 drop-shadow-sm dark:text-slate-300">
+              Hey there! 👋 You&apos;ve stumbled into my humble abode. This is
+              no ordinary developer dungeon, I&apos;ve got the secrets to unlock
+              the universe in here. Fugiat iste ipsam deserunt dolor, porro hic
+              itaque accusantium aut laborum alias tempora vero vitae. Suscipit
+              similique, asperiores quibusdam vitae porro aspernatur! Eum dicta
+              hic blanditiis aperiam est ab soluta accusantium repellendus. Sed
+              tempora nihil modi voluptatibus quas incidunt. Ratione, nihil!
+              Tempore iure aliquid perferendis soluta non dicta.
             </p>
           </div>
           {/* TODO: Add proper FA arrow icon & interactivity/animation for Discover More element */}
-          <div className="mt-4 text-right">Discover More ↓</div>
+          <div className="mt-4 font-bold text-right text-orange-500 dark:font-semibold dark:text-slate-300 text-1xl">
+            Discover More ↓
+          </div>
         </div>
       </div>
       {/* ---- */}
 
       <svg
         id="hero-banner-svg"
-        className="absolute bottom-0 left-0 w-full h-6 sm:h-12 fill-dark-background-primary"
+        className="absolute bottom-0 left-0 w-full h-6 transition duration-300 fill-orange-50 sm:h-12 dark:fill-dark-background-primary"
         viewBox="0 0 1440 220"
         preserveAspectRatio="none"
       >
