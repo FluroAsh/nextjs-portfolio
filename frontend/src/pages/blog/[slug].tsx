@@ -86,33 +86,29 @@ const BlogPost: React.FC<IPost> = ({
 
 // TODO: Refactor to use gql queries & client in apollo-client
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as { slug: string }
-  const { posts } = await GET_POST(slug)
-
-  if (!posts.data.length) {
+  if (!params || typeof params.slug !== 'string' || !params.slug.trim()) {
     return { notFound: true }
   }
 
-  const {
-    title,
-    content: contentMarkdown,
-    cover: {
-      data: {
-        attributes: { url, alternativeText }
-      }
-    },
-    createdAt
-  } = posts.data[0].attributes
+  const { slug } = params
+  const { posts } = await GET_POST(slug)
+
+  const post = posts?.data?.[0]?.attributes
+  if (!post) return { notFound: true }
+
+  const { title, content: contentMarkdown, cover, createdAt } = post
   const content = (await markdownToHtml(contentMarkdown)) || ''
 
   return {
     props: {
       title,
       content,
-      url,
+      url: cover?.data?.attributes?.url,
       createdAt,
-      alternativeText
-    }
+      alternativeText: cover?.data?.attributes?.alternativeText
+    },
+    // Revalidate posts at most once per day
+    revalidate: 86400
   }
 }
 
