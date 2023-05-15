@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -7,7 +7,7 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps
 } from '@fortawesome/react-fontawesome'
-import { NAV_LINKS, NAVBAR_HEIGHT } from 'lib/constants'
+import { NAV_LINKS } from './Navbar'
 
 interface IHamburgerMenu {
   className?: string
@@ -23,21 +23,24 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
 
   const handleClick = (
     event: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    isIcon: boolean = false
+    isIcon?: boolean
   ) => {
     event?.stopPropagation() // prevent propagation to the document (firing handleOutsideClick callback)
     isIcon ? setOpen(!open) : setOpen(false)
 
     // disable scrolling
-    const body = document.querySelector('body')
-    body && body.classList.toggle('overflow-hidden')
+    document?.body && document?.body?.classList.toggle('overflow-hidden')
   }
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       const clickedOutside =
         drawerRef.current && !drawerRef.current.contains(event.target as Node)
-      clickedOutside && setOpen(false)
+
+      if (clickedOutside) {
+        setOpen(false)
+        document?.body && document?.body?.classList.remove('overflow-hidden')
+      }
     }
 
     document.addEventListener('click', handleOutsideClick)
@@ -66,8 +69,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="menu-drawer"
         className={clsx(
           open && 'translate-x-full',
-          `absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-[57px] -left-80 h-[calc(100vh-${NAVBAR_HEIGHT}px)] transition-transform duration-300 
-          z-40 shadow-lg xs:-left-full xs:w-screen`
+          'absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-navbar-height -left-80 h-100vh-minus-navbar transition-transform duration-300 z-40 shadow-lg xs:-left-full xs:w-screen'
         )}
         ref={drawerRef}
       >
@@ -78,8 +80,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
               title={link.title}
               href={link.href}
               onClick={handleClick} // close drawer when navigating
-              className={`my-2 bg-orange-600/50 dark:bg-slate-500/50 p-5 rounded hover:bg-orange-400/50 dark:hover:bg-slate-300/50 
-              dark:hover:shadow-lg shadow-sm transition-colors duration-150`}
+              className="p-5 my-2 transition-colors duration-150 rounded shadow-sm bg-orange-600/50 dark:bg-slate-500/50 hover:bg-orange-400/50 dark:hover:bg-slate-300/50 dark:hover:shadow-lg"
             >
               {link.text}
             </Link>
@@ -91,8 +92,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
         id="drawer-bg"
         className={clsx(
           open ? 'block' : 'hidden',
-          `xs:hidden absolute top-14 left-0 w-screen h-[calc(100vh-${NAVBAR_HEIGHT}px)] dark:bg-slate-700/50 bg-orange-700/30 
-          transition-opacity duration-300 ease-in-out z-30`
+          'xs:hidden absolute top-navbar-height left-0 w-screen h-100vh-minus-navbar dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30'
         )}
       ></div>
     </div>

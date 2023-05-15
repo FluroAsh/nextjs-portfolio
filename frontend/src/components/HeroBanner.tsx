@@ -75,3 +75,5 @@ export const HeroBanner = () => {
     </div>
   )
 }
+
+// TODO: Get getStaticProps for the URL

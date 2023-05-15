@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --navbar-height: 57px;
+  --divider-height: 80px;
+  --footer-height: 80px;
+  --navbar-padding-top: calc(100vh - var(--navbar-height));
+}

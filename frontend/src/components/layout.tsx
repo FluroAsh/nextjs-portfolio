@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
-import { DIVIDER_HEIGHT, NAVBAR_HEIGHT } from 'lib/constants'
+import { DIVIDER_HEIGHT, NAVBAR_HEIGHT } from 'constants/pages'
 
 import { Navbar } from 'components/Navbar'
 
@@ -28,7 +28,7 @@ export const Layout: React.FC<ILayout> = ({
 
   const contentMinHeight = `calc(100vh - ${
     NAVBAR_HEIGHT + DIVIDER_HEIGHT + footerHeight
-  }px`
+  }px)`
 
   return (
     <div>

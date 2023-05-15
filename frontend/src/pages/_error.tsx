@@ -9,7 +9,7 @@ import { NextApiResponse } from 'next'
 export function Error({ statusCode }: { statusCode: number }) {
   return (
     <Layout pageType="basic">
-      <div className="flex items-center justify-center dark:text-white h-[calc(100vh-57px)] ">
+      <div className="flex items-center justify-center dark:text-white h-100vh-minus-navbar">
         <div className="flex flex-col items-center justify-center p-6 border rounded-lg w-100 dark:bg-slate-500/50 backdrop-blur border-slate-500/50">
           {/* TODO: Replace with an SVG/Img */}
           <span className="mb-4 text-5xl">⚠️</span>

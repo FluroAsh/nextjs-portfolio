@@ -19,8 +19,16 @@ module.exports = {
           }
         }
       },
+      spacing: {
+        'navbar-height': 'var(--navbar-height)',
+        'logo-spacing': 'calc(50vw - 80px)'
+      },
+      height: {
+        '100vh-minus-navbar': 'calc(100vh - var(--navbar-height))'
+        
+      },
+      /** Used mainly for the blog/[slug] prose CSS */
       typography: ({ theme }) => ({
-        // NOTE: Used mainly for the blog/[slug] page
         DEFAULT: {
           css: {
             a: {
