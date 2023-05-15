@@ -8,7 +8,7 @@ import readingTime from 'reading-time'
 import type { IPost } from 'lib/types'
 import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
-import { readingMinutes } from 'helpers/helpers'
+import { readingMinutes } from 'lib/utils'
 
 import { Layout } from 'components/layout'
 import { BlogImage } from 'components/Blog'
