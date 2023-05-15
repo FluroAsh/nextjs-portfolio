@@ -1,15 +1,19 @@
-import { useQuery } from '@apollo/client'
 import clsx from 'clsx'
-import { GET_PROFILE_IMAGE } from 'lib/gql'
 import Image from 'next/image'
 import React from 'react'
 
-export const HeroBanner = () => {
-  const { data } = useQuery(GET_PROFILE_IMAGE)
+export type HeroBannerProps = {
+  imageProps: {
+    url: string
+    alternativeText: string
+    width: number
+    height: number
+  }
+}
 
-  const { url, width, height, alternativeText } =
-    data?.uploadFiles?.data[0]?.attributes ?? {}
-
+export const HeroBanner = ({
+  imageProps: { url, width, height, alternativeText }
+}: HeroBannerProps) => {
   return (
     <div className="relative px-6 pt-6 mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
       <div className="flex flex-col items-center justify-center w-full md:flex-row md:items-end">
@@ -57,7 +61,7 @@ export const HeroBanner = () => {
             </p>
           </div>
           {/* TODO: Add proper FA arrow icon & interactivity/animation for Discover More element */}
-          <div className="mt-4 font-bold text-right text-orange-500 dark:font-semibold dark:text-slate-300 text-1xl">
+          <div className="mt-4 font-semibold text-right text-orange-500 dark:font-semibold dark:text-slate-300 text-1xl">
             Discover More ↓
           </div>
         </div>
@@ -75,5 +79,3 @@ export const HeroBanner = () => {
     </div>
   )
 }
-
-// TODO: Get getStaticProps for the URL

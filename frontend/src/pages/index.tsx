@@ -1,13 +1,17 @@
-// import Head from 'next/head'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import { Layout } from 'components/layout'
-import { HeroBanner } from 'components/HeroBanner'
+import { GetStaticProps } from 'next'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 
-export default function Home() {
+import { GET_PROFILE_IMAGE } from 'lib/gql'
+import { Layout } from 'components/layout'
+import { HeroBanner, HeroBannerProps } from 'components/HeroBanner'
+
+/** Will extend this later once more staticProps are added... */
+type HomeProps = HeroBannerProps
+
+const Home: React.FC<HomeProps> = ({ imageProps }) => {
   return (
     <div>
-      <HeroBanner />
+      <HeroBanner imageProps={imageProps} />
 
       <Layout pageType="basic">
         <section id="about-info">
@@ -88,11 +92,27 @@ export default function Home() {
         <div className="mt-3 text-white h-28 bg-slate-500 w-100">
           Past Projects
         </div>
-
-        <div className="mt-3 text-white h-28 bg-slate-500 w-100">
-          Contact Me
-        </div>
       </Layout>
     </div>
   )
+}
+
+export default Home
+
+export const getStaticProps: GetStaticProps = async () => {
+  const apolloClient = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`,
+    cache: new InMemoryCache()
+  })
+
+  /** Image Props for hero-banner */
+  const { data: imageProps } = await apolloClient.query({
+    query: GET_PROFILE_IMAGE
+  })
+
+  return {
+    props: {
+      imageProps: imageProps?.uploadFiles?.data[0]?.attributes
+    }
+  }
 }

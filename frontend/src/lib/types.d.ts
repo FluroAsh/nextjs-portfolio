@@ -55,8 +55,6 @@ export interface IBlogImage {
   linkTo?: string
 }
 
-// TODO: Type the "uploadFiles" Object, for using in eg HeroBanner
-
 type ImageExtensions = 'jpg' | 'png' | 'webp' | 'gif' | 'avif'
 type ImageMimes =
   | 'image/jpeg'
@@ -69,14 +67,16 @@ type formatName = 'thumbnail' | 'small' | 'medium' | 'large'
 
 // Mapped type, as we can't achieve this with an interface
 export type Formats = {
-  [property in formatName]: {
-    name: string
-    hash: string
-    ext: ImageExtensions
-    mime: ImageMimes
-    width: number
-    height: number
-    size: number
-    url: string
-  }
+  [property in formatName]: FormatProps
+}
+
+export type FormatProps = {
+  name: string
+  hash: string
+  ext: ImageExtensions
+  mime: ImageMimes
+  width: number
+  height: number
+  size: number
+  url: string
 }
