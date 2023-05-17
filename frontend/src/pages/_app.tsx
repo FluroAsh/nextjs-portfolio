@@ -5,19 +5,25 @@ import ApolloProvider from 'lib/ApolloProvider'
 import { ThemeProvider } from 'next-themes'
 
 import '../../globals.css'
+import ErrorBoundary from 'components/ErrorBoundary'
+import FourZeroFour from './404'
 
 function BlogApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {/* TODO: Add an error boundary */}
-      <ThemeProvider attribute="class" defaultTheme="dark">
-        <Head>
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
-        </Head>
-        <ApolloProvider>
-          <Component {...pageProps} />
-        </ApolloProvider>
-      </ThemeProvider>
+      <ErrorBoundary fallback={<FourZeroFour />}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <Head>
+            <meta
+              content="width=device-width, initial-scale=1"
+              name="viewport"
+            />
+          </Head>
+          <ApolloProvider>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
     </>
   )
 }

@@ -10,7 +10,7 @@ import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
 import { readingMinutes } from 'lib/utils'
 
-import { Layout } from 'components/layout'
+import { Layout } from 'components/Layout'
 import { BlogImage } from 'components/Blog'
 import Button from 'components/Button'
 

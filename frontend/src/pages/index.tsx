@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 import { GET_PROFILE_IMAGE } from 'lib/gql'
-import { Layout } from 'components/layout'
+import { Layout } from 'components/Layout'
 import { HeroBanner, HeroBannerProps } from 'components/HeroBanner'
 
 /** Will extend this later once more staticProps are added... */
