@@ -1,16 +1,12 @@
 import {
-  ApolloClient,
-  InMemoryCache,
   ApolloProvider as Apollo
 } from '@apollo/client'
 
 import { ReactNode } from 'react'
+import { initializeApollo } from './apollo-client'
 
 function ApolloProvider({ children }: { children: ReactNode }) {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`,
-    cache: new InMemoryCache()
-  })
+  const client = initializeApollo()
 
   return <Apollo client={client}>{children}</Apollo>
 }

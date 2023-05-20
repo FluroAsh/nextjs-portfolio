@@ -1,9 +1,9 @@
 import { GetStaticProps } from 'next'
-import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 import { GET_PROFILE_IMAGE } from 'lib/gql'
 import { Layout } from 'components/Layout'
 import { HeroBanner, HeroBannerProps } from 'components/HeroBanner'
+import { initializeApollo } from 'lib/apollo-client'
 
 /** Will extend this later once more staticProps are added... */
 type HomeProps = HeroBannerProps
@@ -100,10 +100,7 @@ const Home: React.FC<HomeProps> = ({ imageProps }) => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
-  const apolloClient = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`,
-    cache: new InMemoryCache()
-  })
+  const apolloClient = initializeApollo()
 
   /** Image Props for hero-banner */
   const { data: imageProps } = await apolloClient.query({

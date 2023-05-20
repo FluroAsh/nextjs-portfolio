@@ -8,6 +8,8 @@ import { IBlog, IBlogFeature, IPostsData } from 'lib/types'
 
 import { Layout } from 'components/Layout'
 import { BlogFeature, BlogPreview } from 'components/Blog'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { initializeApollo } from 'lib/apollo-client'
 
 const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
   /** TODO:
@@ -48,14 +50,18 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // TODO: Add pagination...
-  const { posts } = await GET_POSTS()
+  const apolloClient = initializeApollo()
 
-  const featuredPost: IBlogFeature = posts.data.filter(
+  // TODO: Add pagination...
+  const {
+    data: { posts }
+  } = await apolloClient.query({ query: GET_POSTS })
+
+  const featuredPost: IBlogFeature = posts?.data.filter(
     (post: IBlogFeature) => post.attributes.isFeatured === true
   )[0]
 
-  const restPosts: IPostsData[] = posts.data.filter(
+  const restPosts: IPostsData[] = posts?.data.filter(
     (post: IPostsData) => post.attributes.isFeatured !== true
   )
 

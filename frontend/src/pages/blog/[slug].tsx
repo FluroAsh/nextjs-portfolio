@@ -9,6 +9,7 @@ import type { IPost } from 'lib/types'
 import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
 import { markdownToHtml } from 'lib/markdownToHtml'
 import { readingMinutes } from 'lib/utils'
+import { initializeApollo } from 'lib/apollo-client'
 
 import { Layout } from 'components/Layout'
 import { BlogImage } from 'components/Blog'
@@ -84,14 +85,20 @@ const BlogPost: React.FC<IPost> = ({
   )
 }
 
-// TODO: Refactor to use gql queries & client in apollo-client
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const apolloClient = initializeApollo()
+
   if (!params || typeof params.slug !== 'string' || !params.slug.trim()) {
     return { notFound: true }
   }
 
   const { slug } = params
-  const { posts } = await GET_POST(slug)
+  const {
+    data: { posts }
+  } = await apolloClient.query({
+    query: GET_POST,
+    variables: { slug }
+  })
 
   const post = posts?.data?.[0]?.attributes
   if (!post) return { notFound: true }
@@ -113,7 +120,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { posts } = await GET_POST_SLUGS()
+  const apolloClient = initializeApollo()
+
+  const {
+    data: { posts }
+  } = await apolloClient.query({ query: GET_POST_SLUGS })
 
   return {
     paths:
