@@ -20,14 +20,17 @@ export const HeroBanner = ({
       <div className="flex flex-col items-center justify-center w-full md:flex-row md:items-end">
         <div
           id="img-wrapper"
-          className="flex overflow-hidden border rounded-full shadow-lg border-orange-500/50 dark:border-2 md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none dark:border-slate-300 bg-dark-background-primary bg-gradient-to-tr from-orange-200 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary md:bg-none bg-inherit"
+          className="flex overflow-hidden rounded-full shadow-lg md:overflowborder border-orange-500/50 dark:border-2 md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none dark:border-slate-300 bg-dark-background-primary bg-gradient-to-tr from-orange-200 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary md:bg-none bg-inherit"
         >
+          {/* Eager loading required for some reason here when overflow-hidden is enabled...
+          NextJS/Tailwind doesn't like the image to be lazily loaded for some reason. */}
           <Image
             src={url}
             width={width}
             height={height}
             alt={alternativeText}
-            className="relative w-full top-2 md:top-0 md:pb-4 md:block md:max-w-[470px]"
+            loading="eager"
+            className="relative w-full top-2 md:top-0 md:pb-4 md:block"
           />
         </div>
 
