@@ -12,6 +12,8 @@ const Home: React.FC<HomeProps> = ({ imageProps }) => {
   return (
     <div>
       <HeroBanner imageProps={imageProps} />
+      {/* Skils scrolling section */}
+      {/*  */}
 
       <Layout pageType="basic">
         <section id="about-info">

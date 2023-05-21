@@ -24,19 +24,19 @@ module.exports = {
         'logo-spacing': 'calc(50vw - 80px)'
       },
       height: {
-        '100vh-minus-navbar': 'calc(100vh - var(--navbar-height))'
-        
+        '-navbar': 'calc(100vh - var(--navbar-height))',
+        navbar: 'var(--navbar-height)'
       },
       /** Used mainly for the blog/[slug] prose CSS */
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
             a: {
-              transition: '150ms',
+              transition: '150ms color ease-in-out',
               textDecoration: 'none',
-              color: theme('colors.orange.300'),
+              color: theme('colors.orange.400'),
               '&:hover': {
-                color: theme('colors.amber.500')
+                color: theme('colors.orange.600')
               }
             },
             h1: {

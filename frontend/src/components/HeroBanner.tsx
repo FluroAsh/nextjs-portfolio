@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export type HeroBannerProps = {
@@ -17,18 +18,42 @@ export const HeroBanner = ({
   return (
     <div className="relative px-6 pt-6 mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
       <div className="flex flex-col items-center justify-center w-full md:flex-row md:items-end">
-        <div className="mx-auto mb-4 text-3xl md:hidden">Hey I&apos;m Ash!</div>
-        <Image
-          src={url}
-          width={width}
-          height={height}
-          alt={alternativeText}
-          className={clsx('md:w-1/2 md:max-w-[470px] md:self-end md:flex-auto')}
-        />
+        <div
+          id="img-wrapper"
+          className="flex overflow-hidden border rounded-full shadow-lg border-orange-500/50 dark:border-2 md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none dark:border-slate-300 bg-dark-background-primary bg-gradient-to-tr from-orange-200 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary md:bg-none bg-inherit"
+        >
+          <Image
+            src={url}
+            width={width}
+            height={height}
+            alt={alternativeText}
+            className="relative w-full top-2 md:top-0 md:pb-4 md:block md:max-w-[470px]"
+          />
+        </div>
+
+        {/* -- MOBILE -- */}
+        <div
+          id="small-hero"
+          className="max-w-md pb-0 mx-auto mt-4 mb-8 text-3xl sm:pb-2 md:hidden"
+        >
+          <h1 className="text-center">Howdy Partner! 🤠</h1>
+          <h3 className="mt-2 text-lg text-center">
+            Ash here. I&apos;m a Front-End Developer with a passion for building
+            beautiful, functional, and accessible web applications. If you want
+            to learn some more tricks, check out my{' '}
+            <Link
+              href="/blog"
+              className="text-orange-400 transition duration-150 hover:text-orange-500 dark:text-sky-500 dark:hover:text-sky-600"
+            >
+              blog.
+            </Link>
+          </h3>
+        </div>
+        {/* ---- */}
 
         {/* -- DESKTOP --  */}
         <div
-          id="side-content"
+          id="large-hero"
           className="relative hidden w-1/2 max-w-2xl pb-12 my-auto ml-6 md:block"
         >
           {/* TODO: Add proper FA caret icon & format text */}
