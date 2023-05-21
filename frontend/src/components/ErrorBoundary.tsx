@@ -25,18 +25,18 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     if (this.state.hasError) {
-      // return this.props.fallback
-      return (
-        <div>
-          <h2>Oops, there is an error!</h2>
-          <button
-            type="button"
-            onClick={() => this.setState({ hasError: false })}
-          >
-            Try again?
-          </button>
-        </div>
-      )
+      return this.props.fallback
+      // return (
+      //   <div>
+      //     <h2>Oops, there is an error!</h2>
+      //     <button
+      //       type="button"
+      //       onClick={() => this.setState({ hasError: false })}
+      //     >
+      //       Try again?
+      //     </button>
+      //   </div>
+      // )
     }
 
     return this.props.children
