@@ -30,7 +30,7 @@ export const HeroBanner = ({
             height={height}
             alt={alternativeText}
             loading="eager"
-            className="relative w-full top-2 md:top-0 md:pb-4 md:block"
+            className="relative w-full top-2 md:top-0 md:pb-4 md:block md:max-w-[470px]"
           />
         </div>
 
