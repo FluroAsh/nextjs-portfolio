@@ -19,7 +19,6 @@
       "/*": ["./src/*"],
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
-      "layouts/*": ["layouts/*"],
       "lib/*": ["lib/*"]
     }
   },

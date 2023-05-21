@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 
 import { GET_PROFILE_IMAGE } from 'lib/gql'
-import { Layout } from 'components/Layout'
+import Layout from 'components/layout'
 import { HeroBanner, HeroBannerProps } from 'components/HeroBanner'
 import { initializeApollo } from 'lib/apollo-client'
 

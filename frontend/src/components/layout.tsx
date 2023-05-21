@@ -14,7 +14,7 @@ interface ILayout {
 
 type pageTypes = 'basic' | 'blog'
 
-export const Layout: React.FC<ILayout> = ({
+const Layout: React.FC<ILayout> = ({
   pageType = 'basic',
   // metaTitle,
   children
@@ -64,3 +64,5 @@ export const Layout: React.FC<ILayout> = ({
     </div>
   )
 }
+
+export default Layout

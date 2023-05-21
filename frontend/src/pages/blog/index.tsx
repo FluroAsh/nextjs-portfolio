@@ -6,9 +6,8 @@ import { GetStaticProps } from 'next'
 import { GET_POSTS } from 'lib/gql'
 import { IBlog, IBlogFeature, IPostsData } from 'lib/types'
 
-import { Layout } from 'components/Layout'
+import Layout from 'components/layout'
 import { BlogFeature, BlogPreview } from 'components/Blog'
-import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { initializeApollo } from 'lib/apollo-client'
 
 const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {

@@ -11,7 +11,7 @@ import { markdownToHtml } from 'lib/markdownToHtml'
 import { readingMinutes } from 'lib/utils'
 import { initializeApollo } from 'lib/apollo-client'
 
-import { Layout } from 'components/Layout'
+import Layout from 'components/layout'
 import { BlogImage } from 'components/Blog'
 import Button from 'components/Button'
 
