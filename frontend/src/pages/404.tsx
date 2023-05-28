@@ -8,7 +8,7 @@ const errorMessage = ERROR_MAP[400]
 
 function FourZeroFour() {
   return (
-    <Layout pageType="basic">
+    <Layout type="basic">
       <div className="flex items-center justify-center dark:text-white -h-navbar">
         <div className="flex flex-col items-center justify-center p-6 border rounded-lg w-100 dark:bg-slate-500/50 backdrop-blur border-slate-500/50">
           {/* TODO: Replace with an SVG/Img */}

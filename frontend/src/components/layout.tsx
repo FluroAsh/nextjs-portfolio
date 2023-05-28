@@ -7,7 +7,7 @@ import { Navbar } from 'components/Navbar'
 import { Seo } from './seo'
 
 interface ILayout {
-  pageType: pageTypes
+  type: pageTypes
   // metaTitle: string
   children: ReactNode
 }
@@ -15,7 +15,7 @@ interface ILayout {
 type pageTypes = 'basic' | 'blog'
 
 const Layout: React.FC<ILayout> = ({
-  pageType = 'basic',
+  type: type = 'basic',
   // metaTitle,
   children
 }) => {
@@ -34,8 +34,9 @@ const Layout: React.FC<ILayout> = ({
     <div>
       {/* TODO: Update SEO Component */}
       {/* <Seo metaTitle={metaTitle} /> */}
+      {/* TODO: Fix navbar so it can be sticky (avoiding issues with links.) */}
       <Navbar />
-      {pageType === 'basic' ? (
+      {type === 'basic' ? (
         <main
           className="max-w-screen-lg px-5 mx-auto"
           // applies immediately, TW has a delay that causes a 'flicker'...
@@ -43,7 +44,7 @@ const Layout: React.FC<ILayout> = ({
         >
           {children}
         </main>
-      ) : pageType === 'blog' ? (
+      ) : type === 'blog' ? (
         <main
           className="flex flex-col items-center w-full max-w-screen-lg px-5 mx-auto"
           style={{ minHeight: contentMinHeight }}

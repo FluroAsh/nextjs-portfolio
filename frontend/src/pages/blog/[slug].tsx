@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
@@ -18,6 +18,8 @@ import Button from 'components/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeftLong } from '@fortawesome/pro-solid-svg-icons'
 
+import 'highlight.js/styles/Base16/Monokai.css'
+
 const BlogPost: React.FC<IPost> = ({
   title,
   content,
@@ -29,7 +31,7 @@ const BlogPost: React.FC<IPost> = ({
 
   if (router.isFallback) {
     return (
-      <Layout pageType="basic">
+      <Layout type="basic">
         {/* TODO: Add a loading spinner/bar for SSR */}
         <div>Loading...</div>
       </Layout>
@@ -39,9 +41,10 @@ const BlogPost: React.FC<IPost> = ({
   const stats = readingTime(content)
 
   return (
-    <Layout pageType="blog">
+    <Layout type="blog">
       <Head>
         <title>{title}</title>
+        <script async src="https://cdn.jsdelivr.net/npm/highlight.js" />
       </Head>
 
       <header className="w-full">
@@ -76,9 +79,10 @@ const BlogPost: React.FC<IPost> = ({
         </div>
       </header>
 
-      {/* TODO: Refactor to use MDX over dangerouslySetInnerHTML */}
+      {/* REVIEW: Refactoring to use MDX over CMS Markdown */}
+      {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks */}
       <article
-        className={`max-w-full w-full mt-5 prose md:w-11/12 dark:prose-invert dark:prose-dark`}
+        className="w-full max-w-full mt-5 prose md:w-11/12 dark:prose-invert dark:prose-dark"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>
@@ -104,7 +108,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!post) return { notFound: true }
 
   const { title, content: contentMarkdown, cover, createdAt } = post
-  const content = (await markdownToHtml(contentMarkdown)) || ''
+  const content = await markdownToHtml(contentMarkdown)
 
   return {
     props: {

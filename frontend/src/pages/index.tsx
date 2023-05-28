@@ -11,11 +11,12 @@ type HomeProps = HeroBannerProps
 const Home: React.FC<HomeProps> = ({ imageProps }) => {
   return (
     <div>
+      {/* TODO: Fixup layout so HeroBanner can have 100% width without being outside... */}
       <HeroBanner imageProps={imageProps} />
       {/* Skils scrolling section */}
       {/*  */}
 
-      <Layout pageType="basic">
+      <Layout type="basic">
         <section id="about-info">
           <h1 className="text-2xl ">Test</h1>
 

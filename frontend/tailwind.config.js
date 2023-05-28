@@ -1,5 +1,44 @@
 /** @type {import('tailwindcss').Config} */
 
+const preStyle = (theme, type) => {
+  const defaults = {
+    borderRadius: theme('borderRadius.md'),
+    borderWidth: theme('borderWidth.2'),
+    /** Remove Prose defaults */
+    backgroundColor: null,
+    paddingLeft: null,
+    paddingRight: null,
+    paddingTop: null,
+    paddingBottom: null
+  }
+
+  const light = {
+    ...defaults,
+    borderColor: 'transparent',
+    boxShadow: theme('boxShadow.lg')
+  }
+  const dark = {
+    ...defaults,
+    boxShadow: theme('boxShadow.md'),
+    borderColor: 'hsla(218, 13%, 40%, 0.5)' // equivalent to slate.500/50
+  }
+
+  return type === 'dark' ? dark : light
+}
+
+const h1AnchorStyle = {
+  '> a': {
+    color: 'inherit',
+    borderBottom: '2px solid transparent',
+    paddingBottom: '3px',
+    transition: '150ms color, border-color ease-in-out',
+
+    '&:hover': {
+      borderBottom: '2px solid currentColor'
+    }
+  }
+}
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -31,6 +70,7 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            h1: h1AnchorStyle,
             a: {
               transition: '150ms color ease-in-out',
               textDecoration: 'none',
@@ -42,19 +82,21 @@ module.exports = {
             h1: {
               marginBottom: theme('spacing.4')
             },
-            pre: {
-              marginTop: theme('spacing.2')
-            }
+            pre: preStyle(theme, 'light')
           }
         },
         dark: {
           css: {
+            h1: h1AnchorStyle,
             a: {
+              transition: '150ms color ease-in-out',
+              textDecoration: 'none',
               color: theme('colors.sky.500'),
               '&:hover': {
                 color: theme('colors.sky.600')
               }
-            }
+            },
+            pre: preStyle(theme, 'dark')
           }
         }
       }),

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 import useScrolling from 'hooks/useScrolling'
-import HeaderLogo from 'components/HeaderLogo'
+import HeaderLogo from 'components/Navbar/HeaderLogo'
 import ThemeToggle from 'components/ThemeToggle'
 import HamburgerMenu from './HamburgerMenu'
 
@@ -35,12 +35,13 @@ const Navbar = () => {
 
   return (
     <div
+      // TODO: Refactor this wrapper div to use sticky so we can have the correct index page UI & layout throughout the app.
       className={clsx(
         styles.container,
         'fixed z-50 top-0 w-screen transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50'
       )}
     >
-      <nav className="flex flex-row-reverse justify-between max-w-screen-xl p-3 mx-auto  sm:flex-row">
+      <nav className="flex flex-row-reverse justify-between max-w-screen-xl p-3 mx-auto sm:flex-row">
         <div id="header-wrapper" className="relative">
           <HeaderLogo className="absolute right-logo-spacing xs:relative xs:right-0 sm:relative sm:left-0" />
         </div>

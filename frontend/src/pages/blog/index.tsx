@@ -23,7 +23,7 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
   const PAGE_SIZE = 5
 
   return (
-    <Layout pageType="basic">
+    <Layout type="basic">
       <Head>
         <title>Latest Posts</title>
       </Head>
