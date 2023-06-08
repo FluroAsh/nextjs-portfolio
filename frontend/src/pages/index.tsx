@@ -1,9 +1,10 @@
-import { GetStaticProps } from 'next'
+import { GetStaticProps } from "next"
 
-import { GET_PROFILE_IMAGE } from 'lib/gql'
-import Layout from 'components/layout'
-import { HeroBanner, HeroBannerProps } from 'components/HeroBanner'
-import { initializeApollo } from 'lib/apollo-client'
+import { HeroBanner, HeroBannerProps } from "components/HeroBanner"
+import Layout from "components/layout"
+
+import { initializeApollo } from "lib/apollo-client"
+import { GET_PROFILE_IMAGE } from "lib/gql"
 
 /** Will extend this later once more staticProps are added... */
 type HomeProps = HeroBannerProps
@@ -107,12 +108,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
   /** Image Props for hero-banner */
   const { data: imageProps } = await apolloClient.query({
-    query: GET_PROFILE_IMAGE
+    query: GET_PROFILE_IMAGE,
   })
 
   return {
     props: {
-      imageProps: imageProps?.uploadFiles?.data[0]?.attributes
-    }
+      imageProps: imageProps?.uploadFiles?.data[0]?.attributes,
+    },
   }
 }

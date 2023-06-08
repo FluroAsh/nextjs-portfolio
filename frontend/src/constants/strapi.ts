@@ -1,1 +1,1 @@
-export const CMS_NAME = 'Strapi'
+export const CMS_NAME = "Strapi"

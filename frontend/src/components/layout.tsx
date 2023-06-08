@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import type { ReactNode } from 'react'
-import { DIVIDER_HEIGHT, NAVBAR_HEIGHT } from 'constants/pages'
+import React, { useEffect, useState } from "react"
+import type { ReactNode } from "react"
+import { DIVIDER_HEIGHT, NAVBAR_HEIGHT } from "constants/pages"
 
-import { Navbar } from 'components/Navbar'
+import { Navbar } from "components/Navbar"
 
-import { Seo } from './seo'
+import { Seo } from "./seo"
 
 interface ILayout {
   type: pageTypes
@@ -12,17 +12,17 @@ interface ILayout {
   children: ReactNode
 }
 
-type pageTypes = 'basic' | 'blog'
+type pageTypes = "basic" | "blog"
 
 const Layout: React.FC<ILayout> = ({
-  type: type = 'basic',
+  type: type = "basic",
   // metaTitle,
-  children
+  children,
 }) => {
   const [footerHeight, setFooterHeight] = useState<number>(0)
 
   useEffect(() => {
-    const footerHeight = document.querySelector('footer')?.clientHeight ?? 0
+    const footerHeight = document.querySelector("footer")?.clientHeight ?? 0
     setFooterHeight(footerHeight)
   }, [])
 
@@ -36,7 +36,7 @@ const Layout: React.FC<ILayout> = ({
       {/* <Seo metaTitle={metaTitle} /> */}
       {/* TODO: Fix navbar so it can be sticky (avoiding issues with links.) */}
       <Navbar />
-      {type === 'basic' ? (
+      {type === "basic" ? (
         <main
           className="max-w-screen-lg px-5 mx-auto"
           // applies immediately, TW has a delay that causes a 'flicker'...
@@ -44,7 +44,7 @@ const Layout: React.FC<ILayout> = ({
         >
           {children}
         </main>
-      ) : type === 'blog' ? (
+      ) : type === "blog" ? (
         <main
           className="flex flex-col items-center w-full max-w-screen-lg px-5 mx-auto"
           style={{ minHeight: contentMinHeight }}

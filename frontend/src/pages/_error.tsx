@@ -1,10 +1,9 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import { NextApiResponse } from "next"
+import Link from "next/link"
+import { ERROR_MAP } from "constants/errors"
 
-import { ERROR_MAP } from 'constants/errors'
-import Layout from 'components/layout'
-
-import { NextApiResponse } from 'next'
+import Layout from "components/layout"
 
 export function Error({ statusCode }: { statusCode: number }) {
   const errorMessage = ERROR_MAP[statusCode]
@@ -34,7 +33,7 @@ export function Error({ statusCode }: { statusCode: number }) {
 
 Error.getInitialProps = ({
   res,
-  err
+  err,
 }: {
   res: NextApiResponse
   err: NextApiResponse

@@ -1,7 +1,7 @@
-import clsx from 'clsx'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import clsx from "clsx"
 
 export type HeroBannerProps = {
   imageProps: {
@@ -13,7 +13,7 @@ export type HeroBannerProps = {
 }
 
 export const HeroBanner = ({
-  imageProps: { url, width, height, alternativeText }
+  imageProps: { url, width, height, alternativeText },
 }: HeroBannerProps) => {
   return (
     <div className="relative px-6 pt-6 mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
@@ -43,7 +43,7 @@ export const HeroBanner = ({
           <h3 className="mt-2 text-lg text-center">
             Ash here. I&apos;m a Front-End Developer with a passion for building
             beautiful, functional, and accessible web applications. If you want
-            to learn some more tricks, check out my{' '}
+            to learn some more tricks, check out my{" "}
             <Link
               href="/blog"
               className="text-orange-400 transition duration-150 hover:text-orange-500 dark:text-sky-500 dark:hover:text-sky-600"
@@ -61,20 +61,20 @@ export const HeroBanner = ({
         >
           {/* TODO: Add proper FA caret icon & format text */}
           <h1 className="absolute top-0 text-3xl text-slate-900/50 -left-24 dark:text-slate-300/40 drop-shadow-sm">
-            {'< ABOUT-ME />'}
+            {"< ABOUT-ME />"}
           </h1>
           <div id="inner-content">
             <h3 className="mt-10 text-3xl text-slate-900 dark:text-white drop-shadow-sm">
-              ASHLEY{' '}
+              ASHLEY{" "}
               <span className="text-orange-500 dark:text-sky-500">
                 THOMPSON
               </span>
             </h3>
             <h4 className="text-2xl text-slate-900 dark:text-white drop-shadow-sm">
-              Front-End{' '}
+              Front-End{" "}
               <span className="text-orange-500 align-center dark:text-sky-500">
                 /
-              </span>{' '}
+              </span>{" "}
               Full-Stack Developer
             </h4>
             <p className="mt-2 leading-6 text-neutral-600 drop-shadow-sm dark:text-slate-300">

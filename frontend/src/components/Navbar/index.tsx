@@ -1,4 +1,4 @@
-import Navbar from './Navbar'
-import HamburgerMenu from './HamburgerMenu'
+import HamburgerMenu from "./HamburgerMenu"
+import Navbar from "./Navbar"
 
 export { Navbar, HamburgerMenu }

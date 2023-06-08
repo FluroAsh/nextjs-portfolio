@@ -1,31 +1,30 @@
-import React, { useEffect } from 'react'
-import Head from 'next/head'
-import type { GetStaticProps, GetStaticPaths } from 'next'
-import { useRouter } from 'next/router'
-import dayjs from 'dayjs'
-import readingTime from 'reading-time'
+import React from "react"
+import { GetStaticPaths, GetStaticProps } from "next"
+import Head from "next/head"
+import { useRouter } from "next/router"
+import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import dayjs from "dayjs"
+import readingTime from "reading-time"
 
-import type { IPost } from 'lib/types'
-import { GET_POST_SLUGS, GET_POST } from 'lib/gql'
-import { markdownToHtml } from 'lib/markdownToHtml'
-import { readingMinutes } from 'lib/utils'
-import { initializeApollo } from 'lib/apollo-client'
+import { IPost } from "types/blog-types"
+import { BlogImage } from "components/Blog"
+import Button from "components/Button"
+import Layout from "components/layout"
 
-import Layout from 'components/layout'
-import { BlogImage } from 'components/Blog'
-import Button from 'components/Button'
+import { initializeApollo } from "lib/apollo-client"
+import { GET_POST, GET_POST_SLUGS } from "lib/gql"
+import { markdownToHtml } from "lib/markdownToHtml"
+import { readingMinutes } from "utils/blog-utils"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeftLong } from '@fortawesome/pro-solid-svg-icons'
-
-import 'highlight.js/styles/Base16/Monokai.css'
+import "highlight.js/styles/Base16/Monokai.css"
 
 const BlogPost: React.FC<IPost> = ({
   title,
   content,
   url,
   createdAt,
-  alternativeText
+  alternativeText,
 }) => {
   const router = useRouter()
 
@@ -64,7 +63,7 @@ const BlogPost: React.FC<IPost> = ({
           </Button>
           <h1 className="text-3xl sm:text-4xl">{title}</h1>
           <div className="text-netural-600 dark:text-slate-300">
-            {dayjs(createdAt).format('dddd @ h:mm A')} —{' '}
+            {dayjs(createdAt).format("dddd @ h:mm A")} —{" "}
             {readingMinutes(stats.minutes)}
           </div>
         </div>
@@ -92,16 +91,16 @@ const BlogPost: React.FC<IPost> = ({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo()
 
-  if (!params || typeof params.slug !== 'string' || !params.slug.trim()) {
+  if (!params || typeof params.slug !== "string" || !params.slug.trim()) {
     return { notFound: true }
   }
 
   const { slug } = params
   const {
-    data: { posts }
+    data: { posts },
   } = await apolloClient.query({
     query: GET_POST,
-    variables: { slug }
+    variables: { slug },
   })
 
   const post = posts?.data?.[0]?.attributes
@@ -116,10 +115,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       content,
       url: cover?.data?.attributes?.url,
       createdAt,
-      alternativeText: cover?.data?.attributes?.alternativeText
+      alternativeText: cover?.data?.attributes?.alternativeText,
     },
-    // Revalidate posts at most once per day
-    revalidate: 86400
+    // Once a day
+    revalidate: 86400,
   }
 }
 
@@ -127,15 +126,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo()
 
   const {
-    data: { posts }
+    data: { posts },
   } = await apolloClient.query({ query: GET_POST_SLUGS })
 
   return {
     paths:
       posts?.data?.attributes?.map(({ slug }: { slug: string }) => ({
-        params: { slug }
+        params: { slug },
       })) || [],
-    fallback: true
+    fallback: true,
   }
 }
 

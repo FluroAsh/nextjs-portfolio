@@ -1,12 +1,14 @@
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
+import type { AppProps } from "next/app"
+import Head from "next/head"
+import { ThemeProvider } from "next-themes"
 
-import ApolloProvider from 'lib/ApolloProvider'
-import { ThemeProvider } from 'next-themes'
+import ErrorBoundary from "components/ErrorBoundary"
 
-import ErrorBoundary from 'components/ErrorBoundary'
-import FourZeroFour from './404'
-import '../../globals.css'
+import ApolloProvider from "lib/ApolloProvider"
+
+import FourZeroFour from "./404"
+
+import "../styles/globals.css"
 
 function BlogApp({ Component, pageProps }: AppProps) {
   return (

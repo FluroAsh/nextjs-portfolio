@@ -1,11 +1,10 @@
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-
-import rehypeSlug from 'rehype-slug'
-import rehypeAutoLinkHeadings, { type Options } from 'rehype-autolink-headings'
-import rehypeHighlight from 'rehype-highlight'
+import rehypeAutoLinkHeadings, { type Options } from "rehype-autolink-headings"
+import rehypeHighlight from "rehype-highlight"
+import rehypeSlug from "rehype-slug"
+import rehypeStringify from "rehype-stringify"
+import remarkParse from "remark-parse"
+import remarkRehype from "remark-rehype"
+import { unified } from "unified"
 
 /** Serialize Markdown into HTML
  * - [remarkParse](https://github.com/remarkjs/remark/tree/main/packages/remark-parse): Parse Markdown into an AST
@@ -20,7 +19,7 @@ export async function markdownToHtml(markdown: string) {
     .use(remarkRehype)
     .use(rehypeSlug) // generate IDs for headings
     .use(rehypeAutoLinkHeadings, {
-      behavior: 'wrap'
+      behavior: "wrap",
       // content: { type: 'text', value: ' #' } // TODO: Add 'permalink' icon
     } as Options)
     .use(rehypeHighlight) // snytax highlighting

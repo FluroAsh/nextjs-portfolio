@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client"
 
 // https://docs.strapi.io/dev-docs/api/graphql#filters
 export const GET_PROFILE_IMAGE = gql`

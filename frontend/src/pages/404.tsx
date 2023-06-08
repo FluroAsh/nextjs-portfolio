@@ -1,8 +1,8 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
+import { ERROR_MAP } from "constants/errors"
 
-import Layout from 'components/layout'
-import { ERROR_MAP } from 'constants/errors'
+import Layout from "components/layout"
 
 const errorMessage = ERROR_MAP[400]
 

@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import React, { useState } from "react"
+import { GetStaticProps } from "next"
+import Head from "next/head"
+import Link from "next/link"
 
-import { GET_POSTS } from 'lib/gql'
-import { IBlog, IBlogFeature, IPostsData } from 'lib/types'
+import { IBlog, IBlogFeature, IPostsData } from "types/blog-types"
+import { BlogFeature, BlogPreview } from "components/Blog"
+import Layout from "components/layout"
 
-import Layout from 'components/layout'
-import { BlogFeature, BlogPreview } from 'components/Blog'
-import { initializeApollo } from 'lib/apollo-client'
+import { initializeApollo } from "lib/apollo-client"
+import { GET_POSTS } from "lib/gql"
 
 const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
   /** TODO:
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   // TODO: Add pagination...
   const {
-    data: { posts }
+    data: { posts },
   } = await apolloClient.query({ query: GET_POSTS })
 
   const featuredPost: IBlogFeature = posts?.data.filter(
@@ -67,8 +67,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: restPosts,
-      featuredPost: featuredPost ? { ...featuredPost } : null
-    }
+      featuredPost: featuredPost ? { ...featuredPost } : null,
+    },
   }
 }
 

@@ -1,10 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
+import dayjs from "dayjs"
 
-import { BlogImage } from 'components/Blog'
-import Button from 'components/Button'
-import { IBlogFeature } from 'lib/types'
-import dayjs from 'dayjs'
+import { IBlogFeature } from "types/blog-types"
+import { BlogImage } from "components/Blog"
+import Button from "components/Button"
 
 const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
   const { slug, title, description, cover, createdAt } = attributes
@@ -35,7 +35,7 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
       </div>
 
       <h3 className="text-neutral-700 dark:text-slate-300">
-        {dayjs(createdAt).format('MMM, YYYY — dddd [@] h:mm A')}
+        {dayjs(createdAt).format("MMM, YYYY — dddd [@] h:mm A")}
       </h3>
       <p className="mt-2 dark:text-neutral-300 text-neutral-600">
         {description}

@@ -1,16 +1,16 @@
-import Image from 'next/image'
-import React from 'react'
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import clsx from "clsx"
 
-import { IBlogImage } from 'lib/types'
-import Link from 'next/link'
-import clsx from 'clsx'
+import { IBlogImage } from "types/blog-types"
 
 const BlogImage: React.FC<IBlogImage> = ({
   url,
   fill = true,
-  alt = 'placeholder',
+  alt = "placeholder",
   className: extraStyles,
-  linkTo
+  linkTo,
 }) => {
   const imageComponent = (
     <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96">
@@ -18,7 +18,7 @@ const BlogImage: React.FC<IBlogImage> = ({
         src={url}
         fill={fill}
         alt={alt}
-        className={clsx(extraStyles, 'rounded-lg shadow-lg')}
+        className={clsx(extraStyles, "rounded-lg shadow-lg")}
       />
     </div>
   )

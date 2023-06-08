@@ -1,5 +1,5 @@
-import BlogImage from './BlogImage'
-import BlogFeature from './BlogFeature'
-import BlogPreview from './BlogPreview'
+import BlogFeature from "./BlogFeature"
+import BlogImage from "./BlogImage"
+import BlogPreview from "./BlogPreview"
 
 export { BlogImage, BlogFeature, BlogPreview }

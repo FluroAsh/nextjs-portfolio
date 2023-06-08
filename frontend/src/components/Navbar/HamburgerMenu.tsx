@@ -1,22 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
-import clsx from 'clsx'
-
-import { faBars, faClose } from '@fortawesome/pro-solid-svg-icons'
+import React, { useEffect, useRef, useState } from "react"
+import Link from "next/link"
+import { faBars, faClose } from "@fortawesome/pro-solid-svg-icons"
 import {
   FontAwesomeIcon,
-  FontAwesomeIconProps
-} from '@fortawesome/react-fontawesome'
-import { NAV_LINKS } from './Navbar'
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome"
+import clsx from "clsx"
+
+import { NAV_LINKS } from "./Navbar"
 
 interface IHamburgerMenu {
   className?: string
-  iconSize?: FontAwesomeIconProps['size']
+  iconSize?: FontAwesomeIconProps["size"]
 }
 
 const HamburgerMenu: React.FC<IHamburgerMenu> = ({
   className: extraStyles,
-  iconSize = 'xl'
+  iconSize = "xl",
 }) => {
   const [open, setOpen] = useState<boolean>(false)
   const drawerRef = useRef<HTMLDivElement>(null)
@@ -29,7 +29,7 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
     isIcon ? setOpen(!open) : setOpen(false)
 
     // disable scrolling
-    document?.body && document?.body?.classList.toggle('overflow-hidden')
+    document?.body && document?.body?.classList.toggle("overflow-hidden")
   }
 
   useEffect(() => {
@@ -39,16 +39,16 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
 
       if (clickedOutside) {
         setOpen(false)
-        document?.body && document?.body?.classList.remove('overflow-hidden')
+        document?.body && document?.body?.classList.remove("overflow-hidden")
       }
     }
 
-    document.addEventListener('click', handleOutsideClick)
-    return () => document.removeEventListener('click', handleOutsideClick)
+    document.addEventListener("click", handleOutsideClick)
+    return () => document.removeEventListener("click", handleOutsideClick)
   }, [drawerRef])
 
   return (
-    <div className={clsx(extraStyles, 'min-w-[24px]')}>
+    <div className={clsx(extraStyles, "min-w-[24px]")}>
       {open ? (
         <FontAwesomeIcon
           icon={faClose}
@@ -68,8 +68,8 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
       <div
         id="menu-drawer"
         className={clsx(
-          open && 'translate-x-full',
-          'absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-navbar-height -left-80 -h-navbar transition-transform duration-300 z-40 shadow-lg xs:-left-full xs:w-screen'
+          open && "translate-x-full",
+          "absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-navbar-height -left-80 -h-navbar transition-transform duration-300 z-40 shadow-lg xs:-left-full xs:w-screen"
         )}
         ref={drawerRef}
       >
@@ -91,8 +91,8 @@ const HamburgerMenu: React.FC<IHamburgerMenu> = ({
       <div
         id="drawer-bg"
         className={clsx(
-          open ? 'block' : 'hidden',
-          'xs:hidden absolute top-navbar-height left-0 w-screen -h-navbar dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30'
+          open ? "block" : "hidden",
+          "xs:hidden absolute top-navbar-height left-0 w-screen -h-navbar dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30"
         )}
       ></div>
     </div>
