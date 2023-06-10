@@ -2,12 +2,12 @@ import React from "react"
 
 import Layout from "components/layout"
 
-const About = () => {
+const Mission = () => {
   return (
     <Layout type="basic">
-      <div>About</div>
+      <div>Mission</div>
     </Layout>
   )
 }
 
-export default About
+export default Mission

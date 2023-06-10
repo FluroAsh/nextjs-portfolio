@@ -12,13 +12,13 @@ type HomeProps = HeroBannerProps
 const Home: React.FC<HomeProps> = ({ imageProps }) => {
   return (
     <div>
-      {/* TODO: Fixup layout so HeroBanner can have 100% width without being outside... */}
-      <HeroBanner imageProps={imageProps} />
-      {/* Skils scrolling section */}
-      {/*  */}
-
       <Layout type="basic">
-        <section id="about-info">
+        <HeroBanner imageProps={imageProps} />
+
+        {/* Skils scrolling section */}
+        {/*  */}
+
+        <section id="about-info" className="max-w-screen-xl mx-auto">
           <h1 className="text-2xl ">Test</h1>
 
           {/* TODO: List thumbnails/Basic info of Blog Posts here */}
@@ -85,17 +85,17 @@ const Home: React.FC<HomeProps> = ({ imageProps }) => {
           </div>
         </section>
 
-        <div className="mt-3 text-white h-28 bg-slate-500 w-100">
-          Want to learn something new about the latest tech? Check out my blog!
-        </div>
+        <section id="projects" className="max-w-screen-xl mx-auto">
+          <h1 className="text-2xl ">Projects</h1>
+        </section>
 
-        <div className="mt-3 text-white h-28 bg-slate-500 w-100">
-          Skills Section
-        </div>
-
-        <div className="mt-3 text-white h-28 bg-slate-500 w-100">
-          Past Projects
-        </div>
+        <section id="projects" className="max-w-screen-xl mx-auto">
+          
+        </section>
+        
+        <section id="projects" className="max-w-screen-xl mx-auto">
+          
+        </section>
       </Layout>
     </div>
   )

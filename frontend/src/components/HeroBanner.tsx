@@ -16,7 +16,7 @@ export const HeroBanner = ({
   imageProps: { url, width, height, alternativeText },
 }: HeroBannerProps) => {
   return (
-    <div className="relative px-6 pt-6 mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
+    <div className="relative w-full px-6 pt-6 mx-auto mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
       <div className="flex flex-col items-center justify-center w-full md:flex-row md:items-end">
         <div
           id="img-wrapper"

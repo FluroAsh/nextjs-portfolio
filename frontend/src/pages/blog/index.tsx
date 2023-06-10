@@ -28,7 +28,7 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
         <title>Latest Posts</title>
       </Head>
 
-      <div>
+      <div className="max-w-screen-lg px-5 mx-auto">
         <header className="py-4 border-b dark:border-slate-500 border-orange-300/50">
           <div className="text-4xl">Latest</div>
           <span className="dark:text-slate-300 text-neutral-600">

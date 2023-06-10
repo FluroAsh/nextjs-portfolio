@@ -46,7 +46,7 @@ const BlogPost: React.FC<IPost> = ({
         <script async src="https://cdn.jsdelivr.net/npm/highlight.js" />
       </Head>
 
-      <header className="w-full">
+      <header className="w-full max-w-screen-lg px-5">
         <div className="py-5 border-b border-orange-300 dark:border-slate-500">
           <Button
             title="Back to Blog"
@@ -81,7 +81,7 @@ const BlogPost: React.FC<IPost> = ({
       {/* REVIEW: Refactoring to use MDX over CMS Markdown */}
       {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks */}
       <article
-        className="w-full max-w-full mt-5 prose md:w-11/12 dark:prose-invert dark:prose-dark"
+        className="max-w-screen-lg px-5 pt-5 mx-auto prose md:w-11/12 dark:prose-invert dark:prose-dark"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>

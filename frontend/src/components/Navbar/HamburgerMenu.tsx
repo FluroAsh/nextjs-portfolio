@@ -9,12 +9,12 @@ import clsx from "clsx"
 
 import { NAV_LINKS } from "./Navbar"
 
-interface IHamburgerMenu {
+interface HamburgerMenuProps {
   className?: string
   iconSize?: FontAwesomeIconProps["size"]
 }
 
-const HamburgerMenu: React.FC<IHamburgerMenu> = ({
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   className: extraStyles,
   iconSize = "xl",
 }) => {
