@@ -2,69 +2,69 @@
 
 const preStyle = (theme, type) => {
   const defaults = {
-    borderRadius: theme('borderRadius.md'),
-    borderWidth: theme('borderWidth.2'),
+    borderRadius: theme("borderRadius.md"),
+    borderWidth: theme("borderWidth.2"),
     /** Remove Prose defaults */
     backgroundColor: null,
     paddingLeft: null,
     paddingRight: null,
     paddingTop: null,
-    paddingBottom: null
+    paddingBottom: null,
   }
 
   const light = {
     ...defaults,
-    borderColor: 'transparent',
-    boxShadow: theme('boxShadow.lg')
+    borderColor: "transparent",
+    boxShadow: theme("boxShadow.lg"),
   }
   const dark = {
     ...defaults,
-    boxShadow: theme('boxShadow.md'),
-    borderColor: 'hsla(218, 13%, 40%, 0.5)' // equivalent to slate.500/50
+    boxShadow: theme("boxShadow.md"),
+    borderColor: "hsla(218, 13%, 40%, 0.5)", // equivalent to slate.500/50
   }
 
-  return type === 'dark' ? dark : light
+  return type === "dark" ? dark : light
 }
 
 const h1AnchorStyle = {
-  '> a': {
-    color: 'inherit',
-    borderBottom: '2px solid transparent',
-    paddingBottom: '3px',
-    transition: '150ms color, border-color ease-in-out',
+  "> a": {
+    color: "inherit",
+    borderBottom: "2px solid transparent",
+    paddingBottom: "3px",
+    transition: "150ms color, border-color ease-in-out",
 
-    '&:hover': {
-      borderBottom: '2px solid currentColor'
-    }
-  }
+    "&:hover": {
+      borderBottom: "2px solid currentColor",
+    },
+  },
 }
 
 module.exports = {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
-    './src/app/**/*.{js,ts,jsx,tsx}',
-    './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}'
+    "./src/app/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       screens: {
-        xs: { max: '400px' }
+        xs: { max: "400px" },
       },
       colors: {
         dark: {
           background: {
-            primary: '#2d373c'
-          }
-        }
+            primary: "#2d373c",
+          },
+        },
       },
       spacing: {
-        'navbar-height': 'var(--navbar-height)',
-        'logo-spacing': 'calc(50vw - 80px)'
+        "navbar-height": "var(--navbar-height)",
+        "logo-spacing": "calc(50vw - 80px)",
       },
       height: {
-        '-navbar': 'calc(100vh - var(--navbar-height))',
-        navbar: 'var(--navbar-height)'
+        "-navbar": "calc(100vh - var(--navbar-height))",
+        navbar: "var(--navbar-height)",
       },
       /** Used mainly for the blog/[slug] prose CSS */
       typography: ({ theme }) => ({
@@ -72,47 +72,47 @@ module.exports = {
           css: {
             h1: h1AnchorStyle,
             a: {
-              transition: '150ms color ease-in-out',
-              textDecoration: 'none',
-              color: theme('colors.orange.400'),
-              '&:hover': {
-                color: theme('colors.orange.600')
-              }
+              transition: "150ms color ease-in-out",
+              textDecoration: "none",
+              color: theme("colors.orange.400"),
+              "&:hover": {
+                color: theme("colors.orange.600"),
+              },
             },
             h1: {
-              marginBottom: theme('spacing.4')
+              marginBottom: theme("spacing.4"),
             },
-            pre: preStyle(theme, 'light')
-          }
+            pre: preStyle(theme, "light"),
+          },
         },
         dark: {
           css: {
             h1: h1AnchorStyle,
             a: {
-              transition: '150ms color ease-in-out',
-              textDecoration: 'none',
-              color: theme('colors.sky.500'),
-              '&:hover': {
-                color: theme('colors.sky.600')
-              }
+              transition: "150ms color ease-in-out",
+              textDecoration: "none",
+              color: theme("colors.sky.500"),
+              "&:hover": {
+                color: theme("colors.sky.600"),
+              },
             },
-            pre: preStyle(theme, 'dark')
-          }
-        }
+            pre: preStyle(theme, "dark"),
+          },
+        },
       }),
       keyframes: {
-        'back-and-forth': {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-8px)' }
-        }
+        "back-and-forth": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-8px)" },
+        },
       },
       animation: {
-        'back-and-forth': 'back-and-forth 1s ease-in-out infinite alternate'
-      }
-    }
+        "back-and-forth": "back-and-forth 1s ease-in-out infinite alternate",
+      },
+    },
   },
   variants: {
-    extend: { typography: ['dark'] }
+    extend: { typography: ["dark"] },
   },
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [require("@tailwindcss/typography")],
 }
