@@ -6,6 +6,8 @@ import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
 import { unified } from "unified"
 
+import { AnchorLink } from "./AnchorLink"
+
 /** Serialize Markdown into HTML
  * - [remarkParse](https://github.com/remarkjs/remark/tree/main/packages/remark-parse): Parse Markdown into an AST
  * - [remarkRehype](https://github.com/remarkjs/remark-rehype): Transform Markdown AST into HTML AST
@@ -19,8 +21,11 @@ export async function markdownToHtml(markdown: string) {
     .use(remarkRehype)
     .use(rehypeSlug) // generate IDs for headings
     .use(rehypeAutoLinkHeadings, {
-      behavior: "wrap",
-      // content: { type: 'text', value: ' #' } // TODO: Add 'permalink' icon
+      behavior: "append",
+      content: {
+        type: "text",
+        value: "#",
+      },
     } as Options)
     .use(rehypeHighlight) // snytax highlighting
     .use(rehypeStringify)

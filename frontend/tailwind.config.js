@@ -32,13 +32,14 @@ const h1AnchorStyle = {
   scrollMarginTop: "calc(var(--navbar-height) + 10px)",
 
   "> a": {
-    color: "inherit",
-    borderBottom: "2px solid transparent",
-    paddingBottom: "3px",
-    transition: "150ms color, border-color ease-in-out",
+    position: "relative",
+    top: "1px",
+    transition: "opacity 150ms ease-out",
+    opacity: "100%",
+    marginLeft: "8px",
 
     "&:hover": {
-      borderBottom: "2px solid currentColor",
+      opacity: "50%",
     },
   },
 }

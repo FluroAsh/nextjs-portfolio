@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { GetStaticProps } from "next"
 
 import { HeroBanner, HeroBannerProps } from "components/HeroBanner"
@@ -13,7 +14,9 @@ const Home: React.FC<HomeProps> = ({ imageProps }) => {
   return (
     <div>
       <Layout type="basic">
-        <HeroBanner imageProps={imageProps} />
+        <Suspense fallback={<div className="w-full">Image Loading...</div>}>
+          <HeroBanner imageProps={imageProps} />
+        </Suspense>
 
         <div className="px-5">
           <section id="about-info" className="max-w-screen-xl mx-auto">
