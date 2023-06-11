@@ -10,7 +10,7 @@ const preStyle = (theme, type) => {
     paddingRight: null,
     paddingTop: null,
     paddingBottom: null,
-    maxWidth: "fit-content",
+    maxWidth: "100%",
     overflowX: "auto",
   }
 
@@ -32,13 +32,15 @@ const h1AnchorStyle = {
   scrollMarginTop: "calc(var(--navbar-height) + 10px)",
 
   "> a": {
-    color: "inherit",
-    borderBottom: "2px solid transparent",
-    paddingBottom: "3px",
-    transition: "150ms color, border-color ease-in-out",
+    position: "relative",
+    top: "1px",
+    transition: "opacity 150ms ease-out",
+    opacity: "100%",
+    marginLeft: "8px",
 
     "&:hover": {
-      borderBottom: "2px solid currentColor",
+      opacity: "50%",
+      textDecoration: "none",
     },
   },
 }
@@ -81,6 +83,7 @@ module.exports = {
               color: theme("colors.orange.400"),
               "&:hover": {
                 color: theme("colors.orange.600"),
+                textDecoration: "underline",
               },
             },
             h1: {
@@ -98,6 +101,7 @@ module.exports = {
               color: theme("colors.sky.500"),
               "&:hover": {
                 color: theme("colors.sky.600"),
+                textDecoration: "underline",
               },
             },
             pre: preStyle(theme, "dark"),

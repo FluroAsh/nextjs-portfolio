@@ -19,8 +19,11 @@ export async function markdownToHtml(markdown: string) {
     .use(remarkRehype)
     .use(rehypeSlug) // generate IDs for headings
     .use(rehypeAutoLinkHeadings, {
-      behavior: "wrap",
-      // content: { type: 'text', value: ' #' } // TODO: Add 'permalink' icon
+      behavior: "append",
+      content: {
+        type: "text",
+        value: "#",
+      },
     } as Options)
     .use(rehypeHighlight) // snytax highlighting
     .use(rehypeStringify)
