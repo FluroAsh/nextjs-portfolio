@@ -10,6 +10,8 @@ const preStyle = (theme, type) => {
     paddingRight: null,
     paddingTop: null,
     paddingBottom: null,
+    maxWidth: "fit-content",
+    overflowX: "auto",
   }
 
   const light = {
@@ -27,6 +29,8 @@ const preStyle = (theme, type) => {
 }
 
 const h1AnchorStyle = {
+  scrollMarginTop: "calc(var(--navbar-height) + 20px)",
+
   "> a": {
     color: "inherit",
     borderBottom: "2px solid transparent",

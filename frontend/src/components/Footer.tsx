@@ -1,16 +1,15 @@
-import React, { forwardRef } from "react"
-
-export const Footer = forwardRef<HTMLDivElement>((_props, ref) => {
+export const Footer = () => {
   return (
-    <div ref={ref}>
-      <footer className="flex justify-center border-t border-orange-300 bg-orange-300/50 dark:bg-sky-700 dark:border-sky-900">
-        <div className="w-screen max-w-screen-xl p-3 text-center ">
-          Footer Placeholder &gt; Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Quas quae eaque laboriosam quam veritatis similique
-          optio? Magnam omnis asperiores, velit excepturi incidunt cum fugiat
-          adipisci nam recusandae ea accusamus corrupti!
+    <footer className="flex flex-col items-center p-3 mt-2 border-t border-orange-300 bg-orange-300/50 dark:bg-sky-700 dark:border-sky-900">
+      <div className="flex items-center justify-center my-2">
+        <div className="mr-5 text-xl">Ashley Thompson</div>
+        <div className="flex items-center justify-center gap-5">
+          <div className="flex items-center ">Twitter</div>
+          <div className="flex items-center ">LinkedIn</div>
+          <div className="flex items-center ">GitHub</div>
         </div>
-      </footer>
-    </div>
+      </div>
+      <div className="text-slate-300">All rights reserved © 2023</div>
+    </footer>
   )
-})
+}

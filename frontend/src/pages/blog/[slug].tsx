@@ -81,7 +81,7 @@ const BlogPost: React.FC<IPost> = ({
       {/* REVIEW: Refactoring to use MDX over CMS Markdown */}
       {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks */}
       <article
-        className="max-w-screen-lg px-5 pt-5 mx-auto prose md:w-11/12 dark:prose-invert dark:prose-dark"
+        className="w-full max-w-screen-lg p-5 mx-auto prose md:w-11/12 dark:prose-invert dark:prose-dark"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>

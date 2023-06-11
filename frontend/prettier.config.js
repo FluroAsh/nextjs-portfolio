@@ -15,7 +15,7 @@ module.exports = {
     "^types/(.*)$",
     "^components/(.*)$",
     "^styles/(.*)$",
-    "^hooks/(.*)$",
+    "^hooks/?(.*)$",
     "",
     "^lib/(.*)$",
     "^utils/(.*)$",

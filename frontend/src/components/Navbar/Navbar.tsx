@@ -36,7 +36,6 @@ const Navbar = () => {
 
   return (
     <div
-      // TODO: Refactor this wrapper div to use sticky so we can have the correct index page UI & layout throughout the app.
       className={clsx(
         styles.container,
         "sticky z-50 top-0 w-screen transition-all border-b dark:border-b-slate-500/50 border-b-orange-300/50"
