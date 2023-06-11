@@ -17,7 +17,7 @@ import { GET_POST, GET_POST_SLUGS } from "lib/gql"
 import { markdownToHtml } from "lib/markdownToHtml"
 import { readingMinutes } from "utils/blog-utils"
 
-import "highlight.js/styles/Base16/Monokai.css"
+import "highlight.js/styles/base16/monokai.css"
 
 const BlogPost: React.FC<IPost> = ({
   title,
