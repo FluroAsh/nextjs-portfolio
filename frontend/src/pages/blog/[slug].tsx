@@ -79,7 +79,9 @@ const BlogPost: React.FC<IPost> = ({
       </header>
 
       {/* REVIEW: Refactoring to use MDX over CMS Markdown */}
-      {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks */}
+      {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks 
+      (Have a look into https://www.npmjs.com/package/markdown-to-jsx for HTML -> JSX Overrides -- custom code block/components anyone?)
+      */}
       <article
         className="w-full max-w-screen-lg p-5 mx-auto prose md:w-11/12 dark:prose-invert dark:prose-dark"
         dangerouslySetInnerHTML={{ __html: content }}
