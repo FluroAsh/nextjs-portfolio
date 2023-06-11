@@ -6,6 +6,15 @@ export interface IBlog {
   featuredPost: IBlogFeature
 }
 
+export interface IBlogImage {
+  url: string
+  fill?: boolean
+  alt?: string
+  placeholder?: string
+  className?: string
+  linkTo?: string
+}
+
 export interface IBlogFeature {
   id?: string
   attributes: IAttributes

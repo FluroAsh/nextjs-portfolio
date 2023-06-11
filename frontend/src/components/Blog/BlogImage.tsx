@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import clsx from "clsx"
 
-import { IBlogImage } from "types/blog-types"
+import type { IBlogImage } from "types/blog-types"
 
 const BlogImage: React.FC<IBlogImage> = ({
   url,
