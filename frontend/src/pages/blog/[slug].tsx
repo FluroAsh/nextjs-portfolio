@@ -43,7 +43,6 @@ const BlogPost: React.FC<IPost> = ({
     <Layout type="blog">
       <Head>
         <title>{title}</title>
-        <script async src="https://cdn.jsdelivr.net/npm/highlight.js" />
       </Head>
 
       <header className="w-full max-w-screen-lg px-5">
@@ -83,7 +82,7 @@ const BlogPost: React.FC<IPost> = ({
       (Have a look into https://www.npmjs.com/package/markdown-to-jsx for HTML -> JSX Overrides -- custom code block/components anyone?)
       */}
       <article
-        className="w-full max-w-screen-lg p-5 mx-auto prose md:w-11/12 dark:prose-invert dark:prose-dark"
+        className="w-full max-w-screen-lg px-5 pt-5 mx-auto prose md:w-11/12 dark:prose-invert dark:prose-dark"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>

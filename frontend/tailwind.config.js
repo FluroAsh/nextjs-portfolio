@@ -29,7 +29,7 @@ const preStyle = (theme, type) => {
 }
 
 const h1AnchorStyle = {
-  scrollMarginTop: "calc(var(--navbar-height) + 20px)",
+  scrollMarginTop: "calc(var(--navbar-height) + 10px)",
 
   "> a": {
     color: "inherit",
