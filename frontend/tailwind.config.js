@@ -10,7 +10,7 @@ const preStyle = (theme, type) => {
     paddingRight: null,
     paddingTop: null,
     paddingBottom: null,
-    maxWidth: "fit-content",
+    maxWidth: "100%",
     overflowX: "auto",
   }
 
@@ -40,6 +40,7 @@ const h1AnchorStyle = {
 
     "&:hover": {
       opacity: "50%",
+      textDecoration: "none",
     },
   },
 }
@@ -82,6 +83,7 @@ module.exports = {
               color: theme("colors.orange.400"),
               "&:hover": {
                 color: theme("colors.orange.600"),
+                textDecoration: "underline",
               },
             },
             h1: {
@@ -99,6 +101,7 @@ module.exports = {
               color: theme("colors.sky.500"),
               "&:hover": {
                 color: theme("colors.sky.600"),
+                textDecoration: "underline",
               },
             },
             pre: preStyle(theme, "dark"),
