@@ -6,8 +6,6 @@ import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
 import { unified } from "unified"
 
-import { AnchorLink } from "./AnchorLink"
-
 /** Serialize Markdown into HTML
  * - [remarkParse](https://github.com/remarkjs/remark/tree/main/packages/remark-parse): Parse Markdown into an AST
  * - [remarkRehype](https://github.com/remarkjs/remark-rehype): Transform Markdown AST into HTML AST
