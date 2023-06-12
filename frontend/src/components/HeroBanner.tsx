@@ -15,8 +15,8 @@ export const HeroBanner = ({
   imageProps: { url, width, height, alternativeText },
 }: HeroBannerProps) => {
   return (
-    <div className="relative w-full px-6 pt-6 mx-auto mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
-      <div className="flex flex-col items-center justify-center w-full md:flex-row md:items-end">
+    <div className="relative flex justify-center px-6 pt-6 mx-auto mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
+      <div className="flex justify-center w-full max-w-screen-xl md:flex-row md:items-end">
         <div
           id="img-wrapper"
           className="flex overflow-hidden rounded-full shadow-lg md:overflowborder border-orange-500/50 dark:border-2 md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none dark:border-slate-300 bg-dark-background-primary bg-gradient-to-tr from-orange-200 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary md:bg-none bg-inherit"
@@ -56,7 +56,7 @@ export const HeroBanner = ({
         {/* -- DESKTOP --  */}
         <div
           id="large-hero"
-          className="relative hidden w-1/2 max-w-2xl pb-12 my-auto ml-6 md:block"
+          className="relative hidden w-1/2 max-w-2xl pb-12 mx-6 my-auto md:block"
         >
           {/* TODO: Add proper FA caret icon & format text */}
           <h1 className="absolute top-0 text-3xl text-slate-900/50 -left-24 dark:text-slate-300/40 drop-shadow-sm">

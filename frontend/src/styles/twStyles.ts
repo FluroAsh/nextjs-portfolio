@@ -46,9 +46,11 @@ export const pre = (theme: any, type: "dark" | "light") => {
 export const commonStyles = {
   h1: h1Anchor,
   a: {
-    transition: "150ms color ease-in-out",
+    transition: "150ms opacity ease-in-out",
+    opacity: "100%",
     textDecoration: "none",
     "&:hover": {
+      opacity: "50%",
       textDecoration: "underline",
     },
   },
