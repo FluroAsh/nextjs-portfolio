@@ -16,10 +16,12 @@ export const HeroBanner = ({
 }: HeroBannerProps) => {
   return (
     <div className="relative flex justify-center px-6 pt-6 mx-auto mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
-      <div className="flex justify-center w-full max-w-screen-xl md:flex-row md:items-end">
+      <div className="flex flex-col items-center justify-center w-full max-w-screen-xl md:flex-row md:items-end">
         <div
           id="img-wrapper"
-          className="flex overflow-hidden rounded-full shadow-lg md:overflowborder border-orange-500/50 dark:border-2 md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none dark:border-slate-300 bg-dark-background-primary bg-gradient-to-tr from-orange-200 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary md:bg-none bg-inherit"
+          className="flex max-w-[470px] overflow-hidden rounded-full shadow-lg border-orange-500/50 bg-dark-background-primary bg-gradient-to-tr from-orange-200
+          dark:border-2 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary dark:border-slate-300
+          md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none md:bg-none bg-inherit"
         >
           {/* Eager loading required for some reason here when overflow-hidden is enabled...
           NextJS/Tailwind doesn't like the image to be lazily loaded for some reason. */}
