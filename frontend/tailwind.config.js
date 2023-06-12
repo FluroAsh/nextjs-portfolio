@@ -1,49 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-
-const preStyle = (theme, type) => {
-  const defaults = {
-    borderRadius: theme("borderRadius.md"),
-    borderWidth: theme("borderWidth.2"),
-    /** Remove Prose defaults */
-    backgroundColor: null,
-    paddingLeft: null,
-    paddingRight: null,
-    paddingTop: null,
-    paddingBottom: null,
-    maxWidth: "100%",
-    overflowX: "auto",
-  }
-
-  const light = {
-    ...defaults,
-    borderColor: "transparent",
-    boxShadow: theme("boxShadow.lg"),
-  }
-  const dark = {
-    ...defaults,
-    boxShadow: theme("boxShadow.md"),
-    borderColor: "hsla(218, 13%, 40%, 0.5)", // equivalent to slate.500/50
-  }
-
-  return type === "dark" ? dark : light
-}
-
-const h1AnchorStyle = {
-  scrollMarginTop: "calc(var(--navbar-height) + 10px)",
-
-  "> a": {
-    position: "relative",
-    top: "1px",
-    transition: "opacity 150ms ease-out",
-    opacity: "100%",
-    marginLeft: "8px",
-
-    "&:hover": {
-      opacity: "50%",
-      textDecoration: "none",
-    },
-  },
-}
+import * as twS from "./src/styles/twStyles"
 
 module.exports = {
   darkMode: "class",
@@ -72,39 +28,25 @@ module.exports = {
         "-navbar": "calc(100vh - var(--navbar-height))",
         navbar: "var(--navbar-height)",
       },
-      /** Used mainly for the blog/[slug] prose CSS */
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            h1: h1AnchorStyle,
+            h1: twS.h1Anchor,
             a: {
-              transition: "150ms color ease-in-out",
-              textDecoration: "none",
+              ...twS.commonStyles.a,
               color: theme("colors.orange.400"),
-              "&:hover": {
-                color: theme("colors.orange.600"),
-                textDecoration: "underline",
-              },
             },
-            h1: {
-              marginBottom: theme("spacing.4"),
-            },
-            pre: preStyle(theme, "light"),
+            pre: twS.pre(theme, "light"),
           },
         },
         dark: {
           css: {
-            h1: h1AnchorStyle,
+            h1: twS.h1Anchor,
             a: {
-              transition: "150ms color ease-in-out",
-              textDecoration: "none",
+              ...twS.commonStyles.a,
               color: theme("colors.sky.500"),
-              "&:hover": {
-                color: theme("colors.sky.600"),
-                textDecoration: "underline",
-              },
             },
-            pre: preStyle(theme, "dark"),
+            pre: twS.pre(theme, "dark"),
           },
         },
       }),
