@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from "react"
 import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { THEME_DARK, THEME_LIGHT } from "constants/theme"
 import { useTheme } from "next-themes"
 
-const ThemeToggle = () => {
-  const [mounted, setMounted] = useState<boolean>(false)
-  const { theme, setTheme } = useTheme()
+import { useMounted } from "hooks"
 
+export enum Theme {
+  DARK = "dark",
+  LIGHT = "light",
+}
+
+const ThemeToggle = () => {
+  const { theme, setTheme } = useTheme()
   const isDark = theme === "dark"
 
   // After mount we have access to theme
-  useEffect(() => setMounted(true), [])
+  const mounted = useMounted()
 
   if (!mounted) {
     return null
   }
 
   const handleTheme = () =>
-    setTheme(theme === THEME_DARK ? THEME_LIGHT : THEME_DARK)
+    setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)
 
   return (
     <button className="relative" onClick={handleTheme}>
