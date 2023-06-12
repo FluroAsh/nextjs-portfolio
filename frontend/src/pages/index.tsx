@@ -14,6 +14,7 @@ const Home: React.FC<HomeProps> = ({ imageProps }) => {
   return (
     <div>
       <Layout type="basic">
+        {/* TODO: Confirm if this correct/working */}
         <Suspense fallback={<div className="w-full">Image Loading...</div>}>
           <HeroBanner imageProps={imageProps} />
         </Suspense>
