@@ -25,7 +25,12 @@ type ImageMimes =
   | "image/gif"
   | "image/avif"
 
-type formatName = "large" | "medium" | "small" | "thumbnail"
+export enum formatName {
+  LARGE = "large",
+  MEDIUM = "medium",
+  SMALL = "small",
+  THUMBNAIL = "thumbnail",
+}
 
 // Mapped type, as we can't achieve this with an interface
 export type Formats = {

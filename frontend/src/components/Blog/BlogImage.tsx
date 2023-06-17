@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image"
 import Link from "next/link"
 import clsx from "clsx"
 
 import type { IBlogImage } from "types/blog-types"
+
+import { checkImgFormats } from "utils/blog-utils"
 
 const BlogImage: React.FC<IBlogImage> = ({
   alt = "placeholder",
@@ -12,8 +13,10 @@ const BlogImage: React.FC<IBlogImage> = ({
   featured,
   formats,
 }) => {
+  checkImgFormats(formats)
+
   // TODO: Add a blur JS placeholder using thumbnail (5ish kb)
-  const { large, medium, small, thumbnail } = formats
+  const { large, medium, small, thumbnail } = formats ?? {}
 
   const imageComponent = (
     <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96 overflow-hidden rounded-lg shadow-lg group">

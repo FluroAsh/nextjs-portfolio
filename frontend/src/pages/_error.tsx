@@ -1,4 +1,3 @@
-import React from "react"
 import { NextApiResponse } from "next"
 import Link from "next/link"
 import { ERROR_MAP } from "constants/errors"

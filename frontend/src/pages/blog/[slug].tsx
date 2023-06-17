@@ -37,6 +37,8 @@ const BlogPost: React.FC<PostProps> = ({
     )
   }
 
+  console.log(formats)
+
   const stats = readingTime(content)
 
   return (
