@@ -11,7 +11,7 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
       id="featured-post"
       className="pb-4 border-b dark:border-slate-500 border-orange-300/50"
     >
-      <div className="relative my-4 ">
+      <div className="relative my-4">
         <BlogImage
           // REVIEW: Should get a list of responsive URL's, and add to sizes prop?
           url={cover.data.attributes.url}
