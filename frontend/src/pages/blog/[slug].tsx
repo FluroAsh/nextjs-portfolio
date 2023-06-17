@@ -51,7 +51,7 @@ const BlogPost: React.FC<IPost> = ({
             title="Back to Blog"
             href="/blog"
             type="back"
-            className="text-orange-400 transition-colors duration-150 group/button hover:text-orange-600 dark:text-slate-500 dark:hover:text-white"
+            className="text-orange-400 transition-colors group/button hover:text-orange-600 dark:text-slate-500 dark:hover:text-white"
           >
             <FontAwesomeIcon
               icon={faArrowLeftLong}

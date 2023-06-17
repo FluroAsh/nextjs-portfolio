@@ -34,7 +34,7 @@ export const HeroBanner = () => {
             to learn some more tricks, check out my{" "}
             <Link
               href="/blog"
-              className="text-orange-400 transition duration-150 hover:text-orange-500 dark:text-sky-500 dark:hover:text-sky-600"
+              className="text-orange-400 transition hover:text-orange-500 dark:text-sky-500 dark:hover:text-sky-600"
             >
               blog.
             </Link>

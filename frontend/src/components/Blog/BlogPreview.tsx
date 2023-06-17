@@ -11,7 +11,7 @@ const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <Link
         href={`/blog/${slug}`}
-        className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-600"
+        className="transition hover:text-orange-500 hover:dark:text-sky-600"
       >
         <h2 className="text-3xl">{title}</h2>
       </Link>

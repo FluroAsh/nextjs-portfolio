@@ -16,12 +16,12 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
         // TODO: Remove fill and add responsive image sizes with formats prop
         fill
         linkTo={`blog/${slug}`}
-        className="object-cover"
+        className="object-cover transition-['filter'] hover:brightness-75 duration-300"
       />
 
       <Button
         href={`blog/${slug}`}
-        className="transition duration-150 hover:text-orange-500 hover:dark:text-sky-600"
+        className="transition hover:text-orange-500 hover:dark:text-sky-600"
         type="text"
       >
         <h2 className="mt-4 text-3xl">{title}</h2>
