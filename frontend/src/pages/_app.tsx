@@ -12,13 +12,18 @@ import "../styles/globals.css"
 
 function BlogApp({ Component, pageProps }: AppProps) {
   return (
-    <ErrorBoundary fallback={<FourZeroFour />}>
-      <ThemeProvider attribute="class" defaultTheme="dark">
-        <ApolloProvider>
-          <Component {...pageProps} />
-        </ApolloProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <ErrorBoundary fallback={<FourZeroFour />}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <ApolloProvider>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
+    </>
   )
 }
 

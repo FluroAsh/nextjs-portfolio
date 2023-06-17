@@ -8,3 +8,7 @@
 # Local History for Visual Studio Code
 .history/
 .vercel
+trace
+.tsbuildinfo
+.next/**/*
+node_modules
