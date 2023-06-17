@@ -1,0 +1,6 @@
+{
+  "buildpacks": [
+    "https://github.com/timanovsky/subdir-heroku-buildpack",
+    "heroku/nodejs"
+  ]
+}
