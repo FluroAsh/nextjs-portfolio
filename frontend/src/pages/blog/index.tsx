@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { GetStaticProps } from "next"
 import Head from "next/head"
-import Link from "next/link"
 
 import { IBlog, IBlogFeature, IPostsData } from "types/blog-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
@@ -57,11 +56,11 @@ export const getStaticProps: GetStaticProps = async () => {
   } = await apolloClient.query({ query: GET_POSTS })
 
   const featuredPost: IBlogFeature = posts?.data.filter(
-    (post: IBlogFeature) => post.attributes.isFeatured === true
+    (post: IBlogFeature) => post.attributes.isFeatured
   )[0]
 
   const restPosts: IPostsData[] = posts?.data.filter(
-    (post: IPostsData) => post.attributes.isFeatured !== true
+    (post: IPostsData) => !post.attributes.isFeatured
   )
 
   return {

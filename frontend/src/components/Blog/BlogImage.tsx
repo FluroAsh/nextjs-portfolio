@@ -16,7 +16,7 @@ const BlogImage: React.FC<IBlogImage> = ({
     <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96 overflow-hidden rounded-lg shadow-lg group">
       <Image src={url} fill={fill} alt={alt} className={clsx(extraStyles)} />
       {featured && (
-        <div className="absolute top-0 left-0 px-4 py-1 text-sm font-semibold text-orange-200 uppercase transition bg-orange-600 rounded-br-lg pointer-events-none dark:bg-sky-600 group-hover:opacity-80">
+        <div className="absolute top-0 left-0 px-4 py-1 text-sm font-semibold text-orange-200 uppercase transition bg-orange-600 border-b border-r rounded-br-lg pointer-events-none dark:bg-sky-600 group-hover:opacity-80 dark:border-slate-500/50 border-orange-300/50">
           featured
         </div>
       )}
