@@ -6,6 +6,7 @@ import Button from "components/Button"
 
 const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
   const { slug, title, description, cover, createdAt } = attributes
+
   return (
     <div
       id="featured-post"
@@ -13,13 +14,11 @@ const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
     >
       <div className="relative my-4">
         <BlogImage
-          // REVIEW: Should get a list of responsive URL's, and add to sizes prop?
-          url={cover.data.attributes.url}
           alt={cover.data.attributes.alternativeText}
-          fill
           featured
           linkTo={`blog/${slug}`}
-          className="object-cover transition duration-300 hover:brightness-75"
+          formats={cover.data.attributes.formats}
+          className="transition duration-300 hover:brightness-75"
         />
       </div>
 

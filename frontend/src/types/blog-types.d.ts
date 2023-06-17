@@ -1,4 +1,4 @@
-import type { IAttributes } from "./api-types"
+import type { FormatProps, Formats, IAttributes } from "./api-types"
 
 /** COMPONENT TYPES */
 export interface IBlog {
@@ -7,13 +7,13 @@ export interface IBlog {
 }
 
 export interface IBlogImage {
-  url: string
-  fill?: boolean
-  alt?: string
+  sourceUrl?: string
+  alt: string
   placeholder?: string
   className?: string
   linkTo?: string
   featured?: boolean
+  formats: Formats
 }
 
 export interface IBlogFeature {
@@ -25,7 +25,7 @@ export interface IBlogPreview {
   attributes: IAttributes
 }
 
-export interface IPost {
+export interface PostProps {
   title: string
   slug: string
   description: string
@@ -33,6 +33,7 @@ export interface IPost {
   url: string
   createdAt: string
   alternativeText: string
+  formats: Formats
 }
 
 /** DATA TYPES */

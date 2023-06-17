@@ -25,7 +25,7 @@ type ImageMimes =
   | "image/gif"
   | "image/avif"
 
-type formatName = "thumbnail" | "small" | "medium" | "large"
+type formatName = "large" | "medium" | "small" | "thumbnail"
 
 // Mapped type, as we can't achieve this with an interface
 export type Formats = {

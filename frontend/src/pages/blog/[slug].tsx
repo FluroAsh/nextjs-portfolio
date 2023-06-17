@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import dayjs from "dayjs"
 import readingTime from "reading-time"
 
-import { IPost } from "types/blog-types"
+import { PostProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
 import Layout from "components/layout"
@@ -19,12 +19,12 @@ import { readingMinutes } from "utils/blog-utils"
 
 import "highlight.js/styles/base16/monokai.css"
 
-const BlogPost: React.FC<IPost> = ({
+const BlogPost: React.FC<PostProps> = ({
   title,
   content,
-  url,
   createdAt,
   alternativeText,
+  formats,
 }) => {
   const router = useRouter()
 
@@ -68,12 +68,7 @@ const BlogPost: React.FC<IPost> = ({
         </div>
 
         <div className="pt-4">
-          <BlogImage
-            url={url}
-            alt={alternativeText}
-            // fill
-            className="object-cover object-center"
-          />
+          <BlogImage alt={alternativeText} formats={formats} />
         </div>
       </header>
 
@@ -114,9 +109,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       title,
       content,
-      url: cover?.data?.attributes?.url,
       createdAt,
       alternativeText: cover?.data?.attributes?.alternativeText,
+      formats: cover?.data?.attributes?.formats,
     },
     // Once a day
     revalidate: 86400,
