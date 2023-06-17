@@ -1,23 +1,11 @@
-import { Suspense } from "react"
-import { GetStaticProps } from "next"
-
-import { HeroBanner, HeroBannerProps } from "components/HeroBanner"
+import { HeroBanner } from "components/HeroBanner"
 import Layout from "components/layout"
 
-import { initializeApollo } from "lib/apollo-client"
-import { GET_PROFILE_IMAGE } from "lib/gql"
-
-/** Will extend this later once more staticProps are added... */
-type HomeProps = HeroBannerProps
-
-const Home: React.FC<HomeProps> = ({ imageProps }) => {
+const Home: React.FC = () => {
   return (
     <div>
       <Layout type="basic">
-        {/* TODO: Confirm if this correct/working */}
-        <Suspense fallback={<div className="w-full">Image Loading...</div>}>
-          <HeroBanner imageProps={imageProps} />
-        </Suspense>
+        <HeroBanner />
 
         <div className="px-5">
           <section id="about-info" className="max-w-screen-xl mx-auto">
@@ -82,18 +70,3 @@ const Home: React.FC<HomeProps> = ({ imageProps }) => {
 }
 
 export default Home
-
-export const getStaticProps: GetStaticProps = async () => {
-  const apolloClient = initializeApollo()
-
-  /** Image Props for hero-banner */
-  const { data: heroImageProps } = await apolloClient.query({
-    query: GET_PROFILE_IMAGE,
-  })
-
-  return {
-    props: {
-      imageProps: heroImageProps?.uploadFiles?.data[0]?.attributes,
-    },
-  }
-}

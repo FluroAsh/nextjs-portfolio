@@ -1,27 +1,5 @@
 import { gql } from "@apollo/client"
 
-// https://docs.strapi.io/dev-docs/api/graphql#filters
-export const GET_PROFILE_IMAGE = gql`
-  query getHeroImage {
-    uploadFiles(filters: { name: { contains: "hero-banner-avatar" } }) {
-      data {
-        id
-        attributes {
-          name
-          alternativeText
-          caption
-          formats
-          url
-          width
-          height
-          size
-          mime
-        }
-      }
-    }
-  }
-`
-
 export const GET_POSTS = gql`
   query getPosts {
     posts {

@@ -2,18 +2,7 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-export type HeroBannerProps = {
-  imageProps: {
-    url: string
-    alternativeText: string
-    width: number
-    height: number
-  }
-}
-
-export const HeroBanner = ({
-  imageProps: { url, width, height, alternativeText },
-}: HeroBannerProps) => {
+export const HeroBanner = () => {
   return (
     <div className="relative flex justify-center px-6 pt-6 mx-auto mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
       <div className="flex flex-col items-center justify-center w-full max-w-screen-xl md:flex-row md:items-end">
