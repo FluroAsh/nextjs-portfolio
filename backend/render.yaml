@@ -13,8 +13,8 @@ services:
         value: at-strapi-blog
       - key: AWS_REGION # Imported from Heroku app
         value: ap-southeast-2
-      - key: MY_HEROKU_URL # Imported from Heroku app
-        value: https://at-strapi-backend-api.herokuapp.com/
+      - key: RENDER_URL # Render Backend URL
+        value: https://nextjs-strapi-portfolio.onrender.com/
       - key: NODE_ENV # Imported from Heroku app
         value: production
       - key: PROJECT_PATH # Imported from Heroku app
