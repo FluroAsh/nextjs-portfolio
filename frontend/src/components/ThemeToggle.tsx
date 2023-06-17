@@ -35,6 +35,7 @@ const ThemeToggle = () => {
             icon={faSun}
             className="absolute top-[7.5px]"
             color="hsl(40, 100%, 50%)"
+            height={16}
           />
         ) : (
           <FontAwesomeIcon
@@ -42,6 +43,7 @@ const ThemeToggle = () => {
             icon={faMoon}
             className="absolute top-[7.5px]"
             color="hsl(0, 0%, 40%)"
+            height={16}
           />
         )}
       </div>

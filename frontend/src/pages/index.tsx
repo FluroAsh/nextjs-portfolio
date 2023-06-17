@@ -1,9 +1,14 @@
+import Head from "next/head"
+
 import { HeroBanner } from "components/HeroBanner"
 import Layout from "components/layout"
 
 const Home: React.FC = () => {
   return (
     <div>
+      <Head>
+        <title>Home</title>
+      </Head>
       <Layout type="basic">
         <HeroBanner />
 

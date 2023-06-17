@@ -1,5 +1,3 @@
-import React from "react"
-
 const Twitter = ({ className }: { className?: string }) => {
   return (
     <svg
