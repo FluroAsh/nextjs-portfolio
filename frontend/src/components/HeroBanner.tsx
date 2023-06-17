@@ -23,14 +23,11 @@ export const HeroBanner = ({
           dark:border-2 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary dark:border-slate-300
           md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none md:bg-none bg-inherit"
         >
-          {/* Eager loading required for some reason here when overflow-hidden is enabled...
-          NextJS/Tailwind doesn't like the image to be lazily loaded for some reason. */}
           <Image
-            src={url}
-            width={width}
-            height={height}
-            alt={alternativeText}
-            loading="eager"
+            src="/images/hero-home.webp"
+            alt="Portrait of Ashley"
+            width={470}
+            height={470}
             className="relative w-full top-2 md:top-0 md:pb-4 md:block md:max-w-[470px]"
           />
         </div>
