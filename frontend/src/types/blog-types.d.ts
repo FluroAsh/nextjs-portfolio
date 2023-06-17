@@ -13,6 +13,7 @@ export interface IBlogImage {
   placeholder?: string
   className?: string
   linkTo?: string
+  featured?: boolean
 }
 
 export interface IBlogFeature {

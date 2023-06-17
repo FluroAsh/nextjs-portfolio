@@ -1,5 +1,3 @@
-import React from "react"
-import Link from "next/link"
 import dayjs from "dayjs"
 
 import { IBlogFeature } from "types/blog-types"
@@ -9,15 +7,21 @@ import Button from "components/Button"
 const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
   const { slug, title, description, cover, createdAt } = attributes
   return (
-    <div className="relative py-4 border-b dark:border-slate-500 border-orange-300/50">
-      <BlogImage
-        url={cover.data.attributes.url}
-        alt={cover.data.attributes.alternativeText}
-        // TODO: Remove fill and add responsive image sizes with formats prop
-        fill
-        linkTo={`blog/${slug}`}
-        className="object-cover transition-['filter'] hover:brightness-75 duration-300"
-      />
+    <div
+      id="featured-post"
+      className="pb-4 border-b dark:border-slate-500 border-orange-300/50"
+    >
+      <div className="relative my-4 ">
+        <BlogImage
+          // REVIEW: Should get a list of responsive URL's, and add to sizes prop?
+          url={cover.data.attributes.url}
+          alt={cover.data.attributes.alternativeText}
+          fill
+          featured
+          linkTo={`blog/${slug}`}
+          className="object-cover transition duration-300 hover:brightness-75"
+        />
+      </div>
 
       <Button
         href={`blog/${slug}`}

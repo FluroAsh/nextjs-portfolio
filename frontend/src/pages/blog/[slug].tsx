@@ -71,7 +71,7 @@ const BlogPost: React.FC<IPost> = ({
           <BlogImage
             url={url}
             alt={alternativeText}
-            fill
+            // fill
             className="object-cover object-center"
           />
         </div>

@@ -1,4 +1,3 @@
-import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import clsx from "clsx"
@@ -11,15 +10,16 @@ const BlogImage: React.FC<IBlogImage> = ({
   alt = "placeholder",
   className: extraStyles,
   linkTo,
+  featured,
 }) => {
   const imageComponent = (
-    <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96">
-      <Image
-        src={url}
-        fill={fill}
-        alt={alt}
-        className={clsx(extraStyles, "rounded-lg shadow-lg")}
-      />
+    <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96 overflow-hidden rounded-lg shadow-lg group">
+      <Image src={url} fill={fill} alt={alt} className={clsx(extraStyles)} />
+      {featured && (
+        <div className="absolute top-0 left-0 px-4 py-1 text-sm font-semibold text-orange-200 uppercase transition bg-orange-600 rounded-br-lg pointer-events-none dark:bg-sky-600 group-hover:opacity-80">
+          featured
+        </div>
+      )}
     </div>
   )
 
