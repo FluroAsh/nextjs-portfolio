@@ -14,9 +14,6 @@ function BlogApp({ Component, pageProps }: AppProps) {
   return (
     <ErrorBoundary fallback={<FourZeroFour />}>
       <ThemeProvider attribute="class" defaultTheme="dark">
-        <Head>
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
-        </Head>
         <ApolloProvider>
           <Component {...pageProps} />
         </ApolloProvider>
