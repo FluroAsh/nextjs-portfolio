@@ -26,8 +26,8 @@ const ThemeToggle = () => {
   return (
     <button className="relative" onClick={handleTheme}>
       <div
-        className={`transition-colors duration-300 flex justify-center w-[32px] h-[32px] rounded-full 
-      bg-orange-100 dark:bg-dark-background-primary border dark:border-slate-300 border-neutral-600 `}
+        className="transition-colors duration-300 flex justify-center w-[32px] h-[32px] rounded-full
+      bg-orange-100 dark:bg-dark-background-primary border dark:border-slate-300 border-neutral-600"
       >
         {isDark ? (
           <FontAwesomeIcon

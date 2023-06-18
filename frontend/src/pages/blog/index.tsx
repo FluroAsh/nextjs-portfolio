@@ -21,9 +21,6 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const PAGE_SIZE = 5
 
-  // const newPosts = console.log("newPosts", newPosts)
-  console.log(posts[0])
-
   return (
     <Layout type="basic">
       <Head>
@@ -32,7 +29,7 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
 
       <div className="max-w-screen-lg px-5 mx-auto">
         <header className="py-4 border-b dark:border-slate-500 border-orange-300/50">
-          <div className="text-4xl">Latest</div>
+          <div className="text-4xl font-bold">Latest</div>
           <span className="dark:text-slate-300 text-neutral-600">
             The latest collection of my little musings & articles to help you
             become a better developer.
@@ -40,7 +37,12 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
         </header>
 
         {/* NOTE: Might not ALWAYS have a featured post... */}
-        {featuredPost && <BlogFeature attributes={featuredPost.attributes} />}
+        {featuredPost && (
+          <BlogFeature
+            attributes={featuredPost.attributes}
+            categories={featuredPost.attributes.categories.data}
+          />
+        )}
 
         {posts.map((post: PostData) => {
           return (

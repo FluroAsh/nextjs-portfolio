@@ -24,6 +24,7 @@ export interface BlogImageProps {
 export interface BlogFeatureProps {
   id?: string
   attributes: PostAttributes
+  categories: CategoryAttributes[]
 }
 
 export interface BlogPreviewProps {

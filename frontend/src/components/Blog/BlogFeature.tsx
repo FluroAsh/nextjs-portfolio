@@ -1,10 +1,14 @@
+import Link from "next/link"
 import dayjs from "dayjs"
 
 import { BlogFeatureProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
 
-const BlogFeature: React.FC<BlogFeatureProps> = ({ attributes }) => {
+const BlogFeature: React.FC<BlogFeatureProps> = ({
+  attributes,
+  categories,
+}) => {
   const { slug, title, description, cover, createdAt } = attributes
 
   return (
@@ -27,18 +31,22 @@ const BlogFeature: React.FC<BlogFeatureProps> = ({ attributes }) => {
         className="transition hover:text-orange-500 hover:dark:text-sky-600"
         type="text"
       >
-        <h2 className="mt-4 text-3xl">{title}</h2>
+        <h2 className="mt-4 text-3xl font-bold">{title}</h2>
       </Button>
 
-      {/* TODO: Add tags */}
       <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
-        <div>JAVASCRIPT</div>
-        <div>CSS</div>
-        <div>NEXT-JS</div>
+        #
+        {categories.slice(0, 2).map(({ attributes }, idx) => {
+          return (
+            <Link key={idx} href={`/category/${attributes.slug}`}>
+              <div className="font-semibold uppercase">{attributes.name}</div>
+            </Link>
+          )
+        })}
       </div>
 
       <h3 className="text-neutral-700 dark:text-slate-300">
-        {dayjs(createdAt).format("MMM, YYYY — dddd [@] h:mm A")}
+        {dayjs(createdAt).format("dddd, DD MMMM")}
       </h3>
       <p className="mt-2 dark:text-neutral-300 text-neutral-600">
         {description}

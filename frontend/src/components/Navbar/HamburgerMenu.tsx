@@ -48,6 +48,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   }, [drawerRef])
 
   return (
+    /** Open/Close buttons */
     <div className={clsx(extraStyles, "min-w-[24px]")}>
       {open ? (
         <FontAwesomeIcon

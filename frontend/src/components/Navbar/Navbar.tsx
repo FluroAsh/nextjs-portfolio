@@ -30,15 +30,15 @@ const Navbar = () => {
 
   const styles = {
     container: isScrolling
-      ? "dark:bg-slate-500/50 bg-orange-300/60 dark:border-transparent backdrop-blur shadow-lg"
-      : "dark:bg-slate-500/50 bg-orange-300/70",
+      ? "dark:bg-slate-500/50 bg-orange-300/70 dark:border-transparent backdrop-blur shadow-lg"
+      : "dark:bg-slate-500/50 bg-orange-300/80",
   }
 
   return (
     <div
       className={clsx(
         styles.container,
-        "sticky z-50 top-0 w-full transition-color border-b dark:border-b-slate-500/50 border-b-orange-300/50"
+        "sticky z-50 top-0 w-full transition duration-300 border-b dark:border-b-slate-500/50 border-b-orange-300/50"
       )}
     >
       <nav className="flex flex-row-reverse justify-between max-w-screen-xl p-3 mx-auto sm:flex-row">
