@@ -43,7 +43,7 @@ const Navbar = () => {
     >
       <nav className="flex flex-row-reverse justify-between max-w-screen-xl p-3 mx-auto sm:flex-row">
         <div id="header-wrapper" className="relative">
-          <HeaderLogo className="absolute right-logo-spacing xs:relative xs:right-0 sm:relative sm:left-0" />
+          <HeaderLogo className="right-logo-spacing xs:relative xs:right-0 sm:relative sm:left-0" />
         </div>
 
         <div className="flex items-center justify-center gap-2">
