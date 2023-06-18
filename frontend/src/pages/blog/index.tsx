@@ -29,7 +29,9 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
 
       <div className="max-w-screen-lg px-5 mx-auto">
         <header className="py-4 border-b dark:border-slate-500 border-orange-300/50">
-          <div className="text-4xl font-bold">Latest</div>
+          <div className="text-4xl font-bold text-neutral-800 dark:text-white">
+            Latest
+          </div>
           <span className="dark:text-slate-300 text-neutral-600">
             The latest collection of my little musings & articles to help you
             become a better developer.
@@ -40,7 +42,7 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
         {featuredPost && (
           <BlogFeature
             attributes={featuredPost.attributes}
-            categories={featuredPost.attributes.categories.data}
+            categoryData={featuredPost.attributes.categories.data}
           />
         )}
 
@@ -49,7 +51,7 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
             <BlogPreview
               key={post.id}
               attributes={post.attributes}
-              categories={post.attributes.categories.data}
+              categoryData={post.attributes.categories.data}
             />
           )
         })}

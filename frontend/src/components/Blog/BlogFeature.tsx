@@ -1,13 +1,13 @@
-import Link from "next/link"
 import dayjs from "dayjs"
 
 import { BlogFeatureProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
+import { Categories } from "components/Category"
 
 const BlogFeature: React.FC<BlogFeatureProps> = ({
   attributes,
-  categories,
+  categoryData,
 }) => {
   const { slug, title, description, cover, createdAt } = attributes
 
@@ -28,22 +28,13 @@ const BlogFeature: React.FC<BlogFeatureProps> = ({
 
       <Button
         href={`blog/${slug}`}
-        className="transition hover:text-orange-500 hover:dark:text-sky-600"
+        className="transition hover:text-orange-500 hover:dark:text-sky-600 text-neutral-800 dark:text-white"
         type="text"
       >
         <h2 className="mt-4 text-3xl font-bold">{title}</h2>
       </Button>
 
-      <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
-        #
-        {categories.slice(0, 2).map(({ attributes }, idx) => {
-          return (
-            <Link key={idx} href={`/category/${attributes.slug}`}>
-              <div className="font-semibold uppercase">{attributes.name}</div>
-            </Link>
-          )
-        })}
-      </div>
+      <Categories categoryData={categoryData} />
 
       <h3 className="text-neutral-700 dark:text-slate-300">
         {dayjs(createdAt).format("dddd, DD MMMM")}

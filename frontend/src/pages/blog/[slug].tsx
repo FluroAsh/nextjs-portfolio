@@ -60,7 +60,9 @@ const BlogPost: React.FC<PostProps> = ({
             />
             <span className="ml-2">Blog</span>
           </Button>
-          <h1 className="text-3xl font-bold sm:text-4xl">{title}</h1>
+          <h1 className="text-3xl font-bold sm:text-4xl text-neutral-800 dark:text-white">
+            {title}
+          </h1>
           <div className="text-netural-600 dark:text-slate-300">
             {dayjs(createdAt).format("dddd, DD MMMM")} —{" "}
             {readingMinutes(stats.minutes)}

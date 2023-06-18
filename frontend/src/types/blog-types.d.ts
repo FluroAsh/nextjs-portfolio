@@ -24,12 +24,12 @@ export interface BlogImageProps {
 export interface BlogFeatureProps {
   id?: string
   attributes: PostAttributes
-  categories: CategoryAttributes[]
+  categoryData: CategoryAttributes[]
 }
 
 export interface BlogPreviewProps {
   attributes: PostAttributes
-  categories: CategoryAttributes[]
+  categoryData: CategoryAttributes[]
 }
 
 export interface PostProps {
