@@ -3,11 +3,17 @@ import dayjs from "dayjs"
 
 import { readingMinutes } from "utils/blog-utils"
 
-export const TimeDate: React.FC<{
+export interface TimeDateProps {
   createdAt: string
-  minutes?: number
   type: "index" | "post"
-}> = ({ createdAt, type, minutes }) => {
+  minutes?: number
+}
+
+export const TimeDate: React.FC<TimeDateProps> = ({
+  createdAt,
+  type,
+  minutes,
+}) => {
   const advancedFormat = require("dayjs/plugin/advancedFormat")
   dayjs.extend(advancedFormat)
 
@@ -15,7 +21,7 @@ export const TimeDate: React.FC<{
 
   const indexStyles = {
     container: isIndex && "sm:items-center sm:flex",
-    h3: isIndex && "md:text-lg dark:sm:text-neutral-400",
+    h3: isIndex && "md:text-lg ",
   }
 
   const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -29,7 +35,7 @@ export const TimeDate: React.FC<{
       <Container>
         <h3
           className={clsx(
-            "font-semibold text-neutral-800 dark:text-slate-300",
+            "font-semibold text-neutral-800 dark:text-neutral-300",
             indexStyles.h3
           )}
         >

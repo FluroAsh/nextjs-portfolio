@@ -35,10 +35,10 @@ const BlogFeature: React.FC<BlogFeatureProps> = ({
         >
           <BlogTitle title={title} />
         </Button>
-        <TimeDate createdAt={createdAt} type="index" />
+        <Categories categoryData={categoryData} />
       </div>
 
-      <Categories categoryData={categoryData} />
+      <TimeDate createdAt={createdAt} type="index" />
       <p className="mt-2 dark:text-neutral-300 text-neutral-600">
         {description}
       </p>

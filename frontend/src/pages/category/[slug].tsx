@@ -1,8 +1,13 @@
+import type { GetStaticPaths, GetStaticProps } from "next"
 import { useRouter } from "next/router"
 
 import Layout from "components/layout"
 
-function Category() {
+export interface CategoryProps {
+  slug: string
+}
+
+const Category: React.FC<CategoryProps> = () => {
   const router = useRouter()
   const { slug } = router.query
 
@@ -17,3 +22,17 @@ function Category() {
 }
 
 export default Category
+
+// TODO: Fetch posts by Category & their slugs for static paths
+const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true,
+  }
+}
+
+const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  }
+}
