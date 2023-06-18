@@ -21,7 +21,7 @@ export const pre = (theme: any, type: "dark" | "light") => {
     borderWidth: theme("borderWidth.2"),
     maxWidth: "100%",
     overflowX: "auto",
-    /** Remove Prose defaults */
+    // Remove Prose defaults
     backgroundColor: null,
     paddingLeft: null,
     paddingRight: null,

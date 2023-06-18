@@ -1,7 +1,11 @@
-import { formatName, Formats } from "types/api-types"
+import { formatName, type Formats } from "types/api-types"
 
-export const truncateTitle = (title: string) =>
-  title.length >= 16 ? `${title.substring(0, 13)}...` : title
+export const truncateTitle = (title: string) => {
+  const CHAR_LIMIT = 20
+  return title.length >= CHAR_LIMIT
+    ? `${title.substring(0, CHAR_LIMIT)}...`
+    : title
+}
 
 export const readingMinutes = (minutes: number) => {
   const roundedMinutes = Math.round(minutes)

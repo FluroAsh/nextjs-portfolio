@@ -1,9 +1,10 @@
-import dayjs from "dayjs"
-
 import { BlogFeatureProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
 import { Categories } from "components/Category"
+import { TimeDate } from "components/TimeDate"
+
+import { BlogTitle } from "./BlogTitle"
 
 const BlogFeature: React.FC<BlogFeatureProps> = ({
   attributes,
@@ -26,19 +27,18 @@ const BlogFeature: React.FC<BlogFeatureProps> = ({
         />
       </div>
 
-      <Button
-        href={`blog/${slug}`}
-        className="transition hover:text-orange-500 hover:dark:text-sky-600 text-neutral-800 dark:text-white"
-        type="text"
-      >
-        <h2 className="mt-4 text-3xl font-bold">{title}</h2>
-      </Button>
+      <div className="sm:flex sm:justify-between">
+        <Button
+          href={`blog/${slug}`}
+          className="transition hover:text-orange-500 hover:dark:text-sky-600 text-neutral-800 dark:text-white"
+          type="text"
+        >
+          <BlogTitle title={title} />
+        </Button>
+        <TimeDate createdAt={createdAt} />
+      </div>
 
       <Categories categoryData={categoryData} />
-
-      <h3 className="text-neutral-700 dark:text-slate-300">
-        {dayjs(createdAt).format("dddd, DD MMMM")}
-      </h3>
       <p className="mt-2 dark:text-neutral-300 text-neutral-600">
         {description}
       </p>
