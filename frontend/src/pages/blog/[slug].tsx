@@ -15,9 +15,10 @@ import Layout from "components/layout"
 import { initializeApollo } from "lib/apollo-client"
 import { GET_POST, GET_POST_SLUGS } from "lib/gql"
 import { markdownToHtml } from "lib/markdownToHtml"
-import { readingMinutes } from "utils/blog-utils"
 
 import "highlight.js/styles/base16/monokai.css"
+
+import { TimeDate } from "components/TimeDate"
 
 const BlogPost: React.FC<PostProps> = ({
   title,
@@ -51,22 +52,20 @@ const BlogPost: React.FC<PostProps> = ({
             title="Back to Blog"
             href="/blog"
             type="back"
-            className="text-orange-400 transition-colors group/button hover:text-orange-600 dark:text-slate-500 dark:hover:text-white"
+            className="text-orange-400 transition-colors group hover:text-orange-600 dark:text-slate-500 dark:hover:text-white"
           >
             <FontAwesomeIcon
               icon={faArrowLeftLong}
               size="sm"
-              className="group-hover/button:animate-back-and-forth"
+              className="group-hover:animate-back-and-forth"
             />
             <span className="ml-2">Blog</span>
           </Button>
+          {/* REVIEW: Should refactor this h1 to use BlogTitle... */}
           <h1 className="text-3xl font-bold sm:text-4xl text-neutral-800 dark:text-white">
             {title}
           </h1>
-          <div className="text-netural-600 dark:text-slate-300">
-            {dayjs(createdAt).format("dddd, DD MMMM")} —{" "}
-            {readingMinutes(stats.minutes)}
-          </div>
+          <TimeDate createdAt={createdAt} minutes={stats.minutes} type="post" />
         </div>
 
         <div className="pt-4">

@@ -35,7 +35,7 @@ const BlogFeature: React.FC<BlogFeatureProps> = ({
         >
           <BlogTitle title={title} />
         </Button>
-        <TimeDate createdAt={createdAt} />
+        <TimeDate createdAt={createdAt} type="index" />
       </div>
 
       <Categories categoryData={categoryData} />

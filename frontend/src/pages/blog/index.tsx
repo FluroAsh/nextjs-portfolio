@@ -32,13 +32,13 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
           <div className="text-4xl font-bold text-neutral-800 dark:text-white">
             Latest
           </div>
-          <span className="dark:text-slate-300 text-neutral-600">
+          <span className=" dark:text-slate-300 text-neutral-600">
             The latest collection of my little musings & articles to help you
             become a better developer.
           </span>
         </header>
 
-        {/* NOTE: Might not ALWAYS have a featured post... */}
+        {/* NOTE: Might not ALWAYS have a featured post at the moment... */}
         {featuredPost && (
           <BlogFeature
             attributes={featuredPost.attributes}
