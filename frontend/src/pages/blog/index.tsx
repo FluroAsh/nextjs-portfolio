@@ -43,6 +43,13 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
           return <BlogPreview key={post.id} attributes={post.attributes} />
         })}
       </div>
+
+      {/* NOTE: This should be made its own component */}
+      <div className="flex justify-center">
+        <div className="mt-5 bg-amber-500 min-w-[300px] text-center text-black">
+          Pagination Placeholder
+        </div>
+      </div>
     </Layout>
   )
 }
