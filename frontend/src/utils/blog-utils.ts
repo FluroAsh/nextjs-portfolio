@@ -17,7 +17,7 @@ export const checkImgFormats = (formats: Formats) => {
         formatName.LARGE,
         formatName.MEDIUM,
         formatName.SMALL,
-        formatName.SMALL,
+        formatName.THUMBNAIL,
       ].includes(key)
     ).length > 0
 
