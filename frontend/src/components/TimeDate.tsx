@@ -24,7 +24,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
     h3: isIndex && "md:text-lg ",
   }
 
-  const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  const Container = ({ children }: { children: React.ReactNode }) => (
     <div className={clsx(indexStyles.container)}>{children}</div>
   )
 
@@ -35,7 +35,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
       <Container>
         <h3
           className={clsx(
-            "font-semibold text-neutral-800 dark:text-neutral-300",
+            "font-semibold text-neutral-600 dark:text-neutral-300",
             indexStyles.h3
           )}
         >
