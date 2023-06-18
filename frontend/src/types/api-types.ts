@@ -1,20 +1,38 @@
 // TODO: Retype these, they should be specific to posts as there's a different schema...
-// Will have to retype above as-well, probably.
-export interface IAttributes {
+
+import { CategoryData } from "./blog-types"
+
+export interface PostAttributes {
   slug: string
   title: string
   description: string
-  cover: {
-    data: {
-      attributes: {
-        url: string
-        alternativeText: string
-        formats: Formats
-      }
+  categories: CategoryData
+  cover: APICover
+  createdAt: string
+  isFeatured: boolean
+}
+
+export interface APICover {
+  data: {
+    attributes: {
+      url: string
+      alternativeText: string
+      formats: Formats
     }
   }
-  createdAt: string
-  isFeatured?: boolean
+}
+
+// TODO: Fixing this one
+export interface APICategories {
+  data: [
+    {
+      attributes: {
+        name: string
+        slug: string
+        description: string
+      }
+    }[]
+  ]
 }
 
 type ImageExtensions = "jpg" | "png" | "webp" | "gif" | "avif"

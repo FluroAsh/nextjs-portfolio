@@ -1,10 +1,10 @@
 import dayjs from "dayjs"
 
-import { IBlogFeature } from "types/blog-types"
+import { BlogFeatureProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
 
-const BlogFeature: React.FC<IBlogFeature> = ({ attributes }) => {
+const BlogFeature: React.FC<BlogFeatureProps> = ({ attributes }) => {
   const { slug, title, description, cover, createdAt } = attributes
 
   return (

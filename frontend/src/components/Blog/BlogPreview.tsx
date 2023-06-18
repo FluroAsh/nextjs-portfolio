@@ -2,24 +2,33 @@ import React from "react"
 import Link from "next/link"
 import dayjs from "dayjs"
 
-import { IBlogPreview } from "types/blog-types"
+import type { BlogPreviewProps } from "types/blog-types"
 import Button from "components/Button"
 
-const BlogPreview: React.FC<IBlogPreview> = ({ attributes }) => {
+const BlogPreview: React.FC<BlogPreviewProps> = ({
+  attributes,
+  categories,
+}) => {
   const { slug, title, description, createdAt } = attributes
+
   return (
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <Link
         href={`/blog/${slug}`}
         className="transition hover:text-orange-500 hover:dark:text-sky-600"
       >
-        <h2 className="text-3xl">{title}</h2>
+        <h2 className="text-3xl font-bold">{title}</h2>
       </Link>
       {/* TODO: Add tags */}
       <div className="flex gap-2 mt-1 mb-2 text-orange-600 dark:text-sky-400">
-        <div>JAVASCRIPT</div>
-        <div>CSS</div>
-        <div>NEXT-JS</div>
+        #
+        {categories.slice(0, 2).map(({ attributes }, idx) => {
+          return (
+            <Link key={idx} href={`/category/${attributes.slug}`}>
+              <div className="font-semibold uppercase">{attributes.name}</div>
+            </Link>
+          )
+        })}
       </div>
 
       <h3 className="dark:text-slate-300 text-neutral-700">

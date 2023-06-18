@@ -2,11 +2,11 @@
 import Link from "next/link"
 import clsx from "clsx"
 
-import type { IBlogImage } from "types/blog-types"
+import type { BlogImageProps } from "types/blog-types"
 
 import { checkImgFormats } from "utils/blog-utils"
 
-const BlogImage: React.FC<IBlogImage> = ({
+const BlogImage: React.FC<BlogImageProps> = ({
   alt = "placeholder",
   className: extraStyles,
   linkTo,

@@ -9,6 +9,15 @@ export const GET_POSTS = gql`
           slug
           title
           description
+          categories {
+            data {
+              attributes {
+                name
+                slug
+                description
+              }
+            }
+          }
           cover {
             data {
               attributes {

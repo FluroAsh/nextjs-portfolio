@@ -2,14 +2,14 @@ import { useState } from "react"
 import { GetStaticProps } from "next"
 import Head from "next/head"
 
-import { IBlog, IBlogFeature, IPostsData } from "types/blog-types"
+import { BlogFeatureProps, BlogProps, PostData } from "types/blog-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 import Layout from "components/layout"
 
 import { initializeApollo } from "lib/apollo-client"
 import { GET_POSTS } from "lib/gql"
 
-const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
+const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
   /** TODO:
    * 1. Create separate component for 'remaining posts'
    * 2. Add pagination and limit page to 5 posts per page (1st page is latest)
@@ -20,6 +20,9 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
   // TODO: Finish pagination implementation
   const [currentPage, setCurrentPage] = useState<number>(1)
   const PAGE_SIZE = 5
+
+  // const newPosts = console.log("newPosts", newPosts)
+  console.log(posts[0])
 
   return (
     <Layout type="basic">
@@ -39,8 +42,14 @@ const Blog: React.FC<IBlog> = ({ posts, featuredPost }) => {
         {/* NOTE: Might not ALWAYS have a featured post... */}
         {featuredPost && <BlogFeature attributes={featuredPost.attributes} />}
 
-        {posts.map((post: IPostsData) => {
-          return <BlogPreview key={post.id} attributes={post.attributes} />
+        {posts.map((post: PostData) => {
+          return (
+            <BlogPreview
+              key={post.id}
+              attributes={post.attributes}
+              categories={post.attributes.categories.data}
+            />
+          )
         })}
       </div>
 
@@ -62,12 +71,12 @@ export const getStaticProps: GetStaticProps = async () => {
     data: { posts },
   } = await apolloClient.query({ query: GET_POSTS })
 
-  const featuredPost: IBlogFeature = posts?.data.filter(
-    (post: IBlogFeature) => post.attributes.isFeatured
+  const featuredPost: BlogFeatureProps = posts?.data.filter(
+    (post: BlogFeatureProps) => post.attributes.isFeatured
   )[0]
 
-  const restPosts: IPostsData[] = posts?.data.filter(
-    (post: IPostsData) => !post.attributes.isFeatured
+  const restPosts: PostData[] = posts?.data.filter(
+    (post: PostData) => !post.attributes.isFeatured
   )
 
   return {

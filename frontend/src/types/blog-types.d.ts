@@ -1,12 +1,17 @@
-import type { FormatProps, Formats, IAttributes } from "./api-types"
+import type {
+  APICategories,
+  FormatProps,
+  Formats,
+  PostAttributes,
+} from "./api-types"
 
 /** COMPONENT TYPES */
-export interface IBlog {
-  posts: IPostsData[]
-  featuredPost: IBlogFeature
+export interface BlogProps {
+  posts: PostData[]
+  featuredPost: BlogFeatureProps
 }
 
-export interface IBlogImage {
+export interface BlogImageProps {
   sourceUrl?: string
   alt: string
   placeholder?: string
@@ -16,13 +21,14 @@ export interface IBlogImage {
   formats: Formats
 }
 
-export interface IBlogFeature {
+export interface BlogFeatureProps {
   id?: string
-  attributes: IAttributes
+  attributes: PostAttributes
 }
 
-export interface IBlogPreview {
-  attributes: IAttributes
+export interface BlogPreviewProps {
+  attributes: PostAttributes
+  categories: CategoryAttributes[]
 }
 
 export interface PostProps {
@@ -37,7 +43,20 @@ export interface PostProps {
 }
 
 /** DATA TYPES */
-export interface IPostsData {
+export interface PostData {
   id: string
-  attributes: IAttributes
+  attributes: PostAttributes
+  categories: CategoryData
+}
+
+export interface CategoryData {
+  data: [attributes: CategoryAttributes]
+}
+
+export interface CategoryAttributes {
+  attributes: {
+    name: string
+    slug: string
+    description: string
+  }
 }
