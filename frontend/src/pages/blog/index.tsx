@@ -2,7 +2,7 @@ import { useState } from "react"
 import { GetStaticProps } from "next"
 import Head from "next/head"
 
-import { BlogFeatureProps, BlogProps, PostData } from "types/blog-types"
+import type { BlogFeatureProps, BlogProps, PostData } from "types/blog-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 import Layout from "components/layout"
 

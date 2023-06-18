@@ -1,6 +1,6 @@
 import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from "constants/links"
 
-import * as icon from "./icons"
+import * as icon from "../static/icons"
 
 const IconLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
   <div className="flex items-center">
