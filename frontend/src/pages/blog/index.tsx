@@ -52,7 +52,6 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
             <BlogPreview
               key={post.id}
               attributes={post.attributes}
-              // TODO: Fix this type... ()
               categoryData={post.attributes.categories.data}
             />
           )

@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client"
 
-// Blog Posts
 export const GET_POSTS = gql`
   query getPosts {
     posts {
@@ -73,7 +72,6 @@ export const GET_POST = gql`
   }
 `
 
-// Category
 export const GET_CATEGORIES = gql`
   query getCategories {
     categories {

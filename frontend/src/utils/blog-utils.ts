@@ -36,4 +36,6 @@ export const getFeaturedPost = (posts: PostData[]) =>
   posts.filter((post: PostData) => post.attributes.isFeatured)
 
 export const getPosts = (posts: PostData[], isFeatured?: boolean) =>
-  isFeatured ? getFeaturedPost(posts) : posts
+  isFeatured
+    ? getFeaturedPost(posts)
+    : posts.filter((post) => !post.attributes.isFeatured)
