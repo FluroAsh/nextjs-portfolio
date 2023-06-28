@@ -4,23 +4,24 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import dayjs from "dayjs"
 import readingTime from "reading-time"
 
-import { PostProps } from "types/blog-types"
+import { BlogPostProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
 import Layout from "components/layout"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_POST, GET_POST_SLUGS } from "lib/gql"
+import { GET_POST, GET_POST_SLUGS } from "lib/gql/requests"
 import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
+import { DAILY_REVALIDATION } from "constants/api"
+
 import { TimeDate } from "components/TimeDate"
 
-const BlogPost: React.FC<PostProps> = ({
+const BlogPost: React.FC<BlogPostProps> = ({
   title,
   content,
   createdAt,
@@ -52,7 +53,7 @@ const BlogPost: React.FC<PostProps> = ({
             title="Back to Blog"
             href="/blog"
             type="back"
-            className="text-orange-400 transition-colors group hover:text-orange-300 dark:text-slate-500 dark:hover:text-white"
+            className="text-orange-400 transition-colors group hover:text-orange-300 dark:text-neutral-400 dark:hover:text-white"
           >
             <FontAwesomeIcon
               icon={faArrowLeftLong}
@@ -88,9 +89,7 @@ const BlogPost: React.FC<PostProps> = ({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo()
 
-  if (!params || typeof params.slug !== "string" || !params.slug.trim()) {
-    return { notFound: true }
-  }
+  if (!params || typeof params.slug === "undefined") return { notFound: true }
 
   const { slug } = params
   const {
@@ -114,8 +113,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       alternativeText: cover?.data?.attributes?.alternativeText,
       formats: cover?.data?.attributes?.formats,
     },
-    // Once a day
-    revalidate: 86400,
+    revalidate: DAILY_REVALIDATION,
   }
 }
 

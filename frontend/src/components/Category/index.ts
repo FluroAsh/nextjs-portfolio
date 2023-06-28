@@ -1,4 +1,4 @@
 import { Categories } from "./Categories"
-import { Category } from "./Category"
+import { CategoryTag } from "./CategoryTag"
 
-export { Category, Categories }
+export { CategoryTag as Category, Categories }

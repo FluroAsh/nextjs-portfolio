@@ -8,7 +8,7 @@ import type {
 /** COMPONENT TYPES */
 export interface BlogProps {
   posts: PostData[]
-  featuredPost: BlogFeatureProps
+  featuredPost: PostData[]
 }
 
 export interface BlogImageProps {
@@ -28,11 +28,12 @@ export interface BlogFeatureProps {
 }
 
 export interface BlogPreviewProps {
+  id?: string
   attributes: PostAttributes
   categoryData: CategoryAttributes[]
 }
 
-export interface PostProps {
+export interface BlogPostProps {
   title: string
   slug: string
   description: string
@@ -50,9 +51,7 @@ export interface PostData {
   categories: CategoryData
 }
 
-export interface CategoryData {
-  data: [attributes: CategoryAttributes]
-}
+export type CategoryData = { data: CategoryAttributes[] }
 
 export interface CategoryAttributes {
   attributes: {

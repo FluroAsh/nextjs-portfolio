@@ -22,17 +22,25 @@ export interface APICover {
   }
 }
 
-// TODO: Fixing this one
+export interface CategoryAttributes {
+  slug: string
+  name: string
+  description: string
+}
 export interface APICategories {
-  data: [
-    {
-      attributes: {
-        name: string
-        slug: string
-        description: string
-      }
-    }[]
-  ]
+  data: {
+    id: string
+    attributes: CategoryAttributes
+  }[]
+}
+
+export interface APICategory {
+  id: string
+  attributes: {
+    slug: string
+    name: string
+    description: string
+  }
 }
 
 type ImageExtensions = "jpg" | "png" | "webp" | "gif" | "avif"

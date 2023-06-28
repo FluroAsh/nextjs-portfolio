@@ -18,7 +18,6 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   dayjs.extend(advancedFormat)
 
   const isIndex = type === "index"
-
   const indexStyles = {
     container: isIndex && "sm:items-center sm:flex",
     h3: isIndex && "md:text-lg ",

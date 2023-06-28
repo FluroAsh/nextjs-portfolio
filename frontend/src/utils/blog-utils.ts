@@ -1,4 +1,5 @@
 import { formatName, type Formats } from "types/api-types"
+import { PostData } from "types/blog-types"
 
 export const truncateTitle = (title: string) => {
   const CHAR_LIMIT = 20
@@ -30,3 +31,9 @@ export const checkImgFormats = (formats: Formats) => {
       "\n\n🚨 Invalid format for Blog Image. Check the uploaded image.\n\n"
     )
 }
+
+export const getFeaturedPost = (posts: PostData[]) =>
+  posts.filter((post: PostData) => post.attributes.isFeatured)
+
+export const getPosts = (posts: PostData[], isFeatured?: boolean) =>
+  isFeatured ? getFeaturedPost(posts) : posts

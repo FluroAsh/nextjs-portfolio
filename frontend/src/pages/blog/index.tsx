@@ -7,7 +7,8 @@ import { BlogFeature, BlogPreview } from "components/Blog"
 import Layout from "components/layout"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_POSTS } from "lib/gql"
+import { GET_POSTS } from "lib/gql/requests"
+import { getPosts } from "utils/blog-utils"
 
 const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
   /** TODO:
@@ -41,16 +42,17 @@ const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
         {/* NOTE: Might not ALWAYS have a featured post at the moment... */}
         {featuredPost && (
           <BlogFeature
-            attributes={featuredPost.attributes}
-            categoryData={featuredPost.attributes.categories.data}
+            attributes={featuredPost[0].attributes}
+            categoryData={featuredPost[0].attributes.categories.data}
           />
         )}
 
-        {posts.map((post: PostData) => {
+        {posts.map((post) => {
           return (
             <BlogPreview
               key={post.id}
               attributes={post.attributes}
+              // TODO: Fix this type... ()
               categoryData={post.attributes.categories.data}
             />
           )
@@ -75,13 +77,8 @@ export const getStaticProps: GetStaticProps = async () => {
     data: { posts },
   } = await apolloClient.query({ query: GET_POSTS })
 
-  const featuredPost: BlogFeatureProps = posts?.data.filter(
-    (post: BlogFeatureProps) => post.attributes.isFeatured
-  )[0]
-
-  const restPosts: PostData[] = posts?.data.filter(
-    (post: PostData) => !post.attributes.isFeatured
-  )
+  const featuredPost = getPosts(posts?.data, true)
+  const restPosts = getPosts(posts?.data)
 
   return {
     props: {
