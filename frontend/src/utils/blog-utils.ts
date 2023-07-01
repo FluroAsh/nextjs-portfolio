@@ -1,5 +1,4 @@
-import { formatName, type Formats } from "types/api-types"
-import { PostData } from "types/blog-types"
+import { formatName, type Formats, type PostData } from "types/api-types"
 
 export const truncateTitle = (title: string) => {
   const CHAR_LIMIT = 20
