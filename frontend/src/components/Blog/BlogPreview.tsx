@@ -1,14 +1,14 @@
-import type { BlogPreviewProps } from "types/blog-types"
+import type { APICategory, PostAttributes } from "types/api-types"
 import Button from "components/Button"
 import { Categories } from "components/Category"
 import { TimeDate } from "components/TimeDate"
 
 import { BlogTitle } from "./BlogTitle"
 
-const BlogPreview: React.FC<BlogPreviewProps> = ({
-  attributes,
-  categoryData,
-}) => {
+const BlogPreview: React.FC<{
+  attributes: PostAttributes
+  categoryData: APICategory[]
+}> = ({ attributes, categoryData }) => {
   const { slug, title, description, createdAt } = attributes
 
   return (

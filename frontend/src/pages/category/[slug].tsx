@@ -5,24 +5,17 @@ import type {
 } from "next"
 import { useRouter } from "next/router"
 
-import type {
-  APICategories,
-  APICategory,
-  CategoryAttributes,
-} from "types/api-types"
+import type { APICategory } from "types/api-types"
 import Layout from "components/layout"
 
 import { initializeApollo } from "lib/apollo-client"
 import { GET_CATEGORIES } from "lib/gql/requests"
 
-export interface CategoryProps {
+const CategoryPage: React.FC<{
   slug: string
-  // categoryData: CategoryAttributes
   name: string
   description: string
-}
-
-const CategoryPage: React.FC<CategoryProps> = ({ slug, name, description }) => {
+}> = ({ slug, name, description }) => {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -57,7 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   // Gets the slugs and data for the category pages
   const paths = categories?.data?.attributes?.map(
-    ({ slug }: CategoryAttributes) => ({
+    ({ slug }: APICategory["attributes"]) => ({
       params: {
         slug,
       },

@@ -1,13 +1,13 @@
-import type { CategoryAttributes } from "types/blog-types"
+import { APICategory } from "types/api-types"
 
 import { CategoryTag } from "./CategoryTag"
 
 export const Categories: React.FC<{
-  categoryData: CategoryAttributes[]
+  categoryData: APICategory[]
 }> = ({ categoryData }) => {
   return (
     <div className="flex gap-2 my-2 text-orange-600 sm:my-0 sm:items-center dark:text-sky-400 md:text-lg">
-      {/* TODO: Replace with FA Icon/SVG */}#
+      {/* TODO: Replace with FA Icon/SVG */}
       {categoryData.map(({ attributes }) => (
         <CategoryTag
           key={attributes.slug}

@@ -1,37 +1,23 @@
-// TODO: Retype these, they should be specific to posts as there's a different schema...
-
-import { CategoryData } from "./blog-types"
+export interface PostData {
+  id: string
+  attributes: PostAttributes
+  categories: {
+    data: APICategory[]
+  }
+}
 
 export interface PostAttributes {
   slug: string
   title: string
   description: string
-  categories: CategoryData
-  cover: APICover
+  categories: {
+    data: APICategory[]
+  }
+  cover: {
+    data: APICover
+  }
   createdAt: string
   isFeatured: boolean
-}
-
-export interface APICover {
-  data: {
-    attributes: {
-      url: string
-      alternativeText: string
-      formats: Formats
-    }
-  }
-}
-
-export interface CategoryAttributes {
-  slug: string
-  name: string
-  description: string
-}
-export interface APICategories {
-  data: {
-    id: string
-    attributes: CategoryAttributes
-  }[]
 }
 
 export interface APICategory {
@@ -40,6 +26,14 @@ export interface APICategory {
     slug: string
     name: string
     description: string
+  }
+}
+
+export interface APICover {
+  attributes: {
+    url: string
+    alternativeText: string
+    formats: Formats
   }
 }
 

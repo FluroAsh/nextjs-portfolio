@@ -6,7 +6,7 @@ import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import readingTime from "reading-time"
 
-import { BlogPostProps } from "types/blog-types"
+import type { BlogPostProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
 import Layout from "components/layout"

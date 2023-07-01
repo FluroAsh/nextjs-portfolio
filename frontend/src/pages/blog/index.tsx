@@ -2,7 +2,7 @@ import { useState } from "react"
 import { GetStaticProps } from "next"
 import Head from "next/head"
 
-import type { BlogFeatureProps, BlogProps, PostData } from "types/blog-types"
+import type { PostData } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 import Layout from "components/layout"
 
@@ -10,7 +10,10 @@ import { initializeApollo } from "lib/apollo-client"
 import { GET_POSTS } from "lib/gql/requests"
 import { getPosts } from "utils/blog-utils"
 
-const Blog: React.FC<BlogProps> = ({ posts, featuredPost }) => {
+const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData[] }> = ({
+  posts,
+  featuredPost,
+}) => {
   /** TODO:
    * 1. Create separate component for 'remaining posts'
    * 2. Add pagination and limit page to 5 posts per page (1st page is latest)
@@ -76,7 +79,7 @@ export const getStaticProps: GetStaticProps = async () => {
     data: { posts },
   } = await apolloClient.query({ query: GET_POSTS })
 
-  const featuredPost = getPosts(posts?.data, true)
+  const featuredPost = getPosts(posts?.data, { isFeatured: true })
   const restPosts = getPosts(posts?.data)
 
   return {
