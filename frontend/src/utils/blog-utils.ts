@@ -14,6 +14,7 @@ export const readingMinutes = (minutes: number) => {
     : `${roundedMinutes} minute read`
 }
 
+/** Validates we have the correct formats at build time */
 export const checkImgFormats = (formats: Formats) => {
   const validFormat =
     Object.keys(formats).filter((key: any) =>
