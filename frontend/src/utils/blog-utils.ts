@@ -8,7 +8,7 @@ export const truncateTitle = (title: string) => {
 }
 
 export const readingMinutes = (minutes: number) => {
-  const roundedMinutes = Math.round(minutes)
+  const roundedMinutes = Math.ceil(minutes)
   return minutes > 1
     ? `${roundedMinutes} minutes reading`
     : `${roundedMinutes} minute read`
