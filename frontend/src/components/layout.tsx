@@ -40,7 +40,10 @@ const Layout: React.FC<ILayout> = ({
           {children}
         </main>
       ) : type === "blog" ? (
-        <main className="flex flex-col items-center w-full " style={mainStyle}>
+        <main
+          className="flex flex-col items-center w-full justify-between"
+          style={mainStyle}
+        >
           {children}
         </main>
       ) : null}
