@@ -4,7 +4,7 @@ export const CategoryTag: React.FC<{ name: string; slug: string }> = ({
   name,
   slug,
 }) => (
-  <Link href={`/category/${slug}`}>
+  <Link href={`/blog/category/${slug}`}>
     <div className="font-semibold tracking-wide uppercase transition-opacity hover:opacity-80">
       {name}
     </div>

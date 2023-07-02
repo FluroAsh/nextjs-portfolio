@@ -1,7 +1,7 @@
 import Head from "next/head"
+import Layout from "Layouts/layout"
 
 import { HeroBanner } from "components/HeroBanner"
-import Layout from "components/layout"
 
 const Home: React.FC = () => {
   return (

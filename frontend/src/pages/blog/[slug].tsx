@@ -5,12 +5,12 @@ import { useRouter } from "next/router"
 import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { DAILY_REVALIDATION } from "constants/api"
+import Layout from "Layouts/layout"
 import readingTime from "reading-time"
 
 import type { BlogPostProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
-import Layout from "components/layout"
 import { TimeDate } from "components/TimeDate"
 
 import { initializeApollo } from "lib/apollo-client"
@@ -107,12 +107,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const apolloClient = initializeApollo()
 
-  const { slug } = params
   const {
     data: { posts },
   } = await apolloClient.query<QueryPosts>({
     query: GET_POST,
-    variables: { slug },
+    variables: { slug: params.slug },
   })
 
   const post = posts?.data?.[0]?.attributes

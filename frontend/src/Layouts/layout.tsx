@@ -5,7 +5,7 @@ import { FOOTER_HEIGHT, NAVBAR_HEIGHT } from "constants/pages"
 
 import { Navbar } from "components/Navbar"
 
-import { Footer } from "./Footer"
+import { Footer } from "../components/Footer"
 
 interface ILayout {
   type: pageTypes

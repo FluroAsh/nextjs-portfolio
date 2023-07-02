@@ -1,8 +1,7 @@
 import { NextApiResponse } from "next"
 import Link from "next/link"
 import { ERROR_MAP } from "constants/errors"
-
-import Layout from "components/layout"
+import Layout from "Layouts/layout"
 
 export function Error({ statusCode }: { statusCode: number }) {
   const errorMessage = ERROR_MAP[statusCode]

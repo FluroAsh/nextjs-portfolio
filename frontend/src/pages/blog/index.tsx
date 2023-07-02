@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { GetStaticProps } from "next"
+import type { GetStaticProps } from "next"
+import { PostLayout } from "Layouts/PostLayout"
 
-import { QueryPosts, type PostData } from "types/api-types"
+import type { PostData, QueryPosts } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
-import { PostLayout } from "components/PostLayout"
 
 import { initializeApollo } from "lib/apollo-client"
 import { GET_POSTS } from "lib/gql/requests"

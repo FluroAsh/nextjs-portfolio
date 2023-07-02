@@ -5,6 +5,8 @@ import type {
 } from "next"
 import { useRouter } from "next/router"
 import { DAILY_REVALIDATION } from "constants/api"
+import Layout from "Layouts/layout"
+import { PostLayout } from "Layouts/PostLayout"
 
 import {
   APICategory,
@@ -14,8 +16,6 @@ import {
   QuerySlugs,
 } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
-import Layout from "components/layout"
-import { PostLayout } from "components/PostLayout"
 
 import { initializeApollo } from "lib/apollo-client"
 import {
@@ -23,7 +23,7 @@ import {
   GET_CATEGORY_SLUGS,
   GET_POSTS_BY_CATEGORY,
 } from "lib/gql/requests"
-import { capitalize, getPosts } from "lib/utils"
+import { getPosts } from "lib/utils"
 
 const CategoryPage: React.FC<{
   posts: PostData[]
@@ -103,8 +103,6 @@ export const getStaticProps: GetStaticProps = async ({
     query: GET_POSTS_BY_CATEGORY,
     variables: { slug },
   })
-
-  console.log(posts.data[0].attributes.description)
 
   const {
     data: { categories },

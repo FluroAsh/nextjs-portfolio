@@ -1,8 +1,7 @@
 import React from "react"
 import Link from "next/link"
 import { ERROR_MAP } from "constants/errors"
-
-import Layout from "components/layout"
+import Layout from "Layouts/layout"
 
 const errorMessage = ERROR_MAP[400]
 
