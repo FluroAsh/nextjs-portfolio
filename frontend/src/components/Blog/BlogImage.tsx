@@ -4,7 +4,7 @@ import clsx from "clsx"
 
 import type { BlogImageProps } from "types/blog-types"
 
-import { checkImgFormats } from "utils/blog-utils"
+import { checkImgFormats } from "lib/utils"
 
 const BlogImage: React.FC<BlogImageProps> = ({
   alt = "placeholder",

@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import dayjs from "dayjs"
 
-import { readingMinutes } from "utils/blog-utils"
+import { readingMinutes } from "lib/utils"
 
 export interface TimeDateProps {
   createdAt: string

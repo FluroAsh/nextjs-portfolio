@@ -8,7 +8,7 @@ import Layout from "components/layout"
 
 import { initializeApollo } from "lib/apollo-client"
 import { GET_POSTS } from "lib/gql/requests"
-import { getPosts } from "utils/blog-utils"
+import { getPosts } from "lib/utils"
 
 const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData[] }> = ({
   posts,

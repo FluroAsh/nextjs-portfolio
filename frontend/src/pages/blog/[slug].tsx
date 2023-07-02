@@ -4,22 +4,20 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { DAILY_REVALIDATION } from "constants/api"
 import readingTime from "reading-time"
 
 import type { BlogPostProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
 import Layout from "components/layout"
+import { TimeDate } from "components/TimeDate"
 
 import { initializeApollo } from "lib/apollo-client"
 import { GET_POST, GET_POST_SLUGS } from "lib/gql/requests"
 import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
-
-import { DAILY_REVALIDATION } from "constants/api"
-
-import { TimeDate } from "components/TimeDate"
 
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
