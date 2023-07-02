@@ -47,41 +47,47 @@ const BlogPost: React.FC<BlogPostProps> = ({
         <title>{title}</title>
       </Head>
 
-      <header className="w-full max-w-screen-lg px-5">
-        <div className="py-5 border-b border-orange-300 dark:border-slate-500">
-          <Button
-            title="Back to Blog"
-            href="/blog"
-            type="back"
-            className="text-orange-400 transition-colors group hover:text-orange-300 dark:text-neutral-400 dark:hover:text-white"
-          >
-            <FontAwesomeIcon
-              icon={faArrowLeftLong}
-              size="sm"
-              className="group-hover:animate-back-and-forth"
+      <div className="w-full max-w-screen-lg">
+        <header className="w-full px-5">
+          <div className="py-5 border-b border-orange-300 dark:border-slate-500">
+            <Button
+              title="Back to Blog"
+              href="/blog"
+              type="back"
+              className="text-orange-400 transition-colors group hover:text-orange-300 dark:text-neutral-400 dark:hover:text-white"
+            >
+              <FontAwesomeIcon
+                icon={faArrowLeftLong}
+                size="sm"
+                className="group-hover:animate-back-and-forth"
+              />
+              <span className="ml-2">Blog</span>
+            </Button>
+            {/* REVIEW: Should refactor this h1 to use BlogTitle... */}
+            <h1 className="text-3xl font-bold sm:text-4xl text-neutral-800 dark:text-white">
+              {title}
+            </h1>
+            <TimeDate
+              createdAt={createdAt}
+              minutes={stats.minutes}
+              type="post"
             />
-            <span className="ml-2">Blog</span>
-          </Button>
-          {/* REVIEW: Should refactor this h1 to use BlogTitle... */}
-          <h1 className="text-3xl font-bold sm:text-4xl text-neutral-800 dark:text-white">
-            {title}
-          </h1>
-          <TimeDate createdAt={createdAt} minutes={stats.minutes} type="post" />
-        </div>
+          </div>
 
-        <div className="pt-4">
-          <BlogImage alt={alternativeText} formats={formats} />
-        </div>
-      </header>
+          <div className="pt-4">
+            <BlogImage alt={alternativeText} formats={formats} />
+          </div>
+        </header>
 
-      {/* REVIEW: Refactoring to use MDX over CMS Markdown */}
-      {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks 
+        {/* REVIEW: Refactoring to use MDX over CMS Markdown */}
+        {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks 
       (Have a look into https://www.npmjs.com/package/markdown-to-jsx for HTML -> JSX Overrides -- custom code block/components anyone?)
       */}
-      <article
-        className="w-full max-w-screen-lg px-5 pt-5 mx-auto prose md:w-11/12 dark:prose-invert dark:prose-dark"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+        <article
+          className="max-w-full px-5 pt-5 prose dark:prose-invert dark:prose-dark"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
     </Layout>
   )
 }
