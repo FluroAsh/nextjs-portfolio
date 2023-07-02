@@ -72,15 +72,36 @@ export const GET_POST = gql`
   }
 `
 
-export const GET_CATEGORIES = gql`
-  query getCategories {
-    categories {
+export const GET_POSTS_BY_CATEGORY = gql`
+  query getPostsByCategory($slug: String!) {
+    posts(filters: { categories: { slug: { eq: $slug } } }) {
       data {
         id
         attributes {
           slug
-          name
+          title
           description
+          content
+          categories {
+            data {
+              attributes {
+                name
+                slug
+                description
+              }
+            }
+          }
+          cover {
+            data {
+              attributes {
+                url
+                alternativeText
+                formats
+              }
+            }
+          }
+          createdAt
+          isFeatured
         }
       }
     }

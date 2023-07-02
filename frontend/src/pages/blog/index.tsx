@@ -10,7 +10,7 @@ import { initializeApollo } from "lib/apollo-client"
 import { GET_POSTS } from "lib/gql/requests"
 import { getPosts } from "lib/utils"
 
-const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData[] }> = ({
+const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData }> = ({
   posts,
   featuredPost,
 }) => {
@@ -42,11 +42,10 @@ const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData[] }> = ({
           </span>
         </header>
 
-        {/* NOTE: Might not ALWAYS have a featured post at the moment... */}
         {featuredPost && (
           <BlogFeature
-            attributes={featuredPost[0].attributes}
-            categoryData={featuredPost[0].attributes.categories.data}
+            attributes={featuredPost.attributes}
+            categoryData={featuredPost.attributes.categories.data}
           />
         )}
 
@@ -74,12 +73,12 @@ const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData[] }> = ({
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
 
-  // TODO: Add pagination...
   const {
     data: { posts },
   } = await apolloClient.query({ query: GET_POSTS })
 
-  const featuredPost = getPosts(posts?.data, { isFeatured: true })
+  // TODO: Add pagination so we're not just returning the first featuredPost
+  const featuredPost = getPosts(posts?.data, { isFeatured: true })[0]
   const restPosts = getPosts(posts?.data)
 
   return {

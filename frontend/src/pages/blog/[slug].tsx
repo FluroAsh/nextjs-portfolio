@@ -84,6 +84,22 @@ const BlogPost: React.FC<BlogPostProps> = ({
   )
 }
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  const apolloClient = initializeApollo()
+
+  const {
+    data: { posts },
+  } = await apolloClient.query({ query: GET_POST_SLUGS })
+
+  return {
+    paths:
+      posts?.data?.attributes?.map(({ slug }: { slug: string }) => ({
+        params: { slug },
+      })) || [],
+    fallback: true,
+  }
+}
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo()
 
@@ -112,22 +128,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       formats: cover?.data?.attributes?.formats,
     },
     revalidate: DAILY_REVALIDATION,
-  }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const apolloClient = initializeApollo()
-
-  const {
-    data: { posts },
-  } = await apolloClient.query({ query: GET_POST_SLUGS })
-
-  return {
-    paths:
-      posts?.data?.attributes?.map(({ slug }: { slug: string }) => ({
-        params: { slug },
-      })) || [],
-    fallback: true,
   }
 }
 
