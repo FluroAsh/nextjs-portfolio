@@ -4,25 +4,33 @@ import type {
   GetStaticPropsContext,
 } from "next"
 import { useRouter } from "next/router"
+import { DAILY_REVALIDATION } from "constants/api"
 
-import { PostData } from "types/api-types"
+import {
+  APICategory,
+  PostData,
+  QueryCategories,
+  QueryPosts,
+  QuerySlugs,
+} from "types/api-types"
+import { BlogFeature, BlogPreview } from "components/Blog"
 import Layout from "components/layout"
+import { PostLayout } from "components/PostLayout"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_CATEGORY_SLUGS, GET_POSTS_BY_CATEGORY } from "lib/gql/requests"
-import { getPosts } from "lib/utils"
+import {
+  GET_CATEGORY,
+  GET_CATEGORY_SLUGS,
+  GET_POSTS_BY_CATEGORY,
+} from "lib/gql/requests"
+import { capitalize, getPosts } from "lib/utils"
 
 const CategoryPage: React.FC<{
-  // slug: string
-  // name: string
-  // description: string
   posts: PostData[]
   featuredPost: PostData
-}> = ({ posts, featuredPost }) => {
+  category: APICategory["attributes"]
+}> = ({ posts, featuredPost, category }) => {
   const router = useRouter()
-  const { slug } = router.query
-  // console.log({ posts, featuredPost })
-  // console.log(featuredPost)
 
   if (router.isFallback) {
     return (
@@ -34,20 +42,27 @@ const CategoryPage: React.FC<{
   }
 
   return (
-    <Layout type="blog">
-      <div className="flex flex-col items-center justify-center w-full h-full">
-        <h1 className="capitalize text-xl mt-4">{slug}</h1>
-        <div className="mb-4">Under Construction</div>
+    <PostLayout
+      title={`${category.name} Posts`}
+      heroTitle={`Latest for ${category.name}`}
+      heroDescription={category.description}
+    >
+      {featuredPost && (
+        <BlogFeature
+          key={featuredPost.id}
+          attributes={featuredPost.attributes}
+          categoryData={featuredPost.attributes.categories.data}
+        />
+      )}
 
-        {featuredPost && (
-          <div>Featured Post: {featuredPost.attributes.title}</div>
-        )}
-
-        {posts.map(({ attributes }) => (
-          <div>{attributes.title}</div>
-        ))}
-      </div>
-    </Layout>
+      {posts.map((post) => (
+        <BlogPreview
+          key={post.id}
+          attributes={post.attributes}
+          categoryData={post.attributes.categories.data}
+        />
+      ))}
+    </PostLayout>
   )
 }
 
@@ -57,15 +72,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo()
   const {
     data: { categories },
-  } = await apolloClient.query({ query: GET_CATEGORY_SLUGS })
+  } = await apolloClient.query<QuerySlugs>({
+    query: GET_CATEGORY_SLUGS,
+  })
 
-  const paths = categories?.data?.attributes?.map(
-    ({ slug }: { slug: string }) => ({
-      params: {
-        slug,
-      },
-    })
-  )
+  const paths = categories?.data?.attributes?.map(({ slug }) => ({
+    params: {
+      slug,
+    },
+  }))
 
   return {
     paths: paths || [],
@@ -76,27 +91,39 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
-  const apolloClient = initializeApollo() // fetch the posts
-
   if (!params || typeof params.slug === "undefined") return { notFound: true }
+
+  const apolloClient = initializeApollo()
 
   const { slug } = params
 
   const {
     data: { posts },
-  } = await apolloClient.query({
+  } = await apolloClient.query<QueryPosts>({
     query: GET_POSTS_BY_CATEGORY,
     variables: { slug },
   })
 
+  console.log(posts.data[0].attributes.description)
+
+  const {
+    data: { categories },
+  } = await apolloClient.query<QueryCategories>({
+    query: GET_CATEGORY,
+    variables: { slug },
+  })
+
+  const restPosts = getPosts(posts?.data)
   // TODO: Add pagination so we're not just returning the first featuredPost
   const featuredPost = getPosts(posts?.data, { isFeatured: true })[0]
-  const restPosts = getPosts(posts?.data)
+  const category = categories.data[0].attributes
 
   return {
     props: {
       posts: restPosts,
       featuredPost: featuredPost ? { ...featuredPost } : null,
+      category,
     },
+    revalidate: DAILY_REVALIDATION,
   }
 }

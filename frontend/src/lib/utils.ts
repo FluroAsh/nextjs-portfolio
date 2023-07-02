@@ -1,7 +1,8 @@
 import { formatName, type Formats, type PostData } from "types/api-types"
 
+// TODO: Should only truncate when screen size <= 768px
 export const truncateTitle = (title: string) => {
-  const CHAR_LIMIT = 20
+  const CHAR_LIMIT = 25
   return title.length >= CHAR_LIMIT
     ? `${title.substring(0, CHAR_LIMIT)}...`
     : title
@@ -42,3 +43,6 @@ export const getPosts = (
   isFeatured
     ? getFeaturedPost(posts)
     : posts.filter((post) => !post.attributes.isFeatured)
+
+export const capitalize = (word: string) =>
+  word[0].toUpperCase() + word.slice(1)

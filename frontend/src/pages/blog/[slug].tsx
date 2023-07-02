@@ -19,6 +19,8 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
+import { QueryPosts, QuerySlugs } from "types/api-types"
+
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
   content,
@@ -89,11 +91,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const {
     data: { posts },
-  } = await apolloClient.query({ query: GET_POST_SLUGS })
+  } = await apolloClient.query<QuerySlugs>({ query: GET_POST_SLUGS })
 
   return {
     paths:
-      posts?.data?.attributes?.map(({ slug }: { slug: string }) => ({
+      posts?.data?.attributes?.map(({ slug }) => ({
         params: { slug },
       })) || [],
     fallback: true,
@@ -101,14 +103,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const apolloClient = initializeApollo()
-
   if (!params || typeof params.slug === "undefined") return { notFound: true }
+
+  const apolloClient = initializeApollo()
 
   const { slug } = params
   const {
     data: { posts },
-  } = await apolloClient.query({
+  } = await apolloClient.query<QueryPosts>({
     query: GET_POST,
     variables: { slug },
   })

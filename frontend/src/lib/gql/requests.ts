@@ -9,6 +9,7 @@ export const GET_POSTS = gql`
           slug
           title
           description
+          content
           categories {
             data {
               attributes {
@@ -102,6 +103,20 @@ export const GET_POSTS_BY_CATEGORY = gql`
           }
           createdAt
           isFeatured
+        }
+      }
+    }
+  }
+`
+
+export const GET_CATEGORY = gql`
+  query getCategorBySlug($slug: String!) {
+    categories(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          slug
+          name
+          description
         }
       }
     }

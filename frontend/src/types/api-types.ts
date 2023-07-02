@@ -1,3 +1,15 @@
+export type QuerySlugs = {
+  [key: string]: {
+    data: {
+      attributes: {
+        slug: string
+      }[]
+    }
+  }
+}
+
+export type QueryPosts = { posts: { data: PostData[] } }
+export type QueryPost = { posts: { data: PostData } }
 export interface PostData {
   id: string
   attributes: PostAttributes
@@ -16,10 +28,12 @@ export interface PostAttributes {
   cover: {
     data: APICover
   }
+  content: string
   createdAt: string
   isFeatured: boolean
 }
 
+export type QueryCategories = { categories: { data: APICategory[] } }
 export interface APICategory {
   id: string
   attributes: {

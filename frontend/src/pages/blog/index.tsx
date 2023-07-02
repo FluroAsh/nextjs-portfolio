@@ -1,10 +1,9 @@
 import { useState } from "react"
 import { GetStaticProps } from "next"
-import Head from "next/head"
 
-import type { PostData } from "types/api-types"
+import { QueryPosts, type PostData } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
-import Layout from "components/layout"
+import { PostLayout } from "components/PostLayout"
 
 import { initializeApollo } from "lib/apollo-client"
 import { GET_POSTS } from "lib/gql/requests"
@@ -26,47 +25,22 @@ const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData }> = ({
   const PAGE_SIZE = 5
 
   return (
-    <Layout type="basic">
-      <Head>
-        <title>Latest Posts</title>
-      </Head>
+    <PostLayout title="Latest Posts">
+      {featuredPost && (
+        <BlogFeature
+          attributes={featuredPost.attributes}
+          categoryData={featuredPost.attributes.categories.data}
+        />
+      )}
 
-      <div className="max-w-screen-lg px-5 mx-auto">
-        <header className="py-4 border-b dark:border-slate-500 border-orange-300/50">
-          <div className="text-4xl font-bold text-neutral-800 dark:text-white">
-            Latest
-          </div>
-          <span className=" dark:text-slate-300 text-neutral-600">
-            The latest collection of my little musings & articles to help you
-            become a better developer.
-          </span>
-        </header>
-
-        {featuredPost && (
-          <BlogFeature
-            attributes={featuredPost.attributes}
-            categoryData={featuredPost.attributes.categories.data}
-          />
-        )}
-
-        {posts.map((post) => {
-          return (
-            <BlogPreview
-              key={post.id}
-              attributes={post.attributes}
-              categoryData={post.attributes.categories.data}
-            />
-          )
-        })}
-      </div>
-
-      {/* NOTE: This should be made its own component */}
-      <div className="flex justify-center">
-        <div className="mt-5 bg-amber-500 min-w-[300px] text-center text-black">
-          Pagination Placeholder
-        </div>
-      </div>
-    </Layout>
+      {posts.map((post) => (
+        <BlogPreview
+          key={post.id}
+          attributes={post.attributes}
+          categoryData={post.attributes.categories.data}
+        />
+      ))}
+    </PostLayout>
   )
 }
 
@@ -75,7 +49,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const {
     data: { posts },
-  } = await apolloClient.query({ query: GET_POSTS })
+  } = await apolloClient.query<QueryPosts>({ query: GET_POSTS })
 
   // TODO: Add pagination so we're not just returning the first featuredPost
   const featuredPost = getPosts(posts?.data, { isFeatured: true })[0]
