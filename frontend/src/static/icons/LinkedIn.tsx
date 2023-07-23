@@ -1,4 +1,4 @@
-import { IconProps } from "./index"
+import { IconProps } from "./types"
 
 const LinkedIn: React.FC<IconProps> = ({ className, height = "1.5rem" }) => {
   return (
