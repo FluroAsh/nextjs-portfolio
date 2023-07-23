@@ -1,3 +1,5 @@
+import { getSlugPath } from "constants/paths"
+
 import type { APICategory, PostAttributes } from "types/api-types"
 import Button from "components/Button"
 import { Categories } from "components/Category"
@@ -15,7 +17,7 @@ const BlogPreview: React.FC<{
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <div className="sm:justify-between sm:flex">
         <Button
-          href={`/blog/${slug}`}
+          href={getSlugPath("blog", slug)}
           className="transition hover:text-orange-500 hover:dark:text-sky-600 text-neutral-800 dark:text-white"
           type="text"
         >
@@ -29,7 +31,11 @@ const BlogPreview: React.FC<{
         {description}
       </p>
 
-      <Button href={`/blog/${slug}`} className="mt-4 mb-2" type="link">
+      <Button
+        href={getSlugPath("blog", slug)}
+        className="mt-4 mb-2"
+        type="link"
+      >
         Read more &rarr;
       </Button>
     </div>

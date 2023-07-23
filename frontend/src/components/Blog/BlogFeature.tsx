@@ -1,3 +1,5 @@
+import { getSlugPath } from "constants/paths"
+
 import type { APICategory, PostAttributes } from "types/api-types"
 import { BlogImage } from "components/Blog"
 import Button from "components/Button"
@@ -21,7 +23,7 @@ const BlogFeature: React.FC<{
         <BlogImage
           alt={cover.data.attributes.alternativeText}
           featured
-          linkTo={`/blog/${slug}`}
+          linkTo={getSlugPath("blog", slug)}
           formats={cover.data.attributes.formats}
           className="transition duration-300 hover:brightness-75"
         />
@@ -29,7 +31,7 @@ const BlogFeature: React.FC<{
 
       <div className="sm:flex sm:justify-between">
         <Button
-          href={`/blog/${slug}`}
+          href={getSlugPath("blog", slug)}
           className="transition hover:text-orange-500 hover:dark:text-sky-600 text-neutral-800 dark:text-white"
           type="text"
         >
@@ -43,7 +45,11 @@ const BlogFeature: React.FC<{
         {description}
       </p>
 
-      <Button href={`/blog/${slug}`} className="mt-4 mb-2" type="link">
+      <Button
+        href={getSlugPath("blog", slug)}
+        className="mt-4 mb-2"
+        type="link"
+      >
         Read more &rarr;
       </Button>
     </div>
