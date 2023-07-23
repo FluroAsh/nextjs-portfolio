@@ -1,8 +1,10 @@
-const LinkedIn = ({ className }: { className?: string }) => {
+import { IconProps } from "./index"
+
+const LinkedIn: React.FC<IconProps> = ({ className, height = "1.5rem" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      height="1.5em"
+      height={height}
       viewBox="0 0 448 512"
       className={className}
     >
