@@ -1,7 +1,10 @@
 import clsx from "clsx"
 import dayjs from "dayjs"
+import advancedFormat from "dayjs/plugin/advancedFormat"
 
 import { readingMinutes } from "lib/utils"
+
+dayjs.extend(advancedFormat)
 
 export interface TimeDateProps {
   createdAt: string
@@ -15,9 +18,6 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   type,
   minutes,
 }) => {
-  const advancedFormat = require("dayjs/plugin/advancedFormat")
-  dayjs.extend(advancedFormat)
-
   const isIndex = type === "index"
   const indexStyles = {
     container: "sm:items-center sm:flex",
