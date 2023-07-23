@@ -6,6 +6,7 @@ import { readingMinutes } from "lib/utils"
 export interface TimeDateProps {
   createdAt: string
   type: "index" | "post"
+  /** `minutes` is used within the context of a Blog post for time to read. */
   minutes?: number
 }
 
@@ -19,12 +20,12 @@ export const TimeDate: React.FC<TimeDateProps> = ({
 
   const isIndex = type === "index"
   const indexStyles = {
-    container: isIndex && "sm:items-center sm:flex",
-    h3: isIndex && "md:text-lg ",
-  }
+    container: "sm:items-center sm:flex",
+    h3: "md:text-lg ",
+  } as const
 
   const Container = ({ children }: { children: React.ReactNode }) => (
-    <div className={clsx(indexStyles.container)}>{children}</div>
+    <div className={clsx(isIndex && indexStyles.container)}>{children}</div>
   )
 
   const timeStamp = dayjs(createdAt).format("dddd, Do MMMM")
