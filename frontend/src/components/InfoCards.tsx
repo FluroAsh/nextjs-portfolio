@@ -1,21 +1,21 @@
 import * as icon from "../static/icons"
 
-const cardStyles = "absolute top-5 left-5 fill-slate-300/25 w-[75px] h-[75px]"
+const iconStyles = "absolute top-5 left-5 fill-slate-300/25 w-[75px] h-[75px]"
 const INFO_CARDS = [
   {
     heading: "Technology",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    icon: <icon.Twitter className={cardStyles} />,
+    icon: <icon.Twitter className={iconStyles} />,
   },
   {
     heading: "Test 2",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    icon: <icon.Twitter className={cardStyles} />,
+    icon: <icon.Twitter className={iconStyles} />,
   },
   {
     heading: "Test 3",
     text: "Lorem ipsum dolor sit amet,  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    icon: <icon.Twitter className={cardStyles} />,
+    icon: <icon.Twitter className={iconStyles} />,
   },
 ]
 
