@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { BLOG_PATHNAME } from "constants/paths"
+import { ROUTE_URL } from "constants/paths"
 
 export const HeroBanner = () => {
   return (
@@ -34,7 +34,7 @@ export const HeroBanner = () => {
             beautiful, functional, and accessible web applications. If you want
             to learn some more tricks, check out my{" "}
             <Link
-              href={BLOG_PATHNAME}
+              href={ROUTE_URL.BLOG}
               className="text-orange-400 transition hover:text-orange-500 dark:text-sky-500 dark:hover:text-sky-600"
             >
               blog.

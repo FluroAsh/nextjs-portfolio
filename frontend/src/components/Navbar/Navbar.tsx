@@ -1,5 +1,6 @@
 import Link from "next/link"
 import clsx from "clsx"
+import { ROUTE_URL } from "constants/paths"
 
 import HeaderLogo from "components/Navbar/HeaderLogo"
 import ThemeToggle from "components/ThemeToggle"
@@ -11,17 +12,17 @@ export const NAV_LINKS = [
   {
     title: "Go to Homepage",
     text: "home",
-    href: "/",
+    href: ROUTE_URL.HOME,
   },
   {
     title: "Go to Ash's blog",
     text: "blog",
-    href: "/blog",
+    href: ROUTE_URL.BLOG,
   },
   {
     title: "My Mission",
     text: "mission",
-    href: "/mission",
+    href: ROUTE_URL.MISSION,
   },
 ]
 

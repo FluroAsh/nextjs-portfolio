@@ -19,7 +19,7 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
-import { BLOG_PATHNAME } from "constants/paths"
+import { ROUTE_URL } from "constants/paths"
 
 import type { QueryPosts, QuerySlugs } from "types/api-types"
 
@@ -54,7 +54,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="py-5 border-b border-orange-300 dark:border-slate-500">
             <Button
               title="Back to Blog"
-              href={BLOG_PATHNAME}
+              href={ROUTE_URL.BLOG}
               type="back"
               className="text-orange-400 transition-colors group hover:text-orange-300 dark:text-neutral-400 dark:hover:text-white"
             >
