@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { ROUTE_URL } from "constants/paths"
 
 import HeaderLogo from "components/Navbar/HeaderLogo"
-import ThemeToggle from "components/ThemeToggle"
+import ThemeToggle from "components/Navbar/ThemeToggle"
 import useScrolling from "hooks/useScrolling"
 
 import HamburgerMenu from "./HamburgerMenu"
