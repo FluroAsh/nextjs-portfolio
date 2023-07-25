@@ -15,8 +15,8 @@ const Home: React.FC = () => {
 
         <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
           <div className="mb-2">
-            <h1 className="text-2xl text-center ">About Me</h1>
-            <h3 className="text-center text-neutral-300">
+            <h1 className="text-2xl text-center sm:text-3xl ">About Me</h1>
+            <h3 className="text-lg text-center sm:text-xl text-neutral-300">
               And why I&apos;m the greatest ever
             </h3>
           </div>
