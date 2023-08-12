@@ -3,6 +3,7 @@ import Layout from "Layouts/layout"
 
 import { HeroBanner } from "components/HeroBanner"
 import { InfoCards } from "components/InfoCards"
+import { ScrollingSkills } from "components/ScrollingSkills"
 
 const Home: React.FC = () => {
   return (
@@ -23,10 +24,11 @@ const Home: React.FC = () => {
           <InfoCards />
         </section>
 
-        {/* TODO: Skils scrolling section (extract to a component) */}
+        {/* TODO: Probably want an intersection observer to stop the animation
+          When a user scrolls past this component */}
         <section id="skills" className="max-w-screen-xl mx-auto mt-5">
           <h1 className="px-5 text-2xl">Skills</h1>
-          <div className="w-100 bg-slate-400 h-80"></div>
+          <ScrollingSkills />
         </section>
 
         <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-5">
