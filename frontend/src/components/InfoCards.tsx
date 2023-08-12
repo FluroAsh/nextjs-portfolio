@@ -30,7 +30,7 @@ export const InfoCards = () => {
         <div
           className={clsx(
             className,
-            "relative p-5 rounded-md shadow-md bg-slate-500 whitespace-break-spaces"
+            "relative p-5 rounded-md shadow-md bg-slate-500 whitespace-break-spaces border-2 border-slate-400"
           )}
         >
           <h1 className="mb-2 text-xl tracking-wide text-center">{heading}</h1>
