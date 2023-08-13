@@ -23,7 +23,6 @@ const Page = ({
   currentPage: number
   totalPages: number
 }) => {
-  console.log({ currentPage, totalPages })
   return (
     <PostLayout title="More posts" heroTitle="Down the rabbit hole we go...">
       {featuredPost && (
