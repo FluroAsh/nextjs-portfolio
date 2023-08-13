@@ -79,6 +79,8 @@ export const getStaticProps: GetStaticProps = async ({
   const apolloClient = initializeApollo()
   const { slug } = params ?? {}
 
+  if (typeof slug !== "string") return { notFound: true }
+
   const {
     data: { posts },
   } = await apolloClient.query<QueryPosts>({
