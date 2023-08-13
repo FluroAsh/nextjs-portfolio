@@ -96,8 +96,8 @@ export const getStaticProps: GetStaticProps = async ({
   })
 
   // TODO: Add pagination so we're not just returning the first featuredPost
-  const restPosts = posts.data.slice(1)
-  const featuredPost = posts.data[0]
+  const restPosts = posts.data.slice(1) ?? []
+  const featuredPost = posts.data[0] ?? null
   const category = categories.data[0].attributes
 
   return {
