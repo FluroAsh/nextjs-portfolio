@@ -15,7 +15,7 @@ const iconStyles =
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center p-3 mt-5 border-t border-orange-300 bg-orange-300/50 dark:bg-sky-700 dark:border-sky-900">
+    <footer className="flex flex-col items-center p-3 mt-5 transition-colors duration-300 border-t border-orange-300 bg-orange-300/50 dark:bg-sky-700 dark:border-sky-900">
       <div className="flex items-center justify-center">
         <div className="mr-3 text-xl text-neutral-800 dark:text-white">
           Ashley Thompson
