@@ -1,6 +1,7 @@
 import React from "react"
 import { GetStaticPropsContext } from "next"
 import Link from "next/link"
+import { DAILY_REVALIDATION } from "constants/api"
 import { ROUTE_URL } from "constants/paths"
 import { PostLayout } from "Layouts/PostLayout"
 
@@ -117,6 +118,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
       currentPage: parseInt(page),
       totalPages,
     },
+    revalidate: DAILY_REVALIDATION,
   }
 }
 

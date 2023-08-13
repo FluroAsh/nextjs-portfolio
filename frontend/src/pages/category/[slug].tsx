@@ -49,6 +49,7 @@ const CategoryPage: React.FC<{
           categoryData={post.attributes.categories.data}
         />
       ))}
+      {/* TODO: Pagination for Category */}
     </PostLayout>
   )
 }
