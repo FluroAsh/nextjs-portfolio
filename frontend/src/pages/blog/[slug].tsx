@@ -14,7 +14,7 @@ import Button from "components/Button"
 import { TimeDate } from "components/TimeDate"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_POST, GET_POST_SLUGS } from "lib/gql/requests"
+import { GET_POST, GET_POST_SLUGS } from "lib/gql/postQueries"
 import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"

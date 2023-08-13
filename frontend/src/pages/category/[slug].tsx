@@ -22,7 +22,7 @@ import {
   GET_CATEGORY,
   GET_CATEGORY_SLUGS,
   GET_POSTS_BY_CATEGORY,
-} from "lib/gql/requests"
+} from "lib/gql/categoryQueries"
 import { getPosts } from "lib/utils"
 
 const CategoryPage: React.FC<{

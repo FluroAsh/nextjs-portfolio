@@ -6,7 +6,7 @@ import type { PostData, QueryPosts } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_POSTS } from "lib/gql/requests"
+import { GET_POSTS } from "lib/gql/postQueries"
 import { getPosts } from "lib/utils"
 
 const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData }> = ({
@@ -43,6 +43,13 @@ const Blog: React.FC<{ posts: PostData[]; featuredPost: PostData }> = ({
     </PostLayout>
   )
 }
+
+// TODO: Page paths
+// export const getStaticPaths = async () => {
+//   return {
+//     paths: [],
+//   }
+// }
 
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
