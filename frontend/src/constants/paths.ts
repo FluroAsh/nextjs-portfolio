@@ -1,6 +1,7 @@
 export const ROUTE_URL = {
   HOME: "/",
   BLOG: "/blog",
+  PAGE: "/page",
   CATEGORY: "/category",
   MISSION: "/mission",
 } as const

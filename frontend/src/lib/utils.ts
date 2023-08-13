@@ -33,16 +33,5 @@ export const checkImgFormats = (formats: Formats) => {
     )
 }
 
-export const getFeaturedPost = (posts: PostData[]) =>
-  posts.filter((post: PostData) => post.attributes.isFeatured)
-
-export const getPosts = (
-  posts: PostData[],
-  { isFeatured }: { isFeatured?: boolean } = {}
-) =>
-  isFeatured
-    ? getFeaturedPost(posts)
-    : posts.filter((post) => !post.attributes.isFeatured)
-
 export const capitalize = (word: string) =>
   word[0].toUpperCase() + word.slice(1)

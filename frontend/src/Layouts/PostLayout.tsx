@@ -23,11 +23,6 @@ export const PostLayout: React.FC<{
         </header>
         {children}
       </div>
-      <div className="flex justify-center">
-        <div className="mt-5 bg-amber-500 min-w-[300px] text-center text-black">
-          Pagination Placeholder
-        </div>
-      </div>
     </Layout>
   )
 }

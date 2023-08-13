@@ -1,31 +1,31 @@
-import type { GetStaticProps } from "next"
+import React from "react"
+import { GetStaticPropsContext } from "next"
 import Link from "next/link"
 import { ROUTE_URL } from "constants/paths"
 import { PostLayout } from "Layouts/PostLayout"
 
-import type { PostData, QueryPosts } from "types/api-types"
+import { PostData, QueryPosts } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 
 import { initializeApollo } from "lib/apollo-client"
 import { GET_PAGE_META } from "lib/gql/metaQueries"
 import { GET_POSTS } from "lib/gql/postQueries"
 
-// TODO: Get currentPage/totalPages from API
-const Blog: React.FC<{
+const Page = ({
+  posts,
+  featuredPost,
+  currentPage,
+  totalPages,
+}: {
   posts: PostData[]
   featuredPost: PostData
+  postCount: number
   currentPage: number
   totalPages: number
-}> = ({ posts, featuredPost, currentPage, totalPages }) => {
-  /** TODO:
-   * 1. Create separate component for 'remaining posts'
-   * 2. Add pagination and limit page to 5 posts per page (1st page is latest)
-   * - When user navigates to next page the title & description should change to 'All Posts'
-   * 3. Update Styles for hover & ring effect etc.
-   */
-
+}) => {
+  console.log({ currentPage, totalPages })
   return (
-    <PostLayout title="Latest Posts">
+    <PostLayout title="More posts" heroTitle="Down the rabbit hole we go...">
       {featuredPost && (
         <BlogFeature
           attributes={featuredPost.attributes}
@@ -41,6 +41,11 @@ const Blog: React.FC<{
         />
       ))}
       <div id="pagination" className="flex justify-center w-full">
+        {currentPage > 1 && (
+          <Link href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${currentPage - 1}`}>
+            Prev
+          </Link>
+        )}
         {currentPage < totalPages && (
           <Link href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${currentPage + 1}`}>
             Next
@@ -51,7 +56,7 @@ const Blog: React.FC<{
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticPaths = async () => {
   const apolloClient = initializeApollo()
 
   const {
@@ -59,28 +64,59 @@ export const getStaticProps: GetStaticProps = async () => {
       posts: { meta },
     },
   } = await apolloClient.query({ query: GET_PAGE_META })
+  const totalPages = meta?.pagination?.pageCount
 
-  const { page: currentPage, pageCount: totalPages } = meta?.pagination
+  const paths = Array(totalPages)
+    .fill(0)
+    .map((_, page) => ({
+      params: {
+        page: `${page + 1}`,
+      },
+    }))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+  const apolloClient = initializeApollo()
+  const { page } = params ?? {}
+
+  if (typeof page !== "string") return { notFound: true }
+
+  const {
+    data: {
+      posts: { meta },
+    },
+  } = await apolloClient.query({ query: GET_PAGE_META })
+
+  const {
+    total: postCount,
+    page: currentPage,
+    pageCount: totalPages,
+  } = meta?.pagination
 
   const {
     data: { posts },
   } = await apolloClient.query<QueryPosts>({
     query: GET_POSTS,
-    variables: {
-      currentPage: 1,
-    },
+    variables: { currentPage: parseInt(page) },
   })
 
-  const featuredPost = posts.data[0]
   const restPosts = posts.data.slice(1)
+  const featuredPost = posts.data[0]
 
   return {
     props: {
       posts: restPosts,
       featuredPost,
+      postCount,
       currentPage,
       totalPages,
     },
   }
 }
-export default Blog
+
+export default Page

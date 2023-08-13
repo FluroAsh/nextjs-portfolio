@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const GET_POSTS = gql`
-  query getPosts {
-    posts {
+  query getPosts($currentPage: Int!) {
+    posts(pagination: { page: $currentPage, pageSize: 10 }) {
       data {
         id
         attributes {

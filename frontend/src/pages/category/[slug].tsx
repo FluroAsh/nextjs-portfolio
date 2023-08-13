@@ -5,7 +5,6 @@ import type {
 } from "next"
 import { useRouter } from "next/router"
 import { DAILY_REVALIDATION } from "constants/api"
-import Layout from "Layouts/layout"
 import { PostLayout } from "Layouts/PostLayout"
 
 import {
@@ -23,24 +22,12 @@ import {
   GET_CATEGORY_SLUGS,
   GET_POSTS_BY_CATEGORY,
 } from "lib/gql/categoryQueries"
-import { getPosts } from "lib/utils"
 
 const CategoryPage: React.FC<{
   posts: PostData[]
   featuredPost: PostData
   category: APICategory["attributes"]
 }> = ({ posts, featuredPost, category }) => {
-  const router = useRouter()
-
-  if (router.isFallback) {
-    return (
-      <Layout type="basic">
-        {/* TODO: Add skeleton loading for SSR */}
-        <div>Loading...</div>
-      </Layout>
-    )
-  }
-
   return (
     <PostLayout
       title={`${category.name} Posts`}
@@ -66,8 +53,6 @@ const CategoryPage: React.FC<{
   )
 }
 
-export default CategoryPage
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo()
   const {
@@ -76,26 +61,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: GET_CATEGORY_SLUGS,
   })
 
-  const paths = categories?.data?.attributes?.map(({ slug }) => ({
+  const paths = categories?.data?.map(({ attributes: { slug } }) => ({
     params: {
       slug,
     },
   }))
 
   return {
-    paths: paths || [],
-    fallback: true,
+    paths,
+    fallback: false,
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
-  if (!params || typeof params.slug === "undefined") return { notFound: true }
-
   const apolloClient = initializeApollo()
-
-  const { slug } = params
+  const { slug } = params ?? {}
 
   const {
     data: { posts },
@@ -111,17 +93,19 @@ export const getStaticProps: GetStaticProps = async ({
     variables: { slug },
   })
 
-  const restPosts = getPosts(posts?.data)
   // TODO: Add pagination so we're not just returning the first featuredPost
-  const featuredPost = getPosts(posts?.data, { isFeatured: true })[0]
+  const restPosts = posts.data.slice(1)
+  const featuredPost = posts.data[0]
   const category = categories.data[0].attributes
 
   return {
     props: {
       posts: restPosts,
-      featuredPost: featuredPost ? { ...featuredPost } : null,
+      featuredPost,
       category,
     },
     revalidate: DAILY_REVALIDATION,
   }
 }
+
+export default CategoryPage

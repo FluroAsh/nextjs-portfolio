@@ -1,7 +1,6 @@
 import React from "react"
-import { GetStaticPaths, GetStaticProps } from "next"
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next"
 import Head from "next/head"
-import { useRouter } from "next/router"
 import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { DAILY_REVALIDATION } from "constants/api"
@@ -30,17 +29,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
   alternativeText,
   formats,
 }) => {
-  const router = useRouter()
-
-  if (router.isFallback) {
-    return (
-      <Layout type="basic">
-        {/* TODO: Add a loading spinner/bar for SSR */}
-        <div>Loading...</div>
-      </Layout>
-    )
-  }
-
   const stats = readingTime(content)
 
   return (
@@ -81,10 +69,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
           </div>
         </header>
 
-        {/* REVIEW: Refactoring to use MDX over CMS Markdown */}
-        {/* TODO: Add a 'copy code' button + hook for code content inside <code/> blocks 
-      (Have a look into https://www.npmjs.com/package/markdown-to-jsx for HTML -> JSX Overrides -- custom code block/components anyone?)
-      */}
         <article
           className="max-w-full px-5 pt-5 prose dark:prose-invert dark:prose-dark"
           dangerouslySetInnerHTML={{ __html: content }}
@@ -101,25 +85,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
     data: { posts },
   } = await apolloClient.query<QuerySlugs>({ query: GET_POST_SLUGS })
 
+  const paths = posts?.data?.map(({ attributes: { slug } }) => ({
+    params: { slug },
+  }))
+
   return {
-    paths:
-      posts?.data?.attributes?.map(({ slug }) => ({
-        params: { slug },
-      })) || [],
-    fallback: true,
+    paths,
+    fallback: false,
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!params || typeof params.slug === "undefined") return { notFound: true }
-
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
   const apolloClient = initializeApollo()
+  const { slug } = params ?? {}
 
   const {
     data: { posts },
   } = await apolloClient.query<QueryPosts>({
     query: GET_POST,
-    variables: { slug: params.slug },
+    variables: { slug },
   })
 
   const post = posts?.data?.[0]?.attributes

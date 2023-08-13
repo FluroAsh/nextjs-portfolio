@@ -3,8 +3,8 @@ export type QuerySlugs = {
     data: {
       attributes: {
         slug: string
-      }[]
-    }
+      }
+    }[]
   }
 }
 
