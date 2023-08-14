@@ -17,9 +17,12 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
+import { useEffect } from "react"
 import { ROUTE_URL } from "constants/paths"
 
 import type { QueryPosts, QuerySlugs } from "types/api-types"
+
+import { scrollToElement } from "lib/utils"
 
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
@@ -29,6 +32,18 @@ const BlogPost: React.FC<BlogPostProps> = ({
   formats,
 }) => {
   const stats = readingTime(content)
+
+  // NOTE: Dirty way of smooth scrolling beacuse rehype hard ooga booga
+  // - should refactor this to be used globally in a hook
+  useEffect(() => {
+    const anchors = document.querySelectorAll("a[href^='#']")
+    anchors.forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault()
+        scrollToElement(anchor)
+      })
+    })
+  }, [])
 
   return (
     <Layout type="blog">

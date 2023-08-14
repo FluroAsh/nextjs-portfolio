@@ -1,6 +1,4 @@
 export const h1Anchor = {
-  scrollMarginTop: "calc(var(--navbar-height) + 10px)",
-
   "> a": {
     position: "relative",
     top: "1px",
@@ -47,6 +45,7 @@ export const commonStyles = {
   h1: h1Anchor,
   a: {
     textDecoration: "none",
+    scrollMarginTop: "calc(var(--navbar-height) + 10px)",
     "&:hover": {
       textDecoration: "underline",
     },
