@@ -1,5 +1,4 @@
 import { Head, Html, Main, NextScript } from "next/document"
-
 import { Favicons } from "static/Favicons"
 
 export default function Document() {
