@@ -1,4 +1,3 @@
-import React from "react"
 import Layout from "Layouts/layout"
 
 const Mission = () => {

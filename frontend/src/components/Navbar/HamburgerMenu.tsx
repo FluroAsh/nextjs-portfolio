@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { faBars, faClose } from "@fortawesome/pro-solid-svg-icons"
 import {

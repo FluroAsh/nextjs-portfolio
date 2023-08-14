@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import clsx from "clsx"
 
 // TODO: Create generator function for each skills (color + sublabel/name)

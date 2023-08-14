@@ -1,4 +1,3 @@
-import React from "react"
 import type { ReactNode } from "react"
 import Head from "next/head"
 import { FOOTER_HEIGHT, NAVBAR_HEIGHT } from "constants/pages"

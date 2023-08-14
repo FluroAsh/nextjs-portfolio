@@ -1,4 +1,3 @@
-import React from "react"
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next"
 import Head from "next/head"
 import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
