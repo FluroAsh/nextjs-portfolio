@@ -30,7 +30,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           return isWithinRange ? (
             <Link
               key={page}
-              href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${page}`}
+              href={`${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}/${page}`}
               className={`p-2 transition-colors duration-300 rounded-lg min-w-[35px] text-center ${
                 isCurrentPage
                   ? "bg-sky-600 text-neutral-300"
@@ -42,7 +42,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           ) : null
         })}
         <Navigation
-          href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${currentPage + 1}`}
+          href={`${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}/${currentPage + 1}`}
           text="next"
           condition={currentPage < totalPages}
         />
