@@ -26,8 +26,9 @@ const INFO_CARDS = [
 export const InfoCards = () => {
   return (
     <div className="grid grid-cols-1 gap-2 auto-rows-auto sm:grid-cols-2 md:grid-cols-3 md:grid-rows-1">
-      {INFO_CARDS.map(({ heading, text, icon, className }) => (
+      {INFO_CARDS.map(({ heading, text, icon, className }, idx) => (
         <div
+          key={`info-${idx}`}
           className={clsx(
             className,
             "relative p-5 rounded-md shadow-md bg-slate-500 whitespace-break-spaces border-2 border-slate-400"
