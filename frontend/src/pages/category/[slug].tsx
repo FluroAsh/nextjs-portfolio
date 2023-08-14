@@ -3,7 +3,6 @@ import type {
   GetStaticProps,
   GetStaticPropsContext,
 } from "next"
-import { useRouter } from "next/router"
 import { DAILY_REVALIDATION } from "constants/api"
 import { PostLayout } from "Layouts/PostLayout"
 

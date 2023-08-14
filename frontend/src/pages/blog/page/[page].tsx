@@ -1,6 +1,5 @@
 import { GetStaticPropsContext } from "next"
 import { DAILY_REVALIDATION } from "constants/api"
-import { ROUTE_URL } from "constants/paths"
 import { PostLayout } from "Layouts/PostLayout"
 
 import { PostData, QueryPosts } from "types/api-types"
