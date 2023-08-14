@@ -1,25 +1,25 @@
 import Link from "next/link"
 import clsx from "clsx"
 
-interface IButton {
+type ButtonProps = {
   title?: string
   href: string
-  children: JSX.Element[] | JSX.Element | string
+  children: React.ReactNode
   className?: string
   type?: "link" | "back" | "text"
 }
 
-const Button: React.FC<IButton> = ({
+const Button: React.FC<ButtonProps> = ({
   title,
   href,
   children,
   className,
   type = "link",
 }) => {
-  const buttonStyles = (type: IButton["type"]) => {
+  const buttonStyles = (type: ButtonProps["type"]) => {
     if (type === "link") {
       return `p-2 px-4 border border-black hover:text-white rounded-md hover:border-orange-300 bg-gradient-to-r hover:to-orange-500 hover:from-orange-600 
-      dark:border-white dark:hover:to-sky-600 dark:hover:from-sky-700  dark:hover:border-sky-300 hover:shadow-lg`
+      dark:border-white dark:hover:to-sky-600 dark:hover:from-sky-700 dark:hover:border-sky-300 hover:shadow-lg`
     }
 
     // TODO: Add more button types/styles
@@ -33,11 +33,11 @@ const Button: React.FC<IButton> = ({
   }
 
   return (
-    <button type="button">
+    <button type="button" className={className}>
       <Link
         title={title}
         href={href}
-        className={clsx("block", buttonStyles(type), className)}
+        className={clsx("block", buttonStyles(type))}
       >
         {children}
       </Link>
