@@ -6,23 +6,69 @@ type PaginationProps = { currentPage: number; totalPages: number }
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
-}) => (
-  <div id="pagination" className="flex justify-center w-full mt-4">
-    {currentPage > 1 && (
-      <Link
-        href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${currentPage - 1}`}
-        className="px-5 py-2 duration-200 border rounded-lg bg-slate-500 border-slate-400 hover:bg-slate-400/80 transition-color"
-      >
-        Prev
-      </Link>
-    )}
-    {currentPage < totalPages && (
-      <Link
-        href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${currentPage + 1}`}
-        className="px-5 py-2 duration-200 border rounded-lg bg-slate-500 border-slate-400 hover:bg-slate-400/80 transition-color"
-      >
-        Next
-      </Link>
-    )}
-  </div>
-)
+}) => {
+  const pages = Array(totalPages).fill(0)
+
+  return (
+    <div className="flex justify-center w-full mt-4">
+      <div className="flex gap-3 p-1 rounded-xl min-w-[150px] justify-between border-2 border-slate-400">
+        <Navigation
+          href={`${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}/${currentPage - 1}`}
+          text="prev"
+          condition={currentPage > 1}
+        />
+        {pages.map((_, index) => {
+          const page = index + 1
+          const isCurrentPage = page === currentPage
+          const isLastPage = page === totalPages
+          const isFirstPage = page === 1
+          const isWithinRange =
+            page === currentPage ||
+            (page === currentPage - 1 && !isFirstPage) ||
+            (page === currentPage + 1 && !isLastPage)
+
+          return isWithinRange ? (
+            <Link
+              key={page}
+              href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${page}`}
+              className={`p-2 transition-colors duration-300 rounded-lg min-w-[35px] text-center ${
+                isCurrentPage
+                  ? "bg-sky-600 text-neutral-300"
+                  : "hover:text-neutral-300 hover:bg-slate-500/50"
+              }`}
+            >
+              {page}
+            </Link>
+          ) : null
+        })}
+        <Navigation
+          href={`${ROUTE_URL.BLOG}/${ROUTE_URL.PAGE}/${currentPage + 1}`}
+          text="next"
+          condition={currentPage < totalPages}
+        />
+      </div>
+    </div>
+  )
+}
+
+const Navigation = ({
+  href,
+  text,
+  condition,
+}: {
+  href: string
+  text: string
+  condition: boolean
+}) =>
+  condition ? (
+    <Link
+      href={href}
+      className="p-2 capitalize transition-colors duration-300 rounded-lg hover:text-neutral-300 hover:bg-slate-500/50"
+    >
+      {text}
+    </Link>
+  ) : (
+    <span className="p-2 text-gray-400 capitalize pointer-events-none">
+      {text}
+    </span>
+  )
