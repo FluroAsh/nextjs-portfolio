@@ -37,8 +37,8 @@ export const GET_POSTS = gql`
 `
 
 export const GET_POST_SLUGS = gql`
-  {
-    posts {
+  query getPostSlugs {
+    posts(pagination: { start: 0, limit: 250 }) {
       data {
         attributes {
           slug
