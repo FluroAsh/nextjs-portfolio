@@ -25,7 +25,6 @@ const BlogFeature: React.FC<{
           featured
           linkTo={getSlugPath("blog", slug)}
           formats={cover.data.attributes.formats}
-          className="transition duration-300 hover:brightness-75"
         />
       </div>
 

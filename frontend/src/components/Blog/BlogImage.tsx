@@ -20,7 +20,7 @@ const BlogImage: React.FC<BlogImageProps> = ({
 
   const imageComponent = (
     <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96 overflow-hidden rounded-lg shadow-lg group">
-      <picture>
+      <picture className="duration-300 transition-[filter] hover:brightness-75">
         <source media={`(max-width: ${small.width}px)`} srcSet={small.url} />
         <source media={`(max-width: ${medium.width}px)`} srcSet={medium.url} />
         <img
@@ -34,7 +34,7 @@ const BlogImage: React.FC<BlogImageProps> = ({
         />
       </picture>
       {featured && (
-        <div className="absolute top-0 left-0 px-4 py-1 text-sm font-semibold text-orange-200 uppercase transition bg-orange-600 border-b border-r rounded-br-lg pointer-events-none dark:bg-sky-600 group-hover:opacity-80 dark:border-slate-500/50 border-orange-300/50">
+        <div className="absolute top-0 left-0 px-4 py-1 text-sm font-semibold uppercase transition duration-300 bg-orange-600 border-b border-r rounded-br-lg pointer-events-none text-neutral-200 dark:bg-sky-600 group-hover:bg-sky-600/80 dark:border-slate-500/50 border-orange-300/50">
           featured
         </div>
       )}
