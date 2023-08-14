@@ -11,7 +11,7 @@ const IconLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
 )
 
 const iconStyles =
-  "hover:dark:fill-slate-300 hover:fill-orange-400 dark:fill-white fill-neutral-800 transition-color"
+  "hover:dark:fill-slate-300 hover:fill-orange-400 dark:fill-white fill-neutral-800 transition-color duration-300"
 
 export const Footer = () => {
   return (
