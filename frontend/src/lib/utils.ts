@@ -36,7 +36,7 @@ export const checkImgFormats = (formats: Formats) => {
 export const capitalize = (word: string) =>
   word[0].toUpperCase() + word.slice(1)
 
-export const scrollToElement = (element: Element) => {
+export const scrollToElement = (element: HTMLElement | null) => {
   if (element) {
     element.scrollIntoView({
       behavior: "smooth",

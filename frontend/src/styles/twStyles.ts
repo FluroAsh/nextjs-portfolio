@@ -1,11 +1,11 @@
 type themeType = "dark" | "light"
 
 export const h1Anchor = (theme: any, type: themeType) => ({
+  scrollMarginTop: "calc(var(--navbar-height) + 10px)",
   color:
     type === "dark" ? theme("colors.neutral.300") : theme("colors.orange.500"),
 
   ".anchor": {
-    scrollMarginTop: "calc(var(--navbar-height) + 10px)",
     transition: "all 150ms ease-out",
     opacity: "100%",
     borderBottom: "2px solid transparent",
