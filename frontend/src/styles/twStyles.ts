@@ -1,19 +1,25 @@
-export const h1Anchor = {
-  "> a": {
-    position: "relative",
-    top: "1px",
-    transition: "opacity 150ms ease-out",
+type themeType = "dark" | "light"
+
+export const h1Anchor = (theme: any, type: themeType) => ({
+  color:
+    type === "dark" ? theme("colors.neutral.300") : theme("colors.orange.500"),
+
+  ".anchor": {
+    scrollMarginTop: "calc(var(--navbar-height) + 10px)",
+    transition: "all 150ms ease-out",
     opacity: "100%",
-    marginLeft: "8px",
+    borderBottom: "2px solid transparent",
 
     "&:hover": {
-      opacity: "50%",
-      textDecoration: "none",
+      color:
+        type === "dark" ? theme("colors.sky.500") : theme("colors.orange.500"),
+      opacity: "70%",
+      borderBottom: "2px solid currentColor",
     },
   },
-}
+})
 
-export const pre = (theme: any, type: "dark" | "light") => {
+export const pre = (theme: any, type: themeType) => {
   const defaults = {
     borderRadius: theme("borderRadius.md"),
     borderWidth: theme("borderWidth.2"),
@@ -41,13 +47,25 @@ export const pre = (theme: any, type: "dark" | "light") => {
   return type === "dark" ? darkStyle : lightStyle
 }
 
-export const commonStyles = {
-  h1: h1Anchor,
+export const commonStyles = (theme: any, type: themeType) => ({
   a: {
     textDecoration: "none",
-    scrollMarginTop: "calc(var(--navbar-height) + 10px)",
+  },
+
+  "p > a": {
+    color:
+      type === "dark"
+        ? theme("colors.neutral.300")
+        : theme("colors.orange.500"),
+    transition: " 150ms ease-out",
+    opacity: "100%",
+    borderBottom: "2px solid transparent",
+
     "&:hover": {
-      textDecoration: "underline",
+      color:
+        type === "dark" ? theme("colors.sky.500") : theme("colors.orange.500"),
+      opacity: "50%",
+      borderBottom: "2px solid currentColor",
     },
   },
-}
+})

@@ -28,24 +28,19 @@ module.exports = {
         "-navbar": "calc(100vh - var(--navbar-height))",
         navbar: "var(--navbar-height)",
       },
+      // For over-riding/customisit
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            h1: twS.h1Anchor,
-            a: {
-              ...twS.commonStyles.a,
-              color: theme("colors.orange.400"),
-            },
+            ...twS.commonStyles(theme, "light"),
+            h1: twS.h1Anchor(theme, "light"),
             pre: twS.pre(theme, "light"),
           },
         },
         dark: {
           css: {
-            h1: twS.h1Anchor,
-            a: {
-              ...twS.commonStyles.a,
-              color: theme("colors.sky.500"),
-            },
+            ...twS.commonStyles(theme, "dark"),
+            h1: twS.h1Anchor(theme, "dark"),
             pre: twS.pre(theme, "dark"),
           },
         },

@@ -7,3 +7,22 @@
   --divider-height: 80px;
   --footer-height: 80px;
 }
+
+/* Rehype AutoLink Heading "Tag/Link" Styles */
+.anchor {
+  position: relative;
+}
+.anchor::after {
+  position: absolute;
+  top: 8px;
+  right: -28px;
+  content: "#"; /* TODO: Replace with SVG icon */
+  color: #286c8f;
+  font-size: 0.75em;
+  display: inline-block;
+  transition: opacity 150ms ease-in-out;
+  opacity: 0%;
+}
+.anchor:hover::after {
+  opacity: 100%;
+}
