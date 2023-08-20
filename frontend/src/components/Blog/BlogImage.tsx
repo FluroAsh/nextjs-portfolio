@@ -20,17 +20,14 @@ const BlogImage: React.FC<BlogImageProps> = ({
 
   const imageComponent = (
     <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96 overflow-hidden rounded-lg shadow-lg group">
-      <picture className="duration-300 transition-[filter] hover:brightness-75">
+      <picture className={clsx(extraStyles, "")}>
         <source media={`(max-width: ${small.width}px)`} srcSet={small.url} />
         <source media={`(max-width: ${medium.width}px)`} srcSet={medium.url} />
         <img
           src={large.url}
           alt={alt}
           width={large.width}
-          className={clsx(
-            extraStyles,
-            "object-cover w-full h-full object-bottom"
-          )}
+          className={clsx("object-cover w-full h-full object-bottom")}
         />
       </picture>
       {featured && (
