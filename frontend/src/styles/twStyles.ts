@@ -19,33 +19,20 @@ export const h1Anchor = (theme: any, type: themeType) => ({
   },
 })
 
-export const pre = (theme: any, type: themeType) => {
-  const defaults = {
-    borderRadius: theme("borderRadius.md"),
-    borderWidth: theme("borderWidth.2"),
-    maxWidth: "100%",
-    overflowX: "auto",
-    // Remove Prose defaults
-    backgroundColor: null,
-    paddingLeft: null,
-    paddingRight: null,
-    paddingTop: null,
-    paddingBottom: null,
-  }
-
-  const lightStyle = {
-    ...defaults,
-    borderColor: "transparent",
-    boxShadow: theme("boxShadow.lg"),
-  }
-
-  const darkStyle = {
-    ...defaults,
-    boxShadow: theme("boxShadow.md"),
-    borderColor: "hsla(218, 13%, 40%, 0.5)", // equivalent to slate.500/50
-  }
-  return type === "dark" ? darkStyle : lightStyle
-}
+export const pre = (theme: any, type: themeType) => ({
+  borderRadius: theme("borderRadius.md"),
+  borderWidth: theme("borderWidth.2"),
+  borderColor: type === "dark" ? "hsla(218, 13%, 40%, 0.5)" : "transparent",
+  boxShadow: type === "dark" ? theme("boxShadow.md") : theme("boxShadow.lg"),
+  maxWidth: "100%",
+  overflowX: "auto",
+  // Remove Prose defaults
+  backgroundColor: null,
+  paddingLeft: null,
+  paddingRight: null,
+  paddingTop: null,
+  paddingBottom: null,
+})
 
 export const commonStyles = (theme: any, type: themeType) => ({
   a: {
