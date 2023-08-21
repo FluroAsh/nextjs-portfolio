@@ -26,7 +26,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <Navigation
           href={`${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}/${currentPage - 1}`}
           text="prev"
-          condition={currentPage > 1}
+          isEnabled={currentPage < 1}
         />
         {pages.map((_, index) => {
           const page = index + 1
@@ -55,7 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <Navigation
           href={`${PAGE_PATH[type]}/${currentPage + 1}`}
           text="next"
-          condition={currentPage < totalPages}
+          isEnabled={currentPage < totalPages}
         />
       </div>
     </div>
@@ -65,13 +65,13 @@ export const Pagination: React.FC<PaginationProps> = ({
 const Navigation = ({
   href,
   text,
-  condition,
+  isEnabled,
 }: {
   href: string
   text: string
-  condition: boolean
+  isEnabled: boolean
 }) =>
-  condition ? (
+  isEnabled ? (
     <Link
       href={href}
       className="p-2 capitalize transition-colors duration-300 rounded-lg hover:text-neutral-300 hover:bg-slate-500/50"
