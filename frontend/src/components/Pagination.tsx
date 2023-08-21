@@ -1,12 +1,23 @@
 import Link from "next/link"
 import { ROUTE_URL } from "constants/paths"
 
-type PaginationProps = { currentPage: number; totalPages: number }
+type PageType = "blog" | "category"
+type PaginationProps = {
+  currentPage: number
+  totalPages: number
+  type: PageType
+}
 
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
+  type,
 }) => {
+  const PAGE_PATH = {
+    blog: `${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}`,
+    category: `${ROUTE_URL.CATEGORY}${ROUTE_URL.PAGE}`,
+  } as const
+
   const pages = Array(totalPages).fill(0)
 
   return (
@@ -30,7 +41,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           return isWithinRange ? (
             <Link
               key={page}
-              href={`${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}/${page}`}
+              href={`${PAGE_PATH[type]}/${page}`}
               className={`p-2 transition-colors duration-300 rounded-lg min-w-[35px] text-center ${
                 isCurrentPage
                   ? "bg-sky-600 text-neutral-300"
@@ -42,7 +53,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           ) : null
         })}
         <Navigation
-          href={`${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}/${currentPage + 1}`}
+          href={`${PAGE_PATH[type]}/${currentPage + 1}`}
           text="next"
           condition={currentPage < totalPages}
         />

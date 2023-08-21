@@ -7,7 +7,7 @@ import { BlogFeature, BlogPreview } from "components/Blog"
 import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_PAGE_META } from "lib/gql/metaQueries"
+import { GET_POSTS_PAGE_META, QueryPageMeta } from "lib/gql/metaQueries"
 import { GET_POSTS } from "lib/gql/postQueries"
 
 const Page = ({
@@ -38,7 +38,11 @@ const Page = ({
           categoryData={post.attributes.categories.data}
         />
       ))}
-      <Pagination currentPage={currentPage} totalPages={totalPages} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        type="blog"
+      />
     </PostLayout>
   )
 }
@@ -50,7 +54,7 @@ export const getStaticPaths = async () => {
     data: {
       posts: { meta },
     },
-  } = await apolloClient.query({ query: GET_PAGE_META })
+  } = await apolloClient.query<QueryPageMeta>({ query: GET_POSTS_PAGE_META })
   const totalPages = meta?.pagination?.pageCount
 
   const paths = Array(totalPages)
@@ -77,7 +81,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     data: {
       posts: { meta },
     },
-  } = await apolloClient.query({ query: GET_PAGE_META })
+  } = await apolloClient.query({ query: GET_POSTS_PAGE_META })
 
   const { total: postCount, pageCount: totalPages } = meta?.pagination
 

@@ -6,7 +6,7 @@ import { BlogFeature, BlogPreview } from "components/Blog"
 import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_PAGE_META } from "lib/gql/metaQueries"
+import { GET_POSTS_PAGE_META, QueryPageMeta } from "lib/gql/metaQueries"
 import { GET_POSTS } from "lib/gql/postQueries"
 
 const Blog: React.FC<{
@@ -30,7 +30,7 @@ const Blog: React.FC<{
         categoryData={post.attributes.categories.data}
       />
     ))}
-    <Pagination currentPage={currentPage} totalPages={totalPages} />
+    <Pagination currentPage={currentPage} totalPages={totalPages} type="blog" />
   </PostLayout>
 )
 
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
     data: {
       posts: { meta },
     },
-  } = await apolloClient.query({ query: GET_PAGE_META })
+  } = await apolloClient.query<QueryPageMeta>({ query: GET_POSTS_PAGE_META })
 
   const { page: currentPage, pageCount: totalPages } = meta?.pagination
 
