@@ -30,7 +30,7 @@ export const GET_POSTS_PAGE_META = gql`
 
 export const GET_CATEGORY_PAGE_META = gql`
   query getCategoryMeta($slug: String!) {
-    posts(filters: { categories: { eq: $slug } }) {
+    posts(filters: { categories: { slug: { eq: $slug } } }) {
       meta {
         pagination {
           page

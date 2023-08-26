@@ -17,12 +17,9 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
-import React, { useEffect } from "react"
 import { ROUTE_URL } from "constants/paths"
 
 import type { QueryPosts, QuerySlugs } from "types/api-types"
-
-import { scrollToElement } from "lib/utils"
 
 const BlogPost: React.FC<BlogPostProps> = ({
   title,

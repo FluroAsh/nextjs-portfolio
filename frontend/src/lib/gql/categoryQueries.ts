@@ -1,8 +1,11 @@
 import { gql } from "@apollo/client"
 
 export const GET_POSTS_BY_CATEGORY = gql`
-  query getPostsByCategory($slug: String!) {
-    posts(filters: { categories: { slug: { eq: $slug } } }) {
+  query getPostsByCategory($slug: String!, $currentPage: Int!) {
+    posts(
+      filters: { categories: { slug: { eq: $slug } } }
+      pagination: { page: $currentPage, pageSize: 10 }
+    ) {
       data {
         id
         attributes {

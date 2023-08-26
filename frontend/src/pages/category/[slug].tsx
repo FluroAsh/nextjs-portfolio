@@ -14,6 +14,7 @@ import {
   QuerySlugs,
 } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
+import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
 import {
@@ -21,12 +22,15 @@ import {
   GET_CATEGORY_SLUGS,
   GET_POSTS_BY_CATEGORY,
 } from "lib/gql/categoryQueries"
+import { GET_CATEGORY_PAGE_META, type QueryPageMeta } from "lib/gql/metaQueries"
 
 const CategoryPage: React.FC<{
   posts: PostData[]
   featuredPost: PostData
   category: APICategory["attributes"]
-}> = ({ posts, featuredPost, category }) => {
+  currentPage: number
+  totalPages: number
+}> = ({ posts, featuredPost, category, currentPage, totalPages }) => {
   return (
     <PostLayout
       title={`${category.name} Posts`}
@@ -48,7 +52,12 @@ const CategoryPage: React.FC<{
           categoryData={post.attributes.categories.data}
         />
       ))}
-      {/* TODO: Pagination for Category */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        type="category"
+        slug={category.slug}
+      />
     </PostLayout>
   )
 }
@@ -82,10 +91,21 @@ export const getStaticProps: GetStaticProps = async ({
   if (typeof slug !== "string") return { notFound: true }
 
   const {
+    data: {
+      posts: { meta },
+    },
+  } = await apolloClient.query<QueryPageMeta>({
+    query: GET_CATEGORY_PAGE_META,
+    variables: { slug },
+  })
+
+  const { page: currentPage, pageCount: totalPages } = meta.pagination
+
+  const {
     data: { posts },
   } = await apolloClient.query<QueryPosts>({
     query: GET_POSTS_BY_CATEGORY,
-    variables: { slug },
+    variables: { slug, currentPage },
   })
 
   const {
@@ -95,7 +115,6 @@ export const getStaticProps: GetStaticProps = async ({
     variables: { slug },
   })
 
-  // TODO: Add pagination so we're not just returning the first featuredPost
   const restPosts = posts.data.slice(1) ?? []
   const featuredPost = posts.data[0] ?? null
   const category = categories.data[0].attributes
@@ -105,6 +124,8 @@ export const getStaticProps: GetStaticProps = async ({
       posts: restPosts,
       featuredPost,
       category,
+      currentPage,
+      totalPages,
     },
     revalidate: DAILY_REVALIDATION,
   }

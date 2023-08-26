@@ -1,20 +1,16 @@
-import { useMemo } from "react"
 import Link from "next/link"
 import { ROUTE_URL } from "constants/paths"
 
 type PageType = "blog" | "category"
-type PaginationProps = {
+type BlogType = { type: "blog"; slug?: never }
+type CategoryType = { type: "category"; slug: string }
+
+type PaginationProps<T extends PageType> = {
   currentPage: number
   totalPages: number
-  type: PageType
-}
-
-const PAGE_PATH = {
-  blog: `${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}`,
-  category: `${ROUTE_URL.CATEGORY}${ROUTE_URL.PAGE}`,
-} as const
-
-// Page Component
+  type: T // passed in as a prop ("blog" | "category" | anything else)
+  slug?: string
+} & (T extends "blog" ? BlogType : CategoryType)
 
 const Navigation = ({
   href,
@@ -38,11 +34,17 @@ const Navigation = ({
     </span>
   )
 
-export const Pagination: React.FC<PaginationProps> = ({
+export const Pagination: React.FC<PaginationProps<PageType>> = ({
   currentPage,
   totalPages,
   type,
+  slug,
 }) => {
+  const PAGE_PATH = {
+    blog: `${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}`,
+    category: `${ROUTE_URL.CATEGORY}/${slug}${ROUTE_URL.PAGE}`,
+  } as const
+
   const pages = Array.from({ length: totalPages }, (_, idx) => ++idx)
 
   return (
