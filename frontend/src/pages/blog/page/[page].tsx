@@ -57,13 +57,11 @@ export const getStaticPaths = async () => {
   } = await apolloClient.query<QueryPageMeta>({ query: GET_POSTS_PAGE_META })
   const totalPages = meta?.pagination?.pageCount
 
-  const paths = Array(totalPages)
-    .fill(0)
-    .map((_, page) => ({
-      params: {
-        page: `${page + 1}`,
-      },
-    }))
+  const paths = Array.from({ length: totalPages }, (_, page) => ({
+    params: {
+      page: `${page + 1}`,
+    },
+  }))
 
   return {
     paths,
