@@ -9,6 +9,8 @@ type ButtonProps = {
   type?: "link" | "back" | "text"
 }
 
+// TODO: Refactor this component to use CVA/a better approach with
+// the different conditional props/styles
 const Button: React.FC<ButtonProps> = ({
   title,
   href,

@@ -17,6 +17,8 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
+import Link from "next/link"
+import { useRouter } from "next/router"
 import { ROUTE_URL } from "constants/paths"
 
 import type { QueryPosts, QuerySlugs } from "types/api-types"
@@ -28,6 +30,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   alternativeText,
   formats,
 }) => {
+  const router = useRouter()
   const stats = readingTime(content)
 
   return (
@@ -39,10 +42,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
       <div className="w-full max-w-screen-lg">
         <header className="w-full px-5">
           <div className="py-5 border-b border-orange-300 dark:border-slate-500">
-            <Button
-              title="Back to Blog"
-              href={ROUTE_URL.BLOG}
-              type="back"
+            <button
+              onClick={() => router.back()}
               className="text-orange-400 transition-colors group hover:text-orange-300 dark:text-neutral-400 dark:hover:text-white"
             >
               <FontAwesomeIcon
@@ -50,8 +51,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
                 size="sm"
                 className="group-hover:animate-back-and-forth"
               />
-              <span className="ml-2">Blog</span>
-            </Button>
+              <span className="ml-2">Back</span>
+            </button>
             {/* REVIEW: Should refactor this h1 to use BlogTitle... */}
             <h1 className="text-3xl font-bold sm:text-4xl text-neutral-800 dark:text-white">
               {title}
