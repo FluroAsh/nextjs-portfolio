@@ -51,7 +51,7 @@ export const Pagination: React.FC<PaginationProps<PageType>> = ({
     <div className="flex justify-center w-full mt-4">
       <div className="flex gap-2 p-1 rounded-xl min-w-[150px] justify-between border-2 border-slate-400">
         <Navigation
-          href={`${ROUTE_URL.BLOG}${ROUTE_URL.PAGE}/${currentPage - 1}`}
+          href={`${PAGE_PATH[type]}/${currentPage - 1}`}
           text="prev"
           isEnabled={currentPage > 1}
         />
