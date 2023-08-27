@@ -2,7 +2,7 @@ export const ROUTE_URL = {
   HOME: "/",
   BLOG: "/blog",
   PAGE: "/page",
-  CATEGORY: "/category",
+  CATEGORY: "/categories",
   MISSION: "/mission",
 } as const
 

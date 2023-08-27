@@ -1,15 +1,10 @@
-import type {
-  GetStaticPaths,
-  GetStaticProps,
-  GetStaticPropsContext,
-} from "next"
+import type { GetStaticProps, GetStaticPropsContext } from "next"
 import { DAILY_REVALIDATION } from "constants/api"
 import { PostLayout } from "Layouts/PostLayout"
 
-import {
+import type {
   APICategory,
   PostData,
-  QueryCategories,
   QueryPosts,
   QuerySlugs,
 } from "types/api-types"
@@ -18,13 +13,12 @@ import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
 import {
-  GET_CATEGORY,
   GET_CATEGORY_SLUGS,
   GET_POSTS_BY_CATEGORY,
 } from "lib/gql/categoryQueries"
-import { GET_CATEGORY_PAGE_META, type QueryPageMeta } from "lib/gql/metaQueries"
+import { GET_CATEGORY_PAGE_META, QueryPageMeta } from "lib/gql/metaQueries"
 
-const CategoryPage: React.FC<{
+const Page: React.FC<{
   posts: PostData[]
   featuredPost: PostData
   category: APICategory["attributes"]
@@ -52,6 +46,7 @@ const CategoryPage: React.FC<{
           categoryData={post.attributes.categories.data}
         />
       ))}
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
@@ -62,22 +57,44 @@ const CategoryPage: React.FC<{
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: any = async () => {
   const apolloClient = initializeApollo()
+
   const {
     data: { categories },
   } = await apolloClient.query<QuerySlugs>({
     query: GET_CATEGORY_SLUGS,
   })
 
-  const paths = categories?.data?.map(({ attributes: { slug } }) => ({
-    params: {
-      slug,
-    },
-  }))
+  // Must be awaited with Promise.all due to multiple GQL queries
+  const paths = await Promise.all(
+    categories.data?.map(async ({ attributes: { slug } }) => {
+      // Fetch Category Page Metadata to retrieve pageCount
+      const {
+        data: {
+          posts: { meta },
+        },
+      } = await apolloClient.query<QueryPageMeta>({
+        query: GET_CATEGORY_PAGE_META,
+        variables: { slug },
+      })
+
+      const { pageCount: totalPages } = meta.pagination
+
+      return Array.from({ length: totalPages }, (_, page) => ({
+        params: {
+          category: slug,
+          page: `${page + 1}`,
+        },
+      }))
+    })
+  )
+
+  // flattern array of arrays in to a single array
+  const flattenedPaths = paths.flat()
 
   return {
-    paths,
+    paths: flattenedPaths,
     fallback: false,
   }
 }
@@ -86,9 +103,27 @@ export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
   const apolloClient = initializeApollo()
-  const { slug } = params ?? {}
+  const { category: categorySlug, page: currentPage } = params ?? {}
 
-  if (typeof slug !== "string") return { notFound: true }
+  if (typeof currentPage !== "string" || typeof categorySlug !== "string") {
+    return { notFound: true }
+  }
+
+  const {
+    data: { posts },
+  } = await apolloClient.query<QueryPosts>({
+    query: GET_POSTS_BY_CATEGORY,
+    variables: { slug: categorySlug, currentPage: parseInt(currentPage) },
+  })
+
+  // Posts have an associated Category that will match the categorySlug;
+  // iterates through the nested Categories properties for the 1st post & retrieves the associated data
+  const category = posts.data[0].attributes.categories.data.find(
+    ({ attributes }) => attributes.slug === categorySlug
+  )?.attributes
+
+  const restPosts = posts.data.slice(1)
+  const featuredPost = posts.data[0]
 
   const {
     data: {
@@ -96,39 +131,21 @@ export const getStaticProps: GetStaticProps = async ({
     },
   } = await apolloClient.query<QueryPageMeta>({
     query: GET_CATEGORY_PAGE_META,
-    variables: { slug },
+    variables: { slug: categorySlug },
   })
 
-  const { page: currentPage, pageCount: totalPages } = meta.pagination
-
-  const {
-    data: { posts },
-  } = await apolloClient.query<QueryPosts>({
-    query: GET_POSTS_BY_CATEGORY,
-    variables: { slug, currentPage },
-  })
-
-  const {
-    data: { categories },
-  } = await apolloClient.query<QueryCategories>({
-    query: GET_CATEGORY,
-    variables: { slug },
-  })
-
-  const restPosts = posts.data.slice(1) ?? []
-  const featuredPost = posts.data[0] ?? null
-  const category = categories.data[0].attributes
+  const { pageCount: totalPages } = meta.pagination
 
   return {
     props: {
+      category,
       posts: restPosts,
       featuredPost,
-      category,
-      currentPage,
+      currentPage: parseInt(currentPage),
       totalPages,
     },
     revalidate: DAILY_REVALIDATION,
   }
 }
 
-export default CategoryPage
+export default Page

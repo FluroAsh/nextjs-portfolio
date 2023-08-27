@@ -18,7 +18,6 @@ const Page = ({
 }: {
   posts: PostData[]
   featuredPost: PostData
-  postCount: number
   currentPage: number
   totalPages: number
 }) => {
@@ -97,7 +96,6 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     props: {
       posts: restPosts,
       featuredPost,
-      postCount,
       currentPage: parseInt(page),
       totalPages,
     },
