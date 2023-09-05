@@ -8,7 +8,6 @@ import readingTime from "reading-time"
 
 import type { BlogPostProps } from "types/blog-types"
 import { BlogImage } from "components/Blog"
-import Button from "components/Button"
 import { TimeDate } from "components/TimeDate"
 
 import { initializeApollo } from "lib/apollo-client"
@@ -17,9 +16,7 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
-import Link from "next/link"
 import { useRouter } from "next/router"
-import { ROUTE_URL } from "constants/paths"
 
 import type { QueryPosts, QuerySlugs } from "types/api-types"
 
