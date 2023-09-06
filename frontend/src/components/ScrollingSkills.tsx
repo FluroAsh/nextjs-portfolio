@@ -99,7 +99,7 @@ export const ScrollingSkills = () => {
         setPositionX(8)
         setPositionY(4)
       }
-    }, 8)
+    }, 16)
 
     return () => clearInterval(id)
   }, [positionX, positionY])
