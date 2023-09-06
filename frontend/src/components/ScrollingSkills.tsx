@@ -83,18 +83,18 @@ const skillRows = SKILLS.map((row, idx) => (
 
 export const ScrollingSkills = () => {
   const [positionX, setPositionX] = useState<number>(0)
-  const [positionY, setPositionY] = useState<number>(0) // TODO: Should be a negative of the skills container height
+  const [positionY, setPositionY] = useState<number>(0)
 
   const containerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const END_Y = 394
+  const END_Y = 394
 
+  useEffect(() => {
     const id = setInterval(() => {
       setPositionX((prev) => prev + 2.045)
       setPositionY((prev) => prev + 1)
 
-      if (positionY >= 394) {
+      if (positionY >= END_Y) {
         // Reset animation
         setPositionX(8)
         setPositionY(4)
@@ -108,7 +108,6 @@ export const ScrollingSkills = () => {
     <div className="relative mx-auto overflow-hidden w-100 bg-slate-400 h-80 xl:mx-5">
       <div
         id="skills-container"
-        // -bottom-24
         className="absolute flex flex-wrap justify-center gap-3 origin-top-left -left-[1200px] -top-[350px] will-change-transform"
         style={{
           transform: `translateX(${positionX}px) translateY(${positionY}px) rotateX(25deg) rotateZ(-10deg) skewX(15deg) translateZ(0px)`,
