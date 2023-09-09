@@ -1,4 +1,4 @@
-import { IconProps } from "./types"
+import type { IconProps } from "types/blog-types"
 
 const LinkedIn: React.FC<IconProps> = ({ className, height = "1.5rem" }) => {
   return (

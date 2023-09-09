@@ -20,3 +20,8 @@ export interface BlogPostProps {
   alternativeText: string
   formats: Formats
 }
+
+export interface IconProps {
+  className: string
+  height?: string | number
+}
