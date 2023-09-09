@@ -28,10 +28,11 @@ const Home: React.FC = () => {
           <SectionTitle
             heading={
               <>
-                Who <span className="italic">IS</span> this guy anyway?
+                Who <span className="italic text-sky-500">IS</span> this guy
+                anyway?
               </>
             }
-            subheading="Well here's a little something about me..."
+            subheading="Let's get to know me better, starting with some trivia..."
           />
 
           <InfoCards />
@@ -42,25 +43,40 @@ const Home: React.FC = () => {
         <section id="skills" className="max-w-screen-xl mx-auto mt-5">
           <SectionTitle
             heading="Skills"
-            subheading=" A few of them anyway... 😉"
+            subheading=" A few of them atleast... 😉"
           />
           <ScrollingSkills />
         </section>
 
-        <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-5">
+        {/* TODO: This section will need to render a different component or have a different layout below the lg breakpoint (1024px) */}
+        <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-5 ">
           <SectionTitle
             heading="Recent Projects"
             subheading="Cool stuff I've completed and am currently working on! 👷‍♂️"
           />
+          {/* On mouseenter & mouseleave play an MP4 video demo */}
+          <div className="grid grid-cols-12 grid-rows-2 h-[450px] w-100 bg-neutral-50 rounded-lg shadow-lg overflow-hidden">
+            <div className="col-span-6 row-span-2 bg-red-500 grid-item">
+              Featured
+            </div>
+            <div className="col-span-3 bg-orange-500">1</div>
+            <div className="col-span-3 bg-yellow-500">2</div>
+            <div className="col-span-3 bg-sky-500">3</div>
+            <div className="col-span-3 bg-purple-500">4</div>
+          </div>
         </section>
 
-        <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-5">
+        <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-5 ">
           <SectionTitle
             heading="Blog Posts"
             subheading="If you like reading and tech, you'll love these! 📚"
           />
           {/* TODO: List thumbnails/Basic info of Blog Posts here */}
-          <div className="h-80 w-100 bg-neutral-50"></div>
+          <div className="grid grid-cols-3 h-80 w-100 bg-neutral-50">
+            <div className="h-28 w-28 bg-netural-300"></div>
+            <div className="h-28 w-28 bg-netural-300"></div>
+            <div className="h-28 w-28 bg-netural-300"></div>
+          </div>
           {/* <ul>
             {posts.map(({ slug, title }) => {
               return (
