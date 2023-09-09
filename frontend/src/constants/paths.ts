@@ -3,7 +3,6 @@ export const ROUTE_URL = {
   BLOG: "/blog",
   PAGE: "/page",
   CATEGORY: "/categories",
-  MISSION: "/mission",
 } as const
 
 export const getSlugPath = (type: "blog" | "category", slug: string) =>

@@ -19,11 +19,6 @@ export const NAV_LINKS = [
     text: "blog",
     href: ROUTE_URL.BLOG,
   },
-  {
-    title: "My Mission",
-    text: "mission",
-    href: ROUTE_URL.MISSION,
-  },
 ]
 
 const Navbar = () => {
@@ -34,6 +29,8 @@ const Navbar = () => {
       ? "dark:bg-slate-500/50 bg-orange-300/70 dark:border-transparent backdrop-blur shadow-lg"
       : "dark:bg-slate-500/50 bg-orange-300/80",
   }
+
+  
 
   return (
     <div
