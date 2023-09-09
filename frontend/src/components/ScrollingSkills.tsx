@@ -81,11 +81,13 @@ const skillRows = SKILLS.map((row, idx) => (
   </div>
 ))
 
+// TODO: Add an intersection observer to stop the animation when the user scrolls past this component
 export const ScrollingSkills = () => {
   const [positionX, setPositionX] = useState<number>(0)
   const [positionY, setPositionY] = useState<number>(0)
 
-  const containerRef = useRef<HTMLDivElement>(null)
+  // TODO: Refactor to use a ref and simplify this useEffect logic so it's scalable...
+  // const containerRef = useRef<HTMLDivElement>(null)
 
   const END_Y = 394
 
@@ -105,20 +107,20 @@ export const ScrollingSkills = () => {
   }, [positionX, positionY])
 
   return (
-    <div className="relative mx-auto overflow-hidden w-100 bg-slate-400 h-80 xl:mx-5">
+    <div className="relative mx-auto overflow-hidden shadow-lg xl:rounded-lg w-100 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 h-80 xl:mx-5">
       <div
         id="skills-container"
         className="absolute flex flex-wrap justify-center gap-3 origin-top-left -left-[1200px] -top-[350px] will-change-transform"
         style={{
           transform: `translateX(${positionX}px) translateY(${positionY}px) rotateX(25deg) rotateZ(-10deg) skewX(15deg) translateZ(0px)`,
         }}
-        ref={containerRef}
+        // ref={containerRef}
       >
         {skillRows}
       </div>
       {/* Blurred Transition Edges */}
-      <div className="absolute top-0 left-0 w-32 h-full pointer-events-none bg-gradient-to-r from-slate-300/60 to-transparent" />
-      <div className="absolute top-0 right-0 w-32 h-full pointer-events-none bg-gradient-to-l from-slate-300/60 to-transparent" />
+      <div className="absolute top-0 left-0 w-32 h-full pointer-events-none bg-gradient-to-r from-slate-700/60 to-transparent" />
+      <div className="absolute top-0 right-0 w-32 h-full pointer-events-none bg-gradient-to-l from-slate-700/60 to-transparent" />
     </div>
   )
 }
