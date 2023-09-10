@@ -12,4 +12,3 @@ trace
 .tsbuildinfo
 .next/**/*
 node_modules
-.npmrc

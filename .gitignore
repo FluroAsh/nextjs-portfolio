@@ -48,7 +48,6 @@ yarn-error.log*
 
 # local env files
 .env*.local
-./frontend/.npmrc
 
 # vercel
 .vercel
