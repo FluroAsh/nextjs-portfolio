@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next"
-import Head from "next/head"
 import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { DAILY_REVALIDATION } from "constants/api"
@@ -31,10 +30,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   const stats = readingTime(content)
 
   return (
-    <Layout type="blog">
-      <Head>
-        <title>{title}</title>
-      </Head>
+    <Layout type="blog" title={title}>
 
       <div className="w-full max-w-screen-lg">
         <header className="w-full px-5">

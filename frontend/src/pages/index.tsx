@@ -1,4 +1,3 @@
-import Head from "next/head"
 import Layout from "Layouts/layout"
 
 import { HeroBanner } from "components/HeroBanner"
