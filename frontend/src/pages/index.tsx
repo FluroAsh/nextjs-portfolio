@@ -11,7 +11,7 @@ const SectionTitle = ({
   heading: React.ReactNode
   subheading: React.ReactNode
 }) => (
-  <div className="mb-2">
+  <div className="mb-3">
     <h1 className="px-5 text-3xl text-center">{heading}</h1>
     <h3 className="text-xl text-center text-neutral-300 ">{subheading}</h3>
   </div>
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
 
         {/* TODO: Probably want an intersection observer to stop the animation
           When a user scrolls past this component */}
-        <section id="skills" className="max-w-screen-xl mx-auto mt-5">
+        <section id="skills" className="max-w-screen-xl mx-auto mt-10">
           <SectionTitle
             heading="Skills"
             subheading=" A few of them atleast... 😉"
@@ -48,7 +48,7 @@ const Home: React.FC = () => {
         </section>
 
         {/* TODO: This section will need to render a different component or have a different layout below the lg breakpoint (1024px) */}
-        <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-5 ">
+        <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
           <SectionTitle
             heading="Recent Projects"
             subheading="Cool stuff I've completed and am currently working on! 👷‍♂️"
@@ -65,7 +65,10 @@ const Home: React.FC = () => {
           </div>
         </section>
 
-        <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-5 ">
+        <section
+          id="blog-posts"
+          className="max-w-screen-xl px-5 mx-auto mt-10 "
+        >
           <SectionTitle
             heading="Blog Posts"
             subheading="If you like reading and tech, you'll love these! 📚"
