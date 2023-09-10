@@ -1,25 +1,30 @@
+import {
+  faCloudBinary,
+  faCode,
+  faGraduationCap,
+} from "@fortawesome/pro-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import clsx from "clsx"
 
-import * as icon from "../static/icons"
+const iconStyles =
+  "absolute top-5 left-5 fill-slate-100 w-[8rem] h-[8rem] opacity-10"
 
-// TODO: Remove these `iconStyles` once actual icons are implemented
-const iconStyles = "absolute top-5 left-5 fill-slate-300/25 w-[75px h-[75px]"
 const INFO_CARDS = [
   {
     heading: "Technology",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    icon: <icon.Twitter className={iconStyles} />, // atom icon
+    icon: <FontAwesomeIcon icon={faCloudBinary} className={iconStyles} />,
     className: "sm:col-span-2 col-span-1 md:col-span-1",
   },
   {
     heading: "Web Development",
     text: "Lorem ipsum dolor sit amet,  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    icon: <icon.Twitter className={iconStyles} />, // code icon
+    icon: <FontAwesomeIcon icon={faCode} className={iconStyles} />,
   },
   {
     heading: "Learner",
     text: "I spent most of my life interested in Technology, eventually studying Business at the University of Swinburne with a major in Information Sytems. It wasn't until 3 years later that I got the programming bug, and switched gears into web development — I haven't looked back since!",
-    icon: <icon.Twitter className={iconStyles} />, // Graduation cap icon
+    icon: <FontAwesomeIcon icon={faGraduationCap} className={iconStyles} />,
   },
 ]
 
