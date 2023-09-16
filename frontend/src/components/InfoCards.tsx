@@ -15,7 +15,7 @@ const INFO_CARDS = [
     text: (
       <p>
         Becoming interested in tech from an early age, the first foray into the
-        field was messing around with a hand-me down computer in a Windows
+        field was messing around with a hand-me-down computer in a Windows
         terminal for hours at a time, or seeing how packets flow through the
         internet after running a traceroute and playing around with the latest
         gadgets. Today I like to try and find cool little projects I can pick
@@ -72,10 +72,8 @@ export const InfoCards = () => {
             "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg"
           )}
         >
-          <h1 className="mb-2 text-[1.6rem] tracking-wide text-center">
-            {heading}
-          </h1>
-          <div className="text-md text-neutral-100">{text}</div>
+          <h1 className="mb-2 text-xl tracking-wide text-center">{heading}</h1>
+          <div className="text-sm text-neutral-100">{text}</div>
           {icon}
         </div>
       ))}
