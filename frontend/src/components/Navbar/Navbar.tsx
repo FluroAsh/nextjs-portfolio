@@ -1,5 +1,9 @@
 import Link from "next/link"
+import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faMessage } from "@fortawesome/pro-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import clsx from "clsx"
+import { GITHUB_URL, TWITTER_URL } from "constants/links"
 import { ROUTE_URL } from "constants/paths"
 
 import HeaderLogo from "components/Navbar/HeaderLogo"
@@ -8,16 +12,33 @@ import useScrolling from "hooks/useScrolling"
 
 import HamburgerMenu from "./HamburgerMenu"
 
+const externalLinkProps = {
+  target: "_blank",
+  rel: "noopener noreferrer",
+}
+
 export const NAV_LINKS = [
   {
-    title: "Go to Homepage",
-    text: "home",
-    href: ROUTE_URL.HOME,
+    title: "Go to Ash's blog",
+    text: "Blog",
+    href: ROUTE_URL.BLOG,
+    rel: "",
+    target: "",
+    icon: <FontAwesomeIcon icon={faMessage} size="lg" />,
   },
   {
-    title: "Go to Ash's blog",
-    text: "blog",
-    href: ROUTE_URL.BLOG,
+    title: "",
+    text: "GitHub",
+    href: GITHUB_URL,
+    ...externalLinkProps,
+    icon: <FontAwesomeIcon icon={faGithub} size="lg" />,
+  },
+  {
+    title: "",
+    text: "Twitter",
+    href: TWITTER_URL,
+    ...externalLinkProps,
+    icon: <FontAwesomeIcon icon={faTwitter} size="lg" />,
   },
 ]
 
@@ -29,8 +50,6 @@ const Navbar = () => {
       ? "dark:bg-slate-500/50 bg-orange-300/70 dark:border-transparent backdrop-blur shadow-lg"
       : "dark:bg-slate-500/50 bg-orange-300/80",
   }
-
-  
 
   return (
     <div
@@ -52,6 +71,8 @@ const Navbar = () => {
                 key={`${link.title}-${idx}`}
                 href={link.href}
                 title={link.title}
+                target={link.target}
+                rel={link.rel}
               >
                 {link.text}
               </Link>
