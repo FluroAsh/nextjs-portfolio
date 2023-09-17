@@ -80,6 +80,8 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
               key={`${link.title}-${idx}`}
               title={link.title}
               href={link.href}
+              rel={link.rel}
+              target={link.target}
               onClick={handleClick} // close drawer when navigating
               className="flex items-center gap-3 p-5 my-2 transition-colors rounded shadow-sm bg-orange-600/50 dark:bg-slate-500/50 hover:bg-orange-400/50 dark:hover:bg-slate-300/50 dark:hover:shadow-lg"
             >
