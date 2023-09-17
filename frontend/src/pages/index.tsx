@@ -74,10 +74,10 @@ const Home: React.FC = () => {
             subheading="If you like reading and tech, you'll love these! 📚"
           />
           {/* TODO: List thumbnails/Basic info of Blog Posts here */}
-          <div className="grid grid-cols-3 h-80 w-100 bg-neutral-50">
-            <div className="h-28 w-28 bg-netural-300"></div>
-            <div className="h-28 w-28 bg-netural-300"></div>
-            <div className="h-28 w-28 bg-netural-300"></div>
+          <div className="grid grid-cols-2 sm:grid-cols-6 grid-rows-6 sm:grid-rows-1 gap-3 h-[800px] sm:h-80 w-100">
+            <div className="col-span-2 row-span-2 bg-red-300 sm:col-span-2 "></div>
+            <div className="col-span-2 row-span-2 bg-purple-300 sm:col-span-2 "></div>
+            <div className="col-span-2 row-span-2 bg-blue-300 sm:col-span-2 "></div>
           </div>
           {/* <ul>
             {posts.map(({ slug, title }) => {
