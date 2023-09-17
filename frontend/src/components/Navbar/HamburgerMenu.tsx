@@ -23,7 +23,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
 
   const handleClick = (
     event: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    isIcon?: boolean
+    { isIcon }: { isIcon?: boolean } = {}
   ) => {
     event?.stopPropagation() // prevent propagation to the document (firing handleOutsideClick callback)
     isIcon ? setOpen(!open) : setOpen(false)
@@ -55,14 +55,14 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
           icon={faClose}
           size={iconSize}
           className="cursor-pointer"
-          onClick={(event) => handleClick(event, true)}
+          onClick={(event) => handleClick(event, { isIcon: true })}
         />
       ) : (
         <FontAwesomeIcon
           icon={faBars}
           size={iconSize}
           className="cursor-pointer"
-          onClick={(event) => handleClick(event, true)}
+          onClick={(event) => handleClick(event, { isIcon: true })}
         />
       )}
 
