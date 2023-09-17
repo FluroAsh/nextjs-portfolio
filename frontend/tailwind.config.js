@@ -28,7 +28,7 @@ module.exports = {
         "-navbar": "calc(100vh - var(--navbar-height))",
         navbar: "var(--navbar-height)",
       },
-      // For over-riding/customisit
+      // For over-riding/customising
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {

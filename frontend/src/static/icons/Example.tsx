@@ -1,6 +1,7 @@
 import type { IconProps } from "types/blog-types"
 
-const GitHub: React.FC<IconProps> = ({ className, height = "1.5rem" }) => {
+// Will use external SVG's later. Just keeping this as a template.
+const ExampleSVG: React.FC<IconProps> = ({ className, height = "1.5rem" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,4 +14,4 @@ const GitHub: React.FC<IconProps> = ({ className, height = "1.5rem" }) => {
   )
 }
 
-export default GitHub
+export default ExampleSVG
