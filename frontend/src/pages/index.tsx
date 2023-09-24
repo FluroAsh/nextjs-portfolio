@@ -2,6 +2,7 @@ import Layout from "Layouts/layout"
 
 import { HeroBanner } from "components/HeroBanner"
 import { InfoCards } from "components/InfoCards"
+import { ProjectList } from "components/Projects/ProjectList"
 import { ScrollingSkills } from "components/ScrollingSkills"
 
 const SectionTitle = ({
@@ -53,8 +54,8 @@ const Home: React.FC = () => {
             heading="Recent Projects"
             subheading="Cool stuff I've completed and am currently working on! 👷‍♂️"
           />
-          {/* On mouseenter & mouseleave play an MP4 video demo */}
-          <div className="grid grid-cols-12 grid-rows-2 h-[450px] w-100 bg-neutral-50 rounded-lg shadow-lg overflow-hidden">
+          {/* TODO: On mouseenter & mouseleave play an MP4 video demo */}
+          {/* <div className="grid grid-cols-12 grid-rows-2 h-[450px] w-100 bg-neutral-50 rounded-lg shadow-lg overflow-hidden">
             <div className="col-span-6 row-span-2 bg-red-500 grid-item">
               Featured
             </div>
@@ -62,7 +63,8 @@ const Home: React.FC = () => {
             <div className="col-span-3 bg-yellow-500">2</div>
             <div className="col-span-3 bg-sky-500">3</div>
             <div className="col-span-3 bg-purple-500">4</div>
-          </div>
+          </div> */}
+          <ProjectList />
         </section>
 
         <section
