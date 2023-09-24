@@ -73,7 +73,7 @@ export const InfoCards = () => {
           )}
         >
           <h1 className="mb-2 text-xl tracking-wide text-center">{heading}</h1>
-          <div className="text-sm text-neutral-100">{text}</div>
+          <div className="text-sm leading-normal text-neutral-100">{text}</div>
           {icon}
         </div>
       ))}
