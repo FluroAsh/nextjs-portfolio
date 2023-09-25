@@ -66,14 +66,12 @@ export const HeroBanner = () => {
               Full-Stack Developer
             </h4>
             <p className="mt-2 leading-6 text-neutral-600 drop-shadow-sm dark:text-slate-300">
-              Hey there! 👋 You&apos;ve stumbled into my humble abode. This is
-              no ordinary developer dungeon, I&apos;ve got the secrets to unlock
-              the universe in here. Fugiat iste ipsam deserunt dolor, porro hic
-              itaque accusantium aut laborum alias tempora vero vitae. Suscipit
-              similique, asperiores quibusdam vitae porro aspernatur! Eum dicta
-              hic blanditiis aperiam est ab soluta accusantium repellendus. Sed
-              tempora nihil modi voluptatibus quas incidunt. Ratione, nihil!
-              Tempore iure aliquid perferendis soluta non dicta.
+              Hey there! 👋 You&apos;ve stumbled into my humble abode. My
+              name&apos;s Ash — I&apos;m a Front-End{" "}
+              <em className="text-sky-500">slash</em> Full-Stack Developer who
+              is at the beginning of his career with a passion for building
+              practical and useful applications to solve real-world problems and
+              create engaging and mesmerizing user experiences.
             </p>
           </div>
           {/* TODO: Add proper FA arrow icon & interactivity/animation for Discover More element */}
