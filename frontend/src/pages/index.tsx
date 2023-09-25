@@ -52,7 +52,7 @@ const Home: React.FC = () => {
         <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
           <SectionTitle
             heading="Recent Projects"
-            subheading="Cool stuff I've completed and am currently working on! 👷‍♂️"
+            subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
           />
           {/* TODO: On mouseenter & mouseleave play an MP4 video demo */}
           {/* <div className="grid grid-cols-12 grid-rows-2 h-[450px] w-100 bg-neutral-50 rounded-lg shadow-lg overflow-hidden">
