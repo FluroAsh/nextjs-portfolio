@@ -63,7 +63,7 @@ const INFO_CARDS = [
 
 export const InfoCards = () => {
   return (
-    <div className="grid grid-cols-1 gap-4 auto-rows-auto sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1">
+    <div className="grid grid-cols-1 gap-4 auto-rows-auto sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 ">
       {INFO_CARDS.map(({ heading, text, icon, className }, idx) => (
         <div
           key={`info-${idx}`}
@@ -72,6 +72,7 @@ export const InfoCards = () => {
             "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg"
           )}
         >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20" />
           <h1 className="mb-2 text-xl tracking-wide text-center">{heading}</h1>
           <div className="text-sm leading-normal text-neutral-100">{text}</div>
           {icon}

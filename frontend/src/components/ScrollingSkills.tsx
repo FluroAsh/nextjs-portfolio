@@ -1,53 +1,58 @@
 import { useEffect, useRef, useState } from "react"
+import { COLORS } from "constants/styles"
 
 // TODO: Create generator function for each skills (color + sublabel/name)
 // This will be used for the icons which will be inset and fixed
 // Labels to appear centered on the bottom of the tile
 const SkillIcon = () => <div className="w-16 h-16 bg-red-500"></div>
 
-const SKILLS = [
+type Skills = {
+  label: keyof typeof COLORS | ""
+  color: (typeof COLORS)[keyof typeof COLORS] | ""
+}[][]
+
+const SKILLS: Skills = [
   [
-    { label: "React", color: "#61DAFB" },
-    { label: "TypeScript", color: "#007ACC" },
-    { label: "EmotionCSS", color: "#DB7093" },
+    { label: "React", color: COLORS.React },
+    { label: "TypeScript", color: COLORS.TypeScript },
+    { label: "EmotionCSS", color: COLORS.EmotionCSS },
   ],
   [
-    { label: "TailwindCSS", color: "#38B2AC" },
-    { label: "PostgreSQL", color: "#336791" },
-    { label: "GraphQL", color: "#E10098" },
+    { label: "TailwindCSS", color: COLORS.TailwindCSS },
+    { label: "PostgreSQL", color: COLORS.PostgreSQL },
+    { label: "GraphQL", color: COLORS.GraphQL },
   ],
   [
-    { label: "NGINX", color: "#009639" },
-    { label: "Docker", color: "#2496ED" },
-    { label: "AWS", color: "#FF9900" },
+    { label: "NGINX", color: COLORS.NGINX },
+    { label: "Docker", color: COLORS.Docker },
+    { label: "AWS", color: COLORS.AWS },
   ],
   [
-    { label: "NodeJS", color: "#339933" },
-    { label: "Prisma", color: "#1B222D" },
-    { label: "NextJS", color: "#000000" },
+    { label: "NodeJS", color: COLORS.NodeJS },
+    { label: "Prisma", color: COLORS.Prisma },
+    { label: "NextJS", color: COLORS.NextJS },
     // some other skills...
   ],
   // Placeholders to test the animation
   [
-    { label: "React", color: "#61DAFB" },
-    { label: "TypeScript", color: "#007ACC" },
-    { label: "EmotionCSS", color: "#DB7093" },
+    { label: "React", color: COLORS.React },
+    { label: "TypeScript", color: COLORS.TypeScript },
+    { label: "EmotionCSS", color: COLORS.EmotionCSS },
   ],
   [
-    { label: "TailwindCSS", color: "#38B2AC" },
-    { label: "PostgreSQL", color: "#336791" },
-    { label: "GraphQL", color: "#E10098" },
+    { label: "TailwindCSS", color: COLORS.TailwindCSS },
+    { label: "PostgreSQL", color: COLORS.PostgreSQL },
+    { label: "GraphQL", color: COLORS.GraphQL },
   ],
   [
-    { label: "NGINX", color: "#009639" },
-    { label: "Docker", color: "#2496ED" },
-    { label: "AWS", color: "#FF9900" },
+    { label: "NGINX", color: COLORS.NGINX },
+    { label: "Docker", color: COLORS.Docker },
+    { label: "AWS", color: COLORS.AWS },
   ],
   [
-    { label: "NodeJS", color: "#339933" },
-    { label: "Prisma", color: "#1B222D" },
-    { label: "NextJS", color: "#000000" },
-    // some other skills...
+    { label: "NodeJS", color: COLORS.NodeJS },
+    { label: "Prisma", color: COLORS.Prisma },
+    { label: "NextJS", color: COLORS.NextJS },
   ],
 ]
 
