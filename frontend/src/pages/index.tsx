@@ -48,22 +48,12 @@ const Home: React.FC = () => {
           <ScrollingSkills />
         </section>
 
-        {/* TODO: This section will need to render a different component or have a different layout below the lg breakpoint (1024px) */}
         <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
           <SectionTitle
             heading="Recent Projects"
             subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
           />
-          {/* TODO: On mouseenter & mouseleave play an MP4 video demo */}
-          {/* <div className="grid grid-cols-12 grid-rows-2 h-[450px] w-100 bg-neutral-50 rounded-lg shadow-lg overflow-hidden">
-            <div className="col-span-6 row-span-2 bg-red-500 grid-item">
-              Featured
-            </div>
-            <div className="col-span-3 bg-orange-500">1</div>
-            <div className="col-span-3 bg-yellow-500">2</div>
-            <div className="col-span-3 bg-sky-500">3</div>
-            <div className="col-span-3 bg-purple-500">4</div>
-          </div> */}
+          {/* NOTE: On mouseenter & mouseleave play an MP4 video demo? 🤔 */}
           <ProjectList />
         </section>
 

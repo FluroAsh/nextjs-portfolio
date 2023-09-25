@@ -1,6 +1,5 @@
 import type { ReactNode } from "react"
 import Head from "next/head"
-import { FOOTER_HEIGHT, NAVBAR_HEIGHT } from "constants/pages"
 
 import { Navbar } from "components/Navbar"
 
@@ -13,6 +12,9 @@ interface ILayout {
 }
 
 type pageTypes = "basic" | "blog"
+
+export const NAVBAR_HEIGHT = 57
+export const FOOTER_HEIGHT = 105
 
 const Layout: React.FC<ILayout> = ({
   type: type = "basic",
