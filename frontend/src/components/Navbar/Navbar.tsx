@@ -3,7 +3,7 @@ import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faMessage } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import clsx from "clsx"
-import { GITHUB_URL, TWITTER_URL } from "constants/links"
+import { externalLinkProps, GITHUB_URL, TWITTER_URL } from "constants/links"
 import { ROUTE_URL } from "constants/paths"
 
 import HeaderLogo from "components/Navbar/HeaderLogo"
@@ -11,11 +11,6 @@ import ThemeToggle from "components/Navbar/ThemeToggle"
 import useScrolling from "hooks/useScrolling"
 
 import HamburgerMenu from "./HamburgerMenu"
-
-const externalLinkProps = {
-  target: "_blank",
-  rel: "noopener noreferrer",
-}
 
 export const NAV_LINKS = [
   {

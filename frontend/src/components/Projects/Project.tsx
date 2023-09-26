@@ -3,6 +3,7 @@ import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 import { faExternalLink } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import clsx from "clsx"
+import { externalLinkProps } from "constants/links"
 import { COLORS } from "constants/styles"
 
 import { type ProjectAttributes } from "./ProjectList"
@@ -75,7 +76,12 @@ export const Project: React.FC<ProjectProps> = ({
             ))}
           </div>
           <div className="flex gap-3 items-center justify-center">
-            <Link href={githubLink} title="Source Code" className={iconStyles}>
+            <Link
+              href={githubLink}
+              title="Source Code"
+              className={iconStyles}
+              {...externalLinkProps}
+            >
               <FontAwesomeIcon icon={faGithubSquare} size="2x" />
             </Link>
             {deployedUrl && (
@@ -83,6 +89,7 @@ export const Project: React.FC<ProjectProps> = ({
                 href={deployedUrl}
                 title="Deployed Application"
                 className={iconStyles}
+                {...externalLinkProps}
               >
                 <FontAwesomeIcon
                   icon={faExternalLink}
