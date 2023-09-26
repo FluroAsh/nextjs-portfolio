@@ -14,11 +14,11 @@ export const HeroBanner = () => {
         >
           <Image
             src="/images/hero-home.webp"
-            alt="Portrait of Ashley"
+            alt="Ash the Creator"
             width={470}
             height={470}
             loading="eager"
-            className="relative w-full top-2 md:top-0 md:pb-4 md:block md:max-w-[470px]"
+            className="relative w-full top-2 md:top-0 md:pb-4 md:block max-w-[250px] md:max-w-[470px]"
           />
         </div>
 
