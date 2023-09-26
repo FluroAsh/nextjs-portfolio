@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { getSlugPath } from "constants/paths"
 
 import type { APICategory, PostAttributes } from "types/api-types"
@@ -5,15 +6,18 @@ import Button from "components/Button"
 import { Categories } from "components/Category"
 import { TimeDate } from "components/TimeDate"
 
+import BlogImage from "./BlogImage"
 import { BlogTitle } from "./BlogTitle"
 
 const BlogPreview: React.FC<{
   attributes: PostAttributes
   categoryData: APICategory[]
-}> = ({ attributes, categoryData }) => {
+  type: "tile" | "text"
+}> = ({ attributes, categoryData, type }) => {
   const { slug, title, description, createdAt } = attributes
+  const { alternativeText, formats } = attributes.cover.data.attributes
 
-  return (
+  return type === "text" ? (
     <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
       <div className="sm:justify-between sm:flex">
         <Button
@@ -38,6 +42,12 @@ const BlogPreview: React.FC<{
       >
         Read more &rarr;
       </Button>
+    </div>
+  ) : (
+    <div className="">
+      <Link href={getSlugPath("blog", slug)}>
+        <BlogImage alt={alternativeText} formats={formats} />
+      </Link>
     </div>
   )
 }

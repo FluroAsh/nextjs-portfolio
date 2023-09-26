@@ -56,12 +56,10 @@ export const Project: React.FC<ProjectProps> = ({
         id="project-bg-img"
         className={clsx(
           "w-full h-full absolute inset-0 opacity-10 z-0",
-          "block sm:hidden" // Hide the background image on screens >sm breakpoint
+          "block sm:hidden bg-cover bg-center" // Hide the background image on screens >sm breakpoint
         )}
         style={{
           backgroundImage: `url(${imgSrc})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       />
       <div className="flex flex-col justify-between pl-2 z-10 flex-grow-[2]">

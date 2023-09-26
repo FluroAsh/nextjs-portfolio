@@ -50,6 +50,7 @@ const CategoryPage: React.FC<{
           key={post.id}
           attributes={post.attributes}
           categoryData={post.attributes.categories.data}
+          type="text"
         />
       ))}
       <Pagination

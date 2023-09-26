@@ -36,6 +36,41 @@ export const GET_POSTS = gql`
   }
 `
 
+export const GET_HOMEPAGE_POSTS = gql`
+  query getPosts($limit: Int!) {
+    posts(pagination: { start: 0, limit: $limit }) {
+      data {
+        id
+        attributes {
+          slug
+          title
+          description
+          categories {
+            data {
+              attributes {
+                name
+                slug
+                description
+              }
+            }
+          }
+          cover {
+            data {
+              attributes {
+                url
+                alternativeText
+                formats
+              }
+            }
+          }
+          createdAt
+          isFeatured
+        }
+      }
+    }
+  }
+`
+
 export const GET_POST_SLUGS = gql`
   query getPostSlugs {
     posts(pagination: { start: 0, limit: 250 }) {

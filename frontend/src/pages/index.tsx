@@ -1,9 +1,16 @@
+import type { GetStaticProps } from "next"
 import Layout from "Layouts/layout"
 
+import type { PostData, QueryPosts } from "types/api-types"
+import { BlogPreview } from "components/Blog"
+import { BlogPostsHome } from "components/Blog/BlogHomePost"
 import { HeroBanner } from "components/HeroBanner"
 import { InfoCards } from "components/InfoCards"
 import { ProjectList } from "components/Projects/ProjectList"
 import { ScrollingSkills } from "components/ScrollingSkills"
+
+import { initializeApollo } from "lib/apollo-client"
+import { GET_HOMEPAGE_POSTS } from "lib/gql/postQueries"
 
 const SectionTitle = ({
   heading,
@@ -18,7 +25,8 @@ const SectionTitle = ({
   </div>
 )
 
-const Home: React.FC = () => {
+const Home = ({ posts }: { posts: PostData[] }) => {
+  console.log({ posts })
   return (
     <div>
       <Layout type="basic" title="Home Page ">
@@ -65,25 +73,28 @@ const Home: React.FC = () => {
             heading="Blog Posts"
             subheading="If you like reading and tech, you'll love these! 📚"
           />
-          {/* TODO: List thumbnails/Basic info of Blog Posts here */}
-          <div className="grid grid-cols-2 sm:grid-cols-6 grid-rows-6 sm:grid-rows-1 gap-3 h-[800px] sm:h-80 w-100">
-            <div className="col-span-2 row-span-2 bg-red-300 sm:col-span-2 "></div>
-            <div className="col-span-2 row-span-2 bg-purple-300 sm:col-span-2 "></div>
-            <div className="col-span-2 row-span-2 bg-blue-300 sm:col-span-2 "></div>
-          </div>
-          {/* <ul>
-            {posts.map(({ slug, title }) => {
-              return (
-                <li>
-                <Link href={`/posts/${slug}` }>{title}</Link>
-                </li>
-                )
-              })}
-            </ul> */}
+          <BlogPostsHome posts={posts} />
         </section>
       </Layout>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const apolloClient = initializeApollo()
+
+  const {
+    data: { posts },
+  } = await apolloClient.query<QueryPosts>({
+    query: GET_HOMEPAGE_POSTS,
+    variables: { limit: 3 },
+  })
+
+  return {
+    props: {
+      posts: posts.data,
+    },
+  }
 }
 
 export default Home

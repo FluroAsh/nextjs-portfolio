@@ -28,6 +28,7 @@ const Blog: React.FC<{
         key={post.id}
         attributes={post.attributes}
         categoryData={post.attributes.categories.data}
+        type="text"
       />
     ))}
     <Pagination currentPage={currentPage} totalPages={totalPages} type="blog" />
