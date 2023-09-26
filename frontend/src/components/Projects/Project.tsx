@@ -62,7 +62,7 @@ export const Project: React.FC<ProjectProps> = ({
           backgroundImage: `url(${imgSrc})`,
         }}
       />
-      <div className="flex flex-col justify-between pl-2 z-10 flex-grow-[2]">
+      <div className="flex flex-col justify-between pl-2 z-10">
         <div className="px-2">
           <h3 className="pb-2 text-2xl tracking-wide text-center">{title}</h3>
           <p className="text-neutral-100 pb-2 text-sm">{description}</p>

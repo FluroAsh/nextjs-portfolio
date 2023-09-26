@@ -38,7 +38,7 @@ export const GET_POSTS = gql`
 
 export const GET_HOMEPAGE_POSTS = gql`
   query getPosts($limit: Int!) {
-    posts(pagination: { start: 0, limit: $limit }) {
+    posts(sort: "createdAt:desc", pagination: { start: 0, limit: $limit }) {
       data {
         id
         attributes {
