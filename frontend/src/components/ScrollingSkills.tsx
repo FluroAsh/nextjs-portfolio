@@ -6,60 +6,25 @@ import { COLORS } from "constants/styles"
 // Labels to appear centered on the bottom of the tile
 const SkillIcon = () => <div className="w-16 h-16 bg-red-500"></div>
 
-type Skills = {
-  label: keyof typeof COLORS | ""
-  color: (typeof COLORS)[keyof typeof COLORS] | ""
-}[][]
+type Skills = (keyof typeof COLORS | "")[][]
 
 const SKILLS: Skills = [
-  [
-    { label: "React", color: COLORS.React },
-    { label: "TypeScript", color: COLORS.TypeScript },
-    { label: "EmotionCSS", color: COLORS.EmotionCSS },
-  ],
-  [
-    { label: "TailwindCSS", color: COLORS.TailwindCSS },
-    { label: "PostgreSQL", color: COLORS.PostgreSQL },
-    { label: "GraphQL", color: COLORS.GraphQL },
-  ],
-  [
-    { label: "NGINX", color: COLORS.NGINX },
-    { label: "Docker", color: COLORS.Docker },
-    { label: "AWS", color: COLORS.AWS },
-  ],
-  [
-    { label: "NodeJS", color: COLORS.NodeJS },
-    { label: "Prisma", color: COLORS.Prisma },
-    { label: "NextJS", color: COLORS.NextJS },
-    // some other skills...
-  ],
-  // Placeholders to test the animation
-  [
-    { label: "React", color: COLORS.React },
-    { label: "TypeScript", color: COLORS.TypeScript },
-    { label: "EmotionCSS", color: COLORS.EmotionCSS },
-  ],
-  [
-    { label: "TailwindCSS", color: COLORS.TailwindCSS },
-    { label: "PostgreSQL", color: COLORS.PostgreSQL },
-    { label: "GraphQL", color: COLORS.GraphQL },
-  ],
-  [
-    { label: "NGINX", color: COLORS.NGINX },
-    { label: "Docker", color: COLORS.Docker },
-    { label: "AWS", color: COLORS.AWS },
-  ],
-  [
-    { label: "NodeJS", color: COLORS.NodeJS },
-    { label: "Prisma", color: COLORS.Prisma },
-    { label: "NextJS", color: COLORS.NextJS },
-  ],
+  ["React", "TypeScript", "EmotionCSS"],
+  ["TailwindCSS", "PostgreSQL", "GraphQL"],
+  ["NGINX", "Docker", "AWS"],
+  ["NodeJS", "Prisma", "NextJS"],
+  // Repeat the skills for duplicates
+  ["React", "TypeScript", "EmotionCSS"],
+  ["TailwindCSS", "PostgreSQL", "GraphQL"],
+  ["NGINX", "Docker", "AWS"],
+  ["NodeJS", "Prisma", "NextJS"],
+  // Add other skills as needed
 ]
 
 // Generate empty object(s) for each row based on index
 SKILLS.forEach((row, index) => {
   for (let i = 0; i < index; i++) {
-    row.unshift({ label: "", color: "" })
+    row.unshift("")
   }
 })
 
@@ -70,13 +35,13 @@ const skillRows = SKILLS.map((row, idx) => (
     id={`row-${idx + 1}`}
     className="flex w-[1500px] gap-3"
   >
-    {row.map(({ label, color }, idx) => (
+    {row.map((label, idx) => (
       <div
         key={`${label}-${idx}`}
         className={`flex items-center justify-center w-32 h-32 rounded-lg hover:scale-110 transition-transform hover:text-lg select-none ${
-          color ? "shadow-lg" : ""
+          label ? "shadow-lg" : ""
         }`}
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: label ? COLORS[label] : "transparent" }}
       >
         <span className="w-full px-2 text-center whitespace-break-spaces">
           {label}
