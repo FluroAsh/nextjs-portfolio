@@ -2,7 +2,6 @@ import type { GetStaticProps } from "next"
 import Layout from "Layouts/layout"
 
 import type { PostData, QueryPosts } from "types/api-types"
-import { BlogPreview } from "components/Blog"
 import { BlogPostsHome } from "components/Blog/BlogHomePost"
 import { HeroBanner } from "components/HeroBanner"
 import { InfoCards } from "components/InfoCards"
@@ -25,60 +24,54 @@ const SectionTitle = ({
   </div>
 )
 
-const Home = ({ posts }: { posts: PostData[] }) => {
-  console.log({ posts })
-  return (
-    <div>
-      <Layout type="basic" title="Home Page ">
-        <HeroBanner />
+const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
+  <div>
+    <Layout type="basic" title="Home Page ">
+      <HeroBanner />
 
-        <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
-          <SectionTitle
-            heading={
-              <>
-                Who <span className="italic text-sky-500">IS</span> this guy
-                anyway?
-              </>
-            }
-            subheading="Let's get to know me better, starting with some trivia..."
-          />
+      <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
+        <SectionTitle
+          heading={
+            <>
+              Who <span className="italic text-sky-500">IS</span> this guy
+              anyway?
+            </>
+          }
+          subheading="Let's get to know me better, starting with some trivia..."
+        />
 
-          <InfoCards />
-        </section>
+        <InfoCards />
+      </section>
 
-        {/* TODO: Probably want an intersection observer to stop the animation
+      {/* TODO: Probably want an intersection observer to stop the animation
           When a user scrolls past this component */}
-        <section id="skills" className="max-w-screen-xl mx-auto mt-10">
-          <SectionTitle
-            heading="Skills"
-            subheading=" A few of them atleast... 😉"
-          />
-          <ScrollingSkills />
-        </section>
+      <section id="skills" className="max-w-screen-xl mx-auto mt-10">
+        <SectionTitle
+          heading="Skills"
+          subheading=" A few of them atleast... 😉"
+        />
+        <ScrollingSkills />
+      </section>
 
-        <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
-          <SectionTitle
-            heading="Recent Projects"
-            subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
-          />
-          {/* NOTE: On mouseenter & mouseleave play an MP4 video demo? 🤔 */}
-          <ProjectList />
-        </section>
+      <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
+        <SectionTitle
+          heading="Recent Projects"
+          subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
+        />
+        {/* NOTE: On mouseenter & mouseleave play an MP4 video demo? 🤔 */}
+        <ProjectList />
+      </section>
 
-        <section
-          id="blog-posts"
-          className="max-w-screen-xl px-5 mx-auto mt-10 "
-        >
-          <SectionTitle
-            heading="Blog Posts"
-            subheading="If you like reading and tech, you'll love these! 📚"
-          />
-          <BlogPostsHome posts={posts} />
-        </section>
-      </Layout>
-    </div>
-  )
-}
+      <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-10 ">
+        <SectionTitle
+          heading="Blog Posts"
+          subheading="If you like reading and tech, you'll love these! 📚"
+        />
+        <BlogPostsHome posts={posts} />
+      </section>
+    </Layout>
+  </div>
+)
 
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
