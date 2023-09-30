@@ -38,43 +38,43 @@ export const Project: React.FC<ProjectProps> = ({
   return (
     <div
       className={clsx(
-        "relative flex p-4 rounded-lg shadow-md w-100 bg-slate-600 sm:max-w-[900px] overflow-hidden",
-        "bg-gradient-to-t from-black/20",
+        "relative flex rounded-lg shadow-md w-100 bg-gradient-to-tr to-slate-500 from-slate-600 sm:max-w-[900px] overflow-hidden",
         idx % 2 !== 0 ? "self-end" : ""
       )}
     >
-      {/* TODO: Replace with responsive solution (Image component or Picture element) */}
-      <img
+      <div
         id="project-tile-img"
-        src={imgSrc}
-        className={clsx(
-          "absolute inset-0 sm:relative max-w-[250px] self-center rounded-lg",
-          "hidden sm:block sm:shadow-sm aspect-square object-cover object-center"
-        )}
-        alt={title}
+        className="min-w-[40%] bg-cover bg-center opacity-75 hidden sm:block"
+        aria-label={title}
+        style={{
+          backgroundImage: `url(${imgSrc})`,
+        }}
       />
       <div
         id="project-bg-img"
         className={clsx(
-          "w-full h-full absolute inset-0 opacity-10 z-0",
+          "w-full h-full absolute inset-0 opacity-10",
           "block sm:hidden bg-cover bg-center" // Hide the background image on screens >sm breakpoint
         )}
         style={{
           backgroundImage: `url(${imgSrc})`,
         }}
       />
-      <div className="z-10 flex flex-col justify-between pl-2">
+
+      <div className="z-10 flex flex-col justify-between p-4 pl-2 ">
         <div className="px-2">
           <h3 className="pb-2 text-2xl tracking-wide text-center">{title}</h3>
-          <p className="pb-2 text-sm text-neutral-100">{description}</p>
+          <p className="pb-2 text-sm leading-normal text-neutral-100">
+            {description}
+          </p>
         </div>
-        <div className="flex flex-col flex-wrap justify-center gap-3 px-2 pt-2 sm:justify-between sm:flex-row">
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex flex-col flex-wrap justify-center gap-3 px-2 pt-2 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3 md:flex-1">
             {labels.slice(0, LABEL_LIMIT).map((labelName) => (
               <Label key={labelName} labelName={labelName} />
             ))}
           </div>
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 pt-1 sm:pt-0">
             <Link
               href={githubLink}
               title="Source Code"
@@ -100,6 +100,7 @@ export const Project: React.FC<ProjectProps> = ({
           </div>
         </div>
       </div>
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20" />
     </div>
   )
 }
