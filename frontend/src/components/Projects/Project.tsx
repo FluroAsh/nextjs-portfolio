@@ -14,7 +14,7 @@ const LABEL_LIMIT = 3
 
 const Label = ({ labelName }: { labelName: keyof typeof COLORS }) => (
   <span
-    className="px-3 py-1 rounded-xl text-sm self-center pointer-events-none"
+    className="self-center px-3 py-1 text-sm pointer-events-none rounded-xl"
     style={{
       backgroundColor: COLORS[labelName],
     }}
@@ -51,6 +51,7 @@ export const Project: React.FC<ProjectProps> = ({
           "absolute inset-0 sm:relative max-w-[250px] self-center rounded-lg",
           "hidden sm:block sm:shadow-sm aspect-square object-cover object-center"
         )}
+        alt={title}
       />
       <div
         id="project-bg-img"
@@ -62,18 +63,18 @@ export const Project: React.FC<ProjectProps> = ({
           backgroundImage: `url(${imgSrc})`,
         }}
       />
-      <div className="flex flex-col justify-between pl-2 z-10">
+      <div className="z-10 flex flex-col justify-between pl-2">
         <div className="px-2">
           <h3 className="pb-2 text-2xl tracking-wide text-center">{title}</h3>
-          <p className="text-neutral-100 pb-2 text-sm">{description}</p>
+          <p className="pb-2 text-sm text-neutral-100">{description}</p>
         </div>
-        <div className="flex flex-wrap justify-center sm:justify-between px-2 pt-2 gap-3 flex-col sm:flex-row">
-          <div className="flex gap-3 flex-wrap justify-center">
+        <div className="flex flex-col flex-wrap justify-center gap-3 px-2 pt-2 sm:justify-between sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             {labels.slice(0, LABEL_LIMIT).map((labelName) => (
               <Label key={labelName} labelName={labelName} />
             ))}
           </div>
-          <div className="flex gap-3 items-center justify-center">
+          <div className="flex items-center justify-center gap-3">
             <Link
               href={githubLink}
               title="Source Code"
