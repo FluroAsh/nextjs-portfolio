@@ -8,9 +8,12 @@ export const truncateTitle = (title: string) => {
     : title
 }
 
-export const readingMinutes = (minutes: number) => {
+export const readingMinutes = (
+  minutes: number,
+  textType: "flex" | "singular" = "flex"
+) => {
   const roundedMinutes = Math.ceil(minutes)
-  return minutes > 1
+  return minutes > 1 && textType !== "singular"
     ? `${roundedMinutes} minutes reading`
     : `${roundedMinutes} minute read`
 }

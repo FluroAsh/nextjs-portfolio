@@ -45,6 +45,7 @@ export const GET_HOMEPAGE_POSTS = gql`
           slug
           title
           description
+          content
           categories {
             data {
               attributes {

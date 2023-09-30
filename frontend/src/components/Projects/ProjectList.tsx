@@ -17,7 +17,7 @@ const PROJECTS: Projects = [
   {
     title: "iEV — Charging Station Finder",
     description:
-      "iEV is an educational proof-of-concept application created by a passionate Junior Frontend Developer along with his trusty team-mate, focusing on accelerating the adoption of electric vehicles (EVs). Designed primarily for educational purposes, this platform connects EV owners and their charging stations to explore the potential of sustainable commuting. Users can experiment with both hosting and booking charging stations, gaining insights into the possibilities of creating a cohesive network of privately owned charging spots. While initially serving as an educational project, iEV's design emphasizes scalability and hints at upcoming features such as user reviews and profiles.",
+      "iEV is an educational proof-of-concept application created by a passionate Frontend Developer along with his trusty team-mate, focusing on accelerating the adoption of electric vehicles (EVs). Designed primarily for educational purposes, this platform connects EV owners and their charging stations to explore the potential of sustainable commuting. Users can experiment with both hosting and booking charging stations, gaining insights into the possibilities of creating a cohesive network of privately owned charging spots. While initially serving as an educational project, iEV's design emphasizes scalability and hints at upcoming features such as user reviews and profiles.",
     labels: ["ExpressJS", "PostgreSQL", "SCSS"],
     imgSrc: "images/projects/iev-1x.webp",
     githubLink: "https://github.com/FluroAsh/iev-client",
@@ -33,11 +33,11 @@ const PROJECTS: Projects = [
   {
     title: "Ash's Blog & Portfolio",
     description:
-      "Coincidentally, this is where you're viewing this from right now! Ashley's Portfolio Website is a showcase of innovation, blending industry-relevant technologies such as NextJS and GraphQL in order to construct his own personal Digital Garden. Created by a passionate Junior Frontend Developer, this platform is more than just a portfolio; it's an exploration of best practices and a place to have a bit of fun. The technology stack includes Strapi as a Headless CMS integrated with GraphQL and AWS S3 Plugin, NextJS for building fast web applications, NodeJS for asynchronous event-driven JavaScript runtime, Apollo for comprehensive state management with GraphQL, TailwindCSS for efficient styling, and TypeScript for enhanced type safety.",
+      "Coincidentally, this is where you're viewing this from right now! Ashley's Portfolio Website is a showcase of innovation, blending industry-relevant technologies such as NextJS and GraphQL in order to construct his own personal Digital Garden. Created by a passionate Frontend Developer, this platform is more than just a portfolio; it's an exploration of best practices and a place to have a bit of fun. The technology stack includes Strapi as a Headless CMS integrated with GraphQL and AWS S3 Plugin, NextJS for building fast web applications, NodeJS for asynchronous event-driven JavaScript runtime, Apollo for comprehensive state management with GraphQL, TailwindCSS for efficient styling, and TypeScript for enhanced type safety.",
     labels: ["TypeScript", "NextJS", "TailwindCSS"],
     imgSrc: "images/projects/blog-portfolio-1x.webp",
     githubLink: "https://github.com/FluroAsh/nextjs-portfolio",
-    deployedUrl: "https://www.ashleygthompson.com/",
+    deployedUrl: "https://www.ashleygthompson.com",
   },
 ]
 

@@ -6,37 +6,53 @@ import { readingMinutes } from "lib/utils"
 
 dayjs.extend(advancedFormat)
 
-export interface TimeDateProps {
-  createdAt: string
-  type: "index" | "post"
-  /** `minutes` is used within the context of a Blog post for time to read. */
-  minutes?: number
+type TimeDateIndex = { type: "index"; minutes?: never; textType?: never }
+type TimeDatePost = {
+  type: "post" | "stacked"
+  minutes: number
+  textType?: "flex" | "singular"
 }
+
+export type TimeDateProps = {
+  createdAt: string
+  className?: string
+} & (TimeDateIndex | TimeDatePost)
+
+const indexStyles = {
+  container: "sm:items-center sm:flex",
+} as const
+
+const Container = ({
+  children,
+  isIndex,
+  className,
+}: {
+  children: React.ReactNode
+  isIndex: boolean
+  className?: string
+}) => (
+  <div className={clsx(isIndex && indexStyles.container, className)}>
+    {children}
+  </div>
+)
 
 export const TimeDate: React.FC<TimeDateProps> = ({
   createdAt,
   type,
   minutes,
+  textType,
+  className: extraStyles,
 }) => {
   const isIndex = type === "index"
-  const indexStyles = {
-    container: "sm:items-center sm:flex",
-    h3: "md:text-lg ",
-  } as const
-
-  const Container = ({ children }: { children: React.ReactNode }) => (
-    <div className={clsx(isIndex && indexStyles.container)}>{children}</div>
-  )
-
   const timeStamp = dayjs(createdAt).format("dddd, Do MMMM")
 
   if (type === "index") {
     return (
-      <Container>
+      <Container isIndex={isIndex} className={extraStyles}>
         <h3
           className={clsx(
             "font-semibold text-neutral-600 dark:text-neutral-300",
-            indexStyles.h3
+            "md:text-lg"
           )}
         >
           {timeStamp}
@@ -47,9 +63,22 @@ export const TimeDate: React.FC<TimeDateProps> = ({
 
   if (type === "post" && minutes) {
     return (
-      <Container>
+      <Container isIndex={isIndex} className={extraStyles}>
         <h3 className="text-neutral-600 dark:text-slate-300">
           {timeStamp} — {readingMinutes(minutes)}
+        </h3>
+      </Container>
+    )
+  }
+
+  if (type === "stacked" && minutes) {
+    return (
+      <Container isIndex={isIndex} className={extraStyles}>
+        <h3 className="text-lg text-neutral-600 dark:text-slate-300">
+          {timeStamp}
+        </h3>
+        <h3 className="text-neutral-600 dark:text-slate-300">
+          {readingMinutes(minutes, textType)}
         </h3>
       </Container>
     )

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import clsx from "clsx"
 import { getSlugPath } from "constants/paths"
 
 import type { APICategory, PostAttributes } from "types/api-types"
@@ -13,12 +14,18 @@ const BlogPreview: React.FC<{
   attributes: PostAttributes
   categoryData: APICategory[]
   type: "tile" | "text"
-}> = ({ attributes, categoryData, type }) => {
+  className?: string
+}> = ({ attributes, categoryData, type, className: extraStyles }) => {
   const { slug, title, description, createdAt } = attributes
   const { alternativeText, formats } = attributes.cover.data.attributes
 
   return type === "text" ? (
-    <div className="py-4 border-b dark:border-slate-500 border-orange-300/50">
+    <div
+      className={clsx(
+        "py-4 border-b dark:border-slate-500 border-orange-300/50",
+        extraStyles
+      )}
+    >
       <div className="sm:justify-between sm:flex">
         <Button
           href={getSlugPath("blog", slug)}
@@ -44,7 +51,7 @@ const BlogPreview: React.FC<{
       </Button>
     </div>
   ) : (
-    <div className="">
+    <div className={clsx(extraStyles)}>
       <Link href={getSlugPath("blog", slug)}>
         <BlogImage alt={alternativeText} formats={formats} />
       </Link>
