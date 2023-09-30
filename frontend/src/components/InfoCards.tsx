@@ -63,13 +63,13 @@ const INFO_CARDS = [
 
 export const InfoCards = () => {
   return (
-    <div className="grid grid-cols-1 gap-4 auto-rows-auto sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 ">
+    <div className="grid grid-cols-1 gap-4 auto-rows-auto sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1">
       {INFO_CARDS.map(({ heading, text, icon, className }, idx) => (
         <div
           key={`info-${idx}`}
           className={clsx(
             className,
-            "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg"
+            "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg overflow-hidden"
           )}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/20" />
