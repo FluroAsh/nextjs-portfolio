@@ -94,7 +94,7 @@ export const InfoCards = () => {
             "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg overflow-hidden"
           )}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20" />
           <h1 className="mb-2 text-2xl tracking-wide text-center">{heading}</h1>
           <div className="text-sm leading-normal text-center text-neutral-100 lg:text-start">
             {text}
