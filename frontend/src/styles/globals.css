@@ -14,11 +14,11 @@
 }
 .anchor::after {
   position: absolute;
-  top: 8px;
-  right: -28px;
+  top: 4px;
+  right: -32px;
   content: "#"; /* TODO: Replace with SVG icon */
-  color: #286c8f;
-  font-size: 0.75em;
+  color: #fff;
+  font-size: 1em;
   display: inline-block;
   transition: opacity 150ms ease-in-out;
   opacity: 0%;
