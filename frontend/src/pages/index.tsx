@@ -37,7 +37,7 @@ const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
               anyway?
             </>
           }
-          subheading="Let's get to know me better, starting with some trivia..."
+          subheading="Let's get to know me better, starting with some #quickFacts..."
         />
 
         <InfoCards />
@@ -58,7 +58,6 @@ const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
           heading="Recent Projects"
           subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
         />
-        {/* NOTE: On mouseenter & mouseleave play an MP4 video demo? 🤔 */}
         <ProjectList />
       </section>
 
