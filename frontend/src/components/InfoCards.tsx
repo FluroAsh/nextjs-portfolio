@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import clsx from "clsx"
+import { externalLinkProps } from "constants/links"
 
 const iconStyles =
   "absolute top-5 left-5 w-[8rem] h-[8rem] fill-slate-300 opacity-10  "
@@ -48,6 +49,7 @@ const INFO_CARDS = [
           <Link
             href="https://coderacademy.edu.au/"
             className="transition duration-300 dark:text-sky-500 dark:hover:text-sky-400"
+            {...externalLinkProps}
           >
             Coder Academy.
           </Link>{" "}
