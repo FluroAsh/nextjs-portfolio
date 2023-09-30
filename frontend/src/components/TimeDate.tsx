@@ -18,10 +18,6 @@ export type TimeDateProps = {
   className?: string
 } & (TimeDateIndex | TimeDatePost)
 
-const indexStyles = {
-  container: "sm:items-center sm:flex",
-} as const
-
 const Container = ({
   children,
   isIndex,
@@ -31,7 +27,7 @@ const Container = ({
   isIndex: boolean
   className?: string
 }) => (
-  <div className={clsx(isIndex && indexStyles.container, className)}>
+  <div className={clsx(isIndex && "sm:items-center sm:flex", className)}>
     {children}
   </div>
 )
