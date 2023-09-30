@@ -1,3 +1,4 @@
+import { useState } from "react"
 import clsx from "clsx"
 import readingTime from "reading-time"
 
@@ -6,13 +7,21 @@ import { TimeDate } from "components/TimeDate"
 
 import BlogPreview from "./BlogPreview"
 
-const cardStyles = [
+const cardLayout = [
   "sm:col-span-6 md:col-span-2",
   "sm:col-span-3 md:col-span-2",
   "sm:col-span-3 md:col-span-2",
 ]
 
 export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
+  const [hoverIndex, setHoverIdx] = useState<number | null>(null)
+  const [isHovering, setIsHovering] = useState<boolean>(false)
+
+  const handleHover = (idx: number, hovering: boolean) => {
+    setHoverIdx(idx)
+    setIsHovering(hovering)
+  }
+
   return (
     <div className="grid gap-4 sm:grid-cols-6 sm:grid-rows-2 md:grid-rows-1">
       {posts.map((post, idx) => {
@@ -23,11 +32,16 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
             className={clsx(
               "relative overflow-hidden rounded-lg group:test shadow-lg",
               "hover:ring-4 hover:ring-offset-2 dark:hover:ring-sky-500 transition-shadow dark:hover:ring-offset-dark-background-primary",
-              cardStyles[idx]
+              cardLayout[idx]
             )}
+            onMouseEnter={() => handleHover(idx, true)}
+            onMouseOut={() => handleHover(idx, false)}
           >
             <BlogPreview
-              className="hover:brightness-75 transition-[filter]"
+              className={clsx(
+                "transition duration-300 ",
+                isHovering && hoverIndex !== idx && "grayscale"
+              )}
               attributes={post.attributes}
               categoryData={post.attributes.categories.data}
               type="tile"
