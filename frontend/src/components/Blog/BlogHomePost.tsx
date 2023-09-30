@@ -38,7 +38,7 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
                 "bg-gradient-to-t from-slate-800/80 via-slate-700/80 to-transparent"
               )}
             >
-              <h1 className="text-xl font-bold tracking-wide truncate">
+              <h1 className="text-2xl font-bold tracking-wide truncate">
                 {post.attributes.title}
               </h1>
               <TimeDate
