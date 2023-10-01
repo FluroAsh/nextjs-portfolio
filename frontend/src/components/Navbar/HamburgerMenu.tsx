@@ -96,7 +96,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
                 target={link.target}
                 className={mobileIconStyles}
               >
-                {link.icon(mobileIconStyles)}
+                {link.icon()}
                 {link.text}
               </Link>
             </button>
