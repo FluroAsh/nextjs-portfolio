@@ -8,9 +8,9 @@ import { TimeDate } from "components/TimeDate"
 import BlogPreview from "./BlogPreview"
 
 const cardLayout = [
-  "sm:col-span-6 md:col-span-2",
-  "sm:col-span-3 md:col-span-2",
-  "sm:col-span-3 md:col-span-2",
+  "md:col-span-6 lg:col-span-2",
+  "md:col-span-3 lg:col-span-2",
+  "md:col-span-3 lg:col-span-2",
 ]
 
 export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
@@ -23,7 +23,7 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-6 sm:grid-rows-2 md:grid-rows-1">
+    <div className="grid gap-4 md:grid-cols-6 md:grid-rows-2 lg:grid-rows-1">
       {posts.map((post, idx) => {
         const stats = readingTime(post.attributes.content)
         return (
