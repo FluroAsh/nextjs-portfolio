@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { faBars, faClose } from "@fortawesome/pro-solid-svg-icons"
+import { faBars, faClose, faHome } from "@fortawesome/pro-solid-svg-icons"
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
@@ -14,6 +14,11 @@ interface HamburgerMenuProps {
   iconSize?: FontAwesomeIconProps["size"]
 }
 
+const mobileIconStyles = clsx(
+  "flex items-center gap-3 p-5 my-2 transition-colors rounded shadow-sm bg-orange-600/50 hover:bg-orange-400/50 dark:hover:bg-slate-300/50 ",
+  "dark:bg-slate-500/50 dark:hover:shadow-lg"
+)
+
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   className: extraStyles,
   iconSize = "xl",
@@ -22,7 +27,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   const drawerRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (
-    event: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     { isIcon }: { isIcon?: boolean } = {}
   ) => {
     event?.stopPropagation() // prevent propagation to the document (firing handleOutsideClick callback)
@@ -50,21 +55,21 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   return (
     /** Open/Close buttons */
     <div className={clsx(extraStyles, "min-w-[24px]")}>
-      {open ? (
-        <FontAwesomeIcon
-          icon={faClose}
-          size={iconSize}
-          className="cursor-pointer"
-          onClick={(event) => handleClick(event, { isIcon: true })}
-        />
-      ) : (
-        <FontAwesomeIcon
-          icon={faBars}
-          size={iconSize}
-          className="cursor-pointer"
-          onClick={(event) => handleClick(event, { isIcon: true })}
-        />
-      )}
+      <button onClick={(event) => handleClick(event, { isIcon: true })}>
+        {open ? (
+          <FontAwesomeIcon
+            icon={faClose}
+            size={iconSize}
+            className="cursor-pointer"
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faBars}
+            size={iconSize}
+            className="cursor-pointer"
+          />
+        )}
+      </button>
 
       <div
         id="menu-drawer"
@@ -75,19 +80,26 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
         ref={drawerRef}
       >
         <div className="flex flex-col w-full h-full">
-          {NAV_LINKS.map((link, idx) => (
-            <Link
-              key={`${link.title}-${idx}`}
-              title={link.title}
-              href={link.href}
-              rel={link.rel}
-              target={link.target}
-              onClick={handleClick} // close drawer when navigating
-              className="flex items-center gap-3 p-5 my-2 transition-colors rounded shadow-sm bg-orange-600/50 dark:bg-slate-500/50 hover:bg-orange-400/50 dark:hover:bg-slate-300/50 dark:hover:shadow-lg"
-            >
-              {link.icon}
-              {link.text}
+          <button onClick={handleClick}>
+            <Link title="Home" href="/" className={mobileIconStyles}>
+              <FontAwesomeIcon icon={faHome} size="lg" />
+              Home
             </Link>
+          </button>
+          {NAV_LINKS.map((link, idx) => (
+            <button onClick={handleClick}>
+              <Link
+                key={`${link.title}-${idx}`}
+                title={link.title}
+                href={link.href}
+                rel={link.rel}
+                target={link.target}
+                className={mobileIconStyles}
+              >
+                {link.icon(mobileIconStyles)}
+                {link.text}
+              </Link>
+            </button>
           ))}
         </div>
       </div>

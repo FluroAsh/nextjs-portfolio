@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
-import { faMessage } from "@fortawesome/pro-solid-svg-icons"
+import { faBookOpen, faMessage } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import clsx from "clsx"
 import { externalLinkProps, GITHUB_URL, TWITTER_URL } from "constants/links"
@@ -12,30 +12,48 @@ import useScrolling from "hooks/useScrolling"
 
 import HamburgerMenu from "./HamburgerMenu"
 
-export const NAV_LINKS = [
+type NavLinks = {
+  title: string
+  text: string
+  href: string
+  target?: string
+  rel?: string
+  icon: (extraStyles?: string) => JSX.Element
+}[]
+
+export const NAV_LINKS: NavLinks = [
   {
     title: "Go to Ash's blog",
     text: "Blog",
     href: ROUTE_URL.BLOG,
-    rel: "",
-    target: "",
-    icon: <FontAwesomeIcon icon={faMessage} size="lg" />,
+    icon: (extraStyles?: string) => (
+      <FontAwesomeIcon icon={faBookOpen} size="lg" className={extraStyles} />
+    ),
   },
   {
-    title: "",
+    title: "Visit Ash's GitHub",
     text: "GitHub",
     href: GITHUB_URL,
     ...externalLinkProps,
-    icon: <FontAwesomeIcon icon={faGithub} size="lg" />,
+    icon: (extraStyles?: string) => (
+      <FontAwesomeIcon icon={faGithub} size="lg" className={extraStyles} />
+    ),
   },
   {
-    title: "",
+    title: "Visit Ash's Twitter",
     text: "Twitter",
     href: TWITTER_URL,
     ...externalLinkProps,
-    icon: <FontAwesomeIcon icon={faTwitter} size="lg" />,
+    icon: (extraStyles?: string) => (
+      <FontAwesomeIcon icon={faTwitter} size="lg" className={extraStyles} />
+    ),
   },
 ]
+
+const desktopIconStyles = clsx(
+  "transition duration-300",
+  "text-neutral-800 hover:text-neutral-700 dark:text-white dark:hover:text-slate-300"
+)
 
 const Navbar = () => {
   const isScrolling = useScrolling()
@@ -63,6 +81,7 @@ const Navbar = () => {
           <div className="hidden gap-3 mr-2 sm:flex">
             {NAV_LINKS.map((link, idx) => (
               <Link
+                className="p-1"
                 key={`${link.title}-${idx}`}
                 href={link.href}
                 title={link.title}
@@ -70,7 +89,7 @@ const Navbar = () => {
                 rel={link.rel}
                 tabIndex={0}
               >
-                {link.text}
+                {link.icon(desktopIconStyles)}
               </Link>
             ))}
           </div>
