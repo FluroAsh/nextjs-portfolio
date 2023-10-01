@@ -1,5 +1,7 @@
-/** @type {import('tailwindcss').Config} */
 import * as twS from "./src/styles/twStyles"
+
+/** @type {import('tailwindcss').Config} */
+const { fontFamily } = require("tailwindcss/defaultTheme")
 
 module.exports = {
   darkMode: "class",
@@ -10,6 +12,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        ptSans: ["var(--font-pt-sans)", ...fontFamily.sans],
+        yellowtail: ["var(--font-yellowtail)", ...fontFamily.serif],
+        sans: ["var(--pt-sans)", ...fontFamily.sans],
+      },
       screens: {
         xs: { max: "400px" },
       },

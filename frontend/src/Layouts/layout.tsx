@@ -21,7 +21,7 @@ const Layout: React.FC<ILayout> = ({
   children,
   title,
 }) => {
-  const mainStyle = {
+  const layoutStyle = {
     minHeight: `calc(100vh - ${NAVBAR_HEIGHT + FOOTER_HEIGHT}px)`,
   }
 
@@ -33,20 +33,20 @@ const Layout: React.FC<ILayout> = ({
 
       <Navbar />
       {type === "basic" ? (
-        <main
+        <div
           className="w-full"
           // applies immediately, TW has a delay that causes a 'flicker'...
-          style={mainStyle}
+          style={layoutStyle}
         >
           {children}
-        </main>
+        </div>
       ) : type === "blog" ? (
-        <main
+        <div
           className="flex flex-col items-center justify-between w-full"
-          style={mainStyle}
+          style={layoutStyle}
         >
           {children}
-        </main>
+        </div>
       ) : null}
       <Footer />
     </>
