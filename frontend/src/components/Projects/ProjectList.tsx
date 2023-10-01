@@ -91,7 +91,6 @@ const PROJECTS: Projects = [
     labels: ["TypeScript", "NextJS", "TailwindCSS"],
     imgSrc: "images/projects/blog-portfolio-1x.webp",
     githubLink: "https://github.com/FluroAsh/nextjs-portfolio",
-    deployedUrl: "https://www.ashleygthompson.com",
   },
 ]
 
