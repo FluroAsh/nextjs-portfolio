@@ -63,9 +63,9 @@ export const Project: React.FC<ProjectProps> = ({
     <div className="z-10 flex flex-col justify-between p-5 text-center sm:p-4 sm:pl-2 sm:text-start">
       <div className="px-2">
         <h3 className="pb-2 text-2xl tracking-wide text-center">{title}</h3>
-        <p className="pb-2 text-sm leading-normal text-neutral-100">
+        <div className="pb-2 text-sm leading-normal text-neutral-100">
           {description}
-        </p>
+        </div>
       </div>
       <div className="flex flex-col flex-wrap justify-center gap-3 px-2 pt-2 sm:flex-row">
         <div className="flex flex-wrap justify-center gap-3 md:flex-1">
