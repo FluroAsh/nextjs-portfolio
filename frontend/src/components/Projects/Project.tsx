@@ -40,6 +40,7 @@ export const Project: React.FC<ProjectProps> = ({
       "relative flex rounded-lg shadow-md w-100 bg-gradient-to-tr to-slate-500 from-slate-600 md:max-w-[900px] overflow-hidden",
       idx % 2 !== 0 ? "self-end" : ""
     )}
+    tabIndex={0}
   >
     <div
       id="project-tile-img"

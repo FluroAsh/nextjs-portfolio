@@ -36,6 +36,7 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
             )}
             onMouseEnter={() => handleHover(idx, true)}
             onMouseOut={() => handleHover(idx, false)}
+            tabIndex={0}
           >
             <BlogPreview
               className={clsx(

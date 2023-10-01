@@ -68,6 +68,7 @@ const Navbar = () => {
                 title={link.title}
                 target={link.target}
                 rel={link.rel}
+                tabIndex={0}
               >
                 {link.text}
               </Link>

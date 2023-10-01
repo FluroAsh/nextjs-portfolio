@@ -95,6 +95,7 @@ export const InfoCards = () => {
             className,
             "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg overflow-hidden"
           )}
+          tabIndex={0}
         >
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20" />
           <h1 className="mb-2 text-2xl tracking-wide text-center">{heading}</h1>
