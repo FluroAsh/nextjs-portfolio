@@ -37,13 +37,13 @@ export const Project: React.FC<ProjectProps> = ({
 }) => (
   <div
     className={clsx(
-      "relative flex rounded-lg shadow-md w-100 bg-gradient-to-tr to-slate-500 from-slate-600 sm:max-w-[900px] overflow-hidden",
+      "relative flex rounded-lg shadow-md w-100 bg-gradient-to-tr to-slate-500 from-slate-600 md:max-w-[900px] overflow-hidden",
       idx % 2 !== 0 ? "self-end" : ""
     )}
   >
     <div
       id="project-tile-img"
-      className="min-w-[40%] bg-cover bg-center opacity-75 hidden sm:block"
+      className="min-w-[40%] bg-cover bg-center opacity-75 hidden md:block"
       aria-label={title}
       style={{
         backgroundImage: `url(${imgSrc})`,
@@ -53,25 +53,25 @@ export const Project: React.FC<ProjectProps> = ({
       id="project-bg-img"
       className={clsx(
         "w-full h-full absolute inset-0 opacity-10",
-        "block sm:hidden bg-cover bg-center" // Hide the background image on screens >sm breakpoint
+        "block md:hidden bg-cover bg-center" // Hide the background image on screens >sm breakpoint
       )}
       style={{
         backgroundImage: `url(${imgSrc})`,
       }}
     />
 
-    <div className="z-10 flex flex-col justify-between p-5 text-center sm:text-start">
+    <div className="z-10 flex flex-col justify-between p-5 text-center md:text-start">
       <h3 className="pb-2 text-2xl tracking-wide text-center">{title}</h3>
       <div className="pb-4 text-sm leading-normal text-neutral-100">
         {description}
       </div>
-      <div className="flex flex-col flex-wrap justify-center gap-3 sm:flex-row">
+      <div className="flex flex-col flex-wrap justify-center gap-3 md:flex-row">
         <div className="flex flex-wrap justify-center gap-3 md:flex-1">
           {labels.slice(0, LABEL_LIMIT).map((labelName) => (
             <Label key={labelName} labelName={labelName} />
           ))}
         </div>
-        <div className="flex items-center justify-center gap-3 pt-1 sm:pt-0">
+        <div className="flex items-center justify-center gap-3 pt-1 md:pt-0">
           <Link
             href={githubLink}
             title="Source Code"
