@@ -21,9 +21,6 @@ export const Footer = () => {
   return (
     <footer className="flex flex-col items-center p-3 mt-5 transition-colors duration-300 border-t border-orange-300 bg-orange-300/50 dark:bg-sky-700 dark:border-sky-900">
       <div className="flex items-center justify-center">
-        <div className="pr-3 text-xl text-neutral-800 dark:text-white">
-          Ashley Thompson
-        </div>
         <div className="flex items-center justify-center gap-3">
           <IconLink
             href={TWITTER_URL}
@@ -57,8 +54,8 @@ export const Footer = () => {
           />
         </div>
       </div>
-      <div className="mt-2 dark:text-slate-300 text-neutral-600">
-        All rights reserved © 2023
+      <div className="mt-2 text-sm dark:text-slate-300 text-neutral-600">
+        All rights reserved © Ashley Thompson 2023
       </div>
     </footer>
   )
