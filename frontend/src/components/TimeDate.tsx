@@ -73,7 +73,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
         <h3 className="text-lg text-neutral-600 dark:text-slate-300">
           {timeStamp}
         </h3>
-        <h3 className="text-sm text-neutral-600 dark:text-slate-300">
+        <h3 className="text-sm font-semibold text-neutral-600 dark:text-slate-300">
           {readingMinutes(minutes, textType)}
         </h3>
       </Container>

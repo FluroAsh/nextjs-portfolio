@@ -1,26 +1,39 @@
 import Image from "next/image"
 import Link from "next/link"
+import clsx from "clsx"
 import { ROUTE_URL } from "constants/paths"
+
+const HeroImage = () => (
+  <div
+    id="img-wrapper"
+    className={clsx(
+      "flex max-w-[470px] overflow-hidden rounded-full shadow-lg",
+      "border-orange-500/50 bg-gradient-to-tr from-orange-200 to-orange-50",
+      "bg-dark-background-primary dark:border-2 dark:from-slate-700 dark:to-background-dark-primary dark:border-slate-300",
+      "md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none md:bg-none bg-inherit"
+    )}
+  >
+    <Image
+      src="/images/hero-home.webp"
+      alt="Ash the Creator"
+      width={470}
+      height={470}
+      loading="eager"
+      className="relative w-full top-2 md:top-0 md:pb-4 md:block max-w-[250px] md:max-w-[470px]"
+    />
+  </div>
+)
 
 export const HeroBanner = () => {
   return (
-    <div className="relative flex justify-center px-6 pt-6 mx-auto mb-6 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 bg-gradient-to-r to-orange-200 from-orange-100">
+    <div
+      className={clsx(
+        "relative flex justify-center px-6 pt-6 mx-auto mb-6 bg-gradient-to-r to-orange-200 from-orange-100",
+        "dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700"
+      )}
+    >
       <div className="flex flex-col items-center justify-center w-full max-w-screen-xl md:flex-row md:items-end">
-        <div
-          id="img-wrapper"
-          className="flex max-w-[470px] overflow-hidden rounded-full shadow-lg border-orange-500/50 bg-dark-background-primary bg-gradient-to-tr from-orange-200
-          dark:border-2 dark:from-slate-700 to-orange-50 dark:to-background-dark-primary dark:border-slate-300
-          md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none md:bg-none bg-inherit"
-        >
-          <Image
-            src="/images/hero-home.webp"
-            alt="Ash the Creator"
-            width={470}
-            height={470}
-            loading="eager"
-            className="relative w-full top-2 md:top-0 md:pb-4 md:block max-w-[250px] md:max-w-[470px]"
-          />
-        </div>
+        <HeroImage />
 
         {/* -- MOBILE -- */}
         <div
@@ -40,7 +53,6 @@ export const HeroBanner = () => {
             </Link>
           </h3>
         </div>
-        {/* ---- */}
 
         {/* -- DESKTOP --  */}
         <div
@@ -84,7 +96,7 @@ export const HeroBanner = () => {
 
       <svg
         id="hero-banner-svg"
-        className="absolute bottom-0 left-0 w-full h-6 transition duration-300 fill-orange-50 sm:h-12 dark:fill-dark-background-primary"
+        className="absolute bottom-0 left-0 w-full h-6 transition duration-300 fill-neutral-100 sm:h-12 dark:fill-dark-background-primary"
         viewBox="0 0 1440 220"
         preserveAspectRatio="none"
       >

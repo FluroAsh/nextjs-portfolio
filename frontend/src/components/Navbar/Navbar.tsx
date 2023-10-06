@@ -52,7 +52,7 @@ export const NAV_LINKS: NavLinks = [
 
 const desktopIconStyles = clsx(
   "transition duration-300",
-  "text-neutral-800 hover:text-neutral-700 dark:text-white dark:hover:text-slate-300"
+  "text-neutral-300 hover:text-neutral-400 dark:text-white dark:hover:text-slate-300"
 )
 
 const Navbar = () => {
@@ -60,15 +60,15 @@ const Navbar = () => {
 
   const styles = {
     container: isScrolling
-      ? "dark:bg-slate-500/50 bg-orange-300/70 dark:border-transparent backdrop-blur shadow-lg"
-      : "dark:bg-slate-500/50 bg-orange-300/80",
+      ? "dark:bg-slate-500/50 bg-neutral-900/70 dark:border-transparent backdrop-blur shadow-lg"
+      : "dark:bg-slate-500/50 bg-neutral-900/80",
   }
 
   return (
     <div
       className={clsx(
         styles.container,
-        "sticky z-50 top-0 w-full transition duration-300 border-b dark:border-b-slate-500/50 border-b-orange-300/50"
+        "sticky z-50 top-0 w-full transition duration-300 border-b-2 dark:border-b-slate-500/50 border-b-neutral-500 "
       )}
     >
       <nav className="flex flex-row-reverse justify-between max-w-screen-xl p-3 px-5 mx-auto sm:flex-row">
