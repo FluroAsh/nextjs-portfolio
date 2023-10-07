@@ -26,7 +26,7 @@ const SectionTitle = ({
 
 const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
   <div>
-    <Layout type="basic" title="Home Page ">
+    <Layout type="basic" title="ashleygthompson | Home ">
       <HeroBanner />
 
       <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
