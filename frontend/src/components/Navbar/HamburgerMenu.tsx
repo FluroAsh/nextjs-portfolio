@@ -88,9 +88,8 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
             </Link>
           </button>
           {NAV_LINKS.map((link, idx) => (
-            <button onClick={handleClick}>
+            <button onClick={handleClick} key={`${link.title}-${idx}`}>
               <Link
-                key={`${link.title}-${idx}`}
                 title={link.title}
                 href={link.href}
                 rel={link.rel}
