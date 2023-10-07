@@ -1,9 +1,10 @@
 import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import clsx from "clsx"
 import { useTheme } from "next-themes"
 
 import { useMounted } from "hooks"
+
+import { cn } from "lib/utils"
 
 export enum Theme {
   DARK = "dark",
@@ -27,7 +28,7 @@ const ThemeToggle = () => {
   return (
     <button className="relative" onClick={handleTheme}>
       <div
-        className={clsx(
+        className={cn(
           "transition-colors duration-300 flex justify-center w-[32px] h-[32px] rounded-full",
           "bg-neutral-100/80 dark:bg-dark-background-primary border-2 dark:border-slate-300 border-slate-500"
         )}

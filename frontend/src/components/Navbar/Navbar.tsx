@@ -2,13 +2,14 @@ import Link from "next/link"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faBookOpen, faMessage } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import clsx from "clsx"
 import { externalLinkProps, GITHUB_URL, TWITTER_URL } from "constants/links"
 import { ROUTE_URL } from "constants/paths"
 
 import HeaderLogo from "components/Navbar/HeaderLogo"
 import ThemeToggle from "components/Navbar/ThemeToggle"
 import useScrolling from "hooks/useScrolling"
+
+import { cn } from "lib/utils"
 
 import HamburgerMenu from "./HamburgerMenu"
 
@@ -50,7 +51,7 @@ export const NAV_LINKS: NavLinks = [
   },
 ]
 
-const desktopIconStyles = clsx(
+const desktopIconStyles = cn(
   "transition duration-300",
   "text-neutral-300 hover:text-neutral-400 dark:text-white dark:hover:text-slate-300"
 )
@@ -66,7 +67,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={clsx(
+      className={cn(
         styles.container,
         "sticky z-50 top-0 w-full transition duration-300 border-b-2 dark:border-b-slate-500/50 border-b-neutral-500 "
       )}

@@ -1,12 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
-import clsx from "clsx"
 import { ROUTE_URL } from "constants/paths"
+
+import { cn } from "lib/utils"
 
 const HeroImage = () => (
   <div
     id="img-wrapper"
-    className={clsx(
+    className={cn(
       "flex max-w-[470px] overflow-hidden rounded-full shadow-lg",
       "border-orange-500/50 bg-gradient-to-tr from-orange-200 to-orange-50",
       "bg-dark-background-primary dark:border-2 dark:from-slate-700 dark:to-background-dark-primary dark:border-slate-300",
@@ -27,7 +28,7 @@ const HeroImage = () => (
 export const HeroBanner = () => {
   return (
     <div
-      className={clsx(
+      className={cn(
         "relative flex justify-center px-6 pt-6 mx-auto mb-6 bg-gradient-to-r to-orange-200 from-orange-100",
         "dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700"
       )}

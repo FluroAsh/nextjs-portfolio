@@ -1,11 +1,12 @@
 import Link from "next/link"
-import clsx from "clsx"
 import { getSlugPath } from "constants/paths"
 
 import type { APICategory, PostAttributes } from "types/api-types"
 import Button from "components/Button"
 import { Categories } from "components/Category"
 import { TimeDate } from "components/TimeDate"
+
+import { cn } from "lib/utils"
 
 import BlogImage from "./BlogImage"
 import { BlogTitle } from "./BlogTitle"
@@ -21,7 +22,7 @@ const BlogPreview: React.FC<{
 
   return type === "text" ? (
     <div
-      className={clsx(
+      className={cn(
         "py-4 border-b dark:border-slate-500 border-orange-300/50",
         extraStyles
       )}
@@ -51,7 +52,7 @@ const BlogPreview: React.FC<{
       </Button>
     </div>
   ) : (
-    <div className={clsx(extraStyles)}>
+    <div className={cn(extraStyles)}>
       <Link href={getSlugPath("blog", slug)}>
         <BlogImage alt={alternativeText} formats={formats} />
       </Link>

@@ -5,7 +5,8 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome"
-import clsx from "clsx"
+
+import { cn } from "lib/utils"
 
 import { NAV_LINKS } from "./Navbar"
 
@@ -14,7 +15,7 @@ interface HamburgerMenuProps {
   iconSize?: FontAwesomeIconProps["size"]
 }
 
-const mobileIconStyles = clsx(
+const mobileIconStyles = cn(
   "flex items-center gap-3 p-5 my-2 transition-colors rounded shadow-sm bg-orange-600/50 hover:bg-orange-400/50 dark:hover:bg-slate-300/50 ",
   "dark:bg-slate-500/50 dark:hover:shadow-lg"
 )
@@ -54,7 +55,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
 
   return (
     /** Open/Close buttons */
-    <div className={clsx(extraStyles, "min-w-[24px]")}>
+    <div className={cn(extraStyles, "min-w-[24px]")}>
       <button onClick={(event) => handleClick(event, { isIcon: true })}>
         {open ? (
           <FontAwesomeIcon
@@ -73,7 +74,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
 
       <div
         id="menu-drawer"
-        className={clsx(
+        className={cn(
           open && "translate-x-full",
           "absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-navbar-height -left-80 -h-navbar transition-transform duration-300 z-40 shadow-lg xs:-left-full xs:w-screen"
         )}
@@ -106,7 +107,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
 
       <div
         id="drawer-bg"
-        className={clsx(
+        className={cn(
           open ? "block" : "hidden",
           "xs:hidden absolute top-navbar-height left-0 w-screen -h-navbar dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30"
         )}

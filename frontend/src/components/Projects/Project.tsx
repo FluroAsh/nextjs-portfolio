@@ -2,9 +2,10 @@ import Link from "next/link"
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 import { faExternalLink } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import clsx from "clsx"
 import { externalLinkProps } from "constants/links"
 import { COLORS } from "constants/styles"
+
+import { cn } from "lib/utils"
 
 import { type ProjectAttributes } from "./ProjectList"
 
@@ -36,7 +37,7 @@ export const Project: React.FC<ProjectProps> = ({
   idx,
 }) => (
   <div
-    className={clsx(
+    className={cn(
       "relative flex rounded-lg shadow-md w-100 bg-gradient-to-tr to-slate-500 from-slate-600 md:max-w-[900px] overflow-hidden",
       idx % 2 !== 0 ? "self-end" : ""
     )}
@@ -52,7 +53,7 @@ export const Project: React.FC<ProjectProps> = ({
     />
     <div
       id="project-bg-img"
-      className={clsx(
+      className={cn(
         "w-full h-full absolute inset-0 opacity-10",
         "block md:hidden bg-cover bg-center" // Hide the background image on screens >sm breakpoint
       )}

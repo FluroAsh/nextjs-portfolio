@@ -1,5 +1,6 @@
 import Link from "next/link"
-import clsx from "clsx"
+
+import { cn } from "lib/utils"
 
 type ButtonProps = {
   title?: string
@@ -39,7 +40,7 @@ const Button: React.FC<ButtonProps> = ({
       <Link
         title={title}
         href={href}
-        className={clsx("block", buttonStyles(type))}
+        className={cn("block", buttonStyles(type))}
       >
         {children}
       </Link>

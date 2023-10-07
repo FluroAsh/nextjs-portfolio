@@ -11,7 +11,7 @@ import FourZeroFour from "./404"
 
 import "../styles/globals.css"
 
-import clsx from "clsx"
+import { cn } from "lib/utils"
 
 const ptSans = PT_Sans({
   subsets: ["latin"],
@@ -30,7 +30,7 @@ const fontVariables = `${ptSans.variable} ${yellowtail.variable}`
 
 function BlogApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={clsx(fontVariables, "font-ptSans")}>
+    <main className={cn(fontVariables, "font-ptSans")}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

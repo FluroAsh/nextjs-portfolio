@@ -1,9 +1,10 @@
 import { useState } from "react"
-import clsx from "clsx"
 import readingTime from "reading-time"
 
 import { PostData } from "types/api-types"
 import { TimeDate } from "components/TimeDate"
+
+import { cn } from "lib/utils"
 
 import BlogPreview from "./BlogPreview"
 
@@ -29,7 +30,7 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
         return (
           <div
             key={post.id}
-            className={clsx(
+            className={cn(
               "relative overflow-hidden rounded-lg group:test shadow-lg",
               "hover:ring-4 hover:ring-offset-2 dark:hover:ring-sky-500 transition-shadow dark:hover:ring-offset-dark-background-primary",
               cardLayout[idx]
@@ -39,7 +40,7 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
             tabIndex={0}
           >
             <BlogPreview
-              className={clsx(
+              className={cn(
                 "transition duration-300 ",
                 isHovering && hoverIndex !== idx && "grayscale"
               )}
@@ -48,7 +49,7 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
               type="tile"
             />
             <div
-              className={clsx(
+              className={cn(
                 "absolute bottom-0 left-0 w-full p-4 pointer-events-none",
                 "bg-gradient-to-t from-slate-800/80 via-slate-700/80 to-transparent"
               )}

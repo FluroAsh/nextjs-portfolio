@@ -1,8 +1,7 @@
-import clsx from "clsx"
 import dayjs from "dayjs"
 import advancedFormat from "dayjs/plugin/advancedFormat"
 
-import { readingMinutes } from "lib/utils"
+import { cn, readingMinutes } from "lib/utils"
 
 dayjs.extend(advancedFormat)
 
@@ -27,7 +26,7 @@ const Container = ({
   isIndex: boolean
   className?: string
 }) => (
-  <div className={clsx(isIndex && "sm:items-center sm:flex", className)}>
+  <div className={cn(isIndex && "sm:items-center sm:flex", className)}>
     {children}
   </div>
 )
@@ -46,7 +45,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
     return (
       <Container isIndex={isIndex} className={extraStyles}>
         <h3
-          className={clsx(
+          className={cn(
             "font-semibold text-neutral-600 dark:text-neutral-300",
             "md:text-lg"
           )}

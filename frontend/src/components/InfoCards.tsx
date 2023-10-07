@@ -5,8 +5,9 @@ import {
   faGraduationCap,
 } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import clsx from "clsx"
 import { externalLinkProps } from "constants/links"
+
+import { cn } from "lib/utils"
 
 const iconStyles =
   "absolute top-5 left-5 w-[8rem] h-[8rem] fill-slate-300 opacity-10  "
@@ -91,7 +92,7 @@ export const InfoCards = () => {
       {INFO_CARDS.map(({ heading, text, icon, className }, idx) => (
         <div
           key={`info-${idx}`}
-          className={clsx(
+          className={cn(
             className,
             "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg overflow-hidden"
           )}

@@ -1,4 +1,11 @@
-import { formatName, type Formats, type PostData } from "types/api-types"
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+import { formatName, type Formats } from "types/api-types"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
 // TODO: Should only truncate when screen size <= 768px
 export const truncateTitle = (title: string) => {
