@@ -16,13 +16,12 @@ interface HamburgerMenuProps {
 }
 
 const mobileIconStyles = cn(
-  "flex items-center gap-3 p-5 my-2 transition-colors rounded shadow-sm bg-orange-600/50 hover:bg-orange-400/50 dark:hover:bg-slate-300/50 ",
-  "dark:bg-slate-500/50 dark:hover:shadow-lg"
+  "flex items-center gap-3 p-5 my-2 transition-colors rounded shadow-sm bg-neutral-600 hover:bg-neutral-500  ",
+  "dark:hover:bg-slate-300/50 dark:bg-slate-500/50 dark:hover:shadow-lg text-neutral-100"
 )
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   className: extraStyles,
-  iconSize = "xl",
 }) => {
   const [open, setOpen] = useState<boolean>(false)
   const drawerRef = useRef<HTMLDivElement>(null)
@@ -60,14 +59,14 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
         {open ? (
           <FontAwesomeIcon
             icon={faClose}
-            size={iconSize}
-            className="cursor-pointer"
+            size="2xl"
+            className="cursor-pointer stroke-1 text-neutral-100"
           />
         ) : (
           <FontAwesomeIcon
             icon={faBars}
-            size={iconSize}
-            className="cursor-pointer"
+            size="xl"
+            className="cursor-pointer text-neutral-100"
           />
         )}
       </button>
@@ -76,7 +75,8 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
         id="menu-drawer"
         className={cn(
           open && "translate-x-full",
-          "absolute w-80 p-5 dark:bg-slate-700 bg-orange-300 top-navbar-height -left-80 -h-navbar transition-transform duration-300 z-40 shadow-lg xs:-left-full xs:w-screen"
+          "absolute w-80 p-5 top-navbar-height -left-80 -h-navbar transition duration-300 z-40 shadow-lg",
+          "bg-gradient-to-tr from-neutral-300 to-neutral-400 dark:bg-slate-700 dark:from-dark-background-primary dark:to:bg-slate-700 xs:-left-full xs:w-screen"
         )}
         ref={drawerRef}
       >
@@ -96,7 +96,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
                 target={link.target}
                 className={mobileIconStyles}
               >
-                {link.icon()}
+                {link.icon}
                 {link.text}
               </Link>
             </button>
@@ -108,7 +108,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
         id="drawer-bg"
         className={cn(
           open ? "block" : "hidden",
-          "xs:hidden absolute top-navbar-height left-0 w-screen -h-navbar dark:bg-slate-700/50 bg-orange-700/30 transition-opacity duration-300 ease-in-out z-30"
+          "xs:hidden absolute top-navbar-height left-0 w-screen -h-navbar dark:bg-slate-700/50 bg-neutral-700/30 transition-opacity duration-300 ease-in-out z-30"
         )}
       ></div>
     </div>

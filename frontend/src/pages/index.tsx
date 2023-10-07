@@ -20,7 +20,9 @@ const SectionTitle = ({
 }) => (
   <div className="mb-3">
     <h1 className="px-5 text-3xl text-center">{heading}</h1>
-    <h3 className="text-xl text-center text-neutral-300 ">{subheading}</h3>
+    <h3 className="text-xl text-center text-neutral-600 dark:text-neutral-300 ">
+      {subheading}
+    </h3>
   </div>
 )
 
@@ -47,8 +49,8 @@ const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
           When a user scrolls past this component */}
       <section id="skills" className="max-w-screen-xl mx-auto mt-10">
         <SectionTitle
-          heading="Skills"
-          subheading=" A few of them atleast... 😉"
+          heading="What's in my toolbox?"
+          subheading="A quick look into some of the tools I use to build cool stuff! 🧰"
         />
         <ScrollingSkills />
       </section>

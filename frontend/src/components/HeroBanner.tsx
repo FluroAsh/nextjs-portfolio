@@ -9,9 +9,9 @@ const HeroImage = () => (
     id="img-wrapper"
     className={cn(
       "flex max-w-[470px] overflow-hidden rounded-full shadow-lg",
-      "border-orange-500/50 bg-gradient-to-tr from-orange-200 to-orange-50",
-      "bg-dark-background-primary dark:border-2 dark:from-slate-700 dark:to-background-dark-primary dark:border-slate-300",
-      "md:justify-center md:w-1/2 md:border-none md:rounded-none md:shadow-none md:bg-none bg-inherit"
+      "outline outline-2 outline-transparent bg-gradient-to-tr from-neutral-100 to-neutral-200",
+      "dark:outline-slate-300 dark:md:outline-transparent bg-dark-background-primary dark:from-slate-700 dark:to-background-dark-primary",
+      "md:justify-center md:w-1/2 md:rounded-none md:shadow-none md:bg-none bg-inherit"
     )}
   >
     <Image
@@ -29,7 +29,7 @@ export const HeroBanner = () => {
   return (
     <div
       className={cn(
-        "relative flex justify-center px-6 pt-6 mx-auto mb-6 bg-gradient-to-r to-orange-200 from-orange-100",
+        "relative flex justify-center px-6 pt-6 transition-colors duration-300 mb-6 bg-gradient-to-r to-neutral-300 from-neutral-200 ",
         "dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700"
       )}
     >
@@ -39,20 +39,25 @@ export const HeroBanner = () => {
         {/* -- MOBILE -- */}
         <div
           id="small-hero"
-          className="max-w-md pb-0 mx-auto mt-4 mb-8 text-3xl sm:pb-2 md:hidden"
+          className="max-w-md pb-0 mt-4 mb-8 text-3xl sm:pb-6 md:hidden"
         >
-          <h1 className="text-center">Howdy Partner! 🤠</h1>
-          <h3 className="mt-2 text-lg text-center">
-            Ash here. I&apos;m a Front-End Developer with a passion for building
-            beautiful, functional, and accessible web applications. If you want
-            to learn some more tricks, check out my{" "}
+          <h2 className="text-center">G&apos;day Traveller! 👋</h2>
+          <p className="mt-2 text-lg text-center text-neutral-600 dark:text-slate-300">
+            Ash here — I&apos;m a Front-End Developer based in Melbourne,
+            Australia 🇦🇺 with a passion for building beautiful and functional
+            web applications.
+          </p>
+          <p className="mt-2 text-lg text-center text-neutral-600 dark:text-slate-300">
+            I created this space to be my own little digital garden 🌱 If
+            you&apos;d like to learn more about me, or add a thing or two to
+            your toolbox 🧰 check out my{" "}
             <Link
               href={ROUTE_URL.BLOG}
-              className="text-orange-400 transition hover:text-orange-500 dark:text-sky-500 dark:hover:text-sky-600"
+              className="transition-colors duration-300 text-sky-500 hover:text-sky-600"
             >
               blog.
             </Link>
-          </h3>
+          </p>
         </div>
 
         {/* -- DESKTOP --  */}
@@ -65,20 +70,14 @@ export const HeroBanner = () => {
             {"< ABOUT-ME />"}
           </h1>
           <div id="inner-content">
-            <h3 className="mt-10 text-3xl text-slate-900 dark:text-white drop-shadow-sm">
-              ASHLEY{" "}
-              <span className="text-orange-500 dark:text-sky-500">
-                THOMPSON
-              </span>
+            <h3 className="mt-10 text-3xl text-slate-900 dark:text-white drop-shadow-sm font-ptSans">
+              ASHLEY <span className="text-sky-500">THOMPSON</span>
             </h3>
             <h4 className="text-2xl text-slate-900 dark:text-white drop-shadow-sm">
-              Front-End{" "}
-              <span className="text-orange-500 align-center dark:text-sky-500">
-                /
-              </span>{" "}
+              Front-End <span className="align-center text-sky-500">/</span>{" "}
               Full-Stack Developer
             </h4>
-            <p className="mt-2 leading-6 text-neutral-600 drop-shadow-sm dark:text-slate-300">
+            <p className="mt-2 lg:text-lg text-md text-neutral-600 drop-shadow-sm dark:text-slate-300">
               Hey there! 👋 You&apos;ve stumbled into my humble abode. My
               name&apos;s Ash — I&apos;m a Front-End{" "}
               <em className="text-sky-500">slash</em> Full-Stack Developer who
@@ -88,12 +87,11 @@ export const HeroBanner = () => {
             </p>
           </div>
           {/* TODO: Add proper FA arrow icon & interactivity/animation for Discover More element */}
-          <div className="mt-4 font-semibold text-right text-orange-500 dark:font-semibold dark:text-slate-300 text-1xl">
+          <div className="pt-6 pb-4 font-semibold tracking-wider text-right text-md lg:text-lg text-neutral-600 dark:font-semibold dark:text-slate-300">
             Discover More ↓
           </div>
         </div>
       </div>
-      {/* ---- */}
 
       <svg
         id="hero-banner-svg"

@@ -30,7 +30,7 @@ const ThemeToggle = () => {
       <div
         className={cn(
           "transition-colors duration-300 flex justify-center w-[32px] h-[32px] rounded-full",
-          "bg-neutral-100/80 dark:bg-dark-background-primary border-2 dark:border-slate-300 border-slate-500"
+          "bg-neutral-100 dark:bg-dark-background-primary border-2 dark:border-slate-300 border-slate-500"
         )}
       >
         {isDark ? (
