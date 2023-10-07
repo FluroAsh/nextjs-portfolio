@@ -69,7 +69,7 @@ const Navbar = () => {
     <div
       className={cn(
         styles.container,
-        "sticky z-50 top-0 w-full transition duration-300 border-b-2 dark:border-b-slate-500/50 border-b-neutral-500 "
+        "sticky z-50 top-0 w-full transition duration-300"
       )}
     >
       <nav className="flex flex-row-reverse justify-between max-w-screen-xl p-3 px-5 mx-auto sm:flex-row">
