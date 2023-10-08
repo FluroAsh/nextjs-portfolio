@@ -10,7 +10,7 @@ import { externalLinkProps } from "constants/links"
 import { cn } from "lib/utils"
 
 const iconStyles =
-  "absolute top-5 left-5 w-[8rem] h-[8rem] fill-slate-300 opacity-10  "
+  "absolute top-5 left-5 w-[8rem] h-[8rem] text-neutral-100 dark:text-slate-300 opacity-10  "
 
 const INFO_CARDS = [
   {
@@ -49,7 +49,7 @@ const INFO_CARDS = [
           More recently though, I completed a Full Stack Coding Bootcamp with{" "}
           <Link
             href="https://coderacademy.edu.au/"
-            className="transition duration-300 dark:text-sky-500 dark:hover:text-sky-400"
+            className="transition duration-300 text-sky-500 hover:text-sky-600"
             {...externalLinkProps}
           >
             Coder Academy.

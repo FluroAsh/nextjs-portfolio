@@ -18,6 +18,7 @@ const Label = ({ labelName }: { labelName: keyof typeof COLORS }) => (
     className="self-center px-3 py-1 text-sm pointer-events-none rounded-xl"
     style={{
       backgroundColor: SKILL_COLORS[labelName].fill,
+      color: SKILL_COLORS[labelName].text,
     }}
   >
     {labelName}
