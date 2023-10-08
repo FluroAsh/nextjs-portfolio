@@ -66,14 +66,14 @@ export const HeroBanner = () => {
           className="relative hidden w-1/2 max-w-2xl pb-12 mx-6 my-auto md:block"
         >
           {/* TODO: Add proper FA caret icon & format text */}
-          <h1 className="absolute top-0 text-3xl text-slate-900/50 -left-24 dark:text-slate-300/40 drop-shadow-sm">
+          <h1 className="absolute top-0 text-3xl text-neutral-400 -left-24 dark:text-slate-300/40 drop-shadow-sm">
             {"< ABOUT-ME />"}
           </h1>
           <div id="inner-content">
-            <h3 className="mt-10 text-3xl text-slate-900 dark:text-white drop-shadow-sm font-ptSans">
+            <h3 className="mt-10 text-2xl font-semibold tracking-wider dark:text-white drop-shadow-sm font-ptSans">
               ASHLEY <span className="text-sky-500">THOMPSON</span>
             </h3>
-            <h4 className="text-2xl text-slate-900 dark:text-white drop-shadow-sm">
+            <h4 className="text-xl dark:text-white drop-shadow-sm">
               Front-End <span className="align-center text-sky-500">/</span>{" "}
               Full-Stack Developer
             </h4>
