@@ -60,7 +60,10 @@ export const Pagination: React.FC<PaginationProps<PageType>> = ({
             const isCurrentPage = page === currentPage
 
             return isCurrentPage ? (
-              <span className="py-2 px-0 transition-colors duration-300 rounded-lg min-w-[35px] text-center pointer-events-none   bg-sky-600 text-neutral-300">
+              <span
+                key={page}
+                className="py-2 px-0 transition-colors duration-300 rounded-lg min-w-[35px] text-center pointer-events-none   bg-sky-600 text-neutral-300"
+              >
                 {page}
               </span>
             ) : (
