@@ -15,7 +15,7 @@ const LABEL_LIMIT = 3
 
 const Label = ({ labelName }: { labelName: keyof typeof COLORS }) => (
   <span
-    className="self-center px-3 py-1 text-sm font-semibold pointer-events-none rounded-xl"
+    className="self-center px-3 py-1 text-sm font-semibold tracking-wide pointer-events-none rounded-xl"
     style={{
       backgroundColor: SKILL_COLORS[labelName].fill,
       color: SKILL_COLORS[labelName].text,
