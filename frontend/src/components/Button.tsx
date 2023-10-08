@@ -40,10 +40,7 @@ const Button: React.FC<ButtonProps> = ({
       <Link
         title={title}
         href={href}
-        className={cn(
-          "block transition duration-300 duration-",
-          buttonStyles(type)
-        )}
+        className={cn("block transition duration-300", buttonStyles(type))}
       >
         {children}
       </Link>
