@@ -2,7 +2,7 @@ import type { GetStaticProps } from "next"
 import Layout from "Layouts/layout"
 
 import type { PostData, QueryPosts } from "types/api-types"
-import { BlogPostsHome } from "components/Blog/BlogHomePost"
+import { BlogPreviewHome } from "components/Blog/BlogPreviewHome"
 import { HeroBanner } from "components/HeroBanner"
 import { InfoCards } from "components/InfoCards"
 import { ProjectList } from "components/Projects/ProjectList"
@@ -68,7 +68,7 @@ const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
           heading="Fresh Off The Press!"
           subheading="If you like reading and tech, you'll love these! 📚"
         />
-        <BlogPostsHome posts={posts} />
+        <BlogPreviewHome posts={posts} />
       </section>
     </Layout>
   </div>

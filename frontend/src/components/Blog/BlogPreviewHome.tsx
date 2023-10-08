@@ -14,7 +14,7 @@ const cardLayout = [
   "md:col-span-3 lg:col-span-2",
 ]
 
-export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
+export const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
   const [hoverIndex, setHoverIdx] = useState<number | null>(null)
   const [isHovering, setIsHovering] = useState<boolean>(false)
 
@@ -32,7 +32,8 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
             key={post.id}
             className={cn(
               "relative overflow-hidden rounded-lg group:test shadow-lg",
-              "hover:ring-4 hover:ring-offset-2 dark:hover:ring-sky-500 transition-shadow dark:hover:ring-offset-dark-background-primary",
+              "hover:ring-4 hover:ring-offset-4 hover:ring-neutral-700 hover:ring-offset-neutral-100  transition-shadow ",
+              "hover:ring-sky-500 dark:hover:ring-offset-dark-background-primary",
               cardLayout[idx]
             )}
             onMouseEnter={() => handleHover(idx, true)}
@@ -51,10 +52,11 @@ export const BlogPostsHome = ({ posts }: { posts: PostData[] }) => {
             <div
               className={cn(
                 "absolute bottom-0 left-0 w-full p-4 pointer-events-none",
-                "bg-gradient-to-t from-slate-800/80 via-slate-700/80 to-transparent"
+                "bg-gradient-to-t from-neutral-600 to-transparent",
+                "dark:from-slate-800/80 dark:via-slate-700/80"
               )}
             >
-              <h1 className="text-2xl font-bold tracking-wide truncate">
+              <h1 className="text-2xl font-bold tracking-wide truncate text-neutral-100 dark:text-white">
                 {post.attributes.title}
               </h1>
               <TimeDate
