@@ -95,7 +95,7 @@ export const HeroBanner = () => {
 
       <svg
         id="hero-banner-svg"
-        className="absolute bottom-0 left-0 w-full h-6 transition duration-300 fill-neutral-100 sm:h-12 dark:fill-dark-background-primary"
+        className="absolute bottom-0 left-0 w-full h-6 fill-neutral-100 sm:h-12 dark:fill-dark-background-primary"
         viewBox="0 0 1440 220"
         preserveAspectRatio="none"
       >
