@@ -14,7 +14,7 @@ export function Error({ statusCode }: { statusCode: number }) {
           <span className="mb-4 text-5xl">⚠️</span>
           <div className="flex items-center content-center text-lg">
             <span className="flex items-center mr-2 text-neutral-100 after:border-r-2 after:ml-2 dark:after:border-slate-400 after:border-slate-500/50 after:h-8 after:inline-block">
-              Error 404 &mdash; {errorMessage}
+              Error {statusCode} &mdash; {errorMessage}
             </span>
             <Link
               className="transition-colors duration-300 text-neutral-100 hover:text-neutral-600 dark:text-slate-300 dark:hover:text-sky-500"
