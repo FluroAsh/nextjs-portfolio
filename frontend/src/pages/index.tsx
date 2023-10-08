@@ -65,7 +65,7 @@ const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
 
       <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-10 ">
         <SectionTitle
-          heading="Blog Posts"
+          heading="Fresh Off The Press!"
           subheading="If you like reading and tech, you'll love these! 📚"
         />
         <BlogPostsHome posts={posts} />
