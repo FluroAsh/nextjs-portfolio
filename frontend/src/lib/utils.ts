@@ -65,8 +65,8 @@ export function calculateDarkValues(
   const { isText, isBorder } = options
   const darkness = (r + g + b) / 3 // Calculate the darkness level based on RGB values
 
-  const DARKNESS_THRESHOLD = 40 // Min acceptable value of R+G+B / 3
-  const BRIGHTEN_FACTOR = 1.5 // Increase brightness by 40%
+  const DARKNESS_THRESHOLD = 40 // Min acceptable value of R+G+B / 3 (max 255)
+  const BRIGHTEN_FACTOR = 1.5 // Increase brightness by 50%
 
   if (darkness < DARKNESS_THRESHOLD) {
     r = Math.min(255, Math.floor(r * BRIGHTEN_FACTOR))
