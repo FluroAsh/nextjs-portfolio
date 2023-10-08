@@ -38,7 +38,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
     >
       <div className="w-full max-w-screen-lg">
         <header className="w-full px-5">
-          <div className="py-5 border-b border-neutral-700 dark:border-slate-500">
+          <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
             <Button
               type="back"
               href={ROUTE_URL.BLOG}

@@ -23,14 +23,14 @@ const BlogPreview: React.FC<{
   return type === "text" ? (
     <div
       className={cn(
-        "py-4 border-b dark:border-slate-500 border-orange-300/50",
+        "py-4 border-b dark:border-slate-500 border-neutral-600",
         extraStyles
       )}
     >
       <div className="sm:justify-between sm:flex">
         <Button
           href={getSlugPath("blog", slug)}
-          className="transition hover:text-orange-500 hover:dark:text-sky-600 text-neutral-800 dark:text-white"
+          className="transition-colors duration-300 hover:text-sky-600 text-neutral-800 dark:text-white"
           type="text"
         >
           <BlogTitle title={title} />

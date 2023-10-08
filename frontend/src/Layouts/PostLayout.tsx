@@ -14,7 +14,7 @@ export const PostLayout: React.FC<{
   return (
     <Layout type="blog" title={title} metaDescription={metaDescription}>
       <div className="w-full max-w-screen-lg px-5 mx-auto">
-        <header className="py-4 border-b dark:border-slate-500 border-orange-300/50">
+        <header className="py-4 border-b dark:border-slate-500 border-neutral-600">
           <h1 className="text-3xl font-bold text-neutral-800 dark:text-white">
             {heroTitle ?? defaultHeroTitle}
           </h1>
