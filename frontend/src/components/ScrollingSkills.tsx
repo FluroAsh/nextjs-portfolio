@@ -83,6 +83,7 @@ export const ScrollingSkills = () => {
     <div
       className={cn(
         "relative mx-auto overflow-hidden shadow-lg xl:rounded-lg w-100 h-80 xl:mx-5 bg-gradient-to-tr",
+        "to-neutral-100 via-neutral-200 from-neutral-300",
         "dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 "
       )}
     >
