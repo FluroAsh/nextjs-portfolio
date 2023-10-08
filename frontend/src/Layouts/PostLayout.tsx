@@ -7,8 +7,8 @@ const defaultHeroDescrition =
 export const PostLayout: React.FC<{
   children: React.ReactNode
   title: string
-  heroTitle: string
-  heroDescription: string
+  heroTitle?: string
+  heroDescription?: string
   metaDescription?: string
 }> = ({ children, title, heroTitle, heroDescription, metaDescription }) => {
   return (
