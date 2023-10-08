@@ -10,7 +10,7 @@ import { externalLinkProps } from "constants/links"
 import { cn } from "lib/utils"
 
 const iconStyles =
-  "absolute top-5 left-5 w-[8rem] h-[8rem] text-neutral-100 dark:text-slate-300 opacity-10  "
+  "absolute top-5 left-5 w-[8rem] h-[8rem] text-neutral-500 dark:text-slate-300 opacity-10  "
 
 const INFO_CARDS = [
   {
@@ -88,19 +88,22 @@ const INFO_CARDS = [
 
 export const InfoCards = () => {
   return (
-    <div className="grid grid-cols-1 gap-4 auto-rows-auto sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1">
       {INFO_CARDS.map(({ heading, text, icon, className }, idx) => (
         <div
           key={`info-${idx}`}
           className={cn(
             className,
-            "relative p-5 rounded-md bg-gradient-to-tr to-slate-500 from-slate-600 whitespace-break-spaces shadow-lg overflow-hidden"
+            "relative p-5 rounded-md whitespace-break-spaces shadow-lg overflow-hidden bg-gradient-to-tr",
+            "to-neutral-300 from-neutral-200 dark:to-slate-500 dark:from-slate-600"
           )}
           tabIndex={0}
         >
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20" />
-          <h1 className="mb-2 text-2xl tracking-wide text-center">{heading}</h1>
-          <div className="text-sm leading-normal text-center text-neutral-100 lg:text-start">
+          <h1 className="mb-2 text-2xl tracking-wide text-center dark:text-white">
+            {heading}
+          </h1>
+          <div className="leading-normal text-center text-md lg:text-sm text-neutral-600 dark:text-neutral-100">
             {text}
           </div>
           {icon}

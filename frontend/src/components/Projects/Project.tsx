@@ -26,7 +26,7 @@ const Label = ({ labelName }: { labelName: keyof typeof COLORS }) => (
 )
 
 const iconStyles =
-  "leading-tight hover:text-slate-300 transition-colors duration-300" // Fortunately, the FA Anchor Tag inherits the line-height from its parent
+  "leading-tight text-neutral-700 hover:text-neutral-500 dark:text-white dark:hover:text-slate-300 transition-colors duration-300"
 
 export const Project: React.FC<ProjectProps> = ({
   imgSrc,
@@ -39,14 +39,15 @@ export const Project: React.FC<ProjectProps> = ({
 }) => (
   <div
     className={cn(
-      "relative flex rounded-lg shadow-md w-100 bg-gradient-to-tr to-slate-500 from-slate-600 md:max-w-[900px] overflow-hidden",
+      "relative flex text-center rounded-lg shadow-md bg-gradient-to-tr md:max-w-[900px] overflow-hidden",
+      "to-neutral-300 from-neutral-200 dark:to-slate-500 dark:from-slate-600",
       idx % 2 !== 0 ? "self-end" : ""
     )}
     tabIndex={0}
   >
     <div
       id="project-tile-img"
-      className="min-w-[40%] bg-cover bg-center opacity-75 hidden md:block"
+      className="min-w-[40%] bg-cover bg-center hidden md:block"
       aria-label={title}
       style={{
         backgroundImage: `url(${imgSrc})`,
@@ -55,7 +56,7 @@ export const Project: React.FC<ProjectProps> = ({
     <div
       id="project-bg-img"
       className={cn(
-        "w-full h-full absolute inset-0 opacity-10",
+        "w-full h-full absolute inset-0 opacity-[5%]",
         "block md:hidden bg-cover bg-center" // Hide the background image on screens >sm breakpoint
       )}
       style={{
@@ -63,9 +64,9 @@ export const Project: React.FC<ProjectProps> = ({
       }}
     />
 
-    <div className="z-10 flex flex-col justify-between p-5 text-center md:text-start">
-      <h3 className="pb-2 text-2xl tracking-wide text-center">{title}</h3>
-      <div className="pb-4 text-sm leading-normal text-neutral-100">
+    <div className="z-10 flex flex-col justify-between p-6 sm:p-5">
+      <h3 className="pb-2 text-2xl tracking-wide ">{title}</h3>
+      <div className="pb-4 leading-normal text-md md:text-sm text-neutral-600 dark:text-slate-300">
         {description}
       </div>
       <div className="flex flex-col flex-wrap justify-center gap-3 md:flex-row">
