@@ -27,10 +27,10 @@ type SkillColors = {
   }
 }
 
-// Darken by % values — (eg: border by 10%, text by 80%)
+// Darken by % values — (eg: border by 10%, text by 70%)
 const DARKEN_FACTOR = {
   border: 0.9,
-  text: 0.4,
+  text: 0.3,
 }
 
 // Generate the rgba values based on the values from the `COLORS` object
