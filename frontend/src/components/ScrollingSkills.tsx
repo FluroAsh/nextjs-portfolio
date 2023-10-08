@@ -3,23 +3,20 @@ import { SKILL_COLORS } from "constants/styles"
 
 import { cn } from "lib/utils"
 
-// TODO: Create generator function for each skills (color + sublabel/name)
-// This will be used for the icons which will be inset and fixed
-// Labels to appear centered on the bottom of the tile
-
 type Skills = (keyof typeof SKILL_COLORS | "")[][]
 
-const SKILLS: Skills = [
-  ["React", "TypeScript", "EmotionCSS"],
-  ["TailwindCSS", "PostgreSQL", "GraphQL"],
-  ["NGINX", "Docker", "AWS"],
-  ["NodeJS", "Prisma", "NextJS"],
-  // NOTE: Repeat the skills for duplicates
+const skillsList: Skills = [
   ["React", "TypeScript", "EmotionCSS"],
   ["TailwindCSS", "PostgreSQL", "GraphQL"],
   ["NGINX", "Docker", "AWS"],
   ["NodeJS", "Prisma", "NextJS"],
   // Add other skills as needed
+]
+
+const SKILLS: Skills = [
+  // Deep clone required to avoid mutating the reference array with row.unshift("")
+  ...JSON.parse(JSON.stringify(skillsList)),
+  ...JSON.parse(JSON.stringify(skillsList)),
 ]
 
 // Generate the empty cells for each row to provide spacing
