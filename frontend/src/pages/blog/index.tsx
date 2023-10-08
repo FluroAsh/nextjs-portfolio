@@ -15,7 +15,7 @@ const Blog: React.FC<{
   currentPage: number
   totalPages: number
 }> = ({ posts, featuredPost, currentPage, totalPages }) => (
-  <PostLayout title="Latest Posts">
+  <PostLayout title="ashleygthompson | Latest Posts">
     {featuredPost && (
       <BlogFeature
         attributes={featuredPost.attributes}
