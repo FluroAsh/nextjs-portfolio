@@ -7,7 +7,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { faBookOpen, faMessage } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { externalLinkProps, GITHUB_URL, TWITTER_URL } from "constants/links"
+import {
+  externalLinkProps,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  TWITTER_URL,
+} from "constants/links"
 import { ROUTE_URL } from "constants/paths"
 
 import HeaderLogo from "components/Navbar/HeaderLogo"
@@ -51,7 +56,7 @@ export const NAV_LINKS: NavLinks = [
   {
     title: "Connect with Ash on LinkedIn",
     text: "LinkedIn",
-    href: TWITTER_URL,
+    href: LINKEDIN_URL,
     ...externalLinkProps,
     icon: <FontAwesomeIcon icon={faLinkedinIn} size="lg" />,
   },
