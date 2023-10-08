@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from "react"
-import { COLORS } from "constants/styles"
+import { SKILL_COLORS } from "constants/styles"
+
+import { cn } from "lib/utils"
 
 // TODO: Create generator function for each skills (color + sublabel/name)
 // This will be used for the icons which will be inset and fixed
 // Labels to appear centered on the bottom of the tile
-const SkillIcon = () => <div className="w-16 h-16 bg-red-500"></div>
 
-type Skills = (keyof typeof COLORS | "")[][]
+type Skills = (keyof typeof SKILL_COLORS | "")[][]
 
 const SKILLS: Skills = [
   ["React", "TypeScript", "EmotionCSS"],
   ["TailwindCSS", "PostgreSQL", "GraphQL"],
   ["NGINX", "Docker", "AWS"],
   ["NodeJS", "Prisma", "NextJS"],
-  // Repeat the skills for duplicates
+  // NOTE: Repeat the skills for duplicates
   ["React", "TypeScript", "EmotionCSS"],
   ["TailwindCSS", "PostgreSQL", "GraphQL"],
   ["NGINX", "Docker", "AWS"],
@@ -21,7 +22,7 @@ const SKILLS: Skills = [
   // Add other skills as needed
 ]
 
-// Generate empty object(s) for each row based on index
+// Generate the empty cells for each row to provide spacing
 SKILLS.forEach((row, index) => {
   for (let i = 0; i < index; i++) {
     row.unshift("")
@@ -38,10 +39,15 @@ const skillRows = SKILLS.map((row, idx) => (
     {row.map((label, idx) => (
       <div
         key={`${label}-${idx}`}
-        className={`flex items-center justify-center w-32 h-32 rounded-lg hover:scale-110 transition-transform hover:text-lg select-none ${
-          label ? "shadow-lg" : ""
-        }`}
-        style={{ backgroundColor: label ? COLORS[label] : "transparent" }}
+        className={cn(
+          "flex items-center justify-center w-32 h-32 rounded-lg hover:scale-110 transition select-none",
+          "hover:text-lg text-white text-md hover:brightness-110",
+          label ? "shadow-lg border-4" : "border-2 border-transparent"
+        )}
+        style={{
+          backgroundColor: label ? SKILL_COLORS[label].fill : "transparent",
+          borderColor: label ? SKILL_COLORS[label].borderColor : "transparent",
+        }}
       >
         <span className="w-full px-2 text-center whitespace-break-spaces">
           {label}
@@ -77,7 +83,12 @@ export const ScrollingSkills = () => {
   }, [positionX, positionY])
 
   return (
-    <div className="relative mx-auto overflow-hidden shadow-lg xl:rounded-lg w-100 dark:bg-gradient-to-tr dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 h-80 xl:mx-5">
+    <div
+      className={cn(
+        "relative mx-auto overflow-hidden shadow-lg xl:rounded-lg w-100 h-80 xl:mx-5 bg-gradient-to-tr",
+        "dark:to-slate-500 dark:via-slate-600 dark:from-slate-700 "
+      )}
+    >
       <div
         id="skills-container"
         className="absolute flex flex-wrap justify-center gap-3 origin-top-left -left-[1200px] -top-[350px] will-change-transform"
@@ -89,8 +100,8 @@ export const ScrollingSkills = () => {
         {skillRows}
       </div>
       {/* Blurred Transition Edges */}
-      <div className="absolute top-0 left-0 w-32 h-full pointer-events-none bg-gradient-to-r from-slate-700/60 to-transparent" />
-      <div className="absolute top-0 right-0 w-32 h-full pointer-events-none bg-gradient-to-l from-slate-700/60 to-transparent" />
+      <div className="absolute top-0 left-0 w-32 h-full pointer-events-none bg-gradient-to-r from-neutral-300/50 dark:from-slate-700/60 to-transparent" />
+      <div className="absolute top-0 right-0 w-32 h-full pointer-events-none bg-gradient-to-l from-neutral-300/50 dark:from-slate-700/60 to-transparent" />
     </div>
   )
 }

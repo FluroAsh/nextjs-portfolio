@@ -3,7 +3,7 @@ import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
 import { faExternalLink } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { externalLinkProps } from "constants/links"
-import { COLORS } from "constants/styles"
+import { COLORS, SKILL_COLORS } from "constants/styles"
 
 import { cn } from "lib/utils"
 
@@ -17,7 +17,7 @@ const Label = ({ labelName }: { labelName: keyof typeof COLORS }) => (
   <span
     className="self-center px-3 py-1 text-sm pointer-events-none rounded-xl"
     style={{
-      backgroundColor: COLORS[labelName],
+      backgroundColor: SKILL_COLORS[labelName].fill,
     }}
   >
     {labelName}
