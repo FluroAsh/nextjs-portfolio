@@ -81,7 +81,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     },
   } = await apolloClient.query({ query: GET_POSTS_PAGE_META })
 
-  const { total: postCount, pageCount: totalPages } = meta?.pagination
+  const { pageCount: totalPages } = meta?.pagination
 
   const {
     data: { posts },
