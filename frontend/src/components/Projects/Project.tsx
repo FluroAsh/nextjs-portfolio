@@ -15,10 +15,11 @@ const LABEL_LIMIT = 3
 
 const Label = ({ labelName }: { labelName: keyof typeof COLORS }) => (
   <span
-    className="self-center px-3 py-1 text-sm font-semibold tracking-wide pointer-events-none rounded-xl"
+    className="self-center px-2 py-[3px] text-md md:text-[0.78rem] font-semibold tracking-wide border-2 pointer-events-none rounded-lg"
     style={{
       backgroundColor: SKILL_COLORS[labelName].fill,
       color: SKILL_COLORS[labelName].text,
+      borderColor: SKILL_COLORS[labelName].borderColor,
     }}
   >
     {labelName}
@@ -70,7 +71,7 @@ export const Project: React.FC<ProjectProps> = ({
         {description}
       </div>
       <div className="flex flex-col flex-wrap justify-center gap-3 md:flex-row">
-        <div className="flex flex-wrap justify-center gap-3 md:flex-1">
+        <div className="flex flex-wrap justify-center gap-3 pt-2 md:pt-0 md:flex-1">
           {labels.slice(0, LABEL_LIMIT).map((labelName) => (
             <Label key={labelName} labelName={labelName} />
           ))}
