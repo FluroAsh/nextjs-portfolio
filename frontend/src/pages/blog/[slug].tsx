@@ -22,6 +22,7 @@ import Button from "components/Button"
 
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
+  description,
   content,
   createdAt,
   alternativeText,
@@ -30,7 +31,11 @@ const BlogPost: React.FC<BlogPostProps> = ({
   const stats = readingTime(content)
 
   return (
-    <Layout type="blog" title={title}>
+    <Layout
+      type="blog"
+      title={`ashleygthompson | ${title}`}
+      metaDescription={description}
+    >
       <div className="w-full max-w-screen-lg">
         <header className="w-full px-5">
           <div className="py-5 border-b border-orange-300 dark:border-slate-500">
@@ -104,12 +109,19 @@ export const getStaticProps: GetStaticProps = async ({
   const post = posts?.data?.[0]?.attributes
   if (!post) return { notFound: true }
 
-  const { title, content: contentMarkdown, cover, createdAt } = post
+  const {
+    title,
+    content: contentMarkdown,
+    cover,
+    createdAt,
+    description,
+  } = post
   const content = await markdownToHtml(contentMarkdown)
 
   return {
     props: {
       title,
+      description,
       content,
       createdAt,
       alternativeText: cover?.data?.attributes?.alternativeText,

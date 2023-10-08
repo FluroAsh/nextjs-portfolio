@@ -7,11 +7,12 @@ const defaultHeroDescrition =
 export const PostLayout: React.FC<{
   children: React.ReactNode
   title: string
-  heroTitle?: string
-  heroDescription?: string
-}> = ({ children, title, heroTitle, heroDescription }) => {
+  heroTitle: string
+  heroDescription: string
+  metaDescription?: string
+}> = ({ children, title, heroTitle, heroDescription, metaDescription }) => {
   return (
-    <Layout type="blog" title={title}>
+    <Layout type="blog" title={title} metaDescription={metaDescription}>
       <div className="w-full max-w-screen-lg px-5 mx-auto">
         <header className="py-4 border-b dark:border-slate-500 border-orange-300/50">
           <h1 className="text-3xl font-bold text-neutral-800 dark:text-white">

@@ -27,9 +27,10 @@ const Page: React.FC<{
 }> = ({ posts, featuredPost, category, currentPage, totalPages }) => {
   return (
     <PostLayout
-      title={`${category.name} Posts`}
+      title={`ashleygthompson | ${category.name}`}
       heroTitle={`Latest for ${category.name}`}
       heroDescription={category.description}
+      metaDescription={category.metaDescription}
     >
       {featuredPost && (
         <BlogFeature

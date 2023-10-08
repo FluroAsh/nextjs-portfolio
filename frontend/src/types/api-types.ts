@@ -40,6 +40,7 @@ export interface APICategory {
     slug: string
     name: string
     description: string
+    metaDescription: string
   }
 }
 

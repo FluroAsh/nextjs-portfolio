@@ -8,7 +8,8 @@ import { Footer } from "../components/Footer"
 interface ILayout {
   type: pageTypes
   children: ReactNode
-  title?: string
+  title: string
+  metaDescription?: string
 }
 
 type pageTypes = "basic" | "blog"
@@ -20,6 +21,7 @@ const Layout: React.FC<ILayout> = ({
   type: type = "basic",
   children,
   title,
+  metaDescription,
 }) => {
   const layoutStyle = {
     minHeight: `calc(100vh - ${NAVBAR_HEIGHT + FOOTER_HEIGHT}px)`,
@@ -29,6 +31,7 @@ const Layout: React.FC<ILayout> = ({
     <>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={metaDescription} />
       </Head>
 
       <Navbar />

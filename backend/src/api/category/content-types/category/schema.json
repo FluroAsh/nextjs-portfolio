@@ -13,19 +13,27 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "unique": false,
+      "required": true
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "posts": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::post.post",
       "inversedBy": "categories"
+    },
+    "metaDescription": {
+      "type": "string",
+      "required": true
     }
   }
 }
