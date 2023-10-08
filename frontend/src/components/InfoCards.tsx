@@ -49,7 +49,7 @@ const INFO_CARDS = [
           More recently though, I completed a Full Stack Coding Bootcamp with{" "}
           <Link
             href="https://coderacademy.edu.au/"
-            className="transition duration-300 text-sky-500 hover:text-sky-600"
+            className="font-semibold transition duration-300 text-sky-500 hover:text-sky-400"
             {...externalLinkProps}
           >
             Coder Academy.
