@@ -33,7 +33,7 @@ const CategoryPage: React.FC<{
 }> = ({ posts, featuredPost, category, currentPage, totalPages }) => {
   return (
     <PostLayout
-      title={`${category.name} Posts`}
+      title={`ashleygthompson | ${category.name} Posts`}
       heroTitle={`Latest for ${category.name}`}
       heroDescription={category.description}
     >
