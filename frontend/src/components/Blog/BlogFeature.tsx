@@ -15,24 +15,21 @@ const BlogFeature: React.FC<{
   const { slug, title, description, cover, createdAt } = attributes
 
   return (
-    <div
-      id="featured-post"
-      className="pb-4 border-b dark:border-slate-500 border-orange-300/50"
-    >
+    <div id="featured-post" className="pb-4 border-b border-slate-500">
       <div className="relative my-4">
         <BlogImage
           alt={cover.data.attributes.alternativeText}
           featured
           linkTo={getSlugPath("blog", slug)}
           formats={cover.data.attributes.formats}
-          className="duration-300 transition-[filter] hover:brightness-75"
+          className="transition duration-300 hover:brightness-110"
         />
       </div>
 
       <div className="sm:flex sm:justify-between">
         <Button
           href={getSlugPath("blog", slug)}
-          className="transition hover:text-orange-500 hover:dark:text-sky-600 text-neutral-800 dark:text-white"
+          className="transition hover:text-sky-600 text-neutral-800 dark:text-white"
           type="text"
         >
           <BlogTitle title={title} />

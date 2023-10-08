@@ -21,8 +21,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const buttonStyles = (type: ButtonProps["type"]) => {
     if (type === "link") {
-      return `p-2 px-4 border border-black hover:text-white rounded-md hover:border-orange-300 bg-gradient-to-r hover:to-orange-500 hover:from-orange-600 
-      dark:border-white dark:hover:to-sky-600 dark:hover:from-sky-700 dark:hover:border-sky-300 hover:shadow-lg`
+      return `p-2 px-4 border text-neutral-700 hover:text-white rounded-sm font-semibold tracking-wide border-neutral-600
+      bg-gradient-to-r hover:from-sky-700 hover:to-sky-600 hover:border-sky-300 hover:shadow-lg dark:hover:border-sky-300 dark:border-white dark:text-white`
     }
 
     // TODO: Add more button types/styles
@@ -40,7 +40,10 @@ const Button: React.FC<ButtonProps> = ({
       <Link
         title={title}
         href={href}
-        className={cn("block", buttonStyles(type))}
+        className={cn(
+          "block transition duration-300 duration-",
+          buttonStyles(type)
+        )}
       >
         {children}
       </Link>
