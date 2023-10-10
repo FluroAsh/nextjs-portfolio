@@ -1,20 +1,17 @@
 type themeType = "dark" | "light"
 
 export const h1Anchor = (theme: any, type: themeType) => ({
-  scrollMarginTop: "calc(var(--navbar-height) + 10px)",
-  color:
-    type === "dark" ? theme("colors.neutral.300") : theme("colors.sky.500"),
+  scrollMarginTop: "calc(var(--navbar-height) + 20px)",
 
   ".anchor": {
     position: "relative",
+    color:
+      type === "dark" ? theme("colors.white") : theme("colors.neutral.700"),
     transition: "all 150ms ease-out",
-    opacity: "100%",
-    borderBottom: "2px solid transparent",
     fontWeight: 700,
 
     "&:hover": {
       color: theme("colors.sky.600"),
-      opacity: "70%",
       borderBottom: "2px solid currentColor",
     },
   },
