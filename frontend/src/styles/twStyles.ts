@@ -11,7 +11,8 @@ export const h1Anchor = (theme: any, type: themeType) => ({
     fontWeight: 700,
 
     "&:hover": {
-      color: theme("colors.sky.600"),
+      color:
+        type === "dark" ? theme("colors.sky.700") : theme("colors.sky.600"),
       borderBottom: "2px solid currentColor",
     },
   },
@@ -38,14 +39,13 @@ export const commonStyles = (theme: any, type: themeType) => ({
   },
 
   "p > a": {
-    color: theme("colors.sky.500"),
+    color: type === "dark" ? theme("colors.sky.500") : theme("colors.sky.600"),
     transition: " 150ms ease-out",
-    borderBottom: "2px solid transparent",
     fontWeight: 700,
 
     "&:hover": {
-      color: theme("colors.sky.400"),
-      borderBottom: "2px solid currentColor",
+      color:
+        type === "dark" ? theme("colors.sky.400") : theme("colors.sky.500"),
     },
   },
 })
