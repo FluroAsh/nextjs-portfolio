@@ -3,16 +3,17 @@ type themeType = "dark" | "light"
 export const h1Anchor = (theme: any, type: themeType) => ({
   scrollMarginTop: "calc(var(--navbar-height) + 10px)",
   color:
-    type === "dark" ? theme("colors.neutral.300") : theme("colors.orange.500"),
+    type === "dark" ? theme("colors.neutral.300") : theme("colors.sky.500"),
 
   ".anchor": {
+    position: "relative",
     transition: "all 150ms ease-out",
     opacity: "100%",
     borderBottom: "2px solid transparent",
+    fontWeight: 700,
 
     "&:hover": {
-      color:
-        type === "dark" ? theme("colors.sky.500") : theme("colors.orange.500"),
+      color: theme("colors.sky.600"),
       opacity: "70%",
       borderBottom: "2px solid currentColor",
     },
@@ -40,18 +41,13 @@ export const commonStyles = (theme: any, type: themeType) => ({
   },
 
   "p > a": {
-    color:
-      type === "dark"
-        ? theme("colors.neutral.300")
-        : theme("colors.orange.500"),
+    color: theme("colors.sky.500"),
     transition: " 150ms ease-out",
-    opacity: "100%",
     borderBottom: "2px solid transparent",
+    fontWeight: 700,
 
     "&:hover": {
-      color:
-        type === "dark" ? theme("colors.sky.500") : theme("colors.orange.500"),
-      opacity: "50%",
+      color: theme("colors.sky.400"),
       borderBottom: "2px solid currentColor",
     },
   },

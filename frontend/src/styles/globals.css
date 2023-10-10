@@ -9,9 +9,6 @@
 }
 
 /* Rehype AutoLink Heading "Tag/Link" Styles */
-.anchor {
-  position: relative;
-}
 .anchor::after {
   position: absolute;
   top: 4px;

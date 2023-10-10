@@ -27,7 +27,7 @@ type SkillColors = {
   }
 }
 
-// Darken by % values — (eg: border by 10%, text by 70%)
+// Darken by % values — (eg: border by 10%, text by 60%)
 const DARKEN_FACTOR = {
   border: 0.9,
   text: 0.4,
