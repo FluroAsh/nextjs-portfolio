@@ -20,6 +20,8 @@ import { ROUTE_URL } from "constants/paths"
 import type { QueryPosts, QuerySlugs } from "types/api-types"
 import Button from "components/Button"
 
+import { cn } from "lib/utils"
+
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
   description,
@@ -42,7 +44,10 @@ const BlogPost: React.FC<BlogPostProps> = ({
             <Button
               type="back"
               href={ROUTE_URL.BLOG}
-              className="transition-colors text-neutral-600 group hover:text-neutral-400 dark:text-neutral-400 dark:hover:text-white"
+              className={cn(
+                "transition-colors text-neutral-600 group hover:text-neutral-400",
+                "dark:text-neutral-400 dark:hover:text-white"
+              )}
             >
               <FontAwesomeIcon
                 icon={faArrowLeftLong}

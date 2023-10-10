@@ -100,9 +100,9 @@ export const InfoCards = () => {
           tabIndex={0}
         >
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20" />
-          <h1 className="mb-2 text-2xl tracking-wide text-center dark:text-white">
+          <h3 className="mb-2 text-2xl tracking-wide text-center text-neutral-600 dark:text-slate-200 font-bold">
             {heading}
-          </h1>
+          </h3>
           <div className="leading-normal text-center text-md lg:text-sm text-neutral-600 dark:text-neutral-100">
             {text}
           </div>

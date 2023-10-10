@@ -31,7 +31,10 @@ const Button: React.FC<ButtonProps> = ({
     }
 
     if (type === "text") {
-      return ``
+      return cn(
+        "transition text-neutral-700 hover:text-sky-600 font-semibold tracking-wide",
+        "dark:text-white dark:hover:text-sky-600"
+      )
     }
   }
 
@@ -40,7 +43,7 @@ const Button: React.FC<ButtonProps> = ({
       <Link
         title={title}
         href={href}
-        className={cn("block transition duration-300", buttonStyles(type))}
+        className={cn("block", buttonStyles(type))}
       >
         {children}
       </Link>

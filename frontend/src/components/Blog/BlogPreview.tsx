@@ -30,7 +30,7 @@ const BlogPreview: React.FC<{
       <div className="sm:justify-between sm:flex">
         <Button
           href={getSlugPath("blog", slug)}
-          className="transition-colors duration-300 hover:text-sky-600 text-neutral-800 dark:text-white"
+          className="transition-colors duration-300 hover:text-sky-600 text-neutral-700 dark:text-white"
           type="text"
         >
           <BlogTitle title={title} />

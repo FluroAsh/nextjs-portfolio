@@ -70,10 +70,10 @@ export const HeroBanner = () => {
             {"< ABOUT-ME />"}
           </h1>
           <div id="inner-content">
-            <h3 className="mt-10 text-2xl font-semibold tracking-wider text-neutral-600 dark:text-white drop-shadow-sm font-ptSans">
+            <h3 className="mt-10 text-2xl font-semibold tracking-wider text-neutral-700 dark:text-white drop-shadow-sm font-ptSans">
               ASHLEY <span className="text-sky-500">THOMPSON</span>
             </h3>
-            <h4 className="text-xl dark:text-white drop-shadow-sm text-neutral-600">
+            <h4 className="text-xl dark:text-white drop-shadow-sm text-neutral-700">
               Front-End <span className="align-center text-sky-500">/</span>{" "}
               Full-Stack Developer
             </h4>

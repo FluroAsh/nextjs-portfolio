@@ -6,6 +6,8 @@ import Button from "components/Button"
 import { Categories } from "components/Category"
 import { TimeDate } from "components/TimeDate"
 
+import { cn } from "lib/utils"
+
 import { BlogTitle } from "./BlogTitle"
 
 const BlogFeature: React.FC<{
