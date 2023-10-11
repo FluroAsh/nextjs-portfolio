@@ -59,7 +59,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   if (type === "post" && minutes) {
     return (
       <Container isIndex={isIndex} className={extraStyles}>
-        <h3 className="text-neutral-600 dark:text-slate-300">
+        <h3 className="text-neutral-600 dark:text-slate-300 font-bold">
           {timeStamp} — {readingMinutes(minutes)}
         </h3>
       </Container>

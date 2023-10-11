@@ -18,7 +18,7 @@ export const PostLayout: React.FC<{
           <h1 className="text-3xl font-bold text-neutral-700 dark:text-white">
             {heroTitle ?? defaultHeroTitle}
           </h1>
-          <span className="text-neutral-600 dark:text-slate-300">
+          <span className="text-neutral-600 dark:text-slate-300 font-bold tracking-wide">
             {heroDescription ?? defaultHeroDescrition}
           </span>
         </header>
