@@ -2,7 +2,7 @@ import type { GetStaticProps } from "next"
 import Layout from "Layouts/layout"
 
 import type { PostData, QueryPosts } from "types/api-types"
-import { BlogPreviewHome } from "components/Blog/BlogPreviewHome"
+import BlogPreviewHome from "components/Blog/BlogPreviewHome"
 import { HeroBanner } from "components/HeroBanner"
 import { InfoCards } from "components/InfoCards"
 import { ProjectList } from "components/Projects/ProjectList"
