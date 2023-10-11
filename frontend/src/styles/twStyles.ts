@@ -7,13 +7,11 @@ export const h1Anchor = (theme: any, type: themeType) => ({
     position: "relative",
     color:
       type === "dark" ? theme("colors.white") : theme("colors.neutral.700"),
-    transition: "all 150ms ease-out",
+    transition: "colors 150ms ease-out",
     fontWeight: 700,
 
     "&:hover": {
-      color:
-        type === "dark" ? theme("colors.sky.700") : theme("colors.sky.600"),
-      borderBottom: "2px solid currentColor",
+      color: theme("colors.sky.600"),
     },
   },
 })

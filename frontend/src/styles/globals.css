@@ -11,8 +11,8 @@
 /* Rehype AutoLink Heading "Tag/Link" Styles */
 .anchor::after {
   position: absolute;
-  top: 4px;
-  right: -32px;
+  top: 4.5px;
+  right: -30px;
   content: "#"; /* TODO: Replace with SVG icon */
   color: #fff;
   font-size: 1em;
@@ -25,5 +25,5 @@
 }
 
 .light .anchor::after {
-  color: #000;
+  color: #404040;
 }
