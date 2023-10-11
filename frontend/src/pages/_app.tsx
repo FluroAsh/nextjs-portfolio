@@ -1,13 +1,9 @@
 import type { AppProps } from "next/app"
-import { Epilogue, PT_Sans, Yellowtail } from "next/font/google"
+import { PT_Sans, Yellowtail } from "next/font/google"
 import Head from "next/head"
 import { ThemeProvider } from "next-themes"
 
-import ErrorBoundary from "components/ErrorBoundary"
-
 import ApolloProvider from "lib/ApolloProvider"
-
-import FourZeroFour from "./404"
 
 import "../styles/globals.css"
 
@@ -34,13 +30,11 @@ function BlogApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <ErrorBoundary fallback={<FourZeroFour />}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <ApolloProvider>
-            <Component {...pageProps} />
-          </ApolloProvider>
-        </ThemeProvider>
-      </ErrorBoundary>
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        <ApolloProvider>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      </ThemeProvider>
     </main>
   )
 }

@@ -17,7 +17,7 @@ export function Error({ statusCode }: { statusCode: number }) {
               Error {statusCode} &mdash; {errorMessage}
             </span>
             <Link
-              className="transition-colors duration-300 text-neutral-100 hover:text-neutral-600 dark:text-slate-300 dark:hover:text-sky-500"
+              className="transition-colors duration-300 text-neutral-100 hover:text-sky-600"
               href="/"
             >
               Go Home

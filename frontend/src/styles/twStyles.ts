@@ -10,9 +10,7 @@ export const h1Anchor = (theme: any, type: themeType) => ({
     transition: "colors 150ms ease-out",
     fontWeight: 700,
 
-    "&:hover": {
-      color: theme("colors.sky.600"),
-    },
+    "&:hover": { color: theme("colors.sky.600") },
   },
 })
 
@@ -32,9 +30,7 @@ export const pre = (theme: any, type: themeType) => ({
 })
 
 export const commonStyles = (theme: any, type: themeType) => ({
-  a: {
-    textDecoration: "none",
-  },
+  a: { textDecoration: "none" },
 
   "p > a": {
     color: type === "dark" ? theme("colors.sky.500") : theme("colors.sky.600"),
