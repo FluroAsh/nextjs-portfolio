@@ -1,21 +1,21 @@
 import Link from "next/link"
 import { getSlugPath } from "constants/paths"
+import { ColorName } from "constants/styles"
+
+import Label from "components/Label"
 
 import { cn } from "lib/utils"
 
-export const CategoryTag: React.FC<{ name: string; slug: string }> = ({
-  name,
-  slug,
-}) => (
+type CategoryTagProps = { name: ColorName; slug: string }
+
+export const CategoryTag: React.FC<CategoryTagProps> = ({ name, slug }) => (
   <Link href={getSlugPath("category", slug)}>
-    <div
+    <Label
+      labelName={name ?? "Default"}
       className={cn(
-        "font-bold tracking-wide uppercase transition-colors duration-300 text-sky-600 hover:text-sky-500",
-        "dark:hover:text-sky-400 dark:text-sky-500 sm:text-lg"
+        "rounded-sm sm:rounded-xl px-2 py-1 text-sm hover:opacity-80 transition duration:300 brightness-95 ",
+        "shadow-md dark:brightness-90 "
       )}
-    >
-      <span className="mr-[3px]">#</span>
-      {name}
-    </div>
+    />
   </Link>
 )

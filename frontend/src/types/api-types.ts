@@ -1,3 +1,5 @@
+import { ColorName } from "constants/styles"
+
 export type QuerySlugs = {
   [key: string]: {
     data: {
@@ -38,7 +40,7 @@ export interface APICategory {
   id: string
   attributes: {
     slug: string
-    name: string
+    name: ColorName
     description: string
     metaDescription: string
   }

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
-import { SKILL_COLORS } from "constants/styles"
+import { COLOR_PROPERTIES, type ColorName } from "constants/styles"
 
 import { cn } from "lib/utils"
 
-type Skills = (keyof typeof SKILL_COLORS | "")[][]
+type Skills = (ColorName | "")[][]
 
 const skillsList: Skills = [
   ["React", "TypeScript", "EmotionCSS"],
@@ -42,8 +42,10 @@ const skillRows = SKILLS.map((row, idx) => (
           label ? "shadow-lg border-4" : "border-2 border-transparent"
         )}
         style={{
-          backgroundColor: label ? SKILL_COLORS[label].fill : "transparent",
-          borderColor: label ? SKILL_COLORS[label].borderColor : "transparent",
+          backgroundColor: label ? COLOR_PROPERTIES[label].fill : "transparent",
+          borderColor: label
+            ? COLOR_PROPERTIES[label].borderColor
+            : "transparent",
         }}
       >
         <span className="w-full px-2 text-center whitespace-break-spaces">

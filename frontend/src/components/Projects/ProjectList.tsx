@@ -1,11 +1,11 @@
-import { COLORS } from "constants/styles"
+import type { ColorName } from "constants/styles"
 
 import { Project } from "./Project"
 
 export type ProjectAttributes = {
   title: string
   description: React.ReactNode
-  labels: (keyof typeof COLORS)[]
+  labels: ColorName[]
   imgSrc: string
   githubLink: string
   deployedUrl?: string
