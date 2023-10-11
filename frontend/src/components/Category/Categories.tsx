@@ -7,7 +7,7 @@ export const Categories: React.FC<{
   categoryData: APICategory[]
 }> = ({ categoryData }) => {
   return (
-    <div className="flex gap-2 my-2 sm:my-0 sm:items-center">
+    <div className="flex gap-2 sm:items-center self-start pt-2 md:pt-[5px]">
       {/* TODO: Replace with FA Icon/SVG */}
       {categoryData.slice(0, 2).map(({ attributes }) => (
         <CategoryTag

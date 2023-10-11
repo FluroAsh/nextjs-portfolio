@@ -1,14 +1,8 @@
 import { getSlugPath } from "constants/paths"
 
 import type { APICategory, PostAttributes } from "types/api-types"
-import { BlogImage } from "components/Blog"
+import { BlogDetails, BlogImage } from "components/Blog"
 import Button from "components/Button"
-import { Categories } from "components/Category"
-import { TimeDate } from "components/TimeDate"
-
-import { cn } from "lib/utils"
-
-import { BlogTitle } from "./BlogTitle"
 
 const BlogFeature: React.FC<{
   attributes: PostAttributes
@@ -28,21 +22,13 @@ const BlogFeature: React.FC<{
         />
       </div>
 
-      <div className="sm:flex sm:justify-between">
-        <Button
-          href={getSlugPath("blog", slug)}
-          className="transition hover:text-sky-600 text-neutral-800 dark:text-white"
-          type="text"
-        >
-          <BlogTitle title={title} />
-        </Button>
-        <Categories categoryData={categoryData} />
-      </div>
-
-      <TimeDate createdAt={createdAt} type="index" />
-      <p className="mt-2 dark:text-neutral-300 text-neutral-600">
-        {description}
-      </p>
+      <BlogDetails
+        slug={slug}
+        title={title}
+        description={description}
+        createdAt={createdAt}
+        categoryData={categoryData}
+      />
 
       <Button
         href={getSlugPath("blog", slug)}

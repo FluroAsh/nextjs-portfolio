@@ -2,14 +2,10 @@ import Link from "next/link"
 import { getSlugPath } from "constants/paths"
 
 import type { APICategory, PostAttributes } from "types/api-types"
+import { BlogDetails, BlogImage } from "components/Blog"
 import Button from "components/Button"
-import { Categories } from "components/Category"
-import { TimeDate } from "components/TimeDate"
 
 import { cn } from "lib/utils"
-
-import BlogImage from "./BlogImage"
-import { BlogTitle } from "./BlogTitle"
 
 const BlogPreview: React.FC<{
   attributes: PostAttributes
@@ -27,21 +23,13 @@ const BlogPreview: React.FC<{
         extraStyles
       )}
     >
-      <div className="sm:justify-between sm:flex">
-        <Button
-          href={getSlugPath("blog", slug)}
-          className="transition-colors duration-300 hover:text-sky-600 text-neutral-700 dark:text-white"
-          type="text"
-        >
-          <BlogTitle title={title} />
-        </Button>
-        <Categories categoryData={categoryData} />
-      </div>
-
-      <TimeDate createdAt={createdAt} type="index" />
-      <p className="mt-2 dark:text-neutral-300 text-neutral-600">
-        {description}
-      </p>
+      <BlogDetails
+        slug={slug}
+        title={title}
+        description={description}
+        createdAt={createdAt}
+        categoryData={categoryData}
+      />
 
       <Button
         href={getSlugPath("blog", slug)}

@@ -14,7 +14,7 @@ const cardLayout = [
   "md:col-span-3 lg:col-span-2",
 ]
 
-export const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
+const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
   const [hoverIndex, setHoverIdx] = useState<number | null>(null)
   const [isHovering, setIsHovering] = useState<boolean>(false)
 
@@ -72,3 +72,5 @@ export const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
     </div>
   )
 }
+
+export default BlogPreviewHome
