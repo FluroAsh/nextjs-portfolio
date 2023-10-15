@@ -29,7 +29,6 @@ export const GET_POSTS = gql`
             }
           }
           createdAt
-          isFeatured
         }
       }
     }
@@ -65,7 +64,6 @@ export const GET_HOMEPAGE_POSTS = gql`
             }
           }
           createdAt
-          isFeatured
         }
       }
     }

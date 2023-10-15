@@ -32,7 +32,6 @@ export interface PostAttributes {
   }
   content: string
   createdAt: string
-  isFeatured: boolean
 }
 
 export type QueryCategories = { categories: { data: APICategory[] } }
