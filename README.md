@@ -2,6 +2,10 @@
 
 A portfolio website designed to utilise industry relevant such as `NextJS` and `GraphQL`, and to showcase my evergrowing knowledge of Backend and Frontend concepts, best practices, and even have a bit of fun! 👨‍🎨
 
+<div style="text-align:center;">
+   <img src="images/overview.gif"></img>
+</div>
+
 ## 🥸 Before You Start...
 ### Node Version
 [Strapi](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/installation/cli.html) only supports up to Node `v18` currently, so you'll need to stick with what has been specified in the respective `.nvmrc` files for both **Backend** and **Frontend** — at the moment both are using `lts/hydrogen`.
