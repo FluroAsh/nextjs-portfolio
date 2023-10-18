@@ -1,5 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
+import { useInternalState } from "@apollo/client/react/hooks/useQuery"
 import { COLOR_PROPERTIES, type ColorName } from "constants/styles"
+
+import useIntersection from "hooks/useIntersection"
 
 import { cn } from "lib/utils"
 
@@ -61,28 +64,40 @@ export const ScrollingSkills = () => {
   const [positionX, setPositionX] = useState<number>(0)
   const [positionY, setPositionY] = useState<number>(0)
 
-  // TODO: Refactor to use a ref and simplify this useEffect logic so it's scalable...
-  // const containerRef = useRef<HTMLDivElement>(null)
+  const { isVisible, containerRef } = useIntersection({
+    root: null,
+    rootMargin: "8px",
+    threshold: 0,
+  })
 
   const END_Y = 394
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setPositionX((prev) => prev + 2.045)
-      setPositionY((prev) => prev + 1)
+    let scrollTimer: NodeJS.Timer
 
-      if (positionY >= END_Y) {
-        // Reset animation
-        setPositionX(8)
-        setPositionY(4)
-      }
-    }, 16)
+    const startAnimation = () => {
+      scrollTimer = setInterval(() => {
+        setPositionX((prev) => prev + 2.045)
+        setPositionY((prev) => prev + 1)
 
-    return () => clearInterval(id)
-  }, [positionX, positionY])
+        if (positionY >= END_Y) {
+          setPositionX(8)
+          setPositionY(4)
+        }
+      }, 16)
+    }
+
+    const stopAnimation = () => clearInterval(scrollTimer)
+
+    if (isVisible) startAnimation()
+    else stopAnimation()
+
+    return () => clearInterval(scrollTimer)
+  }, [isVisible, positionX, positionY])
 
   return (
     <div
+      ref={containerRef}
       className={cn(
         "relative mx-auto overflow-hidden shadow-lg xl:rounded-lg w-100 h-80 xl:mx-5 bg-gradient-to-tr",
         "to-neutral-100 via-neutral-200 from-neutral-300",
