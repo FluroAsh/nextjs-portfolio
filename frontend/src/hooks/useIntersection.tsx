@@ -4,8 +4,6 @@ export default function useIntersection(options: IntersectionObserverInit) {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
-  const divElement = containerRef.current
-
   useEffect(() => {
     const callback = (entries: IntersectionObserverEntry[]) => {
       const entry = entries[0]
@@ -13,10 +11,10 @@ export default function useIntersection(options: IntersectionObserverInit) {
     }
 
     const observer = new IntersectionObserver(callback, options)
-    divElement && observer.observe(divElement)
+    containerRef.current && observer.observe(containerRef.current)
 
     return () => {
-      divElement && observer.unobserve(divElement)
+      containerRef.current && observer.unobserve(containerRef.current)
     }
   }, [containerRef, options])
 
