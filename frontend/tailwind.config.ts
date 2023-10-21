@@ -1,9 +1,9 @@
+import { fontFamily } from "tailwindcss/defaultTheme"
+import type { Config } from "tailwindcss/types/config"
+
 import * as twS from "./src/styles/twStyles"
 
-/** @type {import('tailwindcss').Config} */
-const { fontFamily } = require("tailwindcss/defaultTheme")
-
-module.exports = {
+export default {
   darkMode: "class",
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx}",
@@ -36,7 +36,7 @@ module.exports = {
         navbar: "var(--navbar-height)",
       },
       // For over-riding/customising
-      typography: ({ theme }) => ({
+      typography: ({ theme }: any) => ({
         DEFAULT: {
           css: {
             ...twS.commonStyles(theme, "light"),
@@ -67,4 +67,4 @@ module.exports = {
     extend: { typography: ["dark"] },
   },
   plugins: [require("@tailwindcss/typography")],
-}
+} as Config

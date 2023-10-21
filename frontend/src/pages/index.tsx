@@ -19,7 +19,7 @@ const SectionTitle = ({
   subheading: React.ReactNode
 }) => (
   <div className="mb-3">
-    <h2 className="px-5 text-3xl text-center font-bold text-neutral-700 dark:text-white">
+    <h2 className="px-5 text-3xl font-bold text-center text-neutral-700 dark:text-white">
       {heading}
     </h2>
     <h3 className="text-xl text-center text-neutral-600 dark:text-neutral-300 ">
