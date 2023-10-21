@@ -1,15 +1,16 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const path_1 = __importDefault(require("path"));
 exports.default = ({ env }) => ({
     connection: {
-        client: "sqlite",
+        client: "postgres",
         connection: {
-            filename: path_1.default.join(__dirname, "..", "..", env("DATABASE_FILENAME", ".tmp/data.db")),
+            host: env("DATABASE_HOST", "localhost"),
+            port: env.int("DATABASE_PORT", 5432),
+            database: env("DATABASE_NAME", "strapi_blog"),
+            user: env("DATABASE_USERNAME", "postgres"),
+            password: env("DATABASE_PASSWORD", "0000"),
+            ssl: false,
+            debug: false,
         },
-        useNullAsDefault: true,
     },
 });

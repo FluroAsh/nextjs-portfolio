@@ -32,11 +32,6 @@
                 "images"
             ]
         },
-        "isFeatured": {
-            "type": "boolean",
-            "default": false,
-            "required": false
-        },
         "categories": {
             "type": "relation",
             "relation": "manyToMany",
