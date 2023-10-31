@@ -67,4 +67,4 @@ export default {
     extend: { typography: ["dark"] },
   },
   plugins: [require("@tailwindcss/typography")],
-} as Config
+} satisfies Config
