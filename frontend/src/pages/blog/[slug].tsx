@@ -5,7 +5,7 @@ import { DAILY_REVALIDATION } from "constants/api"
 import Layout from "Layouts/layout"
 import readingTime from "reading-time"
 
-import type { BlogPostProps } from "types/blog-types"
+import type { BlogPostProps, MetaTagAttributes } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import { TimeDate } from "components/TimeDate"
 
@@ -20,7 +20,7 @@ import { ROUTE_URL } from "constants/paths"
 import type { QueryPosts, QuerySlugs } from "types/api-types"
 import Button from "components/Button"
 
-import { cn } from "lib/utils"
+import { cn, truncate } from "lib/utils"
 
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
@@ -29,11 +29,16 @@ const BlogPost: React.FC<BlogPostProps> = ({
   createdAt,
   alternativeText,
   formats,
+  metaTags,
 }) => {
   const stats = readingTime(content)
 
   return (
-    <Layout title={`ashleygthompson | ${title}`} metaDescription={description}>
+    <Layout
+      title={`ashleygthompson | ${title}`}
+      metaDescription={description}
+      metaTags={metaTags}
+    >
       <div className="w-full max-w-screen-lg mx-auto">
         <header className="w-full px-5">
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
@@ -119,6 +124,13 @@ export const getStaticProps: GetStaticProps = async ({
   } = post
   const content = await markdownToHtml(contentMarkdown)
 
+  const metaTags: MetaTagAttributes = {
+    "og:title": title,
+    "og:description": truncate(description, 130),
+    "og:image": cover.data.attributes.formats.medium.url,
+    "og:url": `${process.env.NEXT_BASE_URL}/${ROUTE_URL.BLOG}/${title}`,
+  }
+
   return {
     props: {
       title,
@@ -127,6 +139,7 @@ export const getStaticProps: GetStaticProps = async ({
       createdAt,
       alternativeText: cover?.data?.attributes?.alternativeText,
       formats: cover?.data?.attributes?.formats,
+      metaTags,
     },
     revalidate: DAILY_REVALIDATION,
   }

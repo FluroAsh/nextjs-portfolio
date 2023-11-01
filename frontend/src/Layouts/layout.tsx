@@ -1,21 +1,27 @@
-import { type ReactNode } from "react"
 import Head from "next/head"
 
+import { MetaTagAttributes } from "types/blog-types"
 import { Navbar } from "components/Navbar"
 import useMounted from "hooks/useMounted"
 
 import { Footer } from "../components/Footer"
 
 interface LayoutProps {
-  children: ReactNode
+  children: React.ReactNode
   title: string
   metaDescription?: string
+  metaTags?: MetaTagAttributes
 }
+
+const createMetaTag = ([name, content]: [string, string]): React.ReactNode => (
+  <meta name={name} content={content} />
+)
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   title,
   metaDescription,
+  metaTags,
 }) => {
   const isMounted = useMounted() // Fixes hydration error
   return isMounted ? (
@@ -23,6 +29,8 @@ const Layout: React.FC<LayoutProps> = ({
       <Head>
         <title>{title}</title>
         <meta name="description" content={metaDescription} />
+        {metaTags &&
+          Object.entries(metaTags).map((meta) => createMetaTag(meta))}
       </Head>
 
       <Navbar />

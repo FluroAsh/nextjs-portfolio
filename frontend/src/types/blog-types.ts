@@ -19,9 +19,18 @@ export interface BlogPostProps {
   createdAt: string
   alternativeText: string
   formats: Formats
+  metaTags: MetaTagAttributes
 }
 
 export interface IconProps {
   className: string
   height?: string | number
+}
+
+// Mapped type required to keep "og" tags optional while preserving requirement
+// for other properties with an intersection.
+export type MetaTagAttributes = {
+  [K in "og:title" | "og:desription" | "og:image" | "og:url"]?: string
+} & {
+  [key: string]: string
 }
