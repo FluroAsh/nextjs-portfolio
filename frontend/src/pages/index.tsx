@@ -29,51 +29,48 @@ const SectionTitle = ({
 )
 
 const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
-  <div>
-    <Layout type="basic" title="ashleygthompson | Home ">
-      <HeroBanner />
+  <Layout title="ashleygthompson | Home">
+    <HeroBanner />
 
-      <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
-        <SectionTitle
-          heading={
-            <>
-              Who <span className="italic text-sky-500">IS</span> this guy
-              anyway?
-            </>
-          }
-          subheading="Let's get to know me better, starting with some #quickFacts..."
-        />
+    <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
+      <SectionTitle
+        heading={
+          <>
+            Who <span className="italic text-sky-500">IS</span> this guy anyway?
+          </>
+        }
+        subheading="Let's get to know me better, starting with some #quickFacts..."
+      />
 
-        <InfoCards />
-      </section>
+      <InfoCards />
+    </section>
 
-      {/* TODO: Probably want an intersection observer to stop the animation
+    {/* TODO: Probably want an intersection observer to stop the animation
           When a user scrolls past this component */}
-      <section id="skills" className="max-w-screen-xl mx-auto mt-10">
-        <SectionTitle
-          heading="What's in my toolbox?"
-          subheading="A quick look into some of the tools I use to build cool stuff! 🧰"
-        />
-        <ScrollingSkills />
-      </section>
+    <section id="skills" className="max-w-screen-xl mx-auto mt-10">
+      <SectionTitle
+        heading="What's in my toolbox?"
+        subheading="A quick look into some of the tools I use to build cool stuff! 🧰"
+      />
+      <ScrollingSkills />
+    </section>
 
-      <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
-        <SectionTitle
-          heading="Recent Projects"
-          subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
-        />
-        <ProjectList />
-      </section>
+    <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
+      <SectionTitle
+        heading="Recent Projects"
+        subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
+      />
+      <ProjectList />
+    </section>
 
-      <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-10 ">
-        <SectionTitle
-          heading="Fresh Off The Press!"
-          subheading="If you like reading and tech, you'll love these! 📚"
-        />
-        <BlogPreviewHome posts={posts} />
-      </section>
-    </Layout>
-  </div>
+    <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-10 ">
+      <SectionTitle
+        heading="Fresh Off The Press!"
+        subheading="If you like reading and tech, you'll love these! 📚"
+      />
+      <BlogPreviewHome posts={posts} />
+    </section>
+  </Layout>
 )
 
 export const getStaticProps: GetStaticProps = async () => {

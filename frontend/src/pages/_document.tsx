@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         <Favicons />
       </Head>
-      <body className="text-black dark:text-white bg-neutral-100 dark:bg-dark-background-primary ">
+      <body className="text-black dark:text-white bg-neutral-100 dark:bg-dark-background-primary">
         <Main />
         <NextScript />
       </body>

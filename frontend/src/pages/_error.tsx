@@ -7,7 +7,7 @@ export function Error({ statusCode }: { statusCode: number }) {
   const errorMessage = ERROR_MAP[statusCode]
 
   return (
-    <Layout type="basic" title="ashleygthompson | Error!">
+    <Layout title="ashleygthompson | Error!">
       <div className="flex items-center justify-center dark:text-white -h-navbar">
         <div className="flex flex-col items-center justify-center p-6 border rounded-lg w-100 dark:to-slate-500/50 dark:from-slate-400/50 backdrop-blur border-slate-500/50 bg-gradient-to-t to-neutral-400/80 from-neutral-500/80">
           {/* TODO: Replace with an SVG/Img */}

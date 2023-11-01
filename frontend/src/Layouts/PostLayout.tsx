@@ -1,7 +1,7 @@
 import Layout from "./layout"
 
 const defaultHeroTitle = "Latest Posts"
-const defaultHeroDescrition =
+const defaultHeroDescription =
   "The latest collection of my little musings & articles to help you become a better developer."
 
 export const PostLayout: React.FC<{
@@ -12,14 +12,14 @@ export const PostLayout: React.FC<{
   metaDescription?: string
 }> = ({ children, title, heroTitle, heroDescription, metaDescription }) => {
   return (
-    <Layout type="blog" title={title} metaDescription={metaDescription}>
+    <Layout title={title} metaDescription={metaDescription}>
       <div className="w-full max-w-screen-lg px-5 mx-auto">
         <header className="py-4 border-b dark:border-slate-500 border-neutral-600">
           <h1 className="text-3xl font-bold text-neutral-700 dark:text-white">
             {heroTitle ?? defaultHeroTitle}
           </h1>
           <span className="text-neutral-600 dark:text-slate-300 font-bold tracking-wide">
-            {heroDescription ?? defaultHeroDescrition}
+            {heroDescription ?? defaultHeroDescription}
           </span>
         </header>
         {children}

@@ -26,7 +26,9 @@ const fontVariables = `${ptSans.variable} ${yellowtail.variable}`
 
 function BlogApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={cn(fontVariables, "font-ptSans")}>
+    <div
+      className={cn(fontVariables, "font-ptSans flex flex-col min-h-screen")}
+    >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -35,7 +37,7 @@ function BlogApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </ApolloProvider>
       </ThemeProvider>
-    </main>
+    </div>
   )
 }
 

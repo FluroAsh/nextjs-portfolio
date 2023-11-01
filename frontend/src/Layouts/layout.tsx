@@ -1,33 +1,24 @@
-import type { ReactNode } from "react"
+import { type ReactNode } from "react"
 import Head from "next/head"
 
 import { Navbar } from "components/Navbar"
+import useMounted from "hooks/useMounted"
 
 import { Footer } from "../components/Footer"
 
-interface ILayout {
-  type: pageTypes
+interface LayoutProps {
   children: ReactNode
   title: string
   metaDescription?: string
 }
 
-type pageTypes = "basic" | "blog"
-
-export const NAVBAR_HEIGHT = 57
-export const FOOTER_HEIGHT = 105
-
-const Layout: React.FC<ILayout> = ({
-  type: type = "basic",
+const Layout: React.FC<LayoutProps> = ({
   children,
   title,
   metaDescription,
 }) => {
-  const layoutStyle = {
-    minHeight: `calc(100vh - ${NAVBAR_HEIGHT + FOOTER_HEIGHT}px)`,
-  }
-
-  return (
+  const isMounted = useMounted() // Fixes hydration error
+  return isMounted ? (
     <>
       <Head>
         <title>{title}</title>
@@ -35,25 +26,14 @@ const Layout: React.FC<ILayout> = ({
       </Head>
 
       <Navbar />
-      {type === "basic" ? (
-        <div
-          className="w-full"
-          // applies immediately, TW has a delay that causes a 'flicker'...
-          style={layoutStyle}
-        >
-          {children}
-        </div>
-      ) : type === "blog" ? (
-        <div
-          className="flex flex-col items-center justify-between w-full"
-          style={layoutStyle}
-        >
-          {children}
-        </div>
-      ) : null}
+      {/* FIXME: Styles are being rendered on the server, so Tailwind classNames applying/generated properly.
+          Need to investigate a proper solution for this. */}
+      <main className="w-100" style={{ flex: "1 1 0" }}>
+        {children}
+      </main>
       <Footer />
     </>
-  )
+  ) : null
 }
 
 export default Layout

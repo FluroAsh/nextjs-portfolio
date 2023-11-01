@@ -33,12 +33,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
   const stats = readingTime(content)
 
   return (
-    <Layout
-      type="blog"
-      title={`ashleygthompson | ${title}`}
-      metaDescription={description}
-    >
-      <div className="w-full max-w-screen-lg">
+    <Layout title={`ashleygthompson | ${title}`} metaDescription={description}>
+      <div className="w-full max-w-screen-lg mx-auto">
         <header className="w-full px-5">
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
             <Button
