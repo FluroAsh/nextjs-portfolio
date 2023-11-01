@@ -15,7 +15,6 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
-import Head from "next/head"
 import { ROUTE_URL } from "constants/paths"
 
 import type { QueryPosts, QuerySlugs } from "types/api-types"
@@ -38,12 +37,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
     <Layout
       title={`ashleygthompson | ${title}`}
       metaDescription={description}
-      // metaTags={metaTags}
+      metaTags={metaTags}
     >
-      <Head>
-        <meta property="og:image" content={formats.large.url} />
-      </Head>
-
       <div className="w-full max-w-screen-lg mx-auto">
         <header className="w-full px-5">
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
