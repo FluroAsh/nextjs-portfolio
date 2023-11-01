@@ -2,6 +2,7 @@ import type { GetStaticProps } from "next"
 import Layout from "Layouts/layout"
 
 import type { PostData, QueryPosts } from "types/api-types"
+import { MetaTagAttributes } from "types/blog-types"
 import BlogPreviewHome from "components/Blog/BlogPreviewHome"
 import { HeroBanner } from "components/HeroBanner"
 import { InfoCards } from "components/InfoCards"
@@ -82,6 +83,13 @@ export const getStaticProps: GetStaticProps = async () => {
     query: GET_HOMEPAGE_POSTS,
     variables: { limit: 3 },
   })
+
+  const metaTags: MetaTagAttributes = {
+    "og:title": "",
+    "og:desription": "",
+    "og:image": "",
+    "og:url": "",
+  }
 
   return {
     props: {

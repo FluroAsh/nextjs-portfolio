@@ -30,7 +30,12 @@ export interface IconProps {
 // Mapped type required to keep "og" tags optional while preserving requirement
 // for other properties with an intersection.
 export type MetaTagAttributes = {
-  [K in "og:title" | "og:desription" | "og:image" | "og:url"]?: string
+  [K in
+    | "og:title"
+    | "og:desription"
+    | "og:image"
+    | "og:url"
+    | "og:type"]?: string
 } & {
   [key: string]: string
 }

@@ -126,9 +126,10 @@ export const getStaticProps: GetStaticProps = async ({
 
   const metaTags: MetaTagAttributes = {
     "og:title": title,
-    "og:description": truncate(description, 130),
-    "og:image": cover.data.attributes.formats.medium.url,
-    "og:url": `${process.env.NEXT_BASE_URL}/${ROUTE_URL.BLOG}/${title}`,
+    "og:description": truncate(description, 150),
+    "og:image": cover.data.attributes.formats.large.url,
+    "og:url": `${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${slug as string}`,
+    "og:type": "article",
   }
 
   return {
