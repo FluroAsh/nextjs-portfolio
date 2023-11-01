@@ -24,7 +24,6 @@ import { cn, truncate } from "lib/utils"
 
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
-  description,
   content,
   createdAt,
   alternativeText,
@@ -34,11 +33,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   const stats = readingTime(content)
 
   return (
-    <Layout
-      title={`ashleygthompson | ${title}`}
-      metaDescription={description}
-      metaTags={metaTags}
-    >
+    <Layout title={`ashleygthompson | ${title}`} metaTags={metaTags}>
       <div className="w-full max-w-screen-lg mx-auto">
         <header className="w-full px-5">
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
@@ -135,7 +130,6 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       title,
-      description,
       content,
       createdAt,
       alternativeText: cover?.data?.attributes?.alternativeText,

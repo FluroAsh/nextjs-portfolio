@@ -13,7 +13,6 @@ export interface BlogImageProps {
 export interface BlogPostProps {
   title: string
   slug: string
-  description: string
   content: string
   url: string
   createdAt: string
