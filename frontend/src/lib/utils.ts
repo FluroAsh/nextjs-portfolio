@@ -8,11 +8,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // TODO: Should only truncate when screen size <= 768px
-export function truncateTitle(title: string) {
-  const CHAR_LIMIT = 25
-  return title.length >= CHAR_LIMIT
-    ? `${title.substring(0, CHAR_LIMIT)}...`
-    : title
+export function truncate(string: string, charLimit = 25) {
+  return string.length >= charLimit
+    ? `${string.substring(0, charLimit)}...`
+    : string
 }
 
 export function readingMinutes(
@@ -45,14 +44,6 @@ export function checkImgFormats(formats: Formats) {
 
 export function capitalize(word: string) {
   return word[0].toUpperCase() + word.slice(1)
-}
-
-export function scrollToElement(element: HTMLElement | null) {
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth",
-    })
-  }
 }
 
 export function calculateDarkValues(
