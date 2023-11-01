@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const metaTags: MetaTagAttributes = {
     "og:title": "Ashley G. Thompsons' little slice of developer paradise",
     "og:description":
-      "Exploring Code, Technology, and Insights on my Developer's Journey",
+      "Exploring Code, Technology, and The Web on my Journey as a Developer",
     "og:image":
       "https://at-strapi-blog.s3.ap-southeast-2.amazonaws.com/static-assets/og-image.png",
     "og:url": `${process.env.NEXT_BASE_URL}`,

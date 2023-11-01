@@ -31,6 +31,18 @@ function BlogApp({ Component, pageProps }: AppProps) {
     >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* <meta
+          property="og:title"
+          content="Ashley G. Thompsons digital garden"
+        />
+        <meta
+          property="og:description"
+          content="Some description for the website"
+        />
+        <meta
+          property="og:image"
+          content="https://at-strapi-blog.s3.ap-southeast-2.amazonaws.com/static-assets/og-image.png"
+        /> */}
       </Head>
       <ThemeProvider attribute="class" defaultTheme="dark">
         <ApolloProvider>
