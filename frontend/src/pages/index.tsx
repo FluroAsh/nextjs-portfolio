@@ -29,8 +29,11 @@ const SectionTitle = ({
   </div>
 )
 
-const Home: React.FC<{ posts: PostData[] }> = ({ posts }) => (
-  <Layout title="ashleygthompson | Home">
+const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
+  posts,
+  metaTags,
+}) => (
+  <Layout title="ashleygthompson | Home" metaTags={metaTags}>
     <HeroBanner />
 
     <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
@@ -85,15 +88,19 @@ export const getStaticProps: GetStaticProps = async () => {
   })
 
   const metaTags: MetaTagAttributes = {
-    "og:title": "",
-    "og:desription": "",
-    "og:image": "",
-    "og:url": "",
+    "og:title": "Ashley G. Thompsons' little slice of developer paradise",
+    "og:desription":
+      "Exploring Code, Technology, and Insights on my Developer's Journey",
+    "og:image":
+      "https://at-strapi-blog.s3.ap-southeast-2.amazonaws.com/static-assets/og-image.png",
+    "og:url": `${process.env.NEXT_BASE_URL}`,
+    "og:type": "website",
   }
 
   return {
     props: {
       posts: posts.data,
+      metaTags,
     },
   }
 }
