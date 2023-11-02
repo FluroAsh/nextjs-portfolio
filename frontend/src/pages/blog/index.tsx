@@ -1,12 +1,12 @@
 import type { GetStaticProps } from "next"
 import { PostLayout } from "Layouts/PostLayout"
 
-import type { PostData, QueryPosts } from "types/api-types"
+import type { PostData, QueryPageMeta, QueryPosts } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_POSTS_PAGE_META, QueryPageMeta } from "lib/gql/metaQueries"
+import { GET_POSTS_PAGE_META } from "lib/gql/metaQueries"
 import { GET_POSTS } from "lib/gql/postQueries"
 
 const Blog: React.FC<{
