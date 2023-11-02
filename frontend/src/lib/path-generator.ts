@@ -1,15 +1,27 @@
-import { QuerySlugs } from "types/api-types"
+import type { QueryPageMeta, QuerySlugs } from "types/api-types"
 
 import { initializeApollo } from "./apollo-client"
 import { GET_CATEGORY_SLUGS } from "./gql/categoryQueries"
-import { GET_CATEGORY_PAGE_META, QueryPageMeta } from "./gql/metaQueries"
+import { GET_CATEGORY_PAGE_META, GET_POSTS_PAGE_META } from "./gql/metaQueries"
+import { GET_POST_SLUGS } from "./gql/postQueries"
 
 const apolloClient = initializeApollo()
 
-export const pathGenerator = {
+export const generatePaths = {
   CATEGORY: {
-    slug: () => {
-      //
+    slugs: async () => {
+      const {
+        data: { categories },
+      } = await apolloClient.query<QuerySlugs>({
+        query: GET_CATEGORY_SLUGS,
+      })
+
+      const paths = categories?.data?.map(({ attributes: { slug } }) => ({
+        params: {
+          category: slug,
+        },
+      }))
+      return paths
     },
     pages: async () => {
       const {
@@ -18,7 +30,7 @@ export const pathGenerator = {
         query: GET_CATEGORY_SLUGS,
       })
 
-      // NOTE: Must be awaited with Promise.all due to multiple GQL queries
+      // NOTE: Must be awaited with Promise.all due to MULTIPLE GraphQL queries for each category
       const paths = await Promise.all(
         categories.data?.map(async ({ attributes: { slug } }) => {
           const {
@@ -44,11 +56,30 @@ export const pathGenerator = {
     },
   },
   BLOG: {
-    slug: () => {
-      //
+    slugs: async () => {
+      const {
+        data: { posts },
+      } = await apolloClient.query<QuerySlugs>({ query: GET_POST_SLUGS })
+
+      return posts?.data?.map(({ attributes: { slug } }) => ({
+        params: { slug },
+      }))
     },
-    pages: () => {
-      //
+    pages: async () => {
+      const {
+        data: {
+          posts: { meta },
+        },
+      } = await apolloClient.query<QueryPageMeta>({
+        query: GET_POSTS_PAGE_META,
+      })
+      const totalPages = meta?.pagination?.pageCount
+
+      return Array.from({ length: totalPages }, (_, page) => ({
+        params: {
+          page: `${page + 1}`,
+        },
+      }))
     },
   },
 }

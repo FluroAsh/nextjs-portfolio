@@ -10,19 +10,16 @@ import {
   APICategory,
   PostData,
   QueryCategories,
+  QueryPageMeta,
   QueryPosts,
-  QuerySlugs,
 } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
-import {
-  GET_CATEGORY,
-  GET_CATEGORY_SLUGS,
-  GET_POSTS_BY_CATEGORY,
-} from "lib/gql/categoryQueries"
-import { GET_CATEGORY_PAGE_META, type QueryPageMeta } from "lib/gql/metaQueries"
+import { GET_CATEGORY, GET_POSTS_BY_CATEGORY } from "lib/gql/categoryQueries"
+import { GET_CATEGORY_PAGE_META } from "lib/gql/metaQueries"
+import { generatePaths } from "lib/path-generator"
 
 const CategoryPage: React.FC<{
   posts: PostData[]
@@ -63,25 +60,10 @@ const CategoryPage: React.FC<{
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const apolloClient = initializeApollo()
-  const {
-    data: { categories },
-  } = await apolloClient.query<QuerySlugs>({
-    query: GET_CATEGORY_SLUGS,
-  })
-
-  const paths = categories?.data?.map(({ attributes: { slug } }) => ({
-    params: {
-      category: slug,
-    },
-  }))
-
-  return {
-    paths,
-    fallback: false,
-  }
-}
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: await generatePaths.CATEGORY.slugs(),
+  fallback: false,
+})
 
 export const getStaticProps: GetStaticProps = async ({
   params,

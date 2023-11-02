@@ -1,4 +1,4 @@
-import { ColorName } from "constants/styles"
+import type { ColorName } from "constants/styles"
 
 export type QuerySlugs = {
   [key: string]: {
@@ -42,6 +42,19 @@ export interface APICategory {
     name: ColorName
     description: string
     metaDescription: string
+  }
+}
+
+export type QueryPageMeta = {
+  posts: {
+    meta: {
+      pagination: {
+        page: number
+        pageSize: number
+        pageCount: number
+        total: number
+      }
+    }
   }
 }
 

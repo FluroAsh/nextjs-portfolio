@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useTheme } from "next-themes"
@@ -6,6 +7,7 @@ import { useMounted } from "hooks"
 
 import { cn } from "lib/utils"
 
+// eslint-ignore-next-line
 export enum Theme {
   DARK = "dark",
   LIGHT = "light",

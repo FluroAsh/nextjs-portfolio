@@ -15,7 +15,7 @@ const BlogImage: React.FC<BlogImageProps> = ({
   checkImgFormats(formats)
 
   // TODO: Add a blur JS placeholder using thumbnail (5ish kb)
-  const { large, medium, small, thumbnail } = formats ?? {}
+  const { large, medium, small /*, thumbnail*/ } = formats ?? {}
 
   const imageComponent = (
     <div className="relative max-w-full h-60 sm:h-[20rem] md:h-96 overflow-hidden rounded-lg shadow-lg group">

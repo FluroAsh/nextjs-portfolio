@@ -10,16 +10,17 @@ import { BlogImage } from "components/Blog"
 import { TimeDate } from "components/TimeDate"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_POST, GET_POST_SLUGS } from "lib/gql/postQueries"
+import { GET_POST } from "lib/gql/postQueries"
 import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
 import { ROUTE_URL } from "constants/paths"
 
-import type { QueryPosts, QuerySlugs } from "types/api-types"
+import type { QueryPosts } from "types/api-types"
 import Button from "components/Button"
 
+import { generatePaths } from "lib/path-generator"
 import { cn, truncate } from "lib/utils"
 
 const BlogPost: React.FC<BlogPostProps> = ({
@@ -77,22 +78,10 @@ const BlogPost: React.FC<BlogPostProps> = ({
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const apolloClient = initializeApollo()
-
-  const {
-    data: { posts },
-  } = await apolloClient.query<QuerySlugs>({ query: GET_POST_SLUGS })
-
-  const paths = posts?.data?.map(({ attributes: { slug } }) => ({
-    params: { slug },
-  }))
-
-  return {
-    paths,
-    fallback: false,
-  }
-}
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: await generatePaths.BLOG.slugs(),
+  fallback: false,
+})
 
 export const getStaticProps: GetStaticProps = async ({
   params,

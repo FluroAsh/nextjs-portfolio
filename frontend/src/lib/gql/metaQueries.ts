@@ -1,18 +1,5 @@
 import { gql } from "@apollo/client"
 
-export type QueryPageMeta = {
-  posts: {
-    meta: {
-      pagination: {
-        page: number
-        pageSize: number
-        pageCount: number
-        total: number
-      }
-    }
-  }
-}
-
 export const GET_POSTS_PAGE_META = gql`
   query getPostsMeta {
     posts {

@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
-import { useInternalState } from "@apollo/client/react/hooks/useQuery"
+import React, { useEffect, useState } from "react"
 import { COLOR_PROPERTIES, type ColorName } from "constants/styles"
 
 import useIntersection from "hooks/useIntersection"

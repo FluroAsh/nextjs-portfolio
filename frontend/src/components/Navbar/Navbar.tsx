@@ -1,11 +1,10 @@
 import Link from "next/link"
 import {
   faGithub,
-  faLinkedin,
   faLinkedinIn,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
-import { faBookOpen, faMessage } from "@fortawesome/pro-solid-svg-icons"
+import { faBookOpen } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   externalLinkProps,

@@ -7,8 +7,9 @@ import { BlogFeature, BlogPreview } from "components/Blog"
 import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
-import { GET_POSTS_PAGE_META, QueryPageMeta } from "lib/gql/metaQueries"
+import { GET_POSTS_PAGE_META } from "lib/gql/metaQueries"
 import { GET_POSTS } from "lib/gql/postQueries"
+import { generatePaths } from "lib/path-generator"
 
 const Page = ({
   posts,
@@ -47,27 +48,10 @@ const Page = ({
   )
 }
 
-export const getStaticPaths = async () => {
-  const apolloClient = initializeApollo()
-
-  const {
-    data: {
-      posts: { meta },
-    },
-  } = await apolloClient.query<QueryPageMeta>({ query: GET_POSTS_PAGE_META })
-  const totalPages = meta?.pagination?.pageCount
-
-  const paths = Array.from({ length: totalPages }, (_, page) => ({
-    params: {
-      page: `${page + 1}`,
-    },
-  }))
-
-  return {
-    paths,
-    fallback: false,
-  }
-}
+export const getStaticPaths = async () => ({
+  paths: await generatePaths.BLOG.pages(),
+  fallback: false,
+})
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const apolloClient = initializeApollo()

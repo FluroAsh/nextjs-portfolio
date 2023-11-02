@@ -1,6 +1,5 @@
 import type {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticProps,
   GetStaticPropsContext,
 } from "next"
@@ -10,19 +9,16 @@ import { PostLayout } from "Layouts/PostLayout"
 import type {
   APICategory,
   PostData,
+  QueryPageMeta,
   QueryPosts,
-  QuerySlugs,
 } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 import { Pagination } from "components/Pagination"
 
 import { initializeApollo } from "lib/apollo-client"
-import {
-  GET_CATEGORY_SLUGS,
-  GET_POSTS_BY_CATEGORY,
-} from "lib/gql/categoryQueries"
-import { GET_CATEGORY_PAGE_META, QueryPageMeta } from "lib/gql/metaQueries"
-import { pathGenerator } from "lib/path-generator"
+import { GET_POSTS_BY_CATEGORY } from "lib/gql/categoryQueries"
+import { GET_CATEGORY_PAGE_META } from "lib/gql/metaQueries"
+import { generatePaths } from "lib/path-generator"
 
 const Page: React.FC<{
   posts: PostData[]
@@ -65,14 +61,10 @@ const Page: React.FC<{
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const flattenedPaths = await pathGenerator.CATEGORY.pages()
-
-  return {
-    paths: flattenedPaths,
-    fallback: false,
-  }
-}
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: await generatePaths.CATEGORY.pages(),
+  fallback: false,
+})
 
 export const getStaticProps: GetStaticProps = async ({
   params,

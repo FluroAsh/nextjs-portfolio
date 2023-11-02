@@ -1,7 +1,5 @@
 import { calculateDarkValues } from "lib/utils"
 
-export type ColorName = keyof typeof BASE_COLORS
-
 // This is used when matching the key to what we're getting back from the CMS
 // Default should be used as a fallback where no color is specified
 export const BASE_COLORS = {
@@ -27,6 +25,8 @@ export const BASE_COLORS = {
   JavaScript: "#F7DF1E",
   Productivity: "#FF0000",
 } as const
+
+export type ColorName = keyof typeof BASE_COLORS
 
 type ColorProperties = {
   [K in ColorName]: {
