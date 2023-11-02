@@ -15,7 +15,7 @@ interface LayoutProps {
 }
 
 const createMetaTag = ([name, content]: [string, string]): React.ReactNode => (
-  <meta property={name} content={content} />
+  <meta key={name} property={name} content={content} />
 )
 
 const Layout: React.FC<LayoutProps> = ({
@@ -24,12 +24,6 @@ const Layout: React.FC<LayoutProps> = ({
   metaDescription,
   metaTags,
 }) => {
-  // NOTE: If we use isMounted here then we'll never return the Head tags until the component mounts (clientside)
-  // So things like OG attributes won't be applied correctly.
-
-  // const isMounted = useMounted() // Fixes hydration error — but above...
-  // TODO: Need to find a better fix for this. Seems to relate to TimeDate
-
   const metaTagsArray = metaTags
     ? Object.entries(metaTags).map((meta) => createMetaTag(meta))
     : null

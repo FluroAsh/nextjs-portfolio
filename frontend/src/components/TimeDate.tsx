@@ -1,8 +1,12 @@
 import dayjs from "dayjs"
 import advancedFormat from "dayjs/plugin/advancedFormat"
+import tz from "dayjs/plugin/timezone"
+import utc from "dayjs/plugin/utc"
 
 import { cn, readingMinutes } from "lib/utils"
 
+dayjs.extend(utc)
+dayjs.extend(tz)
 dayjs.extend(advancedFormat)
 
 type TimeDateIndex = { type: "index"; minutes?: never; textType?: never }
@@ -39,7 +43,17 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   className: extraStyles,
 }) => {
   const isIndex = type === "index"
-  const timeStamp = dayjs(createdAt).format("dddd, Do MMMM")
+
+  /**
+   * NOTE: Required to explicitly set the time zone using the Dayjs tz plugin to resolve
+   * discrepancies between the server and client-side date formatting. Otherwise we encounter
+   * hydration errors.
+   */
+
+  const timeStamp = dayjs
+    .utc(createdAt)
+    .tz("Australia/Melbourne")
+    .format("dddd, Do MMMM")
 
   if (type === "index") {
     return (
