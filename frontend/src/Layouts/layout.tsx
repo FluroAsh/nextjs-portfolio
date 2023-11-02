@@ -1,11 +1,8 @@
 import Head from "next/head"
 
 import { MetaTagAttributes } from "types/blog-types"
+import { Footer } from "components/Footer"
 import { Navbar } from "components/Navbar"
-
-// import useMounted from "hooks/useMounted"
-
-import { Footer } from "../components/Footer"
 
 interface LayoutProps {
   children: React.ReactNode

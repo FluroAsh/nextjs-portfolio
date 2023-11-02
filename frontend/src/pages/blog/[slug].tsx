@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next"
 import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { DAILY_REVALIDATION } from "constants/api"
 import Layout from "Layouts/layout"
 import readingTime from "reading-time"
 
@@ -15,6 +14,7 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
+import { DAILY_REVALIDATION } from "constants/api"
 import { ROUTE_URL } from "constants/paths"
 
 import type { QueryPosts } from "types/api-types"
