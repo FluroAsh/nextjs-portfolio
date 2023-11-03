@@ -14,14 +14,9 @@ export function truncate(string: string, charLimit = 25) {
     : string
 }
 
-export function readingMinutes(
-  minutes: number,
-  textType: "flex" | "singular" = "flex"
-) {
+export function readingMinutes(minutes: number) {
   const roundedMinutes = Math.ceil(minutes)
-  return minutes > 1 && textType !== "singular"
-    ? `${roundedMinutes} minutes reading`
-    : `${roundedMinutes} minute read`
+  return minutes > 0 ? `${roundedMinutes} minute read` : "Less than a minute!"
 }
 
 /** Validates we have the correct formats at build time */

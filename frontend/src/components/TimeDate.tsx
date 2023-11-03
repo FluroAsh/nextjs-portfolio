@@ -12,11 +12,10 @@ dayjs.extend(tz)
 dayjs.tz.setDefault(DEFAULT_TIMEZONE)
 dayjs.extend(advancedFormat)
 
-type TimeDateIndex = { type: "index"; minutes?: never; textType?: never }
+type TimeDateIndex = { type: "index"; minutes?: never }
 type TimeDatePost = {
-  type: "post" | "stacked"
+  type: "post" | "home"
   minutes: number
-  textType?: "flex" | "singular"
 }
 
 export type TimeDateProps = {
@@ -42,7 +41,6 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   createdAt,
   type,
   minutes,
-  textType,
   className: extraStyles,
 }) => {
   const isIndex = type === "index"
@@ -80,14 +78,14 @@ export const TimeDate: React.FC<TimeDateProps> = ({
     )
   }
 
-  if (type === "stacked" && minutes) {
+  if (type === "home" && minutes) {
     return (
       <Container isIndex={isIndex} className={extraStyles}>
         <h3 className="text-lg text-neutral-300 dark:text-slate-300">
           {timeStamp}
         </h3>
         <h3 className="text-sm font-semibold text-neutral-300 dark:text-slate-300">
-          {readingMinutes(minutes, textType)}
+          {readingMinutes(minutes)}
         </h3>
       </Container>
     )

@@ -61,9 +61,8 @@ const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
               </h1>
               <TimeDate
                 createdAt={post.attributes.createdAt}
-                type="stacked"
+                type="home"
                 minutes={stats.minutes}
-                textType="singular"
               />
             </div>
           </div>
