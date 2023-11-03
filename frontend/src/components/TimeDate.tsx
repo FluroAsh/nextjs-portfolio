@@ -5,8 +5,11 @@ import utc from "dayjs/plugin/utc"
 
 import { cn, readingMinutes } from "lib/utils"
 
+const DEFAULT_TIMEZONE = "Australia/Melbourne"
+
 dayjs.extend(utc)
 dayjs.extend(tz)
+dayjs.tz.setDefault(DEFAULT_TIMEZONE)
 dayjs.extend(advancedFormat)
 
 type TimeDateIndex = { type: "index"; minutes?: never; textType?: never }
@@ -50,10 +53,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
    * hydration errors.
    */
 
-  const timeStamp = dayjs
-    .utc(createdAt)
-    .tz("Australia/Melbourne")
-    .format("dddd, Do MMMM")
+  const timeStamp = dayjs.utc(createdAt).format("dddd, Do MMMM")
 
   if (type === "index") {
     return (
