@@ -34,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({
       </Head>
 
       <Navbar />
-      <main className="w-100 flex-1">{children}</main>
+      <main className="w-100 flex flex-col flex-1">{children}</main>
       <Footer />
     </>
   )

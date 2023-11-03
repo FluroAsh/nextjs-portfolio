@@ -1,15 +1,22 @@
 import { NextApiResponse } from "next"
 import Link from "next/link"
-import { ERROR_MAP } from "constants/errors"
 import Layout from "Layouts/layout"
+
+type ERROR_MAP = { [key: string]: string }
+
+export const ERROR_MAP: ERROR_MAP = {
+  400: "Unexpected error",
+  404: "Page Not Found!",
+  500: "Please try again later",
+} as const
 
 export function Error({ statusCode }: { statusCode: number }) {
   const errorMessage = ERROR_MAP[statusCode]
 
   return (
     <Layout title="ashleygthompson | Error!">
-      <div className="flex items-center justify-center dark:text-white -h-navbar">
-        <div className="flex flex-col items-center justify-center p-6 border rounded-lg w-100 dark:to-slate-500/50 dark:from-slate-400/50 backdrop-blur border-slate-500/50 bg-gradient-to-t to-neutral-400/80 from-neutral-500/80">
+      <div className="flex flex-col justify-center items-center flex-1">
+        <div className="flex flex-col items-center justify-center p-6 border rounded-lg dark:to-slate-500/50 dark:from-slate-400/50 backdrop-blur border-slate-500/50 bg-gradient-to-t to-neutral-400/80 from-neutral-500/80">
           {/* TODO: Replace with an SVG/Img */}
           <span className="mb-4 text-5xl">⚠️</span>
           <div className="flex items-center content-center text-lg">

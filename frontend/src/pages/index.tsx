@@ -41,7 +41,7 @@ const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
   >
     <HeroBanner />
 
-    <section id="about-me" className="max-w-screen-xl px-5 mx-auto mt-5">
+    <section id="about-me" className="w-full max-w-screen-xl px-5 mx-auto mt-5">
       <SectionTitle
         heading={
           <>
@@ -56,7 +56,7 @@ const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
 
     {/* TODO: Probably want an intersection observer to stop the animation
           When a user scrolls past this component */}
-    <section id="skills" className="max-w-screen-xl mx-auto mt-10">
+    <section id="skills" className="w-full max-w-screen-xl mx-auto mt-10">
       <SectionTitle
         heading="What's in my toolbox?"
         subheading="A quick look into some of the tools I use to build cool stuff! 🧰"
@@ -64,7 +64,10 @@ const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
       <ScrollingSkills />
     </section>
 
-    <section id="projects" className="max-w-screen-xl px-5 mx-auto mt-10 ">
+    <section
+      id="projects"
+      className="w-full max-w-screen-xl px-5 mx-auto mt-10 "
+    >
       <SectionTitle
         heading="Recent Projects"
         subheading="Cool stuff I've completed or am currently working on! 👷‍♂️"
@@ -72,7 +75,10 @@ const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
       <ProjectList />
     </section>
 
-    <section id="blog-posts" className="max-w-screen-xl px-5 mx-auto mt-10 ">
+    <section
+      id="blog-posts"
+      className="w-full max-w-screen-xl px-5 mx-auto mt-10 "
+    >
       <SectionTitle
         heading="Fresh Off The Press!"
         subheading="If you like reading and tech, you'll love these! 📚"
