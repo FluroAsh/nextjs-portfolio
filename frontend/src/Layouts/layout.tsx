@@ -34,11 +34,7 @@ const Layout: React.FC<LayoutProps> = ({
       </Head>
 
       <Navbar />
-      {/* FIXME: Having issues with "flex-1" specifically, so have to apply using a style attribute for now.
-      Might be relating to hydration or a className clash */}
-      <main className="w-100" style={{ flex: "1 1 0" }}>
-        {children}
-      </main>
+      <main className="w-100 flex-1">{children}</main>
       <Footer />
     </>
   )
