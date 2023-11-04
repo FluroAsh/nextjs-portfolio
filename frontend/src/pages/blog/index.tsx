@@ -4,7 +4,7 @@ import { PostLayout } from "Layouts/PostLayout"
 
 import type { PostData } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
-import NoContent from "components/NoContent"
+import { NoContent } from "components/NoContent"
 import { Pagination } from "components/Pagination"
 
 import { fetchPostsPageMeta } from "lib/gql/metaQueries"
