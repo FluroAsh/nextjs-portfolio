@@ -2,7 +2,7 @@ import type { GetStaticProps } from "next"
 import { MONTHLY_REVALIDATION } from "constants/api"
 import Layout from "Layouts/layout"
 
-import type { PostData, QueryPosts } from "types/api-types"
+import type { PostData } from "types/api-types"
 import { MetaTagAttributes } from "types/blog-types"
 import BlogPreviewHome from "components/Blog/BlogPreviewHome"
 import { HeroBanner } from "components/HeroBanner"
@@ -10,8 +10,7 @@ import { InfoCards } from "components/InfoCards"
 import { ProjectList } from "components/Projects/ProjectList"
 import { ScrollingSkills } from "components/ScrollingSkills"
 
-import { initializeApollo } from "lib/apollo-client"
-import { GET_HOMEPAGE_POSTS } from "lib/gql/postQueries"
+import { getHomePagePosts } from "lib/gql/postQueries"
 
 const SectionTitle = ({
   heading,
@@ -89,19 +88,14 @@ const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const apolloClient = initializeApollo()
+  const posts = await getHomePagePosts()
 
-  const {
-    data: { posts },
-  } = await apolloClient.query<QueryPosts>({
-    query: GET_HOMEPAGE_POSTS,
-    variables: { limit: 3 },
-  })
+  if (!posts) throw new Error("No home posts found!")
 
   const metaTags: MetaTagAttributes = {
-    "og:title": "Ashley G. Thompsons' little slice of developer paradise",
+    "og:title": "Ashs' little slice of developer paradise",
     "og:description":
-      "Exploring Code, Technology, and The Web on my Journey as a Developer",
+      "Exploring Code, Technology, and the Web on my Journey to a full-stack developer.",
     "og:image":
       "https://at-strapi-blog.s3.ap-southeast-2.amazonaws.com/static-assets/og-image.png",
     "og:url": `${process.env.NEXT_BASE_URL}`,

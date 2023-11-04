@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client"
 
+import type { QueryPosts } from "types/api-types"
+
+import { initializeApollo } from "lib/apollo-client"
+
+const apolloClient = initializeApollo()
+
+// TODO: Add other queries and abstract into functions...
+
 export const GET_POSTS = gql`
   query getPosts($currentPage: Int!) {
     posts(pagination: { page: $currentPage, pageSize: 10 }) {
@@ -106,3 +114,16 @@ export const GET_POST = gql`
     }
   }
 `
+
+export const getHomePagePosts = () =>
+  apolloClient
+    .query<QueryPosts>({
+      query: GET_HOMEPAGE_POSTS,
+      variables: { limit: 3 },
+    })
+    .then(({ data }) => data.posts)
+    .catch((e) => {
+      if (e instanceof Error) {
+        throw new Error(e.message)
+      }
+    })

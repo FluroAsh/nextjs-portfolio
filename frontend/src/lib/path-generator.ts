@@ -7,7 +7,21 @@ import { GET_POST_SLUGS } from "./gql/postQueries"
 
 const apolloClient = initializeApollo()
 
-export const generatePaths = {
+// TODO: Clean up these types or restructure the response so they can be simplified
+export type GeneratorCategorySlugs = Awaited<
+  ReturnType<typeof generatePaths.CATEGORY.slugs>
+>
+export type GeneratorCategoryPages = Awaited<
+  ReturnType<typeof generatePaths.CATEGORY.pages>
+>
+export type GeneratorBlogSlugs = Awaited<
+  ReturnType<typeof generatePaths.BLOG.slugs>
+>
+export type GeneratorBlogPages = Awaited<
+  ReturnType<typeof generatePaths.BLOG.pages>
+>
+
+export const generatePaths = Object.freeze({
   CATEGORY: {
     slugs: async () => {
       const {
@@ -16,12 +30,11 @@ export const generatePaths = {
         query: GET_CATEGORY_SLUGS,
       })
 
-      const paths = categories?.data?.map(({ attributes: { slug } }) => ({
+      return categories?.data?.map(({ attributes: { slug } }) => ({
         params: {
           category: slug,
         },
       }))
-      return paths
     },
     pages: async () => {
       const {
@@ -82,4 +95,4 @@ export const generatePaths = {
       }))
     },
   },
-}
+})
