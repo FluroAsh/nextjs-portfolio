@@ -1,7 +1,7 @@
 import type { ServerResponse } from "http"
 import { ROUTE_URL } from "constants/paths"
 
-import { getHomePagePosts } from "lib/gql/postQueries"
+import { fetchHomePosts } from "lib/gql/postQueries"
 import {
   generatePaths,
   type GeneratorBlogPages,
@@ -117,9 +117,7 @@ export default function SiteMap() {
 
 export async function getServerSideProps({ res }: { res: ServerResponse }) {
   const slugs = await generatePaths.BLOG.slugs()
-  const homePostData = await getHomePagePosts()
-
-  if (!homePostData) throw new Error("No home posts found!")
+  const homePostData = await fetchHomePosts()
 
   const homePosts = homePostData.data.reduce((acc, { attributes }) => {
     const obj = { params: { slug: attributes.slug } }

@@ -10,7 +10,7 @@ import { InfoCards } from "components/InfoCards"
 import { ProjectList } from "components/Projects/ProjectList"
 import { ScrollingSkills } from "components/ScrollingSkills"
 
-import { getHomePagePosts } from "lib/gql/postQueries"
+import { fetchHomePosts } from "lib/gql/postQueries"
 
 const SectionTitle = ({
   heading,
@@ -88,9 +88,7 @@ const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getHomePagePosts()
-
-  if (!posts) throw new Error("No home posts found!")
+  const posts = await fetchHomePosts()
 
   const metaTags: MetaTagAttributes = {
     "og:title": "Ashs' little slice of developer paradise",

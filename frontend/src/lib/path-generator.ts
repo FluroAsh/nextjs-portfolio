@@ -1,11 +1,6 @@
-import type { QueryPageMeta, QuerySlugs } from "types/api-types"
-
-import { initializeApollo } from "./apollo-client"
-import { GET_CATEGORY_SLUGS } from "./gql/categoryQueries"
-import { GET_CATEGORY_PAGE_META, GET_POSTS_PAGE_META } from "./gql/metaQueries"
-import { GET_POST_SLUGS } from "./gql/postQueries"
-
-const apolloClient = initializeApollo()
+import { fetchCategorySlugs } from "./gql/categoryQueries"
+import { fetchCategoryPageMeta, fetchPostsPageMeta } from "./gql/metaQueries"
+import { fetchPostSlugs } from "./gql/postQueries"
 
 // TODO: Clean up these types or restructure the response so they can be simplified
 export type GeneratorCategorySlugs = Awaited<
@@ -24,12 +19,7 @@ export type GeneratorBlogPages = Awaited<
 export const generatePaths = Object.freeze({
   CATEGORY: {
     slugs: async () => {
-      const {
-        data: { categories },
-      } = await apolloClient.query<QuerySlugs>({
-        query: GET_CATEGORY_SLUGS,
-      })
-
+      const categories = await fetchCategorySlugs()
       return categories?.data?.map(({ attributes: { slug } }) => ({
         params: {
           category: slug,
@@ -37,30 +27,16 @@ export const generatePaths = Object.freeze({
       }))
     },
     pages: async () => {
-      const {
-        data: { categories },
-      } = await apolloClient.query<QuerySlugs>({
-        query: GET_CATEGORY_SLUGS,
-      })
+      const categories = await fetchCategorySlugs()
 
-      // NOTE: Must be awaited with Promise.all due to MULTIPLE GraphQL queries for each category
+      // NOTE: Must be awaited with Promise.all due to multiple GQL queries for EACH category returning individual promises
       const paths = await Promise.all(
-        categories.data?.map(async ({ attributes: { slug } }) => {
-          const {
-            data: {
-              posts: { meta },
-            },
-          } = await apolloClient.query<QueryPageMeta>({
-            query: GET_CATEGORY_PAGE_META,
-            variables: { slug },
-          })
-
-          const { pageCount } = meta.pagination
-
-          return Array.from({ length: pageCount }, (_, page) => ({
+        categories?.data?.map(async ({ attributes: { slug } }) => {
+          const { pageCount } = await fetchCategoryPageMeta(slug)
+          return Array.from({ length: pageCount }, (_, idx) => ({
             params: {
               category: slug,
-              page: `${page + 1}`,
+              page: `${idx + 1}`,
             },
           }))
         })
@@ -70,25 +46,14 @@ export const generatePaths = Object.freeze({
   },
   BLOG: {
     slugs: async () => {
-      const {
-        data: { posts },
-      } = await apolloClient.query<QuerySlugs>({ query: GET_POST_SLUGS })
-
+      const posts = await fetchPostSlugs()
       return posts?.data?.map(({ attributes: { slug } }) => ({
         params: { slug },
       }))
     },
     pages: async () => {
-      const {
-        data: {
-          posts: { meta },
-        },
-      } = await apolloClient.query<QueryPageMeta>({
-        query: GET_POSTS_PAGE_META,
-      })
-      const totalPages = meta?.pagination?.pageCount
-
-      return Array.from({ length: totalPages }, (_, page) => ({
+      const { pageCount } = await fetchPostsPageMeta()
+      return Array.from({ length: pageCount }, (_, page) => ({
         params: {
           page: `${page + 1}`,
         },

@@ -2,13 +2,13 @@ import { GetStaticPropsContext } from "next"
 import { DAILY_REVALIDATION } from "constants/api"
 import { PostLayout } from "Layouts/PostLayout"
 
-import { PostData, QueryPosts } from "types/api-types"
+import type { PostData } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
+import NoContent from "components/NoContent"
 import { Pagination } from "components/Pagination"
 
-import { initializeApollo } from "lib/apollo-client"
-import { GET_POSTS_PAGE_META } from "lib/gql/metaQueries"
-import { GET_POSTS } from "lib/gql/postQueries"
+import { fetchPostsPageMeta } from "lib/gql/metaQueries"
+import { fetchPosts } from "lib/gql/postQueries"
 import { generatePaths } from "lib/path-generator"
 
 const Page = ({
@@ -17,36 +17,36 @@ const Page = ({
   currentPage,
   totalPages,
 }: {
-  posts: PostData[]
-  featuredPost: PostData
+  posts: PostData[] | []
+  featuredPost: PostData | null
   currentPage: number
   totalPages: number
-}) => {
-  return (
+}) =>
+  featuredPost ? (
     <PostLayout title="More posts" heroTitle="Down the rabbit hole we go...">
-      {featuredPost && (
-        <BlogFeature
-          attributes={featuredPost.attributes}
-          categoryData={featuredPost.attributes.categories.data}
-        />
-      )}
+      <BlogFeature
+        attributes={featuredPost.attributes}
+        categoryData={featuredPost.attributes.categories.data}
+      />
 
-      {posts.map((post) => (
-        <BlogPreview
-          key={post.id}
-          attributes={post.attributes}
-          categoryData={post.attributes.categories.data}
-          type="text"
-        />
-      ))}
+      {posts.length > 0 &&
+        posts.map((post) => (
+          <BlogPreview
+            key={post.id}
+            attributes={post.attributes}
+            categoryData={post.attributes.categories.data}
+            type="text"
+          />
+        ))}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         type="blog"
       />
     </PostLayout>
+  ) : (
+    <NoContent />
   )
-}
 
 export const getStaticPaths = async () => ({
   paths: await generatePaths.BLOG.pages(),
@@ -54,35 +54,21 @@ export const getStaticPaths = async () => ({
 })
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const apolloClient = initializeApollo()
   const { page } = params ?? {}
-
   if (typeof page !== "string") return { notFound: true }
 
-  const {
-    data: {
-      posts: { meta },
-    },
-  } = await apolloClient.query({ query: GET_POSTS_PAGE_META })
-
-  const { pageCount: totalPages } = meta?.pagination
-
-  const {
-    data: { posts },
-  } = await apolloClient.query<QueryPosts>({
-    query: GET_POSTS,
-    variables: { currentPage: parseInt(page) },
-  })
+  const pagination = await fetchPostsPageMeta()
+  const posts = await fetchPosts(page)
 
   const restPosts = posts.data.slice(1)
-  const featuredPost = posts.data[0]
+  const featuredPost = posts.data[0] ?? null
 
   return {
     props: {
       posts: restPosts,
       featuredPost,
       currentPage: parseInt(page),
-      totalPages,
+      totalPages: pagination.pageCount,
     },
     revalidate: DAILY_REVALIDATION,
   }

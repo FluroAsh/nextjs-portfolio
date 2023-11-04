@@ -1,12 +1,10 @@
 import { gql } from "@apollo/client"
 
-import type { QueryPosts } from "types/api-types"
+import type { QueryPosts, QuerySlugs } from "types/api-types"
 
 import { initializeApollo } from "lib/apollo-client"
 
 const apolloClient = initializeApollo()
-
-// TODO: Add other queries and abstract into functions...
 
 export const GET_POSTS = gql`
   query getPosts($currentPage: Int!) {
@@ -43,6 +41,20 @@ export const GET_POSTS = gql`
   }
 `
 
+export const fetchPosts = (page: string | number) => {
+  const currentPage = typeof page === "string" ? parseInt(page) : page
+  return apolloClient
+    .query<QueryPosts>({
+      query: GET_POSTS,
+      variables: { currentPage },
+    })
+    .then(({ data }) => data.posts)
+    .catch((e) => {
+      console.error(e)
+      throw new Error(`Error fetching posts — Page: ${page}`)
+    })
+}
+
 export const GET_HOMEPAGE_POSTS = gql`
   query getPosts($limit: Int!) {
     posts(sort: "createdAt:desc", pagination: { start: 0, limit: $limit }) {
@@ -78,6 +90,18 @@ export const GET_HOMEPAGE_POSTS = gql`
   }
 `
 
+export const fetchHomePosts = () =>
+  apolloClient
+    .query<QueryPosts>({
+      query: GET_HOMEPAGE_POSTS,
+      variables: { limit: 3 },
+    })
+    .then(({ data }) => data.posts)
+    .catch((e) => {
+      console.error(e)
+      throw new Error("Error fetching Home Page posts!")
+    })
+
 export const GET_POST_SLUGS = gql`
   query getPostSlugs {
     posts(pagination: { start: 0, limit: 250 }) {
@@ -89,6 +113,15 @@ export const GET_POST_SLUGS = gql`
     }
   }
 `
+
+export const fetchPostSlugs = () =>
+  apolloClient
+    .query<QuerySlugs>({ query: GET_POST_SLUGS })
+    .then(({ data }) => data.posts)
+    .catch((e) => {
+      console.error(e)
+      throw new Error("Error fetching post slugs!")
+    })
 
 export const GET_POST = gql`
   query getPostsBySlug($slug: String!) {
@@ -115,15 +148,11 @@ export const GET_POST = gql`
   }
 `
 
-export const getHomePagePosts = () =>
+export const fetchPost = (slug: string | string[] | undefined) =>
   apolloClient
     .query<QueryPosts>({
-      query: GET_HOMEPAGE_POSTS,
-      variables: { limit: 3 },
+      query: GET_POST,
+      variables: { slug },
     })
-    .then(({ data }) => data.posts)
-    .catch((e) => {
-      if (e instanceof Error) {
-        throw new Error(e.message)
-      }
-    })
+    .then(({ data }) => data.posts.data[0].attributes)
+    .catch((e) => console.error(e)) // NOTE: Not throwing an error here so we can return notFound object in the route

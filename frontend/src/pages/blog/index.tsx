@@ -2,69 +2,60 @@ import type { GetStaticProps } from "next"
 import { DAILY_REVALIDATION } from "constants/api"
 import { PostLayout } from "Layouts/PostLayout"
 
-import type { PostData, QueryPageMeta, QueryPosts } from "types/api-types"
+import type { PostData } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
+import NoContent from "components/NoContent"
 import { Pagination } from "components/Pagination"
 
-import { initializeApollo } from "lib/apollo-client"
-import { GET_POSTS_PAGE_META } from "lib/gql/metaQueries"
-import { GET_POSTS } from "lib/gql/postQueries"
+import { fetchPostsPageMeta } from "lib/gql/metaQueries"
+import { fetchPosts } from "lib/gql/postQueries"
 
 const Blog: React.FC<{
-  posts: PostData[]
-  featuredPost: PostData
+  posts: PostData[] | []
+  featuredPost: PostData | null
   currentPage: number
   totalPages: number
-}> = ({ posts, featuredPost, currentPage, totalPages }) => (
-  <PostLayout title="ashleygthompson | Latest Posts">
-    {featuredPost && (
+}> = ({ posts, featuredPost, currentPage, totalPages }) =>
+  featuredPost ? (
+    <PostLayout title="ashleygthompson | Latest Posts">
       <BlogFeature
         attributes={featuredPost.attributes}
         categoryData={featuredPost.attributes.categories.data}
       />
-    )}
 
-    {posts.map((post) => (
-      <BlogPreview
-        key={post.id}
-        attributes={post.attributes}
-        categoryData={post.attributes.categories.data}
-        type="text"
+      {posts.length > 0 &&
+        posts.map((post) => (
+          <BlogPreview
+            key={post.id}
+            attributes={post.attributes}
+            categoryData={post.attributes.categories.data}
+            type="text"
+          />
+        ))}
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        type="blog"
       />
-    ))}
-    <Pagination currentPage={currentPage} totalPages={totalPages} type="blog" />
-  </PostLayout>
-)
+    </PostLayout>
+  ) : (
+    <NoContent />
+  )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const apolloClient = initializeApollo()
+  const { page, pageCount } = await fetchPostsPageMeta()
+  const posts = await fetchPosts(page)
 
-  const {
-    data: {
-      posts: { meta },
-    },
-  } = await apolloClient.query<QueryPageMeta>({ query: GET_POSTS_PAGE_META })
-
-  const { page: currentPage, pageCount: totalPages } = meta?.pagination
-
-  const {
-    data: { posts },
-  } = await apolloClient.query<QueryPosts>({
-    query: GET_POSTS,
-    variables: {
-      currentPage: 1,
-    },
-  })
-
-  const featuredPost = posts.data[0]
   const restPosts = posts.data.slice(1)
+  const featuredPost = posts.data[0] ?? null
 
   return {
     props: {
       posts: restPosts,
       featuredPost,
-      currentPage,
-      totalPages,
+      currentPage: page,
+      totalPages: pageCount,
     },
     revalidate: DAILY_REVALIDATION,
   }

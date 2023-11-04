@@ -8,8 +8,7 @@ import type { BlogPostProps, MetaTagAttributes } from "types/blog-types"
 import { BlogImage } from "components/Blog"
 import { TimeDate } from "components/TimeDate"
 
-import { initializeApollo } from "lib/apollo-client"
-import { GET_POST } from "lib/gql/postQueries"
+import { fetchPost } from "lib/gql/postQueries"
 import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
@@ -17,7 +16,6 @@ import "highlight.js/styles/base16/monokai.css"
 import { DAILY_REVALIDATION } from "constants/api"
 import { ROUTE_URL } from "constants/paths"
 
-import type { QueryPosts } from "types/api-types"
 import Button from "components/Button"
 
 import { generatePaths } from "lib/path-generator"
@@ -86,17 +84,8 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
-  const apolloClient = initializeApollo()
   const { slug } = params ?? {}
-
-  const {
-    data: { posts },
-  } = await apolloClient.query<QueryPosts>({
-    query: GET_POST,
-    variables: { slug },
-  })
-
-  const post = posts?.data?.[0]?.attributes
+  const post = await fetchPost(slug)
   if (!post) return { notFound: true }
 
   const {

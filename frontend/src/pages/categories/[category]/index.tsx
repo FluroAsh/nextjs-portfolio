@@ -6,50 +6,44 @@ import type {
 import { DAILY_REVALIDATION } from "constants/api"
 import { PostLayout } from "Layouts/PostLayout"
 
-import {
-  APICategory,
-  PostData,
-  QueryCategories,
-  QueryPageMeta,
-  QueryPosts,
-} from "types/api-types"
+import type { APICategory, PostData } from "types/api-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
+import NoContent from "components/NoContent"
 import { Pagination } from "components/Pagination"
 
-import { initializeApollo } from "lib/apollo-client"
-import { GET_CATEGORY, GET_POSTS_BY_CATEGORY } from "lib/gql/categoryQueries"
-import { GET_CATEGORY_PAGE_META } from "lib/gql/metaQueries"
+import { fetchCategory, fetchCategoryPosts } from "lib/gql/categoryQueries"
+import { fetchCategoryPageMeta } from "lib/gql/metaQueries"
 import { generatePaths } from "lib/path-generator"
 
 const CategoryPage: React.FC<{
-  posts: PostData[]
-  featuredPost: PostData
+  posts: PostData[] | []
+  featuredPost: PostData | null
   category: APICategory["attributes"]
   currentPage: number
   totalPages: number
-}> = ({ posts, featuredPost, category, currentPage, totalPages }) => {
-  return (
+}> = ({ posts, featuredPost, category, currentPage, totalPages }) =>
+  featuredPost ? (
     <PostLayout
       title={`ashleygthompson | ${category.name} Posts`}
       heroTitle={`Latest for ${category.name}`}
       heroDescription={category.description}
     >
-      {featuredPost && (
-        <BlogFeature
-          key={featuredPost.id}
-          attributes={featuredPost.attributes}
-          categoryData={featuredPost.attributes.categories.data}
-        />
-      )}
+      <BlogFeature
+        key={featuredPost.id}
+        attributes={featuredPost.attributes}
+        categoryData={featuredPost.attributes.categories.data}
+      />
 
-      {posts.map((post) => (
-        <BlogPreview
-          key={post.id}
-          attributes={post.attributes}
-          categoryData={post.attributes.categories.data}
-          type="text"
-        />
-      ))}
+      {posts.length > 0 &&
+        posts.map((post) => (
+          <BlogPreview
+            key={post.id}
+            attributes={post.attributes}
+            categoryData={post.attributes.categories.data}
+            type="text"
+          />
+        ))}
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
@@ -57,8 +51,11 @@ const CategoryPage: React.FC<{
         slug={category.slug}
       />
     </PostLayout>
+  ) : (
+    <NoContent
+      text={`🚨 Looks like we don't have anything to show for ${category.name} right now! 💀`}
+    />
   )
-}
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: await generatePaths.CATEGORY.slugs(),
@@ -68,47 +65,25 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
-  const apolloClient = initializeApollo()
   const { category: categorySlug } = params ?? {}
-
   if (typeof categorySlug !== "string") return { notFound: true }
 
-  const {
-    data: {
-      posts: { meta },
-    },
-  } = await apolloClient.query<QueryPageMeta>({
-    query: GET_CATEGORY_PAGE_META,
-    variables: { slug: categorySlug },
-  })
+  const { page, pageCount } = await fetchCategoryPageMeta(categorySlug)
+  const posts = await fetchCategoryPosts(categorySlug, page)
 
-  const { page: currentPage, pageCount: totalPages } = meta.pagination
+  const slugCategories = await fetchCategory(categorySlug) // Returns one category as slug must be an EXACT match
 
-  const {
-    data: { posts },
-  } = await apolloClient.query<QueryPosts>({
-    query: GET_POSTS_BY_CATEGORY,
-    variables: { slug: categorySlug, currentPage },
-  })
-
-  const {
-    data: { categories },
-  } = await apolloClient.query<QueryCategories>({
-    query: GET_CATEGORY,
-    variables: { slug: categorySlug },
-  })
-
-  const restPosts = posts.data.slice(1) ?? []
+  const restPosts = posts.data.slice(1)
   const featuredPost = posts.data[0] ?? null
-  const category = categories.data[0].attributes
+  const category = slugCategories.data[0]?.attributes
 
   return {
     props: {
       posts: restPosts,
       featuredPost,
       category,
-      currentPage,
-      totalPages,
+      currentPage: page,
+      totalPages: pageCount,
     },
     revalidate: DAILY_REVALIDATION,
   }

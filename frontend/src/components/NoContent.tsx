@@ -1,14 +1,19 @@
 import Layout from "Layouts/layout"
 
 export default function NoContent({
-  text = "🚨  We couldn't find any content for this page! 💀",
+  text = "🚨 We couldn't find any content for this page! 💀",
 }: {
-  text: string
+  text?: string
 }) {
   return (
     <Layout title="Woops! 😱 No content!">
-      <div className="flex justify-center items-center flex-1">
-        <h1 className="text-2xl">{text}</h1>
+      <div className="flex flex-col justify-center items-center flex-1">
+        <h1 className="text-2xl dark:text-white text-neutral-700 font-semibold">
+          {text}
+        </h1>
+        <p className="leading-8 dark:text-neutral-300 text-neutral-600">
+          Get in touch with Ash and tell him to write something!
+        </p>
       </div>
     </Layout>
   )
