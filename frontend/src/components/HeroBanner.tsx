@@ -8,19 +8,19 @@ const HeroImage = () => (
   <div
     id="img-wrapper"
     className={cn(
-      "flex max-w-[470px] overflow-hidden rounded-full shadow-lg",
-      "outline outline-2 outline-transparent bg-gradient-to-tr from-neutral-100 to-neutral-200",
+      "relative flex w-64 md:w-1/2 md:max-w-[475px]  overflow-hidden rounded-full shadow-lg",
+      "outline outline-2 outline-transparent bg-gradient-to-r from-neutral-100 to-neutral-200",
       "dark:outline-slate-300 dark:md:outline-transparent bg-dark-background-primary dark:from-slate-700 dark:to-background-dark-primary",
-      "md:justify-center md:w-1/2 md:rounded-none md:shadow-none md:bg-none bg-inherit"
+      "md:justify-center md:rounded-none md:shadow-none md:bg-none bg-inherit"
     )}
   >
     <Image
       src="/images/hero-home.webp"
       alt="Ash the Creator"
-      width={470}
-      height={470}
+      width={500}
+      height={500}
       loading="eager"
-      className="relative w-full top-2 md:top-0 md:pb-4 md:block max-w-[250px] md:max-w-[470px]"
+      className="relative w-full h-full top-2 md:top-0 md:pb-4 md:block object-cover"
     />
   </div>
 )
