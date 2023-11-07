@@ -8,7 +8,7 @@ const HeroImage = () => (
   <div
     id="img-wrapper"
     className={cn(
-      "relative flex w-64 md:w-1/2 md:max-w-[475px]  overflow-hidden rounded-full shadow-lg",
+      "relative flex w-64 md:w-1/2 md:max-w-[475px] overflow-hidden rounded-full shadow-lg",
       "outline outline-2 outline-transparent bg-gradient-to-r from-neutral-100 to-neutral-200",
       "dark:outline-slate-300 dark:md:outline-transparent bg-dark-background-primary dark:from-slate-700 dark:to-background-dark-primary",
       "md:justify-center md:rounded-none md:shadow-none md:bg-none bg-inherit"

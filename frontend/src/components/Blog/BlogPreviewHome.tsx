@@ -23,8 +23,10 @@ const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
     setIsHovering(hovering)
   }
 
+  // posts = posts.slice(0, 1)
+
   return (
-    <div className="grid gap-4 md:grid-cols-6 md:grid-rows-2 lg:grid-rows-1">
+    <div className="grid gap-4 grid-flow-col grid-rows-3 md:grid-rows-2 lg:grid-rows-1">
       {posts.map((post, idx) => {
         const stats = readingTime(post.attributes.content)
         return (
@@ -32,7 +34,7 @@ const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
             key={post.id}
             className={cn(
               "relative overflow-hidden rounded-lg group:test shadow-lg",
-              "hover:ring-4 hover:ring-offset-4 hover:ring-neutral-700 hover:ring-offset-neutral-100  transition-shadow ",
+              "hover:ring-4 hover:ring-offset-4 hover:ring-neutral-700 hover:ring-offset-neutral-100 transition-shadow",
               "hover:ring-sky-500 dark:hover:ring-offset-dark-background-primary",
               cardLayout[idx]
             )}
