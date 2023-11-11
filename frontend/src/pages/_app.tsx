@@ -31,6 +31,7 @@ function BlogApp({ Component, pageProps }: AppProps) {
     >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-site-verification" content="y2tiPk1sHCumAavN_3TB0QiPPnP59xT2juX5nQnb-Do" />
       </Head>
       <ThemeProvider attribute="class" defaultTheme="dark">
         <ApolloProvider>
