@@ -16,7 +16,7 @@ export function truncate(string: string, charLimit = 25) {
 
 export function readingMinutes(minutes: number) {
   const roundedMinutes = Math.ceil(minutes)
-  return minutes > 0 ? `${roundedMinutes} minute read` : "Less than a minute!"
+  return minutes > 0 ? `${roundedMinutes} min read` : "Less than a minute!"
 }
 
 /** Validates we have the correct formats at build time */

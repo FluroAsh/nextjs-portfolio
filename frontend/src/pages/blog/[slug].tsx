@@ -56,6 +56,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               {title}
             </h1>
             <TimeDate
+              className="pt-1"
               createdAt={createdAt}
               minutes={stats.minutes}
               type="post"

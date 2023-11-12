@@ -1,5 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
+import { faHandBackPointDown } from "@fortawesome/pro-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ROUTE_URL } from "constants/paths"
 
 import { cn } from "lib/utils"
@@ -86,9 +88,14 @@ export const HeroBanner = () => {
               create engaging and mesmerizing user experiences.
             </p>
           </div>
-          {/* TODO: Add proper FA arrow icon & interactivity/animation for Discover More element */}
-          <div className="pt-6 pb-4 font-semibold tracking-wider text-right text-md lg:text-lg text-neutral-600 dark:font-semibold dark:text-slate-300">
-            Discover More ↓
+          <div className="pt-6 pb-4 text-right">
+            <span className="font-semibold tracking-wider text-md lg:text-lg text-neutral-600 dark:font-semibold dark:text-slate-300">
+              Discover More
+            </span>
+            <FontAwesomeIcon
+              icon={faHandBackPointDown}
+              className="animate-bounce text-2xl lg:text-3xl relative ml-3 top-2 lg:top-3 text-sky-500"
+            />
           </div>
         </div>
       </div>
