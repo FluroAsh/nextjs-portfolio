@@ -8,10 +8,15 @@ import { cn } from "lib/utils"
 
 import BlogPreview from "./BlogPreview"
 
-const cardLayout = [
-  "md:col-span-6 lg:col-span-2",
-  "md:col-span-3 lg:col-span-2",
-  "md:col-span-3 lg:col-span-2",
+const postColSpan = (postsLength: number, idx: number) => {
+  if (postsLength === 3 && idx !== 0) return "md:col-span-3 lg:col-span-2"
+  else return "md:col-span-6 lg:col-span-2"
+}
+
+const gridRows = [
+  "grid-rows-1 md:grid-rows-1 lg:grid-rows-1",
+  "grid-rows-2 md:grid-rows-2 lg:grid-rows-1",
+  "grid-rows-3 md:grid-rows-2 lg:grid-rows-1",
 ]
 
 const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
@@ -23,20 +28,18 @@ const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
     setIsHovering(hovering)
   }
 
-  // posts = posts.slice(0, 1)
-
   return (
-    <div className="grid gap-4 grid-flow-col grid-rows-3 md:grid-rows-2 lg:grid-rows-1">
+    <div className={cn(gridRows[posts.length - 1], "grid gap-4 grid-flow-col")}>
       {posts.map((post, idx) => {
         const stats = readingTime(post.attributes.content)
         return (
           <div
             key={post.id}
             className={cn(
-              "relative overflow-hidden rounded-lg group:test shadow-lg",
+              "relative overflow-hidden rounded-lg shadow-lg",
               "hover:ring-4 hover:ring-offset-4 hover:ring-neutral-700 hover:ring-offset-neutral-100 transition-shadow",
               "hover:ring-sky-500 dark:hover:ring-offset-dark-background-primary",
-              cardLayout[idx]
+              postColSpan(posts.length, idx)
             )}
             onMouseEnter={() => handleHover(idx, true)}
             onMouseOut={() => handleHover(idx, false)}
