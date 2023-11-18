@@ -1,57 +1,106 @@
-# 🚀 Getting started with Strapi
+# 🚀 Environment Variables
+To get started copy over `.env.example` and ensure you have `NODE_ENV` set to **development**:
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+```sh
+# env.example
+NODE_ENV=development
+DATABASE_URL=postgresql://username:password@localhost:5432/database_name
 
-### `develop`
+# Strapi (ignore these for now)
+# ADMIN_JWT_SECRET=generated_jwt_key
+# API_TOKEN_SALT=token_salt
+# APP_KEYS=app_key
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
-
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
-
-```
-npm run start
-# or
-yarn start
+# AWS
+AWS_ACCESS_KEY_ID=access_key
+AWS_ACCESS_SECRET=secret_key
+AWS_BUCKET=bucket_name
+AWS_REGION=aws_region
 ```
 
-### `build`
+Don't worry about the Strapi keys yet, we'll deal with these later.
 
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+### Postgres Database Setup
+
+You'll need to set up a [PostgreSQL database](https://www.postgresql.org/download/) on your local machine and then ensure you have a valid [PG Connection String](https://www.npmjs.com/package/pg-connection-string) that can be parsed. 
+
+> ⚠️ FYI: You might need to prefix the `DATABASE_URL` with "postgres" instead of "postgresql" depending on your machine &/or version of PostgreSQL set up on your machine.
+
+You can use the following, and replace the placeholders with your credentials & database name
+```
+> postgresql://username:password@localhost:5432/database_name
+```
+
+Once you've done that replace the `DATABASE_URL` value with the string that matches your Postgres database name/credentials.
+
+
+### Strapi Variables
+For each of these variables we need to generate unique base-64 encoded strings. I would recommend one of following two options, depending on your system (MacOS/Linux or Windows):
+1. Using the Node Crypto Library
+2. Using openssls' **rand** command
+
+```sh
+openssl rand -base64 16
+```
+
+**OR**
+
+Open up a Node REPL in your CLI and copy the following code:
+
+```js
+const crypto = require('crypto'); const randomBytes = crypto.randomBytes(16).toString('base64'); console.log(randomBytes);
+```
+
+You should get a random base64-encoded string as output.
+
+```sh
+# Example base64-encoded string
+> 5rSdrGwWJxZ3KlXzn/FJdg==
+```
+
+**`API_TOKEN_SALT`**
+
+Generate the base64-encoded string and paste it as the value for `API_TOKEN_SALT` in your `.env` file.
+
+**`ADMIN_JWT_SECRET`**
+
+Run the Strapi server using `npm run develop`, if you have specified valid env variables (AWS & Database URL) Strapi will generate the `JWT_SECRET` variable and copy it into your `.env` file － copy the value and assign it to `ADMIN_JWT_SECRET` as this is what the `admin.ts` file is expecting.
+
+**`APP_KEYS`**
+
+For `APP_KEYS` the only difference is that we **must** provide 2-3 comma separated base-64 encoded keys as opposed to 1. 
+
+Generate the 2-3 keys and add these to the `APP_KEYS` variable, you should have something like this:
 
 ```
-npm run build
-# or
-yarn build
+# Two base-64 encoded strings
+> APP_KEYS=AE5tjiNoCQ9KT1mE26ojjg==,oG6VP6PblGoPcYk9o0Elkw==
 ```
 
-## ⚙️ Deployment
+### AWS Variables
 
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+To access the Bucket through Strapi we just need to provide the credentials for an IAM User with either Administrator access or the ability to read/write to the S3 bucket you've created to stored Strapi uploads.
 
-## 📚 Learn more
+```sh
+# AWS
+AWS_ACCESS_KEY_ID=access_key
+AWS_ACCESS_SECRET=secret_key
+AWS_BUCKET=bucket_name
+AWS_REGION=aws_region
+```
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+Paste the **Access Key** and **Secret Key** for your IAM user into the values for each, and ensure that you've specified the **Bucket name** as-well as the **Region**; in my case I'm using `ap-southeast-2`, but if you're using a different region like `us-east-1`, use that one.
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+Make sure that ACL's are enabled for your Bucket so Strapi can work its magic, and has the correct permissions to read/write.
 
-## ✨ Community
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+# Configuring Permissions in your Admin Panel
+In order for the GraphQL plugin to work as expected we need to ensure that **Public** access is enabled for each of the Models that we have defined (including the Upload model).
 
----
+Start the server and navigate to the Admin panel, go to "Settings" and select "Roles". From here select **"Public"** and scroll down until you see "Category", "Post" and "Upload". 
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+For each of these we need to enable the following:
+1. `find`
+2. `findOne`
+
+This will allow us to query our GraphQL API on the frontend through Apollo for posts, categories and uploads that are stored in our S3 bucket when working locally, and accessing the API frontend at `http://localhost:1337/graphql`.

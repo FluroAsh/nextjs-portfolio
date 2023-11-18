@@ -26,5 +26,3 @@ Once you're done with that, navigate to Respective Directory (FE/BE) for a detai
 | [GraphQL](https://graphql.org) | API Query Language | Utilised to create concise queries from the frontend interface to backend API |
 | [TailwindCSS](https://tailwindcss.com) | CSS Utility Framework | A utility-first CSS framework designed to enable users to create applications faster and easier |
 | [TypeScript](https://www.typescriptlang.org) | Superset of JavaScript | Used for type safety and various other in-editor debugging features |
-
-- Markdown (`.MD`) for Blog Posts and Comments

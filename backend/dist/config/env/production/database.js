@@ -1,9 +1,8 @@
 "use strict";
-// path: ./config/env/production/database.ts
 Object.defineProperty(exports, "__esModule", { value: true });
 const parse = require("pg-connection-string").parse;
 const config = parse(process.env.DATABASE_URL);
-exports.default = ({ env }) => ({
+exports.default = ({ _env }) => ({
     connection: {
         client: "postgres",
         connection: {
