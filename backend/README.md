@@ -1,5 +1,5 @@
 # 🚀 Environment Variables
-To get started copy over `.env.example` and ensure you have `NODE_ENV` set to **development**:
+To get started copy over `.env.example` into a new file named ".env" and ensure you have `NODE_ENV` set to **development**:
 
 ```sh
 # env.example
@@ -36,17 +36,13 @@ Once you've done that replace the `DATABASE_URL` value with the string that matc
 
 ## Strapi Variables
 For each of these variables we need to generate unique base-64 encoded strings. I would recommend one of following two options, depending on your system (MacOS/Linux or Windows):
-1. Using the Node Crypto Library
-2. Using openssls' **rand** command
 
+**OpenSSL**
 ```sh
 openssl rand -base64 16
 ```
 
-**OR**
-
-Open up a Node REPL in your CLI and copy the following code:
-
+**Node Crypto Library**
 ```js
 const crypto = require('crypto'); const randomBytes = crypto.randomBytes(16).toString('base64'); console.log(randomBytes);
 ```
@@ -72,7 +68,7 @@ For `APP_KEYS` the only difference is that we **must** provide 2-3 comma separat
 
 Generate the 2-3 keys and add these to the `APP_KEYS` variable, you should have something like this:
 
-```
+```sh
 # Two base-64 encoded strings
 > APP_KEYS=AE5tjiNoCQ9KT1mE26ojjg==,oG6VP6PblGoPcYk9o0Elkw==
 ```
