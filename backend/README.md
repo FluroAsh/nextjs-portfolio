@@ -58,9 +58,11 @@ You should get a random base64-encoded string as output.
 
 Generate the base64-encoded string and paste it as the value for `API_TOKEN_SALT` in your `.env` file.
 
-### ADMIN_JWT_SECRET
+### JWT_SECRET
 
-Run the Strapi server using `npm run develop`, if you have specified valid env variables (AWS & Database URL) Strapi will generate the `JWT_SECRET` variable and copy it into your `.env` file － copy the value and assign it to `ADMIN_JWT_SECRET` as this is what the `admin.ts` file is expecting.
+Run the Strapi server using `npm run develop`, if you have specified valid env variables (AWS & Database URL) the server will refuse to start and Strapi will generate the `JWT_SECRET` variable.
+
+Alternatively, just generate one using one of the above methods before you start the server.
 
 ### APP_KEYS
 
