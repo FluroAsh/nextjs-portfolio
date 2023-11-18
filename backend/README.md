@@ -20,7 +20,7 @@ AWS_REGION=aws_region
 
 Don't worry about the Strapi keys yet, we'll deal with these later.
 
-### Postgres Database Setup
+## Postgres Database Setup
 
 You'll need to set up a [PostgreSQL database](https://www.postgresql.org/download/) on your local machine and then ensure you have a valid [PG Connection String](https://www.npmjs.com/package/pg-connection-string) that can be parsed. 
 
@@ -34,7 +34,7 @@ You can use the following, and replace the placeholders with your credentials & 
 Once you've done that replace the `DATABASE_URL` value with the string that matches your Postgres database name/credentials.
 
 
-### Strapi Variables
+## Strapi Variables
 For each of these variables we need to generate unique base-64 encoded strings. I would recommend one of following two options, depending on your system (MacOS/Linux or Windows):
 1. Using the Node Crypto Library
 2. Using openssls' **rand** command
@@ -58,15 +58,15 @@ You should get a random base64-encoded string as output.
 > 5rSdrGwWJxZ3KlXzn/FJdg==
 ```
 
-**`API_TOKEN_SALT`**
+### API_TOKEN_SALT
 
 Generate the base64-encoded string and paste it as the value for `API_TOKEN_SALT` in your `.env` file.
 
-**`ADMIN_JWT_SECRET`**
+### ADMIN_JWT_SECRET
 
 Run the Strapi server using `npm run develop`, if you have specified valid env variables (AWS & Database URL) Strapi will generate the `JWT_SECRET` variable and copy it into your `.env` file － copy the value and assign it to `ADMIN_JWT_SECRET` as this is what the `admin.ts` file is expecting.
 
-**`APP_KEYS`**
+### APP_KEYS
 
 For `APP_KEYS` the only difference is that we **must** provide 2-3 comma separated base-64 encoded keys as opposed to 1. 
 
@@ -77,7 +77,7 @@ Generate the 2-3 keys and add these to the `APP_KEYS` variable, you should have 
 > APP_KEYS=AE5tjiNoCQ9KT1mE26ojjg==,oG6VP6PblGoPcYk9o0Elkw==
 ```
 
-### AWS Variables
+## AWS Variables
 
 To access the Bucket through Strapi we just need to provide the credentials for an IAM User with either Administrator access or the ability to read/write to the S3 bucket you've created to stored Strapi uploads.
 
