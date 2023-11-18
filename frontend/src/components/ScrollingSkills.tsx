@@ -72,7 +72,7 @@ export const ScrollingSkills = () => {
   const END_Y = 394
 
   useEffect(() => {
-    let scrollTimer: NodeJS.Timer
+    let scrollTimer: ReturnType<typeof setInterval>
 
     const startAnimation = () => {
       scrollTimer = setInterval(() => {
