@@ -1,3 +1,5 @@
+import { MetaTagAttributes } from "types/blog-types"
+
 import Layout from "./layout"
 
 const defaultHeroTitle = "Latest Posts"
@@ -10,9 +12,17 @@ export const PostLayout: React.FC<{
   heroTitle?: string
   heroDescription?: string
   metaDescription?: string
-}> = ({ children, title, heroTitle, heroDescription, metaDescription }) => {
+  metaTags?: MetaTagAttributes
+}> = ({
+  children,
+  title,
+  heroTitle,
+  heroDescription,
+  metaDescription,
+  metaTags,
+}) => {
   return (
-    <Layout title={title} metaDescription={metaDescription}>
+    <Layout title={title} metaDescription={metaDescription} metaTags={metaTags}>
       <div className="w-full max-w-screen-lg px-5 mx-auto">
         <header className="py-4 border-b dark:border-slate-500 border-neutral-600">
           <h1 className="text-3xl font-bold text-neutral-700 dark:text-white">

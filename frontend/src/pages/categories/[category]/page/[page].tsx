@@ -4,9 +4,11 @@ import type {
   GetStaticPropsContext,
 } from "next"
 import { DAILY_REVALIDATION } from "constants/api"
+import { ROUTE_URL } from "constants/paths"
 import { PostLayout } from "Layouts/PostLayout"
 
 import type { APICategory, PostData } from "types/api-types"
+import type { MetaTagAttributes } from "types/blog-types"
 import { BlogFeature, BlogPreview } from "components/Blog"
 import { NoContent } from "components/NoContent"
 import { Pagination } from "components/Pagination"
@@ -21,13 +23,15 @@ const Page: React.FC<{
   category: APICategory["attributes"]
   currentPage: number
   totalPages: number
-}> = ({ posts, featuredPost, category, currentPage, totalPages }) =>
+  metaTags: MetaTagAttributes
+}> = ({ posts, featuredPost, category, currentPage, totalPages, metaTags }) =>
   featuredPost ? (
     <PostLayout
       title={`ashleygthompson | ${category.name}`}
       heroTitle={`Latest for ${category.name}`}
       heroDescription={category.description}
       metaDescription={category.metaDescription}
+      metaTags={metaTags}
     >
       <BlogFeature
         key={featuredPost.id}
@@ -86,6 +90,10 @@ export const getStaticProps: GetStaticProps = async ({
 
   const { page, pageCount } = await fetchCategoryPageMeta(categorySlug)
 
+  const metaTags: MetaTagAttributes = {
+    canonical: `${process.env.NEXT_BASE_URL}${ROUTE_URL.CATEGORY}/${categorySlug}`,
+  }
+
   return {
     props: {
       category,
@@ -93,6 +101,7 @@ export const getStaticProps: GetStaticProps = async ({
       featuredPost,
       currentPage: page,
       totalPages: pageCount,
+      metaTags,
     },
     revalidate: DAILY_REVALIDATION,
   }

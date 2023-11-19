@@ -25,6 +25,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   title,
   content,
   createdAt,
+  description,
   alternativeText,
   formats,
   metaTags,
@@ -32,7 +33,11 @@ const BlogPost: React.FC<BlogPostProps> = ({
   const stats = readingTime(content)
 
   return (
-    <Layout title={`ashleygthompson | ${title}`} metaTags={metaTags}>
+    <Layout
+      title={`ashleygthompson | ${title}`}
+      metaDescription={description}
+      metaTags={metaTags}
+    >
       <div className="w-full max-w-screen-lg mx-auto">
         <header className="w-full px-5">
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
@@ -111,6 +116,7 @@ export const getStaticProps: GetStaticProps = async ({
       title,
       content,
       createdAt,
+      description,
       alternativeText: cover?.data?.attributes?.alternativeText,
       formats: cover?.data?.attributes?.formats,
       metaTags,

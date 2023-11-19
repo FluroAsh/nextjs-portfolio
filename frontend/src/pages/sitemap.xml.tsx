@@ -80,7 +80,7 @@ const generateSiteMap = ({ post, category }: SiteMapProps) =>
         .map(
           ({ params: { page } }) => `
       <url>
-          <loc>${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${page}</loc>
+          <loc>${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/page/${page}</loc>
           <lastmod>${CURRENT_ISO_DATE}</lastmod>
           <priority>0.60</priority>
       </url>`

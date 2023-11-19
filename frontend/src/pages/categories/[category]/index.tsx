@@ -25,6 +25,7 @@ const CategoryPage: React.FC<{
   featuredPost ? (
     <PostLayout
       title={`ashleygthompson | ${category.name} Posts`}
+      metaDescription={category.metaDescription}
       heroTitle={`Latest for ${category.name}`}
       heroDescription={category.description}
     >

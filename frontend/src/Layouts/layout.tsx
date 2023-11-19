@@ -11,9 +11,12 @@ interface LayoutProps {
   metaTags?: MetaTagAttributes
 }
 
-const createMetaTag = ([name, content]: [string, string]): React.ReactNode => (
-  <meta key={name} property={name} content={content} />
-)
+const createMetaTag = ([name, content]: [string, string]): React.ReactNode =>
+  name.startsWith("og:") ? (
+    <meta key={name} property={name} content={content} />
+  ) : (
+    <link rel="canonical" href={content} />
+  )
 
 const Layout: React.FC<LayoutProps> = ({
   children,

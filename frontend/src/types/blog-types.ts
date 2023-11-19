@@ -16,6 +16,7 @@ export interface BlogPostProps {
   content: string
   url: string
   createdAt: string
+  description: string
   alternativeText: string
   formats: Formats
   metaTags: MetaTagAttributes
