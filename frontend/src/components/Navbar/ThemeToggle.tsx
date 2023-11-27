@@ -22,7 +22,12 @@ const ThemeToggle = () => {
   // After mount we have access to theme
   if (!mounted) {
     return (
-      <div className="bg-neutral-100 animate-pulse w-8 h-8 rounded-full dark:bg-slate-500"></div>
+      <div
+        className={cn(
+          "bg-neutral-100 animate-pulse w-8 h-8 rounded-full dark:bg-dark-background-primary",
+          "border-slate-500 dark:border-slate-300"
+        )}
+      ></div>
     )
   }
 
