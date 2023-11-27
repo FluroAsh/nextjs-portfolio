@@ -9,8 +9,10 @@ import { externalLinkProps } from "constants/links"
 
 import { cn } from "lib/utils"
 
+// NOTE: FA Manual CSS import is applying 1rem height, need to use `min-h` for specificity
+// To avoid having to use the `sizes` prop
 const iconStyles =
-  "absolute top-5 left-5 w-[8rem] h-[8rem] text-neutral-500 dark:text-slate-300 opacity-10  "
+  "absolute top-5 left-5 min-h-[8rem] text-neutral-500 dark:text-slate-300 opacity-10"
 
 const INFO_CARDS = [
   {
