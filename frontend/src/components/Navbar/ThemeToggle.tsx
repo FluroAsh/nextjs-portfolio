@@ -25,7 +25,7 @@ const ThemeToggle = () => {
       <div
         className={cn(
           "bg-neutral-100 animate-pulse w-8 h-8 rounded-full dark:bg-dark-background-primary",
-          "border-slate-500 dark:border-slate-300"
+          "border-2 border-slate-500 dark:border-slate-300"
         )}
       ></div>
     )
