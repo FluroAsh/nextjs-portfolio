@@ -7,6 +7,10 @@ import ApolloProvider from "lib/ApolloProvider"
 
 import "../styles/globals.css"
 
+import { config } from "@fortawesome/fontawesome-svg-core"
+
+import "@fortawesome/fontawesome-svg-core/styles.css" // Manual import to prevent FA SSR resizing bug
+
 import { cn } from "lib/utils"
 
 const ptSans = PT_Sans({
@@ -23,6 +27,7 @@ const yellowtail = Yellowtail({
 })
 
 const fontVariables = `${ptSans.variable} ${yellowtail.variable}`
+config.autoAddCss = false // prevents FA auto importing CSS
 
 function BlogApp({ Component, pageProps }: AppProps) {
   return (
@@ -31,7 +36,10 @@ function BlogApp({ Component, pageProps }: AppProps) {
     >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="google-site-verification" content="y2tiPk1sHCumAavN_3TB0QiPPnP59xT2juX5nQnb-Do" />
+        <meta
+          name="google-site-verification"
+          content="y2tiPk1sHCumAavN_3TB0QiPPnP59xT2juX5nQnb-Do"
+        />
       </Head>
       <ThemeProvider attribute="class" defaultTheme="dark">
         <ApolloProvider>
