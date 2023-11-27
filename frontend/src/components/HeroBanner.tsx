@@ -19,8 +19,8 @@ const HeroImage = () => (
     <Image
       src="/images/hero-home.webp"
       alt="Ash the Creator"
-      width={500}
-      height={500}
+      width={475}
+      height={475}
       loading="eager"
       className="relative w-full h-full top-2 md:top-0 md:block object-cover"
     />
