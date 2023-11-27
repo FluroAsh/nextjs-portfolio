@@ -13,7 +13,7 @@ const HeroImage = () => (
       "relative flex w-64 md:w-1/2 md:max-w-[475px] overflow-hidden rounded-full shadow-lg",
       "outline outline-2 outline-transparent bg-gradient-to-r from-neutral-100 to-neutral-200",
       "dark:outline-slate-300 dark:md:outline-transparent bg-dark-background-primary dark:from-slate-700 dark:to-background-dark-primary",
-      "md:justify-center md:rounded-none md:shadow-none md:bg-none bg-inherit"
+      "md:justify-center md:rounded-none md:shadow-none md:bg-none bg-inherit md:pb-4"
     )}
   >
     <Image
@@ -22,7 +22,7 @@ const HeroImage = () => (
       width={500}
       height={500}
       loading="eager"
-      className="relative w-full h-full top-2 md:top-0 md:pb-4 md:block object-cover"
+      className="relative w-full h-full top-2 md:top-0 md:block object-cover"
     />
   </div>
 )
