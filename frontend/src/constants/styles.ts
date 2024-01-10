@@ -24,6 +24,7 @@ export const BASE_COLORS = {
   CSS: "#1572B6",
   JavaScript: "#F7DF1E",
   Productivity: "#FF0000",
+  Travel: "#3498db",
 } as const
 
 export type ColorName = keyof typeof BASE_COLORS
