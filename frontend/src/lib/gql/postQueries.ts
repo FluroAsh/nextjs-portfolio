@@ -8,7 +8,10 @@ const apolloClient = initializeApollo()
 
 export const GET_POSTS = gql`
   query getPosts($currentPage: Int!) {
-    posts(pagination: { page: $currentPage, pageSize: 10 }) {
+    posts(
+      sort: "createdAt:desc"
+      pagination: { page: $currentPage, pageSize: 10 }
+    ) {
       data {
         id
         attributes {
