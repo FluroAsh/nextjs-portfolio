@@ -6,7 +6,7 @@ services:
     name: at-strapi-backend-api
     env: docker # valid values: https://render.com/docs/yaml-spec#environment
     dockerfilePath: Dockerfile.render
-    plan: free # optional; defaults to starter
+    plan: standard # optional; defaults to starter
     numInstances: 1
     envVars:
       - key: AWS_BUCKET # Imported from Heroku app
