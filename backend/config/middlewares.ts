@@ -21,6 +21,7 @@ module.exports = [
             "blob:",
             "dl.airtable.com",
             "at-strapi-blog.s3.ap-southeast-2.amazonaws.com",
+            "at-strapi-blog-development.s3.ap-southeast-2.amazonaws.com",
           ],
           "media-src": [
             "'self'",
@@ -28,6 +29,7 @@ module.exports = [
             "blob:",
             "dl.airtable.com",
             "at-strapi-blog.s3.ap-southeast-2.amazonaws.com",
+            "at-strapi-blog-development.s3.ap-southeast-2.amazonaws.com",
           ],
           upgradeInsecureRequests: null,
         },
