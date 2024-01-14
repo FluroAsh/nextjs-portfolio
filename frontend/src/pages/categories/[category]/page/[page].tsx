@@ -70,13 +70,13 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
-  const { category: categorySlug, page: currentPage } = params ?? {}
+  const { category: categorySlug, page } = params ?? {}
 
-  if (typeof currentPage !== "string" || typeof categorySlug !== "string") {
+  if (typeof page !== "string" || typeof categorySlug !== "string") {
     return { notFound: true }
   }
 
-  const posts = await fetchCategoryPosts(categorySlug, currentPage)
+  const posts = await fetchCategoryPosts(categorySlug, page)
 
   // Posts have an associated Category that will match the categorySlug;
   // iterates through the nested Categories properties for the 1st post & retrieves the associated data
@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async ({
   const restPosts = posts.data.slice(1)
   const featuredPost = posts.data[0] ?? null
 
-  const { page, pageCount } = await fetchCategoryPageMeta(categorySlug)
+  const { pageCount } = await fetchCategoryPageMeta(categorySlug)
 
   const metaTags: MetaTagAttributes = {
     canonical: `${process.env.NEXT_BASE_URL}${ROUTE_URL.CATEGORY}/${categorySlug}`,
@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({
       category,
       posts: restPosts,
       featuredPost,
-      currentPage: page,
+      currentPage: parseInt(page),
       totalPages: pageCount,
       metaTags,
     },
