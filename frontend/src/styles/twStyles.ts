@@ -42,4 +42,8 @@ export const commonStyles = (theme: any, type: themeType) => ({
         type === "dark" ? theme("colors.sky.400") : theme("colors.sky.500"),
     },
   },
+
+  "article p > img": {
+    boxShadow: theme("boxShadow.lg"),
+  },
 })
