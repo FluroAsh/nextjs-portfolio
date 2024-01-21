@@ -30,8 +30,6 @@ export const pre = (theme: any, type: themeType) => ({
 })
 
 export const commonStyles = (theme: any, type: themeType) => ({
-  a: { textDecoration: "none" },
-
   "p > a": {
     color: type === "dark" ? theme("colors.sky.500") : theme("colors.sky.600"),
     transition: " 150ms ease-out",
@@ -46,4 +44,9 @@ export const commonStyles = (theme: any, type: themeType) => ({
   "article p > img": {
     boxShadow: theme("boxShadow.lg"),
   },
+
+  a: { textDecoration: "none" },
+
+  "h1, h2": { ...anchor(theme, type) },
+  pre: { ...pre(theme, type) },
 })
