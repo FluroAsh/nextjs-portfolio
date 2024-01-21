@@ -1,6 +1,6 @@
 type themeType = "dark" | "light"
 
-export const anchor = (theme: any, type: themeType) => ({
+const anchor = (theme: any, type: themeType) => ({
   scrollMarginTop: "calc(var(--navbar-height) + 20px)",
 
   ".anchor": {
@@ -14,7 +14,7 @@ export const anchor = (theme: any, type: themeType) => ({
   },
 })
 
-export const pre = (theme: any, type: themeType) => ({
+const pre = (theme: any, type: themeType) => ({
   borderRadius: theme("borderRadius.md"),
   borderWidth: theme("borderWidth.2"),
   borderColor: type === "dark" ? "hsla(218, 13%, 40%, 0.5)" : "transparent",

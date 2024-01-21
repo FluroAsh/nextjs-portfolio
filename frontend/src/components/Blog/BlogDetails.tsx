@@ -14,12 +14,12 @@ const BlogDetails: React.FC<{
   description: string
 }> = ({ slug, title, createdAt, categoryData, description }) => {
   return (
-    <div>
+    <div className="max-w-full">
       <div className="sm:justify-between sm:flex">
         <div>
           <Button
             href={getSlugPath("blog", slug)}
-            className="transition-colors duration-300 hover:text-sky-600 text-neutral-700 dark:text-white"
+            className="transition-colors duration-300 hover:text-sky-600 text-neutral-700 dark:text-white max-w-full"
             type="text"
           >
             <BlogTitle title={title} />
