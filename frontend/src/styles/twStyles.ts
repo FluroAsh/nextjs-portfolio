@@ -1,6 +1,6 @@
 type themeType = "dark" | "light"
 
-export const h1Anchor = (theme: any, type: themeType) => ({
+export const anchor = (theme: any, type: themeType) => ({
   scrollMarginTop: "calc(var(--navbar-height) + 20px)",
 
   ".anchor": {

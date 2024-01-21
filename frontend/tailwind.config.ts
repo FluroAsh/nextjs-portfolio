@@ -40,14 +40,16 @@ export default {
         DEFAULT: {
           css: {
             ...twS.commonStyles(theme, "light"),
-            h1: twS.h1Anchor(theme, "light"),
+            h1: twS.anchor(theme, "light"),
+            h2: twS.anchor(theme, "light"),
             pre: twS.pre(theme, "light"),
           },
         },
         dark: {
           css: {
             ...twS.commonStyles(theme, "dark"),
-            h1: twS.h1Anchor(theme, "dark"),
+            h1: twS.anchor(theme, "dark"),
+            h2: twS.anchor(theme, "dark"),
             pre: twS.pre(theme, "dark"),
           },
         },
