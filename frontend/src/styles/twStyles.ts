@@ -47,6 +47,19 @@ export const commonStyles = (theme: any, type: themeType) => ({
 
   a: { textDecoration: "none" },
 
-  "h1, h2": { ...anchor(theme, type) },
+  "h1, h2": {
+    ...anchor(theme, type),
+    marginTop: theme("spacing.8"),
+    marginBottom: theme("spacing.0"),
+  },
+
+  "h1 + p, h2 + p": {
+    marginTop: theme("spacing.2"),
+  },
+
+  "article img": {
+    margin: `${theme("spacing.6")} auto`,
+  },
+
   pre: { ...pre(theme, type) },
 })
