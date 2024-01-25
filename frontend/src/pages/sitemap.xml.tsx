@@ -27,89 +27,27 @@ type SiteMapProps = {
   }
 }
 
-const generateSiteMap = ({ post, category }: SiteMapProps) =>
-  `<?xml version="1.0" encoding="UTF-8"?>
+const generateUrlXml = (loc: string, priority: number) => `
+  <url>
+    <loc>${loc}</loc>
+    <lastmod>${CURRENT_ISO_DATE}</lastmod>
+    <priority>${priority.toFixed(2)}</priority>
+  </url>
+`
+
+// prettier-ignore
+const generateSiteMap = ({ post, category }: SiteMapProps) => `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     <url>
-       <loc>${process.env.NEXT_BASE_URL}</loc>
-       <lastmod>${CURRENT_ISO_DATE}</lastmod>
-       <priority>1.00</priority>
-     </url>
-     <url>
-       <loc>${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}</loc>
-       <lastmod>${CURRENT_ISO_DATE}</lastmod>
-       <priority>0.90</priority>
-     </url>
-
-
-    ${post.homePosts
-      .map(
-        ({ params: { slug } }) => `
-      <url>
-        <loc>${`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${slug}`}</loc>
-        <lastmod>${CURRENT_ISO_DATE}</lastmod>
-        <priority>0.85</priority>
-      </url>
-      `
-      )
-      .join("")}  
-
-     ${post.latestPosts
-       .map(
-         ({ params: { slug } }) => `
-        <url>
-            <loc>${`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${slug}`}</loc>
-            <lastmod>${CURRENT_ISO_DATE}</lastmod>
-            <priority>0.75</priority>
-        </url>`
-       )
-       .join("")}
-
-    ${post.slugs
-      .map(
-        ({ params: { slug } }) => `
-      <url>
-          <loc>${`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${slug}`}</loc>
-          <lastmod>${CURRENT_ISO_DATE}</lastmod>
-          <priority>0.70</priority>
-      </url>`
-      )
-      .join("")}
-
-      ${post.pages
-        .map(
-          ({ params: { page } }) => `
-      <url>
-          <loc>${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/page/${page}</loc>
-          <lastmod>${CURRENT_ISO_DATE}</lastmod>
-          <priority>0.60</priority>
-      </url>`
-        )
-        .join("")}
-
-      ${category.slugs
-        .map(
-          ({ params: { category } }) => `
-      <url>
-          <loc>${process.env.NEXT_BASE_URL}${ROUTE_URL.CATEGORY}/${category}</loc>
-          <lastmod>${CURRENT_ISO_DATE}</lastmod>
-          <priority>0.65</priority>
-      </url>`
-        )
-        .join("")}
-
-      ${category.pages
-        .map(
-          ({ params: { category, page } }) => `
-      <url>
-          <loc>${process.env.NEXT_BASE_URL}${ROUTE_URL.CATEGORY}/${category}/page/${page}</loc>
-          <lastmod>${CURRENT_ISO_DATE}</lastmod>
-          <priority>0.45</priority>
-      </url>`
-        )
-        .join("")}    
-   </urlset>
- `
+    ${generateUrlXml(process.env.NEXT_BASE_URL as string, 1)}
+    ${generateUrlXml(`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}`, 0.9)}
+    ${post.homePosts.map(({ params: { slug } }) => generateUrlXml(`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${slug}`, 0.85)).join("")}
+    ${post.latestPosts.map(({ params: { slug } }) => generateUrlXml(`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${slug}`, 0.75)).join("")}
+    ${post.slugs.map(({ params: { slug } }) => generateUrlXml(`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/${slug}`, 0.7)).join("")}
+    ${post.pages.map(({ params: { page } }) => generateUrlXml(`${process.env.NEXT_BASE_URL}${ROUTE_URL.BLOG}/page/${page}`, 0.6)).join("")}
+    ${category.slugs.map(({ params: { category } }) => generateUrlXml(`${process.env.NEXT_BASE_URL}${ROUTE_URL.CATEGORY}/${category}`, 0.65)).join("")}
+    ${category.pages.map(({ params: { category, page } }) => generateUrlXml(`${process.env.NEXT_BASE_URL}${ROUTE_URL.CATEGORY}/${category}/page/${page}`, 0.45)).join("")}
+  </urlset>
+`
 
 export default function SiteMap() {
   return null
