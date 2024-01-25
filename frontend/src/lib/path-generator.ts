@@ -2,19 +2,17 @@ import { fetchCategorySlugs } from "./gql/categoryQueries"
 import { fetchCategoryPageMeta, fetchPostsPageMeta } from "./gql/metaQueries"
 import { fetchPostSlugs } from "./gql/postQueries"
 
-// TODO: Clean up these types or restructure the response so they can be simplified
-export type GeneratorCategorySlugs = Awaited<
-  ReturnType<typeof generatePaths.CATEGORY.slugs>
+type PathType = "CATEGORY" | "BLOG"
+type PathMethod = "slugs" | "pages"
+
+type GeneratorType<T extends PathType, M extends PathMethod> = Awaited<
+  ReturnType<(typeof generatePaths)[T][M]>
 >
-export type GeneratorCategoryPages = Awaited<
-  ReturnType<typeof generatePaths.CATEGORY.pages>
->
-export type GeneratorBlogSlugs = Awaited<
-  ReturnType<typeof generatePaths.BLOG.slugs>
->
-export type GeneratorBlogPages = Awaited<
-  ReturnType<typeof generatePaths.BLOG.pages>
->
+
+export type GeneratorCategorySlugs = GeneratorType<"CATEGORY", "slugs">
+export type GeneratorCategoryPages = GeneratorType<"CATEGORY", "pages">
+export type GeneratorBlogSlugs = GeneratorType<"BLOG", "slugs">
+export type GeneratorBlogPages = GeneratorType<"BLOG", "pages">
 
 export const generatePaths = Object.freeze({
   CATEGORY: {
