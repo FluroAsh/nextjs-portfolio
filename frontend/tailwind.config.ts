@@ -29,7 +29,7 @@ export default {
       },
       spacing: {
         "navbar-height": "var(--navbar-height)",
-        "logo-spacing": "calc(50vw - 80px)",
+        "logo-spacing": "calc(50vw - 92px)",
       },
       height: {
         "-navbar": "calc(100vh - var(--navbar-height))",
