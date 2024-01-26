@@ -18,17 +18,17 @@
   filter: opacity(70%);
   opacity: 0%;
 }
-h1 .anchor::after {
-  top: 5px;
-  right: -40px;
-  width: 32px;
-  height: 32px;
-}
 h2 .anchor::after {
-  top: 2px;
-  right: -32px;
+  top: 3px;
+  right: -30px;
   width: 24px;
   height: 24px;
+}
+h3 .anchor::after {
+  top: 0px;
+  right: -26px;
+  width: 20px;
+  height: 20px;
 }
 .anchor:hover::after {
   opacity: 100%;

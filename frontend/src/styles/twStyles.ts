@@ -47,13 +47,13 @@ export const commonStyles = (theme: any, type: themeType) => ({
 
   a: { textDecoration: "none" },
 
-  "h1, h2": {
+  "h2, h3": {
     ...anchor(theme, type),
     marginTop: theme("spacing.8"),
     marginBottom: theme("spacing.0"),
   },
 
-  "h1 + p, h2 + p": {
+  "h2 + p, h3 + p": {
     marginTop: theme("spacing.2"),
   },
 
