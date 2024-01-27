@@ -57,7 +57,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               <span className="ml-2">Back to Blog</span>
             </Button>
             {/* REVIEW: Should refactor this h1 to use BlogTitle... */}
-            <h1 className="text-3xl font-bold tracking-wide sm:text-4xl text-neutral-700 dark:text-white">
+            <h1 className="text-3xl font-bold tracking-wide sm:text-4xl text-neutral-700 dark:text-white text-balance">
               {title}
             </h1>
             <TimeDate
