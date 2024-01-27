@@ -22,7 +22,10 @@ const BlogDetails: React.FC<{
             className="transition-colors duration-300 hover:text-sky-600 text-neutral-700 dark:text-white max-w-full"
             type="text"
           >
-            <BlogTitle title={title} />
+            <BlogTitle
+              title={title}
+              className="sm:max-w-[400px] md:max-w-[calc(650px-55px)] lg:max-w-screen-[calc(1024px-200px)]"
+            />
           </Button>
           <TimeDate createdAt={createdAt} type="index" />
         </div>
