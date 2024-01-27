@@ -5,16 +5,18 @@ export default function useIntersection(options: IntersectionObserverInit) {
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
   useEffect(() => {
+    const containerElement = containerRef.current
+
     const callback = (entries: IntersectionObserverEntry[]) => {
       const entry = entries[0]
       setIsVisible(entry.isIntersecting)
     }
 
     const observer = new IntersectionObserver(callback, options)
-    containerRef.current && observer.observe(containerRef.current)
+    containerElement && observer.observe(containerElement)
 
     return () => {
-      containerRef.current && observer.unobserve(containerRef.current)
+      containerElement && observer.unobserve(containerElement)
     }
   }, [containerRef, options])
 
