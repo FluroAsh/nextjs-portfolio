@@ -22,7 +22,6 @@ export async function markdownToHtml(markdown: string) {
       return (tree) => {
         visit(tree, "element", (node: any) => {
           if (node.tagName === "img") {
-            console.log(node)
             node.properties.loading = "lazy"
             const src = node.properties.src
 

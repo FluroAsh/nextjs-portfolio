@@ -39,7 +39,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
       metaDescription={description}
       metaTags={metaTags}
     >
-      <div className="relative w-full max-w-screen-lg mx-auto">
+      <div className="w-full max-w-screen-lg mx-auto">
         <TableOfContents />
 
         <header className="w-full px-5">

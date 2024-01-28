@@ -79,14 +79,19 @@ export const HeroBanner = () => {
               Front-End <span className="align-center text-sky-500">/</span>{" "}
               Full-Stack Developer
             </h4>
-            <p className="mt-2 lg:text-lg text-md text-neutral-600 drop-shadow-sm dark:text-slate-300">
-              Hey there! 👋 You&apos;ve stumbled into my humble abode. My
-              name&apos;s Ash — I&apos;m a Front-End{" "}
-              <em className="text-sky-500">slash</em> Full-Stack Developer who
-              is at the beginning of his career with a passion for building
-              practical and useful applications to solve real-world problems and
-              create engaging and mesmerizing user experiences.
-            </p>
+            <div className="mt-2 lg:text-lg text-md text-neutral-600 dark:text-slate-300">
+              <p className="mb-2">
+                Hey there! 👋 Welcome to my little corner of the internet!
+              </p>
+              <p className=" ">
+                I&apos;m Ash — a Front-End{" "}
+                <em className="text-sky-500">slash</em> Full-Stack Developer. I
+                love crafting practical solutions for real-world challenges and
+                creating captivating user experiences. Occasionally, I share
+                insights on web-dev, frontend, or whatever is currently grabbing
+                my attention.
+              </p>
+            </div>
           </div>
           <div className="pt-6 pb-4 text-right">
             <span className="font-semibold tracking-wider text-md lg:text-lg text-neutral-600 dark:font-semibold dark:text-slate-300">
