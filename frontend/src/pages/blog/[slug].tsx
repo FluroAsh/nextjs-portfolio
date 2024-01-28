@@ -17,6 +17,7 @@ import { DAILY_REVALIDATION } from "constants/api"
 import { ROUTE_URL } from "constants/paths"
 
 import Button from "components/Button"
+import { TableOfContents } from "components/TableOfContents"
 
 import { generatePaths } from "lib/path-generator"
 import { cn, truncate } from "lib/utils"
@@ -38,7 +39,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
       metaDescription={description}
       metaTags={metaTags}
     >
-      <div className="w-full max-w-screen-lg mx-auto">
+      <div className="relative w-full max-w-screen-lg mx-auto">
+        <TableOfContents />
+
         <header className="w-full px-5">
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
             <Button
