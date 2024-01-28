@@ -14,6 +14,7 @@ export const HeadingLink = ({ id, text, level }: Heading) => (
       draggable={false}
       href={`#${id}`}
       className={cn(level > 2 && "pl-4", "block truncate")}
+      title={text}
     >
       {text}
     </a>
