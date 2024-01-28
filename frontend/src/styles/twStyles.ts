@@ -61,5 +61,9 @@ export const commonStyles = (theme: any, type: themeType) => ({
     margin: `${theme("spacing.6")} auto`,
   },
 
+  "article > h2:first-child": {
+    marginTop: 0,
+  },
+
   pre: { ...pre(theme, type) },
 })
