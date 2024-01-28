@@ -3,6 +3,7 @@ import Head from "next/head"
 import { MetaTagAttributes } from "types/blog-types"
 import { Footer } from "components/Footer"
 import { Navbar } from "components/Navbar"
+import { ScrollToTop } from "components/ScrollToTop"
 
 interface LayoutProps {
   children: React.ReactNode
@@ -38,6 +39,7 @@ const Layout: React.FC<LayoutProps> = ({
 
       <Navbar />
       <main className="w-100 flex flex-col flex-1">{children}</main>
+      <ScrollToTop />
       <Footer />
     </>
   )
