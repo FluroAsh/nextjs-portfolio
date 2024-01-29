@@ -32,10 +32,10 @@ const BlogFeature: React.FC<{
 
       <Button
         href={getSlugPath("blog", slug)}
-        className="w-full mt-4 mb-2 sm:w-40"
+        className="w-full mt-6 mb-2 sm:w-80 rounded-lg"
         type="link"
       >
-        Read more &rarr;
+        Continue Reading
       </Button>
     </div>
   )

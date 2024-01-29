@@ -1,4 +1,4 @@
-import { faCalendar } from "@fortawesome/pro-solid-svg-icons"
+import { faCalendar, faTimer } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import dayjs from "dayjs"
 import advancedFormat from "dayjs/plugin/advancedFormat"
@@ -75,7 +75,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
       <Container isIndex={isIndex} className={extraStyles}>
         <h3 className="text-neutral-600 dark:text-slate-300 font-bold">
           <FontAwesomeIcon icon={faCalendar} className="mr-2" />
-          Posted on {timeStamp} • {readingMinutes(minutes)}
+          {timeStamp} • {readingMinutes(minutes)}
         </h3>
       </Container>
     )
@@ -87,9 +87,16 @@ export const TimeDate: React.FC<TimeDateProps> = ({
         <h3 className="text-lg text-neutral-300 dark:text-slate-300">
           {timeStamp}
         </h3>
-        <h3 className="text-sm font-semibold text-neutral-300 dark:text-slate-300">
-          {readingMinutes(minutes)}
-        </h3>
+        <div className="flex items-center">
+          <FontAwesomeIcon
+            icon={faTimer}
+            className="text-neutral-300 dark:text-slate-300 w-[14px] h-[14px] mt-[0.5px]"
+          />
+
+          <span className="text-sm font-semibold text-neutral-300 dark:text-slate-300 pl-[6px]">
+            {readingMinutes(minutes)}
+          </span>
+        </div>
       </Container>
     )
   }

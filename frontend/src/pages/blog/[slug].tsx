@@ -48,7 +48,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               type="back"
               href={ROUTE_URL.BLOG}
               className={cn(
-                "transition-colors text-neutral-600 group hover:text-neutral-400",
+                "transition-colors text-neutral-500 group hover:text-neutral-400",
                 "dark:text-neutral-400 dark:hover:text-white"
               )}
             >
@@ -57,7 +57,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
                 size="sm"
                 className="group-hover:animate-back-and-forth"
               />
-              <span className="ml-2">Back to Blog</span>
+              <span className="ml-2 font-semibold tracking-wide">
+                Back to Blog
+              </span>
             </Button>
             {/* REVIEW: Should refactor this h1 to use BlogTitle... */}
             <h1 className="text-3xl font-bold tracking-wide sm:text-4xl text-neutral-700 dark:text-white text-balance">

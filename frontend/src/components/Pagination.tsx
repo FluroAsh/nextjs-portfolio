@@ -24,12 +24,12 @@ const Navigation = ({
   isEnabled ? (
     <Link
       href={href}
-      className="p-2 capitalize transition-colors duration-300 rounded-lg hover:bg-neutral-600/70 hover:text-neutral-200 dark:hover:bg-slate-500/50"
+      className="p-2 capitalize transition-colors duration-300 rounded-lg hover:bg-neutral-600/70 hover:text-neutral-200 dark:hover:bg-slate-500/50 tracking-wide"
     >
       {text}
     </Link>
   ) : (
-    <span className="p-2 capitalize pointer-events-none text-neutral-600/50 dark:text-neutral-400">
+    <span className="p-2 capitalize pointer-events-none text-neutral-600/80 dark:text-neutral-400 tracking-wide">
       {text}
     </span>
   )

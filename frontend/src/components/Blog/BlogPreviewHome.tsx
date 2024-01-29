@@ -58,7 +58,7 @@ const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
               className={cn(
                 "absolute bottom-0 left-0 w-full p-4 pointer-events-none",
                 "bg-gradient-to-t from-neutral-600 to-transparent",
-                "dark:from-slate-800/80 dark:via-slate-700/80"
+                "dark:from-slate-700/80"
               )}
             >
               <h1 className="text-2xl font-bold tracking-wide truncate text-neutral-100 dark:text-white">

@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const buttonStyles = (type: ButtonProps["type"]) => {
     if (type === "link") {
-      return `p-2 px-4 border text-neutral-700 hover:text-white rounded-sm font-semibold tracking-wide border-neutral-600
+      return `p-2 px-4 border text-neutral-700 hover:text-white font-semibold rounded-md tracking-wide border-neutral-600
       bg-gradient-to-r hover:from-sky-700 hover:to-sky-600 hover:border-sky-300 hover:shadow-lg dark:hover:border-sky-300 dark:border-white dark:text-white`
     }
 

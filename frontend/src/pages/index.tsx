@@ -80,7 +80,7 @@ const Home: React.FC<{ posts: PostData[]; metaTags: MetaTagAttributes }> = ({
     >
       <SectionTitle
         heading="Fresh Off The Press!"
-        subheading="If you like reading and tech, you'll love these! 📚"
+        subheading="Explore the garden of knowledge and find your next favorite read! 📚"
       />
       <BlogPreviewHome posts={posts} />
     </section>
