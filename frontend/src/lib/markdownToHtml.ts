@@ -28,6 +28,7 @@ export async function markdownToHtml(markdown: string) {
             const fileName = src.split(".amazonaws.com/")[1]
             const origin = src.split(fileName)[0]
 
+            // Add responsiveness to images rendered from markdown
             node.properties.srcset = `
             ${origin}medium_${fileName} 750w,
             ${origin}large_${fileName} 1000w,

@@ -41,12 +41,13 @@ h3 .anchor::after {
 article p > img {
   max-width: 100%;
   border-radius: 3px;
-  max-height: 700px;
+  max-height: 600px;
 }
 
-@media screen and (min-width: 740px) {
+/* min-width = max-width + 40px (page padding) */
+@media screen and (min-width: 790px) {
   article p > img {
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
   }
 }
