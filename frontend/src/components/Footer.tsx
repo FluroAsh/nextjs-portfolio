@@ -17,18 +17,18 @@ const IconLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
 )
 
 const iconStyles =
-  "hover:dark:text-slate-300 dark:text-white hover:text-neutral-300 text-neutral-100 transition-text duration-300"
+  "hover:dark:text-slate-300 dark:text-white hover:text-neutral-300 text-neutral-100"
 
 export const Footer = () => {
   return (
     <footer
       className={cn(
-        "flex flex-col items-center p-3 mt-5 transition-colors duration-300 border-t border-neutral-700 bg-neutral-700",
+        "flex flex-col items-center p-3 mt-5 border-t border-neutral-700 bg-neutral-700",
         "dark:bg-sky-700 dark:border-sky-900"
       )}
     >
       <div className="flex items-center justify-center">
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-3 transition duration-300">
           <IconLink
             href={GITHUB_URL}
             icon={

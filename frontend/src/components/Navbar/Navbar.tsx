@@ -76,12 +76,7 @@ const Navbar = () => {
   }
 
   return (
-    <div
-      className={cn(
-        styles.container,
-        "sticky z-50 top-0 w-full transition duration-300"
-      )}
-    >
+    <div className={cn(styles.container, "sticky z-50 top-0 w-full")}>
       <nav className="relative flex flex-row-reverse justify-between max-w-screen-xl p-3 px-5 mx-auto sm:flex-row">
         <div id="header-wrapper" className="relative">
           <HeaderLogo className="absolute right-logo-spacing xs:relative xs:right-0 sm:relative sm:left-0" />
