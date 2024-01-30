@@ -58,14 +58,14 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   if (type === "index") {
     return (
       <Container isIndex={isIndex} className={extraStyles}>
-        <h3
+        <span
           className={cn(
             "font-semibold text-neutral-600 dark:text-neutral-300",
             "md:text-lg"
           )}
         >
           {timeStamp}
-        </h3>
+        </span>
       </Container>
     )
   }
@@ -73,10 +73,10 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   if (type === "post" && minutes) {
     return (
       <Container isIndex={isIndex} className={extraStyles}>
-        <h3 className="text-neutral-600 dark:text-slate-300 font-bold">
+        <span className="text-neutral-600 dark:text-slate-300 font-bold">
           <FontAwesomeIcon icon={faCalendar} className="mr-2" />
           {timeStamp} • {readingMinutes(minutes)}
-        </h3>
+        </span>
       </Container>
     )
   }
@@ -84,9 +84,9 @@ export const TimeDate: React.FC<TimeDateProps> = ({
   if (type === "home" && minutes) {
     return (
       <Container isIndex={isIndex} className={extraStyles}>
-        <h3 className="text-lg text-neutral-300 dark:text-slate-300">
+        <span className="text-lg text-neutral-300 dark:text-slate-300">
           {timeStamp}
-        </h3>
+        </span>
         <div className="flex items-center">
           <FontAwesomeIcon
             icon={faTimer}
