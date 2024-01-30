@@ -79,7 +79,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
         </header>
 
         <article
-          className="max-w-full px-5 pt-5 prose dark:prose-invert dark:prose-dark"
+          className="max-w-full px-5 pt-5 prose dark:prose-invert dark:prose-dark pb-14"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
