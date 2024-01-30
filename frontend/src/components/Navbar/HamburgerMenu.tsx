@@ -78,6 +78,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
           "absolute w-80 p-5 top-navbar-height -left-80 -h-navbar transition duration-300 z-40 shadow-lg",
           "bg-gradient-to-tr from-neutral-300 to-neutral-400 dark:bg-slate-700 dark:from-dark-background-primary dark:to:bg-slate-700 xs:-left-full xs:w-screen"
         )}
+        aria-hidden={!open}
         ref={drawerRef}
       >
         <div className="flex flex-col w-full h-full">
