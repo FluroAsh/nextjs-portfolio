@@ -3,7 +3,6 @@ import type {
   GetStaticProps,
   GetStaticPropsContext,
 } from "next"
-import { DAILY_REVALIDATION } from "constants/api"
 import { ROUTE_URL } from "constants/paths"
 import { PostLayout } from "Layouts/PostLayout"
 
@@ -103,7 +102,6 @@ export const getStaticProps: GetStaticProps = async ({
       totalPages: pageCount,
       metaTags,
     },
-    revalidate: DAILY_REVALIDATION,
   }
 }
 

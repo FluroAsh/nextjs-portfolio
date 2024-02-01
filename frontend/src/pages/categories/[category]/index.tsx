@@ -3,7 +3,6 @@ import type {
   GetStaticProps,
   GetStaticPropsContext,
 } from "next"
-import { DAILY_REVALIDATION } from "constants/api"
 import { PostLayout } from "Layouts/PostLayout"
 
 import type { APICategory, PostData } from "types/api-types"
@@ -86,7 +85,6 @@ export const getStaticProps: GetStaticProps = async ({
       currentPage: page,
       totalPages: pageCount,
     },
-    revalidate: DAILY_REVALIDATION,
   }
 }
 

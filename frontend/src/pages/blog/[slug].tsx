@@ -13,7 +13,6 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
-import { DAILY_REVALIDATION } from "constants/api"
 import { ROUTE_URL } from "constants/paths"
 
 import Button from "components/Button"
@@ -128,7 +127,6 @@ export const getStaticProps: GetStaticProps = async ({
       formats: cover?.data?.attributes?.formats,
       metaTags,
     },
-    revalidate: DAILY_REVALIDATION,
   }
 }
 

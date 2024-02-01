@@ -1,5 +1,4 @@
 import { GetStaticPropsContext } from "next"
-import { DAILY_REVALIDATION } from "constants/api"
 import { ROUTE_URL } from "constants/paths"
 import { PostLayout } from "Layouts/PostLayout"
 
@@ -87,7 +86,6 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
       totalPages: pagination.pageCount,
       metaTags,
     },
-    revalidate: DAILY_REVALIDATION,
   }
 }
 

@@ -1,5 +1,4 @@
 import type { GetStaticProps } from "next"
-import { MONTHLY_REVALIDATION } from "constants/api"
 import Layout from "Layouts/layout"
 
 import type { PostData } from "types/api-types"
@@ -105,7 +104,6 @@ export const getStaticProps: GetStaticProps = async () => {
       posts: posts.data,
       metaTags,
     },
-    revalidate: MONTHLY_REVALIDATION,
   }
 }
 
