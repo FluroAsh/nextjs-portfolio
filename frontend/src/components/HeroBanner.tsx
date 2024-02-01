@@ -6,6 +6,9 @@ import { ROUTE_URL } from "constants/paths"
 
 import { cn } from "lib/utils"
 
+const base64Placeholder =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQIW2NgAAIAAAUAAR4f7BQAAAAASUVORK5CYII="
+
 const HeroImage = () => (
   <div
     id="img-wrapper"
@@ -22,7 +25,9 @@ const HeroImage = () => (
       width={475}
       height={475}
       loading="eager"
-      className="relative w-full h-full top-2 md:top-0 md:block object-cover"
+      className="relative top-2 md:top-0 md:block object-cover"
+      placeholder="blur"
+      blurDataURL={base64Placeholder}
     />
   </div>
 )

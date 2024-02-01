@@ -32,6 +32,7 @@ const BlogPreviewHome = ({ posts }: { posts: PostData[] }) => {
     <div className={cn(gridRows[posts.length - 1], "grid gap-4 grid-flow-col")}>
       {posts.map((post, idx) => {
         const stats = readingTime(post.attributes.content)
+
         return (
           <div
             key={post.id}
