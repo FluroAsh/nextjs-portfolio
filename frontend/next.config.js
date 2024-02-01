@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -6,20 +10,20 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**.unsplash.com'
+        protocol: "https",
+        hostname: "**.unsplash.com",
       },
       {
-        protocol: 'https',
-        hostname: 'at-strapi-blog.s3.ap-southeast-2.amazonaws.com'
+        protocol: "https",
+        hostname: "at-strapi-blog.s3.ap-southeast-2.amazonaws.com",
       },
       {
-        protocol: 'http',
-        hostname: 'localhost'
-      }
+        protocol: "http",
+        hostname: "localhost",
+      },
     ],
-    deviceSizes: [640, 768, 1024, 1280, 1536]
-  }
+    deviceSizes: [640, 768, 1024, 1280, 1536],
+  },
 }
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer(nextConfig)
