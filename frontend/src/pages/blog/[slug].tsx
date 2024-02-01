@@ -24,14 +24,15 @@ import { cn, truncate } from "lib/utils"
 
 const BlogPost: React.FC<BlogPostProps> = ({
   title,
-  content,
+  markdownContent,
+  htmlContent,
   createdAt,
   description,
   alternativeText,
   formats,
   metaTags,
 }) => {
-  const stats = readingTime(content)
+  const stats = readingTime(markdownContent) // HTML Content inflates the reading time as it has more characters
 
   return (
     <Layout
@@ -80,7 +81,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
         <article
           className="max-w-full p-5 prose dark:prose-invert dark:prose-dark"
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       </div>
     </Layout>
@@ -101,12 +102,12 @@ export const getStaticProps: GetStaticProps = async ({
 
   const {
     title,
-    content: contentMarkdown,
+    content: markdownContent,
     cover,
     createdAt,
     description,
   } = post
-  const content = await markdownToHtml(contentMarkdown)
+  const htmlContent = await markdownToHtml(markdownContent)
 
   const metaTags: MetaTagAttributes = {
     "og:title": title,
@@ -119,7 +120,8 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       title,
-      content,
+      markdownContent,
+      htmlContent,
       createdAt,
       description,
       alternativeText: cover?.data?.attributes?.alternativeText,
