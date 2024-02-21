@@ -38,8 +38,7 @@ export const TableOfContents = () => {
     <nav
       aria-hidden={!isVisible}
       className={cn(
-        "fixed top-20 right-4 pointer-events-none opacity-0 px-2 transition-opacity duration-250 ease-in-out z-50",
-        "2xl:block max-w-[250px] 2xl:opacity-100 2xl:pointer-events-auto"
+        "hidden lg:block sticky top-14 right-0 h-fit p-5 w-[250px]"
       )}
     >
       <span className="text-xl font-bold tracking-wide">Table of Contents</span>

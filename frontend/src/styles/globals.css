@@ -44,10 +44,15 @@ article p > img {
   max-height: 600px;
 }
 
+/* Prose override － wasn't working in twStyles */
+article.prose {
+  max-width: 100%;
+}
+
 /* min-width = max-width + 40px (page padding) */
 @media screen and (min-width: 790px) {
   article p > img {
-    max-width: 750px;
+    /* max-width: 750px; */
     margin: 0 auto;
   }
 }

@@ -39,10 +39,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
       metaDescription={description}
       metaTags={metaTags}
     >
-      <div className="w-full max-w-screen-lg mx-auto">
-        <TableOfContents />
-
-        <header className="w-full px-5">
+      <div className="max-w-screen-lg mx-auto px-5">
+        <header>
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
             <Button
               type="back"
@@ -78,10 +76,13 @@ const BlogPost: React.FC<BlogPostProps> = ({
           </div>
         </header>
 
-        <article
-          className="max-w-full p-5 prose dark:prose-invert dark:prose-dark"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
-        />
+        <div className="flex justify-between">
+          <article
+            className="py-5 lg:pl-5 prose dark:prose-invert dark:prose-dark"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
+          <TableOfContents />
+        </div>
       </div>
     </Layout>
   )
