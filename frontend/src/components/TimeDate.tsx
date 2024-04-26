@@ -1,4 +1,5 @@
-import { faCalendar, faTimer } from "@fortawesome/pro-solid-svg-icons"
+import { faClock } from "@fortawesome/free-regular-svg-icons"
+import { faCalendar } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import dayjs from "dayjs"
 import advancedFormat from "dayjs/plugin/advancedFormat"
@@ -89,7 +90,7 @@ export const TimeDate: React.FC<TimeDateProps> = ({
         </span>
         <div className="flex items-center">
           <FontAwesomeIcon
-            icon={faTimer}
+            icon={faClock}
             className="text-neutral-300 dark:text-slate-300 w-[14px] h-[14px] mt-[0.5px]"
           />
 

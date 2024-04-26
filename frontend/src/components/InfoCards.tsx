@@ -1,9 +1,14 @@
 import Link from "next/link"
 import {
-  faCloudBinary,
+  faCloud,
   faCode,
   faGraduationCap,
-} from "@fortawesome/pro-solid-svg-icons"
+} from "@fortawesome/free-solid-svg-icons"
+// import {
+//   faCloudBinary,
+//   faCode,
+//   faGraduationCap,
+// } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { externalLinkProps } from "constants/links"
 
@@ -34,7 +39,7 @@ const INFO_CARDS = [
         </p>
       </>
     ),
-    icon: <FontAwesomeIcon icon={faCloudBinary} className={iconStyles} />,
+    icon: <FontAwesomeIcon icon={faCloud} className={iconStyles} />,
     className: "sm:col-span-2 col-span-1 lg:col-span-1",
   },
   {

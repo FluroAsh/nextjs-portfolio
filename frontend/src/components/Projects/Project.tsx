@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
-import { faExternalLink } from "@fortawesome/pro-solid-svg-icons"
+import { faExternalLink } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { externalLinkProps } from "constants/links"
 

@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next"
-import { faArrowLeftLong } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Layout from "Layouts/layout"
 import readingTime from "reading-time"
@@ -13,6 +12,7 @@ import { markdownToHtml } from "lib/markdownToHtml"
 
 import "highlight.js/styles/base16/monokai.css"
 
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { ROUTE_URL } from "constants/paths"
 
 import Button from "components/Button"

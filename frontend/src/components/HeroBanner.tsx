@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { faHandBackPointDown } from "@fortawesome/pro-solid-svg-icons"
+import { faHandPointDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ROUTE_URL } from "constants/paths"
 
@@ -103,7 +103,7 @@ export const HeroBanner = () => {
               Discover More
             </span>
             <FontAwesomeIcon
-              icon={faHandBackPointDown}
+              icon={faHandPointDown}
               className="animate-bounce text-2xl lg:text-3xl relative ml-3 top-2 lg:top-3 text-sky-500"
             />
           </div>

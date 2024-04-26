@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { faBars, faClose, faHome } from "@fortawesome/pro-solid-svg-icons"
+import { faBars, faClose, faHome } from "@fortawesome/free-solid-svg-icons"
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,

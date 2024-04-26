@@ -4,7 +4,7 @@ import {
   faLinkedinIn,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
-import { faBookOpen } from "@fortawesome/pro-solid-svg-icons"
+import { faBookOpen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   externalLinkProps,
