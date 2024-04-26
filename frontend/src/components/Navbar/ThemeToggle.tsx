@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useRef } from "react"
 import { faMoon, faSun } from "@fortawesome/pro-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useTheme } from "next-themes"
@@ -19,7 +18,7 @@ const ThemeToggle = () => {
   const isDark = theme === "dark"
   const mounted = useMounted()
 
-  // After mount we have access to theme
+// After mount we have access to theme
   if (!mounted) {
     return (
       <div
