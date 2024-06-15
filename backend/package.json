@@ -2,6 +2,7 @@
   "name": "backend",
   "private": true,
   "version": "0.1.0",
+  "license": "MIT",
   "description": "Ash's Blog Backend",
   "scripts": {
     "develop": "strapi develop",
@@ -29,7 +30,6 @@
     "node": "18.13.0",
     "npm": "8.19.3"
   },
-  "license": "MIT",
   "volta": {
     "node": "18.13.0"
   }
