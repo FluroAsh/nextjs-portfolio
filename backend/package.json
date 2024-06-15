@@ -29,5 +29,8 @@
     "node": "18.13.0",
     "npm": "8.19.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "volta": {
+    "node": "18.13.0"
+  }
 }
