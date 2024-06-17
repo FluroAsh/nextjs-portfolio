@@ -1,0 +1,29 @@
+FROM node:18-alpine
+# Installing libvips-dev for sharp Compatibility
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
+
+ENV NODE_ENV=${NODE_ENV}
+ENV DATABASE_URL=${DATABASE_URL}
+
+ENV JWT_SECRET=${JWT_SECRET}
+ENV API_TOKEN_SALT=${API_TOKEN_SALT}
+ENV APP_KEYS=${APP_KEYS}
+
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
+ENV AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
+ENV AWS_REGION=${AWS_REGION}
+
+WORKDIR /opt/
+COPY package.json package-lock.json ./
+RUN npm install -g node-gyp
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install
+ENV PATH /opt/node_modules/.bin:$PATH
+
+WORKDIR /opt/app
+COPY . .
+RUN chown -R node:node /opt/app
+USER node
+RUN ["npm", "run", "build"]
+EXPOSE 1337
+CMD ["npm", "run", "develop"]

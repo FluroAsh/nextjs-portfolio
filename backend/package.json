@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "strapi build",
+    "compose": "scripts/compose.sh",
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi"
@@ -20,7 +21,7 @@
     "@strapi/provider-upload-aws-s3": "^4.15.5",
     "@strapi/strapi": "4.15.5",
     "better-sqlite3": "7.4.6",
-    "pg": "^8.8.0",
+    "pg": "^8.12.0",
     "pg-connection-string": "^2.5.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -29,12 +30,12 @@
   },
   "engines": {
     "node": ">=18.x.x || >=20.x.x",
-    "npm": "10.7.0"
-  },
-  "volta": {
-    "node": "18.20.3"
+    "npm": ">=8.19.3"
   },
   "strapi": {
     "uuid": "891c9525-20fa-48f7-9717-9d4c49aa0ee9"
+  },
+  "volta": {
+    "node": "18.13.0"
   }
 }

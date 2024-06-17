@@ -106,8 +106,12 @@ coverage
 # Strapi
 ############################
 
+<<<<<<< HEAD
 .env
 .env.dev
+=======
+.env*
+>>>>>>> a7357ac (feat: Docker setup, current implementation for Prod)
 license.txt
 exports
 *.cache

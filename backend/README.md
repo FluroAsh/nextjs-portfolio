@@ -14,7 +14,7 @@ DATABASE_URL=postgresql://username:password@localhost:5432/database_name
 # AWS
 AWS_ACCESS_KEY_ID=access_key
 AWS_ACCESS_SECRET=secret_key
-AWS_BUCKET=bucket_name
+AWS_BUCKET_NAME=bucket_name
 AWS_REGION=aws_region
 ```
 
@@ -83,7 +83,7 @@ To access the Bucket through Strapi we just need to provide the credentials for 
 # AWS
 AWS_ACCESS_KEY_ID=access_key
 AWS_ACCESS_SECRET=secret_key
-AWS_BUCKET=bucket_name
+AWS_BUCKET_NAME=bucket_name
 AWS_REGION=aws_region
 ```
 
@@ -102,3 +102,20 @@ For each of these we need to enable the following:
 2. `findOne`
 
 This will allow us to query our GraphQL API on the frontend through Apollo for posts, categories and uploads that are stored in our S3 bucket when working locally, and accessing the API frontend at `http://localhost:1337/graphql`.
+
+# Deploying with Docker
+To deploy the Strapi server & Postgres database using Docker, ensure that the `.env` file is in the root of the project and that you have the outlined variables set.
+
+You can then run the following command to build the Docker images and start the container:
+
+```sh
+npm run compose
+```
+It will take a few minutes to tear down the existing container and volume if they were already created, and then build the new images and start the container instance.
+
+If you 
+just just want to quickly update the container without tearing down the existing volume & containers, you can run the following command:
+
+```sh
+docker-compose up --build
+```
