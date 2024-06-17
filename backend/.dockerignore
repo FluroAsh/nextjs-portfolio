@@ -1,0 +1,9 @@
+# node_modules
+build
+dist
+.cache
+*.log
+.env
+.git
+.github
+.vscode
