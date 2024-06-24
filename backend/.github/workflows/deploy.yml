@@ -1,0 +1,5 @@
+name: Deploy to Digital Ocean
+on:
+  push:
+    branches:
+      - main

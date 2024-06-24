@@ -5,4 +5,4 @@ cd "$(dirname "$0")/.."
 docker-compose down -v
 
 # Build and start new containers
-docker-compose up --build
+docker-compose build
