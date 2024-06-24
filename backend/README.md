@@ -43,6 +43,8 @@ openssl rand -base64 16
 ```
 
 **Node Crypto Library**
+Open a Node REPL and run the following code:
+
 ```js
 const crypto = require('crypto'); const randomBytes = crypto.randomBytes(16).toString('base64'); console.log(randomBytes);
 ```
