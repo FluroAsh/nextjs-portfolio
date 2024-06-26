@@ -1,11 +1,12 @@
 version: "3"
 services:
   strapi:
-    container_name: strapi-backend
-    build: .
-    image: fluroash/strapi-blog:latest
+    container_name: strapi-backend-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     restart: unless-stopped
-    env_file: .env
+    env_file: .env.dev
     environment:
       DATABASE_URL: ${DATABASE_URL}
       API_TOKEN_SALT: ${API_TOKEN_SALT}
@@ -30,10 +31,10 @@ services:
       - strapiDB
 
   strapiDB:
-    container_name: strapi-db
+    container_name: strapi-db-dev
     platform: linux/amd64 # for platform error on Apple M1 chips
     restart: unless-stopped
-    env_file: .env
+    env_file: .env.dev
     image: postgres:12.0-alpine
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
