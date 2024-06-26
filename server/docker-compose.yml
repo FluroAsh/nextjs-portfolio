@@ -4,7 +4,7 @@ services:
   strapi:
     container_name: strapi-backend
     build: .
-    image: fluroash/strapi:latest
+    image: fluroash/strapi-blog:latest
     restart: unless-stopped
     env_file: .env
     environment:
