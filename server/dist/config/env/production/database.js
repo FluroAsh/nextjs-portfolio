@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const parse = require("pg-connection-string").parse;
 const config = parse(process.env.DATABASE_URL);
-exports.default = ({ _env }) => ({
+exports.default = () => ({
     connection: {
         client: "postgres",
         connection: {
