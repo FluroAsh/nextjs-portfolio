@@ -1,5 +1,5 @@
 # Creating multi-stage build for production
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
 
 ENV NODE_ENV=${NODE_ENV}
@@ -13,6 +13,17 @@ ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_ACCESS_SECRET=${AWS_ACCESS_SECRET}
 ENV AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
 ENV AWS_REGION=${AWS_REGION}
+
+# Debugging Variables
+RUN echo $NODE_ENV
+RUN echo $DATABASE_URL
+RUN echo $JWT_SECRET
+RUN echo $API_TOKEN_SALT
+RUN echo $APP_KEYS
+RUN echo $AWS_ACCESS_KEY_ID
+RUN echo $AWS_ACCESS_SECRET
+RUN echo $AWS_BUCKET_NAME
+RUN echo $AWS_REGION
 
 WORKDIR /opt/
 COPY package*.json ./

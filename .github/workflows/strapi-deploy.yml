@@ -10,45 +10,73 @@ on:
   workflow_dispatch:
 
 jobs:
-  path_to_registry:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Create .env file
-        run: |
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> server/.env
-          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> server/.env
-          echo "APP_KEYS=${{ secrets.APP_KEYS }}" >> server/.env
-          echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> server/.env
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> server/.env
-          echo "AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }}" >> server/.env
-          echo "AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }}" >> server/.env
-          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> server/.env
-          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> server/.env
-          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> server/.env
-          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> server/.env
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push Docker images using docker-compose
-        run: |
-          docker-compose -f server/docker-compose.yml build
-          docker-compose -f server/docker-compose.yml push
-
-      # - name: Build and push
-      #   uses: docker/build-push-action@v6
-      #   with:
-      #     push: true
-      #     tags: fluroash/strapi:latest
-  # deploy:
+  # path_to_registry:
   #   runs-on: ubuntu-22.04
   #   steps:
-  #   # ssh
-  #   # > docker pull fluroash/strapi:latest
-  #   # > docker-compose down
-  #   # > docker-compose up -d
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #     - name: Set up Docker Buildx
+  #       uses: docker/setup-buildx-action@v3
+  #     - name: Create .env file
+  #       run: |
+  #         echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> server/.env
+  #         echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> server/.env
+  #         echo "APP_KEYS=${{ secrets.APP_KEYS }}" >> server/.env
+  #         echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> server/.env
+  #         echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> server/.env
+  #         echo "AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }}" >> server/.env
+  #         echo "AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }}" >> server/.env
+  #         echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> server/.env
+  #         echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> server/.env
+  #         echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> server/.env
+  #         echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> server/.env
+  #     - name: Login to Docker Hub
+  #       uses: docker/login-action@v3
+  #       with:
+  #         username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         password: ${{ secrets.DOCKERHUB_TOKEN }}
+  #     - name: Build and push "Strapi" Docker image using docker-compose
+  #       run: |
+  #         docker-compose -f server/docker-compose.yml build
+  #         docker-compose -f server/docker-compose.yml push
+  deploy_to_remote:
+    # needs: path_to_registry
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up SSH key for remote access
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+      - name: Copy docker-compose & Dockerfile to remote server
+        run: |
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "mkdir -p ~/at-blog"
+          scp -r server/docker-compose.yml server/Dockerfile ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:~/at-blog/
+      - name: Create .env file
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+          echo "API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }}" >> .env
+          echo "APP_KEYS=${{ secrets.APP_KEYS }}" >> .env
+          echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> .env
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> .env
+          echo "AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }}" >> .env
+          echo "AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }}" >> .env
+          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> .env
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> .env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
+          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> .env
+          scp .env ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:~/at-blog/.env
+      - name: Deploy to remote server
+        run: |
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} << EOF
+            cd ~/at-blog
+            docker-compose -f docker-compose.yml pull
+            docker-compose -f docker-compose.yml up -d
+          EOF
+      # - name: Clean up remote .env
+      #   run: |
+      #     ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "rm ~/at-blog/.env"
