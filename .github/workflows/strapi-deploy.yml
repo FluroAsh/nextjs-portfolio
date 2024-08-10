@@ -1,12 +1,11 @@
-name: Test Workflow
+name: Digital Ocean Strapi Deploy
 
 on:
   push:
     paths:
       - 'backend/**'
     branches:
-      # - 'main'
-      - 'update/docker-be'
+      - 'main'
   workflow_dispatch:
 
 jobs:
