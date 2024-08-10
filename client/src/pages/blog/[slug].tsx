@@ -39,7 +39,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
       metaDescription={description}
       metaTags={metaTags}
     >
-      <div className="max-w-screen-lg mx-auto px-5">
+      <div className="max-w-screen-lg mx-auto px-5 w-full">
         <header>
           <div className="py-5 border-b border-neutral-600 dark:border-slate-500">
             <Button
