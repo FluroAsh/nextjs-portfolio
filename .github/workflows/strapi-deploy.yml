@@ -3,7 +3,7 @@ name: Digital Ocean Strapi Deploy
 on:
   push:
     paths:
-      - 'backend/**'
+      - 'server/**'
     branches:
       - 'main'
   workflow_dispatch:
