@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "strapi build",
-    "compose": "scripts/compose.sh",
+    "compose:dev": "scripts/dev-compose.sh",
+    "compose:prod": "scripts/prod-compose.sh",
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi"
@@ -34,8 +35,5 @@
   },
   "strapi": {
     "uuid": "891c9525-20fa-48f7-9717-9d4c49aa0ee9"
-  },
-  "volta": {
-    "node": "18.13.0"
   }
 }
