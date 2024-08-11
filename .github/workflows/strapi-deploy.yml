@@ -37,8 +37,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
       - name: Build & push Docker image
         run: |
+          echo --- Building Dokcer image ---
           docker-compose -f server/docker-compose.yml build
           docker-compose -f server/docker-compose.yml push
   deploy_to_remote:
