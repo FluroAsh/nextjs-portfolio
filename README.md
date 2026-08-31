@@ -1,3 +1,5 @@
+
+
 # [Ashleys' Portfolio Website](http://ashleygthompson.com)
 
 A portfolio website designed to utilise industry relevant such as `NextJS` and `GraphQL`, and to showcase my evergrowing knowledge of Backend and Frontend concepts, best practices, and even have a bit of fun! 👨‍🎨
@@ -12,7 +14,7 @@ A portfolio website designed to utilise industry relevant such as `NextJS` and `
 
 If you're using [Node Version Manager](https://github.com/nvm-sh/nvm) and already have `lts/hydrogen` installed then you can navigate to the respective directory and select it using `nvm use`. 
 
-Otherwise, you'll need to install this version of Node manualy from the [Node website](https://nodejs.org/en/download/releases/), or via [nvm](https://github.com/nvm-sh/nvm) with `nvm install lts/hydrogen`.
+Otherwise, you'll need to install this version of Node manually from the [Node website](https://nodejs.org/en/download/releases/), or via [nvm](https://github.com/nvm-sh/nvm) with `nvm install lts/hydrogen`.
 
 Once you're done with that, navigate to Respective Directory (FE/BE) for a detailed overview of setting up your **local dev environment**.
 
